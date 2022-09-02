@@ -1,0 +1,52 @@
+{ "riddles": [
+    { 
+        "id": 1,
+        "question":"I have a tail and a head, but no body. What am I?", 
+        "answer":"coin"
+    },
+    { 
+        "id": 2,
+        "question":"What has to be broken before you can use it?", 
+        "answer":"egg"
+    },
+    { 
+        "id": 3,
+        "question":"You cut me, slice me, dice me, and all the while, you cry. What am I?", 
+        "answer":"onion"
+    },
+    { 
+        "id": 4,
+        "question":"The more you take, the more you leave behind. What am I?", 
+        "answer":"Footsteps" 
+    },
+    { 
+        "id": 5,
+        "question":"I'm tall when I'm young and I'm short when I'm old. What am I?", 
+        "answer":"candle"
+    },
+    { 
+        "id": 6,
+        "question":"Where can you find cities, towns, shops, and streets but no people?", 
+        "answer":"map"
+    },
+    { 
+        "id": 7,
+        "question":"What gets wetter as it dries?", 
+        "answer":"towel"
+    },
+    { 
+        "id": 8,
+        "question":"What has 88 keys, but cannot open a single door?", 
+        "answer":"piano"
+    },
+    { 
+        "id": 9,
+        "question":"What gets bigger the more you take away?", 
+        "answer":"hole"
+    },
+    { 
+        "id": 10,
+        "question":"If you don't keep me, I break. What am I?", 
+        "answer":"promise"
+    }
+]}
