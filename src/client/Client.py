@@ -7,9 +7,9 @@ app = Flask(__name__)
 def hello_world():
     return render_template("home.html")
 
-@app.route('/snake-catch')
-def snake_catch():
-    return render_template("snake-catch.html")
+@app.route('/item-catch')
+def item_catch():
+    return render_template("item-catch.html")
 
 @app.route('/tile-shift')
 def tile_shift():

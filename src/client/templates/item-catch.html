@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/style-catch.css') }}"/>
+    <script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/item-catch.js') }}" defer></script>
+    <title>Find the Artefacts!</title>
+</head>
+<body>
+
+    <img class="background-image" src="{{ url_for('static',filename='images/snake-long.png') }}"/>
+
+    <section id="view-1">
+        <h1 class="game-title center">Find the Artefacts!</h1>
+        <p class="instructions center">
+            Tap <span id="snake-num"></span> artefacts in <span id="timer-length"></span> seconds to win
+        </p>
+        <div class="play center">Play!</div>
+        <div class="win-lose center">
+<!--            <p>Win: Go back 3 to 8 spaces</p>-->
+<!--            <p>Lose: Fall to snake's tail</p>-->
+        </div>  
+    </section>
+
+    <section id="view-2">
+        <div class="timer">
+            <p>Time left: <span id="time-left"></span></p>
+            <div id="snake-count">
+                <span id="snakes-caught">X</span>/<span id="snake-goal">Y</span>
+                <img src="{{ url_for('static',filename='images/snake-small-colour.png') }}">
+            </div>
+        </div>
+        <div id="snake-container">
+            <img draggable="false" src="{{ url_for('static',filename='images/snake-small.png') }}"/>
+        </div>
+    </section>
+
+    <section id="view-3">
+        <div class="non-interact"></div>
+        <div id="win-lose-messages">
+            <p class="win-lose-start center"></p>
+            <p class="win-lose-result center"></p>
+<!--            <img class="center" src="{{ url_for('static',filename='images/dice.png') }}"/>-->
+        </div>
+    </section>
+    
+</body>
+
+</html>
