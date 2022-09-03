@@ -11,43 +11,44 @@
 </head>
 <body>
 
-    <img class="background-image" src="{{ url_for('static',filename='images/snake-long.png') }}"/>
+<img class="background-image" src="{{ url_for('static',filename='images/item-bg.jpg') }}"/>
 
-    <section id="view-1">
-        <h1 class="game-title center">Master the dance!</h1>
-        <p class="instructions center">
-            Tap the correct objects in time, avoid the incorrect objects, achieve a score of <span id="score-goal"></span> to win
-        </p>
-        <div class="play center">Play!</div>
-        <div class="win-lose center">
-        </div>
-    </section>
+<section id="view-1">
+    <h1 class="game-title center">Master the dance!</h1>
+    <p class="instructions center">
+        Tap the correct objects in time, avoid the incorrect objects, achieve a score of <span id="score-goal"></span>
+        to win
+    </p>
+    <div class="play center">Play!</div>
+    <div class="win-lose center">
+    </div>
+</section>
 
-    <section id="view-2">
-        <div class="timer">
-            <p>Steps left: <span id="steps-left"></span></p>
-            <div id="snake-count">
-                <span id="steps-hit">X</span>/<span id="snake-goal">Y</span>
-                <img src="{{ url_for('static',filename='images/snake-small-colour.png') }}">
-            </div>
+<section id="view-2">
+    <div class="timer">
+        <p>Steps left: <span id="steps-left"></span></p>
+        <div id="snake-count">
+            <span id="steps-hit">X</span>/<span id="snake-goal">Y</span>
+            <img src="{{ url_for('static',filename='images/snake-small-colour.png') }}">
         </div>
-        <div class="step-container" id="good-step-container">
-            <img draggable="false" src="{{ url_for('static',filename='images/snake-small.png') }}"/>
-        </div>
-        <div class="step-container" id="bad-step-container">
-            <img draggable="false" src="{{ url_for('static',filename='images/snake-small-colour.png') }}"/>
-        </div>
-    </section>
+    </div>
+    <div class="step-container" id="good-step-container">
+        <img draggable="false" src="{{ url_for('static',filename='images/snake-small.png') }}"/>
+    </div>
+    <div class="step-container" id="bad-step-container">
+        <img draggable="false" src="{{ url_for('static',filename='images/snake-small-colour.png') }}"/>
+    </div>
+</section>
 
-    <section id="view-3">
-        <div class="non-interact"></div>
-        <div id="win-lose-messages">
-            <p class="win-lose-start center"></p>
-            <p class="win-lose-result center"></p>
-<!--            <img class="center" src="{{ url_for('static',filename='images/dice.png') }}"/>-->
-        </div>
-    </section>
-    
+<section id="view-3">
+    <!--        <div class="non-interact"></div>-->
+    <div id="win-lose-messages">
+        <p class="win-lose-start center"></p>
+        <p class="win-lose-result center"></p>
+        <!--            <img class="center" src="{{ url_for('static',filename='images/dice.png') }}"/>-->
+    </div>
+</section>
+
 </body>
 
 </html>

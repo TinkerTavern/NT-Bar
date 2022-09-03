@@ -36,22 +36,15 @@ body {
 }
 
 .background-image {
-    position: absolute;
-    height: 70vh;
-    top: 17vh;
-    opacity: 0.07;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    -webkit-transform: translate(-50%, 0%);
-    -moz-transform: translate(-50%, 0%);
-    -o-transform: translate(-50%, 0%);
-    -ms-transform: translate(-50%, 0%);
+    width: 100vw;
+    height: 100vh;
 }
 
 .game-title {
     padding-top: 5vh;
     font-size: 2rem;
     width: 90vw;
+    color: white;
 }
 
 .center {
@@ -68,8 +61,10 @@ body {
     font-size: 1.5rem;
     text-transform: uppercase;
     margin-block: 10vh;
-    width: 70vw;
+    width: 65vw;
     line-height: 150%;
+    color: white;
+    background-color: rgba(25,25,0,0.4);
 }
 
 .play {

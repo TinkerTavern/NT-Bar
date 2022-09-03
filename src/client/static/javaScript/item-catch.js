@@ -1,7 +1,7 @@
 // GAME PARAMETERS
 
-const stepsNumberArray = [30, 50, 70];
-const scoreGoalArray = [150, 250, 350];
+const stepsNumberArray = [31, 51, 71];
+const scoreGoalArray = [15, 25, 35];
 
 //Math.floor(Math.random() * stepsNumberArray.length)
 let stepsLeft = stepsNumberArray[0]
@@ -77,10 +77,12 @@ $('#bad-step-container img').on('click tap', (e) => {
 
 let hideSnakes = () => {
     stepsLeft--;
-    if (stepsLeft <= 0)
-        gameResult();
-    $('#steps-hit').text(stepsHit*10);
     $('#steps-left').text(stepsLeft);
+    $('#steps-hit').text(stepsHit);
+    if (stepsLeft <= 0) {
+        gameResult();
+        return;
+    }
     document.getElementById("bad-step-container").style.visibility = "hidden";
     document.getElementById("good-step-container").style.visibility = "hidden";
     snakeHiddenTimer = Math.floor(Math.random() * 3 + 1);
@@ -142,7 +144,8 @@ let moveSnake = () => {
 
 let gameResult = () => {
     $('.step-container img').remove();
-    if (stepsHit >= scoreGoal/10) {
+    $('.background-image').remove();
+    if (stepsHit >= scoreGoal) {
         $('#win-lose-messages').css('background', winColor);
         winMessageStart = winMessageStartArray[Math.floor(Math.random() * winMessageStartArray.length)];
         $('.win-lose-start').text(winMessageStart);
@@ -152,4 +155,3 @@ let gameResult = () => {
     }
     $('#view-3').fadeIn();
 }
-
