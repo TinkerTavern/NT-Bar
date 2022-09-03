@@ -14,27 +14,28 @@
     <img class="background-image" src="{{ url_for('static',filename='images/snake-long.png') }}"/>
 
     <section id="view-1">
-        <h1 class="game-title center">Find the Artefacts!</h1>
+        <h1 class="game-title center">Master the dance!</h1>
         <p class="instructions center">
-            Tap <span id="snake-num"></span> artefacts in <span id="timer-length"></span> seconds to win
+            Tap the correct objects in time, avoid the incorrect objects, achieve a score of <span id="score-goal"></span> to win
         </p>
         <div class="play center">Play!</div>
         <div class="win-lose center">
-<!--            <p>Win: Go back 3 to 8 spaces</p>-->
-<!--            <p>Lose: Fall to snake's tail</p>-->
-        </div>  
+        </div>
     </section>
 
     <section id="view-2">
         <div class="timer">
-            <p>Time left: <span id="time-left"></span></p>
+            <p>Steps left: <span id="steps-left"></span></p>
             <div id="snake-count">
-                <span id="snakes-caught">X</span>/<span id="snake-goal">Y</span>
+                <span id="steps-hit">X</span>/<span id="snake-goal">Y</span>
                 <img src="{{ url_for('static',filename='images/snake-small-colour.png') }}">
             </div>
         </div>
-        <div id="snake-container">
+        <div class="step-container" id="good-step-container">
             <img draggable="false" src="{{ url_for('static',filename='images/snake-small.png') }}"/>
+        </div>
+        <div class="step-container" id="bad-step-container">
+            <img draggable="false" src="{{ url_for('static',filename='images/snake-small-colour.png') }}"/>
         </div>
     </section>
 

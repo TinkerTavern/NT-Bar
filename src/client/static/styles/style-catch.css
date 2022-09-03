@@ -119,13 +119,12 @@ body {
     padding: 0;
 }
 
-#snake-container {
-    position: relative;
+.step-container {
     width: 100vw;
     height: 80vh;
 }
 
-#snake-container img {
+.step-container img {
     position: absolute;
     top: 0;
     left: 0;
@@ -137,6 +136,7 @@ body {
     -o-transform: scaleX(-1);
     -ms-transform: scaleX(-1);
 }
+
 
 #snake-count {
     display: flex;

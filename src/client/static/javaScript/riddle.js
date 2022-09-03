@@ -109,7 +109,7 @@ let gameResult = () => {
     clearInterval(gameTimer);
     $('#view-2').css('background','white');
     $('#view-2').animate({'opacity': 0.2}, 300);
-    $('#snake-container img').remove();
+    $('#good-step-container img').remove();
     if(win){
         $('#win-lose-messages').css('background', winColor);
         winMessageStart = winMessageStartArray[Math.floor(Math.random() * winMessageStartArray.length)];
