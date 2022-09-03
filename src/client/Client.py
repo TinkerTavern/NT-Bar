@@ -15,6 +15,10 @@ def item_catch():
 def tile_shift():
     return render_template("tile-shift.html")
 
+@app.route('/cypher')
+def cypher():
+    return render_template("cypher.html")
+
 @app.route('/riddle')
 def riddle():
     return render_template("riddle.html")

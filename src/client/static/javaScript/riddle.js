@@ -24,7 +24,7 @@ input.addEventListener("keypress", function(event) {
 const setRiddle = () => {
     // Get local storage value for id
     if (typeof(Storage) !== "undefined") {
-        riddleId = localStorage.getItem("riddle-id");
+        riddleId = localStorage.getItem("tile-shift-id");
         if (riddleId === null){
             riddleId = 1;
         } else {
@@ -34,14 +34,14 @@ const setRiddle = () => {
         riddleId = Math.floor(Math.random * 9 + 1);
     }   
     fetchRiddle(riddleId).then((riddle) => {
-        $('.riddle').text(riddle.question);
+        $('.tile-shift').text(riddle.question);
         answer = riddle.answer.toLowerCase();
         if (riddleId === 10){
             riddleId = 1;
         } else {
             riddleId++;
         }
-        localStorage.setItem("riddle-id", riddleId);
+        localStorage.setItem("tile-shift-id", riddleId);
     });
 }
 
@@ -56,7 +56,7 @@ function submitAnswer() {
 }
 
 const fetchRiddle = async riddleId => {
-    let response = await fetch('static/js/riddles.json');
+    let response = await fetch('static/javaScript/riddles.json');
     let data = await response.json();
     riddle = data.riddles.find(item => item.id === riddleId);
     return riddle;
