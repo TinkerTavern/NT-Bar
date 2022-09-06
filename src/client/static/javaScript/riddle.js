@@ -35,6 +35,7 @@ const setRiddle = () => {
     }   
     fetchRiddle(riddleId).then((riddle) => {
         $('.tile-shift').text(riddle.question);
+        console.log(riddle.question)
         answer = riddle.answer.toLowerCase();
         if (riddleId === 10){
             riddleId = 1;
