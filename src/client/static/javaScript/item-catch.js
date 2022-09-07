@@ -1,6 +1,6 @@
 // GAME PARAMETERS
 
-const stepsNumberArray = [31, 51, 71];
+const stepsNumberArray = [1, 51, 71];
 const scoreGoalArray = [15, 25, 35];
 
 //Math.floor(Math.random() * stepsNumberArray.length)
@@ -154,4 +154,8 @@ let gameResult = () => {
         $('.win-lose-start').text(loseMessageStartArray[Math.floor(Math.random() * loseMessageStartArray.length)])
     }
     $('#view-3').fadeIn();
+}
+
+function restart() {
+    document.location.reload();
 }

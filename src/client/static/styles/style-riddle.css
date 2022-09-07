@@ -38,9 +38,9 @@ body {
 
 .background-image {
     position: absolute;
-    height: 70vh;
+    /*height: 70vh;*/
     top: 17vh;
-    opacity: 0.07;
+    /*opacity: 0.07;*/
     left: 50%;
     transform: translate(-50%, 0%);
     -webkit-transform: translate(-50%, 0%);
@@ -96,8 +96,8 @@ body {
 }
 
 .play {
-    width: 35vw;
-    height: 35vw;
+    width: 50vh;
+    height: 50vh;
     background: #80b9ff;
     border-radius: 50%;
     color: white;
@@ -147,6 +147,7 @@ body {
     font-size: 2rem;
     width: 80vw;
     margin-block: 14vh;
+    background-color: rgba(25,0,0,0.5);
     line-height: 150%;
 }
 

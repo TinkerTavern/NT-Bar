@@ -1,7 +1,7 @@
 // GAME PARAMETERS
 
 
-let timerLength = 30;
+let timerLength = 300;
 
 let win, riddle, riddleId, answer, gameTimer;
 const winColor = "#4ed97f"; 
@@ -34,7 +34,7 @@ const setRiddle = () => {
         riddleId = Math.floor(Math.random * 9 + 1);
     }   
     fetchRiddle(riddleId).then((riddle) => {
-        $('.tile-shift').text(riddle.question);
+        $('.riddle').text(riddle.question);
         console.log(riddle.question)
         answer = riddle.answer.toLowerCase();
         if (riddleId === 10){
