@@ -2,9 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/VRO-server" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/vro-riddle" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/vro-snake-catch" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/vro-tile-shift" vcs="Git" />
   </component>
 </project>

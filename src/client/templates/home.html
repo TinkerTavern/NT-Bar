@@ -1,17 +1,21 @@
 {% extends "layout.html" %}
 {% block body %}
 
-    <div class="nav">
-        <div class="title">
-            <head><h1>Task List</h1></head>
+<div class="nav">
+    <div class="title">
+        <head><h1>Game Select</h1></head>
+    </div>
+    <div class="task">
+        <div class="select">
+            <list id="games" name="games">
+                <a href="/item-catch">Item Catch</a><br>
+                <a href="/riddle">Riddle Mystery</a><br>
+                <a href="/tile-shift">Tile Shift!</a><br>
+                <a href="/cypher">Cypher Crack</a><br>
+
+            </list>
         </div>
-        <div class="task">
-            <div class="select">
-                <list id="toDoList" name="cars" onchange="myFunction()">
-                    <!--    Filled out by javaScript-->
-                </list>
-            </div>
-        </div>
+    </div>
     <script type="text/javascript" src="{{ url_for('static', filename='javaScript/home.js') }}">
     </script>
-{% endblock %}
+    {% endblock %}
