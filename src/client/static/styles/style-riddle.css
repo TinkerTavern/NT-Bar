@@ -5,8 +5,8 @@
     font-display: swap;
     src: url(quicksand.woff2) format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  
+}
+
 @font-face {
     font-family: 'Quicksand';
     font-style: normal;
@@ -48,7 +48,6 @@ body {
     -o-transform: translate(-50%, 0%);
     -ms-transform: translate(-50%, 0%);
 }
-
 .on-dark {
     opacity: 0.3;
 }
@@ -72,6 +71,8 @@ body {
 .answerLabel {
     font-size: xx-large;
     margin-left: 42.5%;
+    background-color: rgba(25, 0, 0, 0.5);
+
 }
 
 .answerBox {
@@ -84,6 +85,14 @@ body {
     width: 12.5%;
     margin-top: 1%;
     font-size: x-large;
+}
+
+.option {
+    margin-left: 15%;
+    /*transform: translate(-25%, 0);*/
+    text-align: center;
+    text-transform: capitalize;
+
 }
 
 
@@ -119,10 +128,10 @@ body {
 #view-2 {
     position: absolute;
     top: 0px;
-    left: 0vw; 
+    left: 0vw;
     width: 100vw;
     height: 100vh;
-    background: black;
+    /*background: black;*/
     color: white;
     /*overflow-y: hidden;*/
 }
@@ -147,7 +156,7 @@ body {
     font-size: 2rem;
     width: 80vw;
     margin-block: 14vh;
-    background-color: rgba(25,0,0,0.5);
+    background-color: rgba(25, 0, 0, 0.5);
     line-height: 150%;
 }
 
@@ -187,7 +196,7 @@ body {
     top: 0;
     width: 100vw;
     height: 90vh;
-}   
+}
 
 #win-lose-messages {
     margin-top: 50vh;
@@ -199,7 +208,7 @@ body {
     width: 100vw;
     color: white;
     padding-block: 7vh;
-    box-shadow: 0px 4px 11px -5px rgba(0,0,0,0.8);
+    box-shadow: 0px 4px 11px -5px rgba(0, 0, 0, 0.8);
 }
 
 .win-lose-start {

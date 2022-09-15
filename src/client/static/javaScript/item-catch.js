@@ -1,6 +1,6 @@
 // GAME PARAMETERS
 
-const stepsNumberArray = [1, 51, 71];
+const stepsNumberArray = [31, 51, 71];
 const scoreGoalArray = [15, 25, 35];
 
 //Math.floor(Math.random() * stepsNumberArray.length)

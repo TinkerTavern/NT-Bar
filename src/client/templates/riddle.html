@@ -11,21 +11,28 @@
 </head>
 <body>
 
-<img class="background-image" src="{{ url_for('static',filename='images/snake-long.png') }}"/>
-
+<!--<img class="background-image" src="{{ url_for('static',filename='images/snake-long.png') }}"/>-->
+    <img draggable="false" class="background-image"
+         src="{{ url_for('static',filename='images/riddle-bg.png')}}"/>
 <section id="view-2">
     <div class="timer center">
         <p>Time left: <span id="time-left"></span></p>
         <div id="right"></div>
         <div id="wrong"></div>
     </div>
-    <img draggable="false" class="background-image"
-         src="{{ url_for('static',filename='images/riddle-bg.png')}}"/>
+
     <p class="riddle center"></p>
-    <label class="center answerLabel" for="answer">Your Answer:</label>
-    <input class="center answerBox" type="text" id="answer" name="answer">
-    <input class="center submit" id="submitButton" type="button" value="Submit" onclick="submitAnswer();"/>
-    <!--        <p class="answer center">(Say your answer to <br> the gamemaster)</p>-->
+    <div id="textEntry">
+        <label class="center answerLabel" for="answer">Your Answer:</label>
+        <input class="center answerBox" type="text" id="answer" name="answer">
+        <input class="center submit" id="submitButton" type="button" value="Submit" onclick="answerWritten();"/>
+    </div>
+    <div id="multiChoice">
+        <label class="center answerLabel" for="answer">Select the Correct answer:</label><br>
+        <input class="option submit" id="answer1" type="button" value="1111" onclick="answer1();"/>
+        <input class="option submit" id="answer2" type="button" value="2222" onclick="answer2();"/>
+        <input class="option submit" id="answer3" type="button" value="3333" onclick="answer3();"/>
+    </div>
 </section>
 
 <section id="view-1">
