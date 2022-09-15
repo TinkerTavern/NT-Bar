@@ -19,8 +19,8 @@ class Game extends React.Component {
 				<Board 
 					onSolution={ () => this.props.onPlayerSolved () } 
 					onFailure={ () => this.props.onPlayerFailed () } 
-					timeToComplete = {30}
-					showImagePreview={true}
+					timeToComplete = {3000}
+					showImagePreview={false}
 					imagePreviewTime={1}
 				/> :
 				<Cypher 

@@ -17,11 +17,11 @@ import office from './images/office.jpg'
 function importAll(r) {
 	return r.keys().map(r);
 }
-const caveImages = importAll(require.context('./images/cave', false, /\.(png|jpe?g|svg)$/));
-const planetImages = importAll(require.context('./images/planet', false, /\.(png|jpe?g|svg)$/));
-const rocketImages = importAll(require.context('./images/rocket', false, /\.(png|jpe?g|svg)$/));
-const spaceImages = importAll(require.context('./images/space', false, /\.(png|jpe?g|svg)$/));
-const officeImages = importAll(require.context('./images/office', false, /\.(png|jpe?g|svg)$/));
+const caveImages = importAll(require.context('./images/cave4x4', false, /\.(png|jpe?g|svg)$/));
+const planetImages = importAll(require.context('./images/planet4x4', false, /\.(png|jpe?g|svg)$/));
+const rocketImages = importAll(require.context('./images/rocket4x4', false, /\.(png|jpe?g|svg)$/));
+const spaceImages = importAll(require.context('./images/space4x4', false, /\.(png|jpe?g|svg)$/));
+const officeImages = importAll(require.context('./images/office4x4', false, /\.(png|jpe?g|svg)$/));
 
 /**
  * Basic animate css template from https://animate.style/
@@ -88,7 +88,7 @@ class Board extends React.Component {
 
 		this.state = {
 			active: false,
-			tiles: [...Array (9).keys ()],
+			tiles: [...Array (16).keys ()],
 			images: imageSet,
 			preview: imagePreview,
 			currentSelection: -1,
@@ -180,10 +180,15 @@ class Board extends React.Component {
 	}
 
 	checkSolution () {
-		var isAscending = a => a.slice(1).every((e,i) => e > a[i]);
+		var isAscending = a => a.slice(1).every(this.getCondition(a));
 		if (isAscending (this.state.tiles)) {
 			this.props.onSolution ()
 		}
+	}
+
+	getCondition(a) {
+		console.log(a)
+		return (e, i) => e > a[i];
 	}
 
 	renderTile (i) {
@@ -205,11 +210,11 @@ class Board extends React.Component {
 				display: 'grid',
 				gridGap: 1,
 				gridTemplateColumns: [
-					'repeat(3, 1fr)',
-					'repeat(3, 1fr)'
+					'repeat(4, 1fr)',
+					'repeat(4, 1fr)'
 				],
 				}}>
-				{[0,1,2,3,4,5,6,7,8].map ((tileIdx) => <Box key={tileIdx}>{this.renderTile (tileIdx)}</Box>)}
+				{[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].map ((tileIdx) => <Box key={tileIdx}>{this.renderTile (tileIdx)}</Box>)}
 			</Box>
 		} else {
 			mainView = <Box>
