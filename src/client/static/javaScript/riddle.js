@@ -176,3 +176,6 @@ let gameResult = () => {
     $('#view-3').fadeIn();
 }
 
+function restart() {
+    document.location.reload();
+}

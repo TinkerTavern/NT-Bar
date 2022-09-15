@@ -39,11 +39,12 @@ class Solution extends React.Component {
 				display: 'grid',
 				gridGap: 0
 			}}>
-			<Box><div className="non-interact"></div></Box>
+			{/*<Box><div className="non-interact"></div></Box>*/}
 			<Box>
 				<div id="win-message">
 					<p className="win-lose-start center">{this.state.winMessages[this.state.currentWinMessage]}</p>
 					<p className="win-lose-result center"></p>
+					<button className="center restart" onClick={() => {document.location.reload()}}>Restart</button>
 					{/*<img className="dice" src={dice} alt="Echo Games' dice"/>*/}
 				</div>
 			</Box>

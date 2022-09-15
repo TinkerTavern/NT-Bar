@@ -12,8 +12,8 @@
 <body>
 
 <!--<img class="background-image" src="{{ url_for('static',filename='images/snake-long.png') }}"/>-->
-    <img draggable="false" class="background-image"
-         src="{{ url_for('static',filename='images/riddle-bg.png')}}"/>
+<img draggable="false" class="background-image"
+     src="{{ url_for('static',filename='images/riddle-bg.png')}}"/>
 <section id="view-2">
     <div class="timer center">
         <p>Time left: <span id="time-left"></span></p>
@@ -52,6 +52,7 @@
     <div id="win-lose-messages">
         <p class="win-lose-start center"></p>
         <p class="win-lose-result center"></p>
+        <button class="center" onclick="restart()">Restart</button>
         <!--            <img class="center" src="images/dice.png"/>-->
     </div>
 </section>
