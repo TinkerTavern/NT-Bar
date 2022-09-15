@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.6ecd8523.css",
-    "main.js": "./static/js/main.7c193c75.js",
+    "main.js": "./static/js/main.6c7bcf91.js",
     "static/js/787.c745ff56.chunk.js": "./static/js/787.c745ff56.chunk.js",
     "static/media/office.jpg": "./static/media/office.aee79fa79934e003df6b.jpg",
     "static/media/space.jpg": "./static/media/space.1f1b24ec12a7cbfc0e57.jpg",
@@ -9,27 +9,21 @@
     "static/media/planet.jpg": "./static/media/planet.42db5e44bccd694dd3da.jpg",
     "static/media/rocket.jpg": "./static/media/rocket.6ef546c37af16bc814ef.jpg",
     "static/media/quicksand.woff2": "./static/media/quicksand.cb5df633e2b0309221e6.woff2",
-    "static/media/12.jpg": "./static/media/12.7f485a0a57150117f48b.jpg",
-    "static/media/22.jpg": "./static/media/22.3baaafe973f435dda66d.jpg",
-    "static/media/11.jpg": "./static/media/11.e42958cb3903325be51b.jpg",
-    "static/media/32.jpg": "./static/media/32.2348ba3855ce9ce1a861.jpg",
-    "static/media/23.jpg": "./static/media/23.433136b0ee8dbd595f18.jpg",
+    "static/media/office_e.jpg": "./static/media/office_e.2032d5d10c81bb6503ef.jpg",
     "static/media/ladder.png": "./static/media/ladder.afa1704555c87647f722.png",
-    "static/media/10.jpg": "./static/media/10.9d03c784a57b621b6e0e.jpg",
-    "static/media/13.jpg": "./static/media/13.fe4795a8275bf74d3491.jpg",
-    "static/media/01.jpg": "./static/media/01.c8fed752037f9fdc4db8.jpg",
-    "static/media/21.jpg": "./static/media/21.ac836cbb8298af372de5.jpg",
-    "static/media/31.jpg": "./static/media/31.66e714f914053fa67ce0.jpg",
-    "static/media/20.jpg": "./static/media/20.ce49ebbfae927a9de37e.jpg",
-    "static/media/30.jpg": "./static/media/30.a405c95865f8671a1c82.jpg",
-    "static/media/03.jpg": "./static/media/03.cfe89f919596dd0a3ee4.jpg",
+    "static/media/office_b.jpg": "./static/media/office_b.3f5f1ce841c817a53ab8.jpg",
+    "static/media/office_g.jpg": "./static/media/office_g.2ad6f5bd3da8dc57ddb0.jpg",
+    "static/media/office_f.jpg": "./static/media/office_f.fc0ea9708ac9ecf76c93.jpg",
+    "static/media/office_k.jpg": "./static/media/office_k.32e9f3fc075961e5a982.jpg",
+    "static/media/office_d.jpg": "./static/media/office_d.69c5fc6c8ff686d1da45.jpg",
+    "static/media/office_a.jpg": "./static/media/office_a.0e7bfe8fe277a32ee63d.jpg",
     "index.html": "./index.html",
     "main.6ecd8523.css.map": "./static/css/main.6ecd8523.css.map",
-    "main.7c193c75.js.map": "./static/js/main.7c193c75.js.map",
+    "main.6c7bcf91.js.map": "./static/js/main.6c7bcf91.js.map",
     "787.c745ff56.chunk.js.map": "./static/js/787.c745ff56.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6ecd8523.css",
-    "static/js/main.7c193c75.js"
+    "static/js/main.6c7bcf91.js"
   ]
 }
