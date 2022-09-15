@@ -16,18 +16,9 @@ body {
 }
 
 .background-image {
-    position: absolute;
-    height: 65vh;
-    width: auto;
-    top: 16vh;
+    width: 100vw;
+    height: 100vh;
     opacity: 0.07;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    -webkit-transform: translate(-50%, 0%);
-    -moz-transform: translate(-50%, 0%);
-    -o-transform: translate(-50%, 0%);
-    -ms-transform: translate(-50%, 0%);
-    z-index: -1;
 }
 
 button {
