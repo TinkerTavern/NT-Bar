@@ -19,6 +19,7 @@ function importAll(r) {
 }
 
 const mode = 3;
+const timer = false;
 var caveImages, planetImages, rocketImages, spaceImages, officeImages
 
 if (mode === 4) {
@@ -100,35 +101,25 @@ class Board extends React.Component {
                 imagePreview = space;
         }
 
-        if (mode === 4) {
 
-            this.state = {
-                active: false,
-                tiles: [...Array(16).keys()],
-                images: imageSet,
-                preview: imagePreview,
-                currentSelection: -1,
-                currentTimeRemaining: this.props.timeToComplete,
-                timeString: '',
-            };
-        } else {
-            this.state = {
-                active: false,
-                tiles: [...Array(9).keys()],
-                images: imageSet,
-                preview: imagePreview,
-                currentSelection: -1,
-                currentTimeRemaining: this.props.timeToComplete,
-                timeString: '',
-            };
-        }
+        this.state = {
+            active: false,
+            tiles: [...Array(mode === 4 ? 16 : 9).keys()],
+            images: imageSet,
+            preview: imagePreview,
+            currentSelection: -1,
+            currentTimeRemaining: this.props.timeToComplete,
+            timeString: '',
+        };
     }
 
     startPuzzleTimer() {
-        this.timerID = setInterval(() =>
-                this.tick(),
-            1000
-        );
+        if (timer) {
+            this.timerID = setInterval(() =>
+                    this.tick(),
+                1000
+            );
+        }
     }
 
     showImagePreview() {
