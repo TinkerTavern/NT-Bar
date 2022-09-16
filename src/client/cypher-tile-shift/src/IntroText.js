@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box } from 'rebass'
 import './IntroText.css';
-import ladder from './images/ladder.png'
+import ladder from './images/background.jpg'
 
 class Intro extends React.Component {
 

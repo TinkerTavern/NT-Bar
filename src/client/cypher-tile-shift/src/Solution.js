@@ -8,7 +8,9 @@ class Solution extends React.Component {
 	constructor (props) {
 		super (props);
 		this.state = {
-			winMessages: ["You did it!", "Great!", "Nice job!", "Good work!"],
+			winMessages: ["You solved the puzzle, it revealed some interesting information...",
+				"Puzzle solved, time to see what's really going on...", "Nice job! Now to learn the truth...",
+				"Ah ha! So that's what's going on..."],
 			currentWinMessage: 0,
 		}
 	}

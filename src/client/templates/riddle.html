@@ -7,13 +7,12 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/style-riddle.css') }}"/>
     <script src="{{ url_for('static',filename='javaScript/jquery.min.js') }}"></script>
     <script src="{{ url_for('static',filename='javaScript/riddle.js') }}" defer></script>
-    <title>The Riddle</title>
+    <title>The Riddle Master</title>
 </head>
 <body>
 
 <!--<img class="background-image" src="{{ url_for('static',filename='images/snake-long.png') }}"/>-->
-<img draggable="false" class="background-image"
-     src="{{ url_for('static',filename='images/riddle-bg.png')}}"/>
+<img draggable="false" class="background-image" src="{{ url_for('static',filename='images/riddle-bg.png')}}"/>
 <section id="view-2">
     <div class="timer center">
         <p>Time left: <span id="time-left"></span></p>
@@ -36,9 +35,9 @@
 </section>
 
 <section id="view-1">
-    <h1 class="game-title center">The Riddle</h1>
+    <h1 class="game-title center">The Riddle Master</h1>
     <p class="instructions center">
-        Solve the riddle within
+        Solve <soan id="riddleCount"></soan> riddles within
         <soan id="timer-length"></soan>
         seconds to win
     </p>
@@ -62,7 +61,8 @@
     <div class="win-lose-messages">
         <p class="win-lose-start center"></p>
         <p class="win-lose-result center"></p>
-        <button class="submit center" onclick="document.location.reload()">Restart</button>
+        <button class="submit center" id="restartButton" onclick="document.location.reload()">Restart</button>
+        <button class="submit center" id="winButton" onclick="winGame()">Discover the Secret...</button>
         <!--            <img class="center" src="images/dice.png"/>-->
     </div>
 </section>

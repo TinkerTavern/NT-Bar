@@ -3,7 +3,7 @@
 // Game ID = 1
 
 // TODO turn these into config options
-let timerLength = 300;
+let timerLength = 60;
 let multipleChoice = true;
 let riddlesToSolve = 3;
 let riddlesToWin = 3;
@@ -13,9 +13,12 @@ let win, riddle, riddleId, answer, gameTimer;
 const winColor = "#4ed97f";
 const loseColor = "#de5f5f";
 
-const winMessageStartArray = ["You've solved my riddle, I'll reveal my secret..", "You're smart! I'll let you in on a secret...",
+
+const winMessageStartArray = ["You did it!", "Great!", "Nice job!", "Good work!"];
+const loseMessageStartArray = ["Oh no!", "Not this time!", "Better luck next time!", "Nice try!"];
+const winWinMessageStartArray = ["You've solved my riddle, I'll reveal my secret..", "You're smart! I'll let you in on a secret...",
     "That was fun, let me tell you something you don't know...", "Nice! We should do that again some time. For now..."];
-const loseMessageStartArray = ["Tricked you, try again!", "I'm not telling you anything unless you solve my riddles, try again!",
+const loseLoseMessageStartArray = ["Tricked you, try again!", "I'm not telling you anything unless you solve my riddles, try again!",
     "Better luck next time, try again!", "Riddles can be confusing, try again!"];
 
 // SELECT AND DISPLAY RIDDLE
@@ -48,7 +51,7 @@ const setRiddle = () => {
     }
     fetchRiddle(riddleId).then((riddle) => {
         $('.riddle').text(riddle.question);
-        console.log(riddle.question)
+        // console.log(riddle.question)
         if (multipleChoice)
             populateAnswers(riddle.answers);
         answer = riddle.answers[0].toLowerCase();
@@ -91,12 +94,10 @@ function populateAnswers(answers) {
         for (var i = 0; i < a.length; i++) {
             index = Math.floor(Math.random() * answers.length)
             while (nums.includes(index)) {
-                console.log("woah")
                 index = Math.floor(Math.random() * answers.length)
             }
             if (index === 0)
                 zero = true
-            // console.log(index)
             nums[i] = index
             document.getElementById(a[i]).value = answers[index];
         }
@@ -131,6 +132,7 @@ x.style.display = "none";
 // VIEW 1 CONTENT
 
 $('#timer-length').text(timerLength);
+$('#riddleCount').text(riddlesToWin);
 
 // VIEW 2 CONTENT
 
@@ -147,7 +149,7 @@ function startTimer() {
         timerLength--;
         $('#time-left').text(timerLength);
         if (timerLength === 0 && !win) {
-            gameResult();
+            finalScreen();
         }
     }, 1000);
 }
@@ -173,23 +175,31 @@ function submitResult() {
 }
 
 function finalScreen() {
+    clearInterval(gameTimer);
     if (win)
         won++;
     $('#view-2').animate({'opacity': 0.2}, 300);
     if (won === riddlesToWin) {
         $('.win-lose-messages').css('background', winColor);
-        $('.win-lose-start').text("Congrats, you've successfully answered all riddles");
+        $('.win-lose-start').text(winWinMessageStartArray[Math.floor(Math.random() * winWinMessageStartArray.length)]);
+        document.getElementById("restartButton").style.visibility = "hidden"
     } else {
         $('.win-lose-messages').css('background', loseColor);
-        $('.win-lose-start').text("Oh no! You got " + won + "/" + riddlesToWin + " riddles correct. Try again")
+        $('.win-lose-start').text(loseLoseMessageStartArray[Math.floor(Math.random() * loseLoseMessageStartArray.length)] + " Score: " + won + "/" + riddlesToWin)
+        document.getElementById("winButton").style.visibility = "hidden"
+
     }
     $('#view-4').fadeIn();
 
 }
 
+function winGame() {
+    console.log("wooo")
+}
+
 let gameResult = () => {
     riddlesToSolve--;
-    clearInterval(gameTimer);
+
     if (riddlesToSolve <= 0) {
         finalScreen();
         return;
@@ -212,7 +222,5 @@ function cont() {
     $('#view-3').fadeOut();
     // $('#view-2').css('background', 'white');
     $('#view-2').animate({'opacity': 1}, 300);
-    startTimer();
     setRiddle();
-
 }

@@ -2,11 +2,12 @@
 
 const stepsNumberArray = [31, 51, 71];
 const scoreGoalArray = [15, 25, 35];
+const debug = false;
 
 //Math.floor(Math.random() * stepsNumberArray.length)
 let index = Math.floor(Math.random() * stepsNumberArray.length);
-let stepsLeft = stepsNumberArray[index]
-let scoreGoal = scoreGoalArray[index];
+let stepsLeft = debug ? 2 : stepsNumberArray[index]
+let scoreGoal = debug ? 1 : scoreGoalArray[index];
 console.log(index)
 console.log(scoreGoal)
 $.ajax({
@@ -154,13 +155,17 @@ let gameResult = () => {
         $('#win-lose-messages').css('background', winColor);
         winMessageStart = winMessageStartArray[Math.floor(Math.random() * winMessageStartArray.length)];
         $('.win-lose-start').text(winMessageStart);
+        document.getElementById("restartButton").style.visibility = "hidden"
     } else {
         $('#win-lose-messages').css('background', loseColor);
-        $('.win-lose-start').text(loseMessageStartArray[Math.floor(Math.random() * loseMessageStartArray.length)])
+        $('.win-lose-start').text(loseMessageStartArray[Math.floor(Math.random() * loseMessageStartArray.length)] +
+            " Score: " + stepsHit + "/" + scoreGoal)
+        document.getElementById("winButton").style.visibility = "hidden"
+
     }
     $('#view-3').fadeIn();
 }
 
-function restart() {
-    document.location.reload();
+function winGame() {
+    console.log("wooo")
 }

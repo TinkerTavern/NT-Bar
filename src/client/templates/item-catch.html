@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/style-catch.css') }}"/>
     <script src="{{ url_for('static',filename='javaScript/jquery.min.js') }}"></script>
     <script src="{{ url_for('static',filename='javaScript/item-catch.js') }}" defer></script>
-    <title>Find the Artefacts!</title>
+    <title>Master the dance!</title>
 </head>
 <body>
 
@@ -16,7 +16,7 @@
 <section id="view-1">
     <h1 class="game-title center">Master the dance!</h1>
     <p class="instructions center">
-        Tap the correct objects in time, avoid the incorrect objects, achieve a score of <span id="score-goal"></span>
+        Tap on the correct steps in time, avoid the bad steps, achieve a score of <span id="score-goal"></span>
         to win
     </p>
     <div class="play center">Play!</div>
@@ -45,7 +45,8 @@
     <div id="win-lose-messages">
         <p class="win-lose-start center"></p>
         <p class="win-lose-result center"></p>
-        <button class="submit center" onclick="restart()">Restart</button>
+        <button class="submit center" id="restartButton" onclick="document.location.reload()">Restart</button>
+        <button class="submit center" id="winButton" onclick="winGame()">Discover the Secret...</button>
         <!--            <img class="center" src="{{ url_for('static',filename='images/dice.png') }}"/>-->
     </div>
 </section>

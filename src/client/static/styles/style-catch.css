@@ -45,9 +45,8 @@ button {
 
 .game-title {
     padding-top: 5vh;
-    font-size: 2rem;
+    font-size: xxx-large;
     width: 90vw;
-    color: white;
 }
 
 .center {
@@ -61,10 +60,8 @@ button {
 }
 
 .instructions {
-    font-size: 1.5rem;
-    text-transform: uppercase;
+    font-size: xx-large;
     margin-block: 10vh;
-    width: 65vw;
     line-height: 150%;
     color: white;
     background-color: rgba(25,25,0,0.4);
