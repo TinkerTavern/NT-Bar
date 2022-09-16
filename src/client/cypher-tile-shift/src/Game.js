@@ -13,12 +13,17 @@ class Game extends React.Component {
 		this.props.playerFailed ()
 	}
 
+	continue() {
+		this.props.continue ()
+	}
+
 	render () {
 		return (
 				this.props.game === 'puzzle_shift' ? 
 				<Board 
 					onSolution={ () => this.props.onPlayerSolved () } 
-					onFailure={ () => this.props.onPlayerFailed () } 
+					onContinue ={ () => this.props.continue () }
+					onFailure={ () => this.props.onPlayerFailed () }
 					timeToComplete = {30}
 					showImagePreview={false}
 					imagePreviewTime={1}

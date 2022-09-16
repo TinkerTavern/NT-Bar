@@ -22,6 +22,7 @@ def update_task():
     taskID = request.form.get("task")
     progressVal = request.form.get("progress")
     if taskID is None:
+        limit = request.json.get("limit")
         taskID = request.json.get("task")
         progressVal = request.json.get("progress")
     if limit is not None:
@@ -32,8 +33,6 @@ def update_task():
 
 @app.route('/get-tasks', methods=["GET"])
 def index():
-    if progress == oldProgress:
-        return jsonify(list="old")
     for i in range(len(oldProgress)):
         oldProgress[i] = progress[i]
     tasksArr = [{"scenario": 1, "task": tasks[0], "progress": oldProgress[0], "limit": limits[0]},

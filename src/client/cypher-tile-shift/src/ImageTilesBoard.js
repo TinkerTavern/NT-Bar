@@ -256,21 +256,37 @@ class Board extends React.Component {
             </Box>
         }
 
-        return (
-            <div>
-                <img draggable={false} className="background-image" src={ladder} alt="Echo Games' ladder"/>
-                <Box
-                    sx={{
-                        maxWidth: 768,
-                        mx: 'auto',
-                        px: 3,
-                        py: 4
-                    }}>
-                    <div className="timer">Time left: {this.state.timeString}</div>
-                </Box>
-                {mainView}
-            </div>
-        )
+        if (timer)
+            return (
+                <div>
+                    <img draggable={false} className="background-image" src={ladder} alt="Echo Games' ladder"/>
+                    <Box
+                        sx={{
+                            maxWidth: 768,
+                            mx: 'auto',
+                            px: 3,
+                            py: 4
+                        }}>
+                        <div className="timer">Time left: {this.state.timeString}</div>
+                    </Box>
+                    {mainView}
+                </div>
+            )
+        else
+            return (
+                <div>
+                    <img draggable={false} className="background-image" src={ladder} alt="Echo Games' ladder"/>
+                    <Box
+                        sx={{
+                            maxWidth: 768,
+                            mx: 'auto',
+                            px: 3,
+                            py: 4
+                        }}>
+                    </Box>
+                    {mainView}
+                </div>
+            )
     }
 }
 

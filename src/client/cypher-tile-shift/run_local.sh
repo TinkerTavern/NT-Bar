@@ -4,11 +4,11 @@ if [ $1 -eq 1 ]; then
 else
   printf "PUBLIC_URL=\nREACT_APP_GAME_NAME=Tile Shift\nREACT_APP_GAME_TO_BUILD=puzzle_shift" >.env
 fi
+if [ ! -d build ]; then
 mkdir build
-cd build
-npm install
+fi
+cd build || exit
 npm run build
-npm install -g serve
 if [ $1 -eq 1 ]; then
   if [ -f ../../templates/tile-shift.html ]; then
     rm ../../templates/tile-shift.html
