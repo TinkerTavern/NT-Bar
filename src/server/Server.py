@@ -6,8 +6,8 @@ cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 progress = [0, 0, 0]
 limits = [20, 3, 3]
-tasks = ["Collect " + str(limits[0]) + " artefacts", "Solve " + str(limits[1]) + " sliding puzzles",
-         "Solve " + str(limits[2]) + " riddles"]
+tasks = ["Master the dance", "Solve " + str(limits[2]) + " riddles",
+         "Solve " + str(limits[1]) + " sliding puzzles"]
 oldProgress = [-1, -1, -1]
 
 

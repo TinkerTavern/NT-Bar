@@ -4,20 +4,25 @@ const stepsNumberArray = [31, 51, 71];
 const scoreGoalArray = [15, 25, 35];
 
 //Math.floor(Math.random() * stepsNumberArray.length)
-let stepsLeft = stepsNumberArray[0]
+let index = Math.floor(Math.random() * stepsNumberArray.length);
+let stepsLeft = stepsNumberArray[index]
+let scoreGoal = scoreGoalArray[index];
+console.log(index)
+console.log(scoreGoal)
 $.ajax({
     type: 'POST',
-    url: "http://127.0.0.1:5000/update",
-    data: {"task": 0, "progress": 0, "limit": stepsLeft},
+    url: "http://127.0.0.1:3000/update",
+    data: {"task": 0, "progress": 0, "limit": scoreGoal},
     dataType: 'json',
 });
-let scoreGoal = scoreGoalArray[0];
 
 const winColor = "#4ed97f";
 const loseColor = "#de5f5f";
 
-const winMessageStartArray = ["You did it!", "Great!", "Nice job!", "Good work!"];
-const loseMessageStartArray = ["Oh no!", "Not this time!", "Better luck next time!", "Nice try!"];
+const winMessageStartArray = ["You've mastered the dance, I'll reveal my secret..", "Nice moves! I'll let you in on a secret...",
+    "That was fun, let me tell you something you don't know...", "Nice! We should do that again some time. For now..."];
+const loseMessageStartArray = ["Do you have two left feet? Try again!", "I'm not telling you anything with moves like that, try again!",
+    "Better luck next time, try again!", "Dancing can be hard, let's try again!"];
 
 let snakeTop, snakeLeft, snakeScale;
 let winMessageStart;
@@ -43,7 +48,7 @@ $('#steps-hit').text(stepsHit);
 function updateScore() {
     $.ajax({
         type: 'POST',
-        url: "http://127.0.0.1:5000/update",
+        url: "http://127.0.0.1:3000/update",
         data: {"task": 0, "progress": stepsHit},
         dataType: 'json',
     });
@@ -53,7 +58,7 @@ $('.play').on('click tap', (e) => {
     $('#view-1').animate({"left": "-=100vw"}, 300);
     $('#view-2').animate({"left": "+=100vw"}, 300);
     hideSnakes();
-    // updateScore();
+    updateScore();
 })
 
 $('#good-step-container img').on('click tap', (e) => {
@@ -62,7 +67,7 @@ $('#good-step-container img').on('click tap', (e) => {
     if (stepsLeft < 1) {
         gameResult();
     }
-    // updateScore();
+    updateScore();
 })
 
 $('#bad-step-container img').on('click tap', (e) => {
@@ -72,7 +77,7 @@ $('#bad-step-container img').on('click tap', (e) => {
     if (stepsLeft < 1) {
         gameResult();
     }
-    // updateScore();
+    updateScore();
 })
 
 let hideSnakes = () => {

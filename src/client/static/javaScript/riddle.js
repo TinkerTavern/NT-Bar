@@ -1,20 +1,30 @@
 // GAME PARAMETERS
 
+// Game ID = 1
 
+// TODO turn these into config options
 let timerLength = 300;
 let multipleChoice = true;
+let riddlesToSolve = 3;
+let riddlesToWin = 3;
 
+let won = 0;
 let win, riddle, riddleId, answer, gameTimer;
 const winColor = "#4ed97f";
 const loseColor = "#de5f5f";
 
-const winMessageStartArray = ["You did it!", "Great!", "Nice job!", "Good work!"];
-const loseMessageStartArray = ["Oh no!", "Not this time!", "Better luck next time!", "Nice try!"];
-
-let winMessageStart, loseMessageStart;
+const winMessageStartArray = ["You've solved my riddle, I'll reveal my secret..", "You're smart! I'll let you in on a secret...",
+    "That was fun, let me tell you something you don't know...", "Nice! We should do that again some time. For now..."];
+const loseMessageStartArray = ["Tricked you, try again!", "I'm not telling you anything unless you solve my riddles, try again!",
+    "Better luck next time, try again!", "Riddles can be confusing, try again!"];
 
 // SELECT AND DISPLAY RIDDLE
-
+$.ajax({
+    type: 'POST',
+    url: "http://127.0.0.1:3000/update",
+    data: {"task": 1, "progress": won, "limit": riddlesToWin},
+    dataType: 'json',
+});
 
 var input = document.getElementById("answer");
 input.addEventListener("keypress", function (event) {
@@ -97,8 +107,7 @@ function populateAnswers(answers) {
 function submitAnswer(ans) {
     if (ans.length < 3)
         return;
-    if (ans.includes(answer))
-        win = true;
+    else win = !!ans.includes(answer);
     gameResult();
 
 }
@@ -130,6 +139,10 @@ $('#time-left').text(timerLength);
 $('.play').on('click tap', (e) => {
     $('#view-1').animate({"left": "-=100vw"}, 300);
 
+    startTimer();
+})
+
+function startTimer() {
     gameTimer = setInterval(() => {
         timerLength--;
         $('#time-left').text(timerLength);
@@ -137,7 +150,7 @@ $('.play').on('click tap', (e) => {
             gameResult();
         }
     }, 1000);
-})
+}
 
 $('#right').on('click tap', (e) => {
     win = true;
@@ -153,29 +166,53 @@ $('#wrong').on('click tap', (e) => {
 function submitResult() {
     $.ajax({
         type: 'POST',
-        url: "http://127.0.0.1:5000/update",
-        data: {"task": 2, "progress": win ? 1 : 0},
+        url: "http://127.0.0.1:3000/update",
+        data: {"task": 1, "progress": won},
         dataType: 'json',
     });
 }
 
-let gameResult = () => {
-    submitResult();
-    clearInterval(gameTimer);
-    $('#view-2').css('background', 'white');
+function finalScreen() {
+    if (win)
+        won++;
     $('#view-2').animate({'opacity': 0.2}, 300);
-    $('#good-step-container img').remove();
+    if (won === riddlesToWin) {
+        $('.win-lose-messages').css('background', winColor);
+        $('.win-lose-start').text("Congrats, you've successfully answered all riddles");
+    } else {
+        $('.win-lose-messages').css('background', loseColor);
+        $('.win-lose-start').text("Oh no! You got " + won + "/" + riddlesToWin + " riddles correct. Try again")
+    }
+    $('#view-4').fadeIn();
+
+}
+
+let gameResult = () => {
+    riddlesToSolve--;
+    clearInterval(gameTimer);
+    if (riddlesToSolve <= 0) {
+        finalScreen();
+        return;
+    }
+    $('#view-2').animate({'opacity': 0.2}, 300);
     if (win) {
+        won++;
         $('#win-lose-messages').css('background', winColor);
-        winMessageStart = winMessageStartArray[Math.floor(Math.random() * winMessageStartArray.length)];
-        $('.win-lose-start').text(winMessageStart);
+        $('.win-lose-start').text(winMessageStartArray[Math.floor(Math.random() * winMessageStartArray.length)]);
     } else {
         $('#win-lose-messages').css('background', loseColor);
         $('.win-lose-start').text(loseMessageStartArray[Math.floor(Math.random() * loseMessageStartArray.length)])
     }
+    submitResult();
     $('#view-3').fadeIn();
+
 }
 
-function restart() {
-    document.location.reload();
+function cont() {
+    $('#view-3').fadeOut();
+    // $('#view-2').css('background', 'white');
+    $('#view-2').animate({'opacity': 1}, 300);
+    startTimer();
+    setRiddle();
+
 }

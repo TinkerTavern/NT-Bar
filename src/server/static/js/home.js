@@ -1,9 +1,10 @@
-progress = [0,0,0];
+progress = [0, 0, 0];
 document.addEventListener('DOMContentLoaded', function () {
     loadTaskInfo();
     var tid = setInterval(loadTaskInfo, 1000);
 }, false);
 
+loadTaskInfo();
 
 
 function loadTaskInfo() {
@@ -33,4 +34,4 @@ function loadTaskInfo() {
 
 function abortTimer() { // to be called when you want to stop the timer
     clearInterval(tid);
-  }
+}
