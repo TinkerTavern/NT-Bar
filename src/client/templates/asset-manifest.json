@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "./static/css/main.7f39dbdc.css",
-    "main.js": "./static/js/main.a678fe1e.js",
+    "main.css": "./static/css/main.23cf0cde.css",
+    "main.js": "./static/js/main.d3645c26.js",
     "static/js/787.c745ff56.chunk.js": "./static/js/787.c745ff56.chunk.js",
     "static/media/background.jpg": "./static/media/background.d2b56f0ef521ef037e5c.jpg",
     "static/media/office.jpg": "./static/media/office.aee79fa79934e003df6b.jpg",
+    "static/media/ChopinScript.ttf": "./static/media/ChopinScript.294d294101e0ae84b924.ttf",
     "static/media/space.jpg": "./static/media/space.1f1b24ec12a7cbfc0e57.jpg",
     "static/media/cave.jpg": "./static/media/cave.d07f58b9eac0648a081b.jpg",
     "static/media/planet.jpg": "./static/media/planet.42db5e44bccd694dd3da.jpg",
     "static/media/rocket.jpg": "./static/media/rocket.6ef546c37af16bc814ef.jpg",
-    "static/media/quicksand.woff2": "./static/media/quicksand.cb5df633e2b0309221e6.woff2",
     "static/media/office_e.jpg": "./static/media/office_e.2032d5d10c81bb6503ef.jpg",
     "static/media/ladder.png": "./static/media/ladder.afa1704555c87647f722.png",
     "static/media/office_b.jpg": "./static/media/office_b.3f5f1ce841c817a53ab8.jpg",
@@ -19,12 +19,12 @@
     "static/media/office_d.jpg": "./static/media/office_d.69c5fc6c8ff686d1da45.jpg",
     "static/media/office_a.jpg": "./static/media/office_a.0e7bfe8fe277a32ee63d.jpg",
     "index.html": "./index.html",
-    "main.7f39dbdc.css.map": "./static/css/main.7f39dbdc.css.map",
-    "main.a678fe1e.js.map": "./static/js/main.a678fe1e.js.map",
+    "main.23cf0cde.css.map": "./static/css/main.23cf0cde.css.map",
+    "main.d3645c26.js.map": "./static/js/main.d3645c26.js.map",
     "787.c745ff56.chunk.js.map": "./static/js/787.c745ff56.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7f39dbdc.css",
-    "static/js/main.a678fe1e.js"
+    "static/css/main.23cf0cde.css",
+    "static/js/main.d3645c26.js"
   ]
 }
