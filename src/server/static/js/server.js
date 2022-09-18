@@ -14,6 +14,22 @@ function resetRoom() {
     });
 }
 
+function checkProgress(scores, limits) {
+    let images = [["catch 1", "catch 2", "catch 3"],
+        ["riddle 1", "riddle 2", "riddle 3"],
+        ["tile 1", "tile 2", "tile 3"]]
+    // console.log(scores)
+    // console.log(limits)
+    for (var i = 0; i < scores.length; i++) {
+        console.log("Score")
+        console.log(scores[i] / limits[i])
+        for (var j = 0; j < Math.floor(scores[i] / limits[i]); j++) {
+            console.log(images[i][j])
+            document.getElementById(images[i][j]).style.filter = "none";
+        }
+    }
+}
+
 function loadTaskInfo() {
 
     $.ajax({
@@ -35,6 +51,7 @@ function loadTaskInfo() {
                 progress[i] = toDoItems[i.toString()];
                 select.appendChild(opt);
             }
+            checkProgress(response['scores'], response['limits'])
         }
     });
 }

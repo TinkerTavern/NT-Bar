@@ -65,7 +65,7 @@ def index():
         for i, task in enumerate(tasksArr):
             todoList[i] = task["task"] + ". Progress: " + str(task["progress"]) + "/" + str(
                 task["limit"]) + msgAppend[i]
-    return jsonify(list=todoList)
+    return jsonify(list=todoList, scores=progress, limits=limits)
 
 
 @app.route('/reset-tasks', methods=["POST"])
