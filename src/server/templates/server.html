@@ -2,36 +2,41 @@
 {% block body %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/server.css') }}">
 <div class="nav">
-    <div class="title">
-        <head><h1>Task List</h1></head>
-    </div>
-    <button id="roomReset" onclick="resetRoom()">Reset Room</button>
-    <div class="task">
-        <div class="select">
-            <list id="toDoList">
-                <!--    Filled out by javaScript-->
-            </list>
+    <div class="filter">
+        <div class="title">
+            <head>Task List</head>
         </div>
-    </div>
-    <div class="row">
-        <div class="column">
-            <img id="catch 1" class="catch locked image" src="{{url_for('static', filename='images/catch.png')}}">
-            <img id="catch 2" class="catch locked image" src="{{url_for('static', filename='images/catch.png')}}">
-            <img id="catch 3" class="catch locked image" src="{{url_for('static', filename='images/catch.png')}}">
+        <button class="roomReset" id="roomReset" onclick="resetRoom()">Reset Room</button>
+        <div class="task">
+            <div class="select">
+                <list id="toDoList">
+                    <!--    Filled out by javaScript-->
+                </list>
+            </div>
         </div>
-        <div class="column">
-            <img id="riddle 1" class="riddle locked image" src="{{url_for('static', filename='images/riddle.png')}}">
-            <img id="riddle 2" class="riddle locked image" src="{{url_for('static', filename='images/riddle.png')}}">
-            <img id="riddle 3" class="riddle locked image" src="{{url_for('static', filename='images/riddle.png')}}">
-        </div>
-        <div class="column">
+        <div class="row">
+            <div class="column">
+                <img id="catch 1" class="catch locked image" src="{{url_for('static', filename='images/catch.png')}}">
+                <img id="catch 2" class="catch locked image" src="{{url_for('static', filename='images/catch.png')}}">
+                <img id="catch 3" class="catch locked image" src="{{url_for('static', filename='images/catch.png')}}">
+            </div>
+            <div class="column">
+                <img id="riddle 1" class="riddle locked image"
+                     src="{{url_for('static', filename='images/riddle.png')}}">
+                <img id="riddle 2" class="riddle locked image"
+                     src="{{url_for('static', filename='images/riddle.png')}}">
+                <img id="riddle 3" class="riddle locked image"
+                     src="{{url_for('static', filename='images/riddle.png')}}">
+            </div>
+            <div class="column">
 
-            <img id="tile 1" class="tile locked image" src="{{url_for('static', filename='images/slide.png')}}">
-            <img id="tile 2" class="tile locked image" src="{{url_for('static', filename='images/slide.png')}}">
-            <img id="tile 3" class="tile locked image" src="{{url_for('static', filename='images/slide.png')}}">
+                <img id="tile 1" class="tile locked image" src="{{url_for('static', filename='images/slide.png')}}">
+                <img id="tile 2" class="tile locked image" src="{{url_for('static', filename='images/slide.png')}}">
+                <img id="tile 3" class="tile locked image" src="{{url_for('static', filename='images/slide.png')}}">
+            </div>
         </div>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/server.js') }}">
+        </script>
     </div>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/server.js') }}">
-    </script>
 </div>
 {% endblock %}

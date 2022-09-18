@@ -1,11 +1,37 @@
 .locked {
-    filter: opacity(40%) grayscale(1);
+    filter: opacity(0.6) grayscale(1) blur(15px);
 }
 
+.title {
+    color: white;
+    font-size: 10vh;
+}
+
+.task {
+    color: white;
+    font-size: xx-large;
+}
+.filter {
+        background-color: rgba(23, 23, 23, 0.3);
+
+}
 .image {
     object-fit: contain;
-    width: 15vh;
-    height: 15vh;
+    width: 23vh;
+    height: 23vh;
+}
+
+.roomReset {
+    margin: 1%;
+    font-size: xx-large;
+}
+
+body {
+    background-image: url("../images/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #232323;
+
 }
 
 .row {

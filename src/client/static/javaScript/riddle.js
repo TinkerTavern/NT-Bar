@@ -207,6 +207,7 @@ function finalScreen() {
         document.getElementById("winButton").style.visibility = "hidden"
 
     }
+    submitResult();
     $('#view-4').fadeIn();
 
 }

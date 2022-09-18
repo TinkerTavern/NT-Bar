@@ -18,14 +18,12 @@ function checkProgress(scores, limits) {
     let images = [["catch 1", "catch 2", "catch 3"],
         ["riddle 1", "riddle 2", "riddle 3"],
         ["tile 1", "tile 2", "tile 3"]]
-    // console.log(scores)
-    // console.log(limits)
-    for (var i = 0; i < scores.length; i++) {
-        console.log("Score")
-        console.log(scores[i] / limits[i])
-        for (var j = 0; j < Math.floor(scores[i] / limits[i]); j++) {
-            console.log(images[i][j])
-            document.getElementById(images[i][j]).style.filter = "none";
+    for (let i = 0; i < scores.length; i++) {
+        for (let j = 0; j < limits.length; j++) {
+            if (j >= Math.floor(((scores[i] / limits[i]) / 0.333333)))
+                document.getElementById(images[i][j]).style.filter = "opacity(1) grayscale(1) blur(15px)";
+            else
+                document.getElementById(images[i][j]).style.filter = "none";
         }
     }
 }
