@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/style-catch.css') }}"/>
+    <script src="{{ url_for('static',filename='javaScript/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='javaScript/item-catch.js') }}" defer></script>
+    <title>Master the dance!</title>
+</head>
+<body>
+
+<label class=" configLabel" for="spawnFreq">Spawn Frequency:</label>
+<input class=" configBox" type="text" id="spawnFreq" name="answer">
+<br>
+<label class=" configLabel" for="badStep">Bad step probability: </label>
+<input class=" configBox" type="text" id="badStep" name="answer">
+<br>
+<label class=" configLabel" for="winScore">Win score threshold:</label>
+<input class=" configBox" type="text" id="winScore" name="answer">
+<br>
+<label class=" configLabel" for="timeOn">Time on screen:</label>
+<input class=" configBox" type="text" id="timeOn" name="answer">
+<br>
+<label class=" configLabel" for="fadeOut">Fade Out</label>
+<input class=" configBox" type="checkbox" id="fadeOut" name="answer">
+<br>
+<input type="submit" class="" value="Save config"/>
+
+</body>
+
+</html>

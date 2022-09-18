@@ -12,6 +12,10 @@ def hello_world():
 def item_catch():
     return render_template("item-catch.html")
 
+@app.route('/item-catch/config')
+def item_catch_config():
+    return render_template("item-catch-config.html")
+
 
 @app.route('/tile-shift')
 def tile_shift():
