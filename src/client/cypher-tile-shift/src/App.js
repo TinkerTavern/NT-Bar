@@ -20,10 +20,24 @@ class App extends React.Component {
         }
     }
 
-    handleClick() {
-        this.setState({mode: 'game'})
+    submitUser() {
+        localStorage.setItem("userName2", document.getElementById("userName").value);
+        fetch('http://127.0.0.1:3000/set-user', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                task: 2,
+                user: document.getElementById("userName").value,
+            })
+        })
     }
 
+    handleClick() {
+        this.submitUser();
+        this.setState({mode: 'game'})
+    }
 
 
     playerSolved() {

@@ -6,6 +6,9 @@ cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 progress = [0, 0, 0]
 limits = [20, 3, 3]
+players = ["", "", ""]
+msgAppend = ["", "", ""]
+
 tasks = ["Master the dance", "Solve " + str(limits[2]) + " riddles",
          "Solve " + str(limits[1]) + " sliding puzzles"]
 oldProgress = [-1, -1, -1]
@@ -13,7 +16,7 @@ oldProgress = [-1, -1, -1]
 
 @app.route('/')
 def hello_world():
-    return render_template("home.html")
+    return render_template("server.html")
 
 
 @app.route("/update", methods=["POST"])
@@ -31,6 +34,23 @@ def update_task():
     return jsonify(success=True)
 
 
+@app.route("/set-user", methods=["POST"])
+def set_user():
+    user = request.form.get("user")
+    taskID = request.form.get("task")
+    if taskID is None:
+        user = request.json.get("user")
+        taskID = request.json.get("task")
+    players[int(taskID)] = user
+    for i, player in enumerate(players):
+        if player != "":
+            msgAppend[i] = " " + player + " is currently playing."
+        else:
+            msgAppend[i] = ""
+
+    return jsonify(success=True)
+
+
 @app.route('/get-tasks', methods=["GET"])
 def index():
     for i in range(len(oldProgress)):
@@ -43,7 +63,8 @@ def index():
     else:
         todoList = dict()
         for i, task in enumerate(tasksArr):
-            todoList[i] = task["task"] + ". Progress: " + str(task["progress"]) + "/" + str(task["limit"])
+            todoList[i] = task["task"] + ". Progress: " + str(task["progress"]) + "/" + str(
+                task["limit"]) + msgAppend[i]
     return jsonify(list=todoList)
 
 

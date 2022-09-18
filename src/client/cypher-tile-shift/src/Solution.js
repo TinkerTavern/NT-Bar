@@ -78,7 +78,7 @@ class Solution extends React.Component {
                             <p className="win-lose-start center">{this.state.winWinMessages[this.state.currentWinMessage]}</p>
                             <p className="win-lose-result center"></p>
                             <button className="center restart" onClick={() => {
-                                console.log("pphs")
+                                document.location.reload()
                             }}>Restart
                             </button>
                             {/*<img className="dice" src={dice} alt="Echo Games' dice"/>*/}

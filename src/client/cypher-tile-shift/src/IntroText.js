@@ -16,6 +16,16 @@ class Intro extends React.Component {
                 limit: this.props.numberToComplete,
             })
         })
+        fetch('http://127.0.0.1:3000/set-user', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                task: 2,
+                user: "",
+            })
+        })
     }
 
     render() {
@@ -33,6 +43,9 @@ class Intro extends React.Component {
                 <Box><p
                     className="instructions center">{this.props.game === 'puzzle_shift' ? 'Tap tiles to swap them and recreate the picture' : 'Use the cypher to decode the 4-letter word'}</p>
                 </Box>
+                <label className="center answerLabel" htmlFor="userName">Your Name:</label>
+                <input className="center answerBox" type="text" id="userName" name="answer"
+                       value={localStorage.getItem("userName2")}/>
                 <Box>
                     <button className="play center"
                             onClick={() => {

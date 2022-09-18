@@ -28,6 +28,24 @@ $.ajax({
     data: {"task": 1, "progress": won, "limit": riddlesToWin},
     dataType: 'json',
 });
+$.ajax({
+    type: 'POST',
+    url: "http://127.0.0.1:3000/set-user",
+    data: {"task": 1, "user": ""},
+    dataType: 'json',
+});
+
+document.getElementById("userName").value = localStorage.getItem("userName1")
+
+function submitUser() {
+    localStorage.setItem("userName1", document.getElementById("userName").value);
+    $.ajax({
+        type: 'POST',
+        url: "http://127.0.0.1:3000/set-user",
+        data: {"task": 1, "user": document.getElementById("userName").value},
+        dataType: 'json',
+    });
+}
 
 var input = document.getElementById("answer");
 input.addEventListener("keypress", function (event) {
@@ -140,7 +158,7 @@ $('#time-left').text(timerLength);
 
 $('.play').on('click tap', (e) => {
     $('#view-1').animate({"left": "-=100vw"}, 300);
-
+    submitUser();
     startTimer();
 })
 

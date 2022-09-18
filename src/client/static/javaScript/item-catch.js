@@ -16,6 +16,12 @@ $.ajax({
     data: {"task": 0, "progress": 0, "limit": scoreGoal},
     dataType: 'json',
 });
+$.ajax({
+    type: 'POST',
+    url: "http://127.0.0.1:3000/set-user",
+    data: {"task": 0, "user": ""},
+    dataType: 'json',
+});
 
 const winColor = "#4ed97f";
 const loseColor = "#de5f5f";
@@ -45,6 +51,17 @@ $('#score-goal').text(scoreGoal);
 $('#steps-left').text(stepsLeft);
 $('#snake-goal').text(scoreGoal);
 $('#steps-hit').text(stepsHit);
+document.getElementById("userName").value = localStorage.getItem("userName0")
+
+function submitUser() {
+    localStorage.setItem("userName0", document.getElementById("userName").value);
+    $.ajax({
+        type: 'POST',
+        url: "http://127.0.0.1:3000/set-user",
+        data: {"task": 0, "user": document.getElementById("userName").value},
+        dataType: 'json',
+    });
+}
 
 function updateScore() {
     $.ajax({
@@ -58,6 +75,7 @@ function updateScore() {
 $('.play').on('click tap', (e) => {
     $('#view-1').animate({"left": "-=100vw"}, 300);
     $('#view-2').animate({"left": "+=100vw"}, 300);
+    submitUser();
     hideSnakes();
     updateScore();
 })
