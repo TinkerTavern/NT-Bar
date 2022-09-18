@@ -6,6 +6,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 loadTaskInfo();
 
+function resetRoom() {
+    $.ajax({
+        type: 'POST',
+        url: "http://127.0.0.1:3000/reset-tasks",
+        dataType: 'json',
+    });
+}
 
 function loadTaskInfo() {
 

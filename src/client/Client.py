@@ -28,5 +28,10 @@ def riddle():
     return render_template("riddle.html")
 
 
+@app.route('/reset')
+def reset():
+    print("reset")
+
+
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")

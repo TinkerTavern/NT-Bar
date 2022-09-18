@@ -73,6 +73,7 @@ def reset_tasks():
     for i in range(len(progress)):
         progress[i] = 0
         oldProgress[i] = 0
+    print("kkk")
     return "Success"
 
 
