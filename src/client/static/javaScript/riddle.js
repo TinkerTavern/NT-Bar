@@ -3,10 +3,15 @@
 // Game ID = 1
 
 // TODO turn these into config options
-let timerLength = 60;
+function itemHasValue(key) {
+    return localStorage.getItem(key) !== "" && localStorage.getItem(key) != null
+}
+
 let multipleChoice = localStorage.getItem("multiChoice");
-let riddlesToSolve = 3;
-let riddlesToWin = 3;
+let timerLength = itemHasValue("timeToSolve") ? localStorage.getItem("timeToSolve") : 60;
+let riddlesToSolve = itemHasValue("noToSolve") ? localStorage.getItem("noToSolve") : 3;
+let riddlesToWin = itemHasValue("noToSolve") ? localStorage.getItem("noToSolve") : 3;
+let multiChoiceAnswerCount = itemHasValue("multipleChoiceChoices") ? localStorage.getItem("multipleChoiceChoices") : 3;
 
 let won = 0;
 let win, riddle, riddleId, answer, gameTimer;
@@ -98,26 +103,37 @@ function answer3() {
     submitAnswer(ans)
 }
 
+function answer4() {
+    let ans = document.getElementById("answer4").value.toLowerCase();
+    submitAnswer(ans)
+}
+
 function answerWritten() {
     let ans = document.getElementById("answer").value.toLowerCase();
     submitAnswer(ans)
 }
 
 function populateAnswers(answers) {
-    let a = ["answer1", "answer2", "answer3"];
+    let a = ["answer1", "answer2", "answer3", "answer4"];
+    // let a = z.slice(0, multiChoiceAnswerCount)
+    console.log(multiChoiceAnswerCount)
     let zero = false
     let index = -1
     let nums = [-1, -1, -1]
     while (!zero) {
         for (var i = 0; i < a.length; i++) {
-            index = Math.floor(Math.random() * answers.length)
-            while (nums.includes(index)) {
+            if (i > multiChoiceAnswerCount - 1)
+                document.getElementById(a[i]).style.visibility = "hidden";
+            else {
                 index = Math.floor(Math.random() * answers.length)
+                while (nums.includes(index)) {
+                    index = Math.floor(Math.random() * answers.length)
+                }
+                if (index === 0)
+                    zero = true
+                nums[i] = index
+                document.getElementById(a[i]).value = answers[index];
             }
-            if (index === 0)
-                zero = true
-            nums[i] = index
-            document.getElementById(a[i]).value = answers[index];
         }
     }
 }
@@ -149,17 +165,18 @@ x.style.display = "none";
 
 // VIEW 1 CONTENT
 
-$('#timer-length').text(timerLength);
 $('#riddleCount').text(riddlesToWin);
-
 // VIEW 2 CONTENT
 
 $('#time-left').text(timerLength);
 
+$('#timer-length').text(timerLength);
+
 $('.play').on('click tap', (e) => {
     $('#view-1').animate({"left": "-=100vw"}, 300);
     submitUser();
-    startTimer();
+    if (timerLength !== -1)
+        startTimer();
 })
 
 function startTimer() {
@@ -197,7 +214,8 @@ function finalScreen() {
     if (win)
         won++;
     $('#view-2').animate({'opacity': 0.2}, 300);
-    if (won === riddlesToWin) {
+
+    if (won == riddlesToWin) {
         $('.win-lose-messages').css('background', winColor);
         $('.win-lose-start').text(winWinMessageStartArray[Math.floor(Math.random() * winWinMessageStartArray.length)]);
         document.getElementById("restartButton").style.visibility = "hidden"
@@ -239,9 +257,7 @@ let gameResult = () => {
 
 function cont() {
     $('#view-3').fadeOut();
-    // TODO clear the text box for the next riddle
-
-    // $('#view-2').css('background', 'white');
+    document.getElementById("answer").value = ""
     $('#view-2').animate({'opacity': 1}, 300);
     setRiddle();
 }

@@ -53,3 +53,6 @@ body {
     margin-top: 8px;
     vertical-align: middle;
 }
+#view-3 {
+    visibility: hidden;
+}

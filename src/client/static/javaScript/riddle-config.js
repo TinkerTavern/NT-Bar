@@ -10,5 +10,8 @@ function submitForm(e) {
         localStorage.setItem("multiChoice", "on")
     else
         localStorage.setItem("multiChoice", "off")
+    localStorage.setItem("noToSolve", formProps["noToSolve"])
+    localStorage.setItem("timeToSolve", formProps["timeToSolve"])
+    localStorage.setItem("multipleChoiceChoices", formProps["multipleChoiceChoices"])
 
 }

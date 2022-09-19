@@ -1,15 +1,22 @@
 // GAME PARAMETERS
 
-const stepsNumberArray = [31, 51, 71];
-const scoreGoalArray = [15, 25, 35];
+function itemHasValue(key) {
+
+
+    return localStorage.getItem(key) !== "" && localStorage.getItem(key) != null
+}
+
 const debug = localStorage.getItem("debug");
 
-//Math.floor(Math.random() * stepsNumberArray.length)
-let index = Math.floor(Math.random() * stepsNumberArray.length);
-let stepsLeft = debug === "on" ? 4 : stepsNumberArray[index]
-let scoreGoal = debug === "on" ? 3 : scoreGoalArray[index];
-console.log(index)
-console.log(scoreGoal)
+let stepsLeft = debug === "on" ? 4 : itemHasValue("stepCount") ? parseInt(localStorage.getItem("stepCount")) + 1 : 31;
+let scoreGoal = debug === "on" ? 3 : itemHasValue("winScore") ? localStorage.getItem("winScore") : 15;
+let badStepChance = itemHasValue("badStep") ? parseInt(localStorage.getItem("badStep")) / 100.0 : 0.45;
+let snakeHideFreq = itemHasValue("spawnFreq") ? parseInt(localStorage.getItem("spawnFreq")) : 3;
+let snakeShowDur = itemHasValue("timeOn") ? parseInt(localStorage.getItem("timeOn")) : 15;
+
+
+console.log(badStepChance)
+
 $.ajax({
     type: 'POST',
     url: "http://127.0.0.1:3000/update",
@@ -83,7 +90,7 @@ $('.play').on('click tap', (e) => {
 $('#good-step-container img').on('click tap', (e) => {
     stepHit = true;
     stepsHit++;
-    if (stepsLeft < 1) {
+    if (stepsLeft < 0) {
         gameResult();
     }
     updateScore();
@@ -93,7 +100,7 @@ $('#bad-step-container img').on('click tap', (e) => {
     stepHit = true;
     if (stepsHit !== 0)
         stepsHit--;
-    if (stepsLeft < 1) {
+    if (stepsLeft < 0) {
         gameResult();
     }
     updateScore();
@@ -109,7 +116,7 @@ let hideSnakes = () => {
     }
     document.getElementById("bad-step-container").style.visibility = "hidden";
     document.getElementById("good-step-container").style.visibility = "hidden";
-    snakeHiddenTimer = Math.floor(Math.random() * 3 + 1);
+    snakeHiddenTimer = Math.floor(Math.random() * snakeHideFreq + 1);
     // console.log(snakeHiddenTimer);
     const snakeHideTimer = setInterval(() => {
         snakeHiddenTimer--;
@@ -131,7 +138,7 @@ let moveSnake = () => {
         'width': `${snakeScale}vw`,
         'opacity': '1'
     })
-    if (Math.random() > 0.45) {
+    if (Math.random() > badStepChance) {
         document.getElementById("good-step-container").style.visibility = "visible";
         document.getElementById("bad-step-container").style.visibility = "hidden";
     } else {
@@ -149,14 +156,14 @@ let moveSnake = () => {
         })
     }
     stepHit = false
-    snakeHitTimerMax = Math.floor(Math.random() * 15 + 2);
+    snakeHitTimerMax = Math.floor(Math.random() * snakeShowDur + 3);
     snakeHitTimer = snakeHitTimerMax;
     const snakeTimer = setInterval(() => {
         snakeHitTimer--;
         if (stepHit || snakeHitTimer <= 0) {
             clearInterval(snakeTimer);
             hideSnakes();
-        } else {
+        } else if (localStorage.getItem("fadeOut") !== "on") {
             $('.step-container img').css({
                 'opacity': `${(snakeHitTimer / snakeHitTimerMax) + 0.1}`
             })

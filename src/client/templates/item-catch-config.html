@@ -11,24 +11,27 @@
 </head>
 <body>
 <form id="config-form" class="config-form">
-    <label class=" configLabel" for="spawnFreq">Spawn Frequency:</label>
-    <input class=" configBox" type="text" id="spawnFreq" name="spawnFreq">
-    <br>
-    <label class=" configLabel" for="badStep">Bad step probability: </label>
+    <label class=" configLabel" for="badStep">Bad step probability (%): </label>
     <input class=" configBox" type="text" id="badStep" name="badStep">
     <br>
-    <label class=" configLabel" for="winScore">Win score threshold:</label>
+    <label class=" configLabel" for="stepCount">Step Count:</label>
+    <input class=" configBox" type="text" id="stepCount" name="stepCount">
+    <br>
+    <label class=" configLabel" for="winScore">Win score:</label>
     <input class=" configBox" type="text" id="winScore" name="winScore">
     <br>
-    <label class=" configLabel" for="timeOn">Time on screen:</label>
+    <label class=" configLabel" for="timeOn">Time on screen (default: 15):</label>
     <input class=" configBox" type="text" id="timeOn" name="timeOn">
     <br>
-    <label class=" configLabel" for="fadeOut">Fade Out</label>
+    <label class=" configLabel" for="spawnFreq">Time between spawns (default: 3):</label>
+    <input class=" configBox" type="text" id="spawnFreq" name="spawnFreq">
+    <br>
+    <label class=" configLabel" for="fadeOut">Disable fade out</label>
     <input class=" configBox" type="checkbox" id="fadeOut" name="fadeOut">
     <br>
-    <label class=" configLabel" for="debug">Debug</label>
-    <input class=" configBox" type="checkbox" id="debug" name="debug">
-    <br>
+<!--    <label class=" configLabel" for="debug">Debug</label>-->
+<!--    <input class=" configBox" type="checkbox" id="debug" name="debug">-->
+<!--    <br>-->
     <input type="submit" class="" value="Save config"/>
 </form>
 </body>

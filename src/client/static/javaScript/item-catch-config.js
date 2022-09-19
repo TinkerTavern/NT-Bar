@@ -10,5 +10,10 @@ function submitForm(e) {
         localStorage.setItem("debug", "on")
     else
         localStorage.setItem("debug", "off")
-
+    localStorage.setItem("spawnFreq", formProps["spawnFreq"])
+    localStorage.setItem("badStep", formProps["badStep"])
+    localStorage.setItem("stepCount", formProps["stepCount"])
+    localStorage.setItem("winScore", formProps["winScore"])
+    localStorage.setItem("timeOn", formProps["timeOn"])
+    localStorage.setItem("fadeOut", formProps["fadeOut"])
 }
