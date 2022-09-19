@@ -15,10 +15,15 @@ class App extends React.Component {
         super(props)
         this.state = {
             mode: 'intro',
-            numberToComplete: 3,
+            numberToComplete: this.itemHasValue("noToSolve") ? parseInt(localStorage.getItem("noToSolve")) : 3,
             gamesWon: 0,
         }
     }
+
+    itemHasValue(key) {
+        return localStorage.getItem(key) !== "" && localStorage.getItem(key) != null
+    }
+
 
     submitUser() {
         localStorage.setItem("userName2", document.getElementById("userName").value);

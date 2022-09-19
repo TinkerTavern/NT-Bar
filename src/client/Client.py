@@ -23,9 +23,9 @@ def tile_shift():
     return render_template("tile-shift.html")
 
 
-@app.route('/tile_shift/config')
+@app.route('/tile-shift/config')
 def tile_shift_config():
-    return render_template("tile_shift-config.html")
+    return render_template("tile-config.html")
 
 
 @app.route('/cypher')

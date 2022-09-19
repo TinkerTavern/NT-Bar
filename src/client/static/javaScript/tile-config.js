@@ -6,8 +6,8 @@ function submitForm(e) {
     const formData = new FormData(e.target);
     const formProps = Object.fromEntries(formData);
     localStorage.setItem("noToSolve", formProps["noToSolve"])
-    localStorage.setItem("timeToSolve", formProps["timeToSolve"])
-    localStorage.setItem("multipleChoiceChoices", formProps["multipleChoiceChoices"])
-    localStorage.setItem("multiChoice", formProps["multiChoice"])
-
+    localStorage.setItem("timer", formProps["timer"])
+    localStorage.setItem("preview", formProps["preview"])
+    localStorage.setItem("4xMode", formProps["4xMode"])
+    localStorage.setItem("slideMode", formProps["slideMode"])
 }

@@ -1,8 +1,6 @@
 // GAME PARAMETERS
 
 function itemHasValue(key) {
-
-
     return localStorage.getItem(key) !== "" && localStorage.getItem(key) != null
 }
 

@@ -18,8 +18,13 @@ function importAll(r) {
     return r.keys().map(r);
 }
 
-const mode = 3;
-const timer = false;
+function itemHasValue(key) {
+    return localStorage.getItem(key) !== "" && localStorage.getItem(key) != null
+}
+
+const mode = localStorage.getItem("4xMode") !== "on" ? 4 : 3;
+const timer = itemHasValue("timer") ? localStorage.getItem("timer") !== "-1" : false;
+
 var caveImages, planetImages, rocketImages, spaceImages, officeImages
 
 if (mode === 4) {
@@ -108,7 +113,7 @@ class Board extends React.Component {
             images: imageSet,
             preview: imagePreview,
             currentSelection: -1,
-            currentTimeRemaining: this.props.timeToComplete,
+            currentTimeRemaining: itemHasValue("timer") ? parseInt(localStorage.getItem("timer")) : this.props.timeToComplete,
             timeString: '',
         };
     }
@@ -144,7 +149,7 @@ class Board extends React.Component {
             this.setState({timeString: '' + this.props.timeToComplete})
         }
 
-        if (this.props.showImagePreview) {
+        if (localStorage.getItem("preview") === "on") {
             this.showImagePreview()
         } else {
             this.setState({active: true})

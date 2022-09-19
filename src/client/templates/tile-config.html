@@ -6,25 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/style-catch.css') }}"/>
     <script src="{{ url_for('static',filename='javaScript/jquery.min.js') }}"></script>
-    <script src="{{ url_for('static',filename='javaScript/item-catch.js') }}" defer></script>
+    <script src="{{ url_for('static',filename='javaScript/tile-config.js') }}" defer></script>
     <title>Master the dance!</title>
 </head>
 <body>
+<form id="config-form">
+    <label class=" configLabel" for="noToSolve">Number to Solve:</label>
+    <input class=" configBox" type="text" id="noToSolve" name="noToSolve">
+    <br>
+    <label class=" configLabel" for="timer">Timer (-1 for disabled):</label>
+    <input class=" configBox" type="text" id="timer" name="timer">
+    <br>
+    <label class=" configLabel" for="preview">Preview</label>
+    <input class=" configBox" type="checkbox" id="preview" name="preview">
+    <br>
+    <label class=" configLabel" for="4xMode">3x3 Mode</label>
+    <input class=" configBox" type="checkbox" id="4xMode" name="4xMode">
+    <br>
+    <!--<label class=" configLabel" for="slideMode">Tile Shift Mode</label>-->
+    <!--<input class=" configBox" type="checkbox" id="slideMode" name="slideMode">-->
+    <!--<br>-->
 
-<label class=" configLabel" for="noToSolve">Number to Solve:</label>
-<input class=" configBox" type="text" id="noToSolve" name="answer">
-<br>
-<label class=" configLabel" for="preview">Preview</label>
-<input class=" configBox" type="checkbox" id="preview" name="answer">
-<br>
-<label class=" configLabel" for="4xMode">4x4 Mode</label>
-<input class=" configBox" type="checkbox" id="4xMode" name="answer">
-<br>
-<label class=" configLabel" for="multiChoice">Tile Shift Mode</label>
-<input class=" configBox" type="checkbox" id="multiChoice" name="answer">
-<br>
-<input type="submit" class="" value="Save config"/>
-
+    <input type="submit" class="" value="Save config"/>
+</form>
 </body>
 
 </html>
