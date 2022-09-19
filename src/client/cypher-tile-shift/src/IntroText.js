@@ -45,7 +45,7 @@ class Intro extends React.Component {
                 </Box>
                 <label className="center answerLabel" htmlFor="userName">Your Name:</label>
                 <input className="center answerBox" type="text" id="userName" name="answer"
-                       value={localStorage.getItem("userName2")}/>
+                       defaultValue={localStorage.getItem("userName2")}/>
                 <Box>
                     <button className="play center"
                             onClick={() => {

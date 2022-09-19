@@ -1,9 +1,9 @@
 progress = [0, 0, 0];
+var tid;
 document.addEventListener('DOMContentLoaded', function () {
     loadTaskInfo();
-    var tid = setInterval(loadTaskInfo, 1000);
+    tid = setInterval(loadTaskInfo, 1000);
 }, false);
-
 loadTaskInfo();
 
 function resetRoom() {
@@ -12,6 +12,8 @@ function resetRoom() {
         url: "http://127.0.0.1:3000/reset-tasks",
         dataType: 'json',
     });
+    tid = setInterval(loadTaskInfo, 1000);
+
 }
 
 function checkProgress(scores, limits) {
@@ -25,6 +27,16 @@ function checkProgress(scores, limits) {
             else
                 document.getElementById(images[i][j]).style.filter = "none";
         }
+    }
+    if (JSON.stringify(scores) === JSON.stringify(limits)) {
+        abortTimer()
+        console.log("woo baby")
+        $('#win-lose-messages').css('background', "#4ed97f");
+        winMessageStart = "Woo baby"
+        $('.win-lose-start').text(winMessageStart);
+        document.getElementById("restartButton").style.visibility = "hidden"
+        $('.filter').remove();
+        $('#view-3').fadeIn();
     }
 }
 

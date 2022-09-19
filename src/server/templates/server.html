@@ -38,5 +38,15 @@
         <script type="text/javascript" src="{{ url_for('static', filename='js/server.js') }}">
         </script>
     </div>
+    <section id="view-3">
+    <!--        <div class="non-interact"></div>-->
+    <div id="win-lose-messages">
+        <p class="win-lose-start center"></p>
+        <p class="win-lose-result center"></p>
+        <button class="submit center" id="restartButton" onclick="document.location.reload()">Restart</button>
+        <button class="submit center" id="winButton" onclick="resetRoom(); document.location.reload()">Discover the Secret...</button>
+        <!--            <img class="center" src="{{ url_for('static',filename='images/riddle.png') }}"/>-->
+    </div>
+</section>
 </div>
 {% endblock %}
