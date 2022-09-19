@@ -6,28 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/style-catch.css') }}"/>
     <script src="{{ url_for('static',filename='javaScript/jquery.min.js') }}"></script>
-    <script src="{{ url_for('static',filename='javaScript/item-catch.js') }}" defer></script>
+    <script src="{{ url_for('static',filename='javaScript/riddle-config.js') }}" defer></script>
     <title>Master the dance!</title>
 </head>
 <body>
-
-<label class=" configLabel" for="spawnFreq">Spawn Frequency:</label>
-<input class=" configBox" type="text" id="spawnFreq" name="answer">
-<br>
-<label class=" configLabel" for="badStep">Bad step probability: </label>
-<input class=" configBox" type="text" id="badStep" name="answer">
-<br>
-<label class=" configLabel" for="winScore">Win score threshold:</label>
-<input class=" configBox" type="text" id="winScore" name="answer">
-<br>
-<label class=" configLabel" for="timeOn">Time on screen:</label>
-<input class=" configBox" type="text" id="timeOn" name="answer">
-<br>
-<label class=" configLabel" for="multiChoice">Multiple Choice</label>
-<input class=" configBox" type="checkbox" id="multiChoice" name="answer">
-<br>
-<input type="submit" class="" value="Save config"/>
-
+<form id="config-form">
+    <label class=" configLabel" for="noToSolve">Number to Solve:</label>
+    <input class=" configBox" type="text" id="noToSolve" name="noToSolve">
+    <br>
+    <label class=" configLabel" for="question">Add Question:</label>
+    <input class=" configBox" type="text" id="question" name="question">
+    <br>
+    <label class=" configLabel" for="rightAnswer">Correct Answer:</label>
+    <input class=" configBox" type="text" id="rightAnswer" name="rightAnswer">
+    <br>
+    <label class=" configLabel" for="wrongAnswer1">Wrong Answer 1:</label>
+    <input class=" configBox" type="text" id="wrongAnswer1" name="wrongAnswer1">
+    <br>
+    <label class=" configLabel" for="wrongAnswer2">Wrong Answer 2:</label>
+    <input class=" configBox" type="text" id="wrongAnswer2" name="wrongAnswer2">
+    <br>
+    <label class=" configLabel" for="wrongAnswer3">Wrong Answer 3:</label>
+    <input class=" configBox" type="text" id="wrongAnswer3" name="wrongAnswer3">
+    <br>
+    <label class=" configLabel" for="multiChoice">Multiple Choice</label>
+    <input class=" configBox" type="checkbox" id="multiChoice" name="multiChoice">
+    <br>
+    <label class=" configLabel" for="multipleChoiceChoices">Choices Displayed (up to 4):</label>
+    <input class=" configBox" type="text" id="multipleChoiceChoices" name="multipleChoiceChoices">
+    <br>
+    <input type="submit" class="" value="Save config"/>
+</form>
 </body>
 
 </html>

@@ -6,9 +6,9 @@ function submitForm(e) {
     const formData = new FormData(e.target);
     const formProps = Object.fromEntries(formData);
     console.log(formProps)
-    if (formProps["debug"] === "on")
-        localStorage.setItem("debug", "on")
+    if (formProps["multiChoice"] === "on")
+        localStorage.setItem("multiChoice", "on")
     else
-        localStorage.setItem("debug", "off")
+        localStorage.setItem("multiChoice", "off")
 
 }

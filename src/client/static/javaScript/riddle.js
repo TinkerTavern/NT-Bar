@@ -4,7 +4,7 @@
 
 // TODO turn these into config options
 let timerLength = 60;
-let multipleChoice = true;
+let multipleChoice = localStorage.getItem("multiChoice");
 let riddlesToSolve = 3;
 let riddlesToWin = 3;
 
@@ -70,7 +70,7 @@ const setRiddle = () => {
     fetchRiddle(riddleId).then((riddle) => {
         $('.riddle').text(riddle.question);
         // console.log(riddle.question)
-        if (multipleChoice)
+        if (multipleChoice === "on")
             populateAnswers(riddle.answers);
         answer = riddle.answers[0].toLowerCase();
         if (riddleId === 10) {
@@ -140,7 +140,7 @@ const fetchRiddle = async riddleId => {
 
 setRiddle();
 
-if (multipleChoice) {
+if (multipleChoice === "on") {
     var x = document.getElementById("textEntry");
 } else {
     var x = document.getElementById("multiChoice");
@@ -239,6 +239,8 @@ let gameResult = () => {
 
 function cont() {
     $('#view-3').fadeOut();
+    // TODO clear the text box for the next riddle
+
     // $('#view-2').css('background', 'white');
     $('#view-2').animate({'opacity': 1}, 300);
     setRiddle();

@@ -2,12 +2,12 @@
 
 const stepsNumberArray = [31, 51, 71];
 const scoreGoalArray = [15, 25, 35];
-const debug = true;
+const debug = localStorage.getItem("debug");
 
 //Math.floor(Math.random() * stepsNumberArray.length)
 let index = Math.floor(Math.random() * stepsNumberArray.length);
-let stepsLeft = debug ? 4 : stepsNumberArray[index]
-let scoreGoal = debug ? 3 : scoreGoalArray[index];
+let stepsLeft = debug === "on" ? 4 : stepsNumberArray[index]
+let scoreGoal = debug === "on" ? 3 : scoreGoalArray[index];
 console.log(index)
 console.log(scoreGoal)
 $.ajax({
