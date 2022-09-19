@@ -14,6 +14,8 @@ import office from './images/office.jpg'
  *
  * From here: https://stackoverflow.com/questions/53777194/webpack-dynamic-import-method-returns-empty-array-instead-of-files-in-reactjs-h
  */
+
+// TODO: Find out a tile shift method instead (https://github.com/danba340/react-sliding-puzzle)
 function importAll(r) {
     return r.keys().map(r);
 }

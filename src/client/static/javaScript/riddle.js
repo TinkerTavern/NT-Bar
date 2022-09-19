@@ -2,7 +2,9 @@
 
 // Game ID = 1
 
-// TODO turn these into config options
+// TODO: Nice to have - Spectator players vote on answers
+// This might require another flask app for people to connect to via phone to answer..
+
 function itemHasValue(key) {
     return localStorage.getItem(key) !== "" && localStorage.getItem(key) != null
 }
