@@ -1,11 +1,16 @@
 {% extends "layout.html" %}
 {% block body %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/server.css') }}">
+<script type="text/javascript" src="{{ url_for('static', filename='js/server.js') }}"></script>
+
 <div class="nav">
     <div class="filter">
         <div class="title">
             <head>Task List</head>
         </div>
+        <script type="text/javascript">
+            myVar = getVal({{ip | tojson}})
+        </script>
         <button class="roomReset" id="roomReset" onclick="resetRoom()">Reset Room</button>
         <button class="roomReset danceScores" id="danceScoreButton" onclick="danceLeaderboard()">Dance Leaderboard
         </button>
@@ -56,8 +61,6 @@
                      src="{{url_for('static', filename='images/slide.png')}}">
             </div>
         </div>
-        <script type="text/javascript" src="{{ url_for('static', filename='js/server.js') }}">
-        </script>
     </div>
     <section id="view-3">
         <!--        <div class="non-interact"></div>-->

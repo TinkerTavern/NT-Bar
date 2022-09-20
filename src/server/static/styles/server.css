@@ -35,6 +35,7 @@
 }
 
 .leaderboard {
+    background-color: #232323;
     width: 45vw;
     border: 1px solid black;
 }

@@ -1,3 +1,5 @@
+import socket
+
 from flask import Flask, render_template, request, jsonify, flash
 from flask_cors import CORS
 
@@ -8,7 +10,7 @@ progress = [0, 0, 0]
 limits = [20, 3, 3]
 players = ["", "", ""]
 msgAppend = ["", "", ""]
-
+taskOpts = ["danceScores", "riddleScores", "puzzleScores"]
 tasks = ["Master the dance", "Solve " + str(limits[2]) + " riddles",
          "Solve " + str(limits[1]) + " sliding puzzles"]
 oldProgress = [-1, -1, -1]
@@ -24,9 +26,25 @@ DONE Per game: current session length
 Per game: current time since new player
 """
 
+
+def get_ip():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.settimeout(0)
+    try:
+        # doesn't even have to be reachable
+        s.connect(('1.1.1.1', 1))
+        IP = s.getsockname()[0]
+    except Exception:
+        IP = ''
+    finally:
+        s.close()
+    print(IP)
+    return IP
+
+
 @app.route('/')
 def hello_world():
-    return render_template("server.html")
+    return render_template("server.html", ip=get_ip())
 
 
 @app.route("/update", methods=["POST"])
@@ -44,6 +62,32 @@ def update_task():
     return jsonify(success=True)
 
 
+@app.route("/submit", methods=["POST"])
+def submit_score():
+    user = request.form.get("user")
+    taskID = request.form.get("task")
+    time = request.form.get("time")
+    if taskID is None:
+        user = request.json.get("user")
+        taskID = request.json.get("task")
+        time = request.json.get("time")
+    file = "/static/leaders/" + taskOpts[int(taskID)] + ".leaders"
+    leaderboard = []
+    import csv
+    with open(file, 'r') as file:
+        reader = csv.reader(file)
+        for row in reader:
+            leaderboard.append(row)
+    print(leaderboard)
+    for i, name, score in enumerate(leaderboard):
+        if int(time) < score:
+            leaderboard.insert(i, [user, int(time)])
+            break
+    print()
+    print()
+    print(leaderboard)
+
+
 @app.route("/set-user", methods=["POST"])
 def set_user():
     user = request.form.get("user")
@@ -59,6 +103,7 @@ def set_user():
             msgAppend[i] = ""
 
     return jsonify(success=True)
+
 
 @app.route('/pause-timer', methods=["POST"])
 def pauseTimer():

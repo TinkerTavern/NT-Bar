@@ -10,6 +10,10 @@ document.addEventListener('DOMContentLoaded', function () {
 }, false);
 loadTaskInfo();
 
+function getVal(val) {
+    console.log("Server IP = " + val)
+}
+
 function loadLeaderboard(game) {
     $.ajax({
         url: "/static/leaders/" + game + ".leaders",
@@ -27,9 +31,9 @@ function loadLeaderboard(game) {
 function danceLeaderboard() {
     leaderboards[0] = !leaderboards[0];
     loadLeaderboard("danceScores")
-    if (leaderboards[0])
+    if (leaderboards[0]) {
         $('#danceScores').fadeIn();
-    else
+    } else
         $('#danceScores').fadeOut();
 }
 
