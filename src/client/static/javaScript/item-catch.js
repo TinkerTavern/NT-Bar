@@ -181,6 +181,7 @@ let gameResult = () => {
         winMessageStart = winMessageStartArray[Math.floor(Math.random() * winMessageStartArray.length)];
         $('.win-lose-start').text(winMessageStart);
         document.getElementById("restartButton").style.visibility = "hidden"
+        submitScore()
     } else {
         $('#win-lose-messages').css('background', loseColor);
         $('.win-lose-start').text(loseMessageStartArray[Math.floor(Math.random() * loseMessageStartArray.length)] +
@@ -189,6 +190,14 @@ let gameResult = () => {
 
     }
     $('#view-3').fadeIn();
+}
+function submitScore() {
+    $.ajax({
+        type: 'POST',
+        url: url + "/submit",
+        data: {"task": 0, "user": document.getElementById("userName").value, "time": stepsHit},
+        dataType: 'json',
+    });
 }
 
 function winGame() {

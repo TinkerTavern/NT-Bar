@@ -19,8 +19,10 @@ function loadLeaderboard(game) {
         url: "/static/leaders/" + game + ".leaders",
         dataType: "text",
         success: function (data) {
-            document.getElementById(game).innerHTML = "Scores for the " + game.replace("Scores", "") + " game:<br>" +
-                "<table class='leaderboard'><tr><td>Name</td><td>Time</td></tr><tr><td>" +
+            let scoreInfo = game.replace("Scores", "") === "puzzle" ? "Lower is better" : "Higher is better"
+            let unit = game.replace("Scores", "") === "dance" ? "Points" : game.replace("Scores", "") === "puzzle" ? "Time taken (s)" : "Time left (s)"
+            document.getElementById(game).innerHTML = "Scores for the " + game.replace("Scores", "") + " game. " + scoreInfo + ":<br>" +
+                "<table class='leaderboard'><tr><td>Name</td><td>" + unit + "</td></tr><tr><td>" +
                 data.replaceAll("\n", "</td></tr><tr><td>").replaceAll(",", "</td><td>") + "</table>"
         }
     });

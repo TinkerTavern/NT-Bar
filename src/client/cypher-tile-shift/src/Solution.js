@@ -72,6 +72,7 @@ class Solution extends React.Component {
                 </Box>
             );
         } else {
+            this.submitScore();
             return (
                 <Box
                     sx={{
@@ -93,6 +94,22 @@ class Solution extends React.Component {
                 </Box>
             );
         }
+    }
+
+    submitScore() {
+        let url = this.itemHasValue("addr") ? localStorage.getItem("addr") : "127.0.0.1"
+        url = "http://" + url + ":3000"
+        fetch(url + '/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                task: 2,
+                user: localStorage.getItem("userName2"),
+                time: this.props.timeTaken
+            })
+        })
     }
 }
 

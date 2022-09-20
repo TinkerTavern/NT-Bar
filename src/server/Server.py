@@ -1,4 +1,5 @@
 import socket
+from os.path import join, dirname, realpath
 
 from flask import Flask, render_template, request, jsonify, flash
 from flask_cors import CORS
@@ -71,21 +72,25 @@ def submit_score():
         user = request.json.get("user")
         taskID = request.json.get("task")
         time = request.json.get("time")
-    file = "/static/leaders/" + taskOpts[int(taskID)] + ".leaders"
+    file = join(dirname(realpath(__file__)), "static/leaders/" + taskOpts[int(taskID)] + ".leaders")
     leaderboard = []
+    print(user,time)
     import csv
-    with open(file, 'r') as file:
-        reader = csv.reader(file)
+    with open(file, 'r') as f:
+        reader = csv.reader(f)
         for row in reader:
             leaderboard.append(row)
     print(leaderboard)
-    for i, name, score in enumerate(leaderboard):
-        if int(time) < score:
-            leaderboard.insert(i, [user, int(time)])
+    for i, entry in enumerate(leaderboard):
+        if (taskID == 2 and int(time) < int(entry[1])) or int(time) > int(entry[1]):
+            leaderboard.insert(i, [user, time])
+            del leaderboard[-1]
             break
-    print()
-    print()
     print(leaderboard)
+    with open(file, 'w') as f:
+        for entry in leaderboard:
+            f.write(entry[0]+","+str(entry[1])+"\n")
+    return jsonify(success=True)
 
 
 @app.route("/set-user", methods=["POST"])

@@ -17,7 +17,20 @@ class App extends React.Component {
             mode: 'intro',
             numberToComplete: this.itemHasValue("noToSolve") ? parseInt(localStorage.getItem("noToSolve")) : 3,
             gamesWon: 0,
+            counter: 0,
         }
+    }
+
+    startPuzzleTimer() {
+        this.timerID = setInterval(() =>
+                this.tick(),
+            1000
+        );
+    }
+
+    tick() {
+        this.state.counter++
+        console.log("aaa")
     }
 
     itemHasValue(key) {
@@ -69,20 +82,25 @@ class App extends React.Component {
                 onClick={() => this.handleClick()}
                 numberToComplete={this.state.numberToComplete}
             />
-        else if (this.state.mode === 'game')
+        else if (this.state.mode === 'game') {
+            this.startPuzzleTimer()
             artefact = <Game
                 game={GAME_TO_BUILD}
                 onPlayerSolved={() => this.playerSolved()}
                 onPlayerFailed={() => this.playerFailed()}
             />
+        }
         else if (this.state.mode === 'solved') {
             this.state.numberToComplete--;
             this.state.gamesWon++;
-            console.log("left" + this.state.numberToComplete)
+            if (this.state.numberToComplete < 0)
+
+                console.log("left" + this.state.numberToComplete)
             artefact = <Solution
                 onContinue={() => this.continue()}
                 gamesLeft={this.state.numberToComplete}
                 gamesWon={this.state.gamesWon}
+                timeTaken={this.state.counter}
             />
         } else if (this.state.mode === 'failed')
             artefact = <Failure/>

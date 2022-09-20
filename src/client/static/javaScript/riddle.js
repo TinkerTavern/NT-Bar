@@ -224,6 +224,7 @@ function finalScreen() {
         $('.win-lose-messages').css('background', winColor);
         $('.win-lose-start').text(winWinMessageStartArray[Math.floor(Math.random() * winWinMessageStartArray.length)]);
         document.getElementById("restartButton").style.visibility = "hidden"
+        submitScore();
     } else {
         $('.win-lose-messages').css('background', loseColor);
         $('.win-lose-start').text(loseLoseMessageStartArray[Math.floor(Math.random() * loseLoseMessageStartArray.length)] + " Score: " + won + "/" + riddlesToWin)
@@ -233,6 +234,15 @@ function finalScreen() {
     submitResult();
     $('#view-4').fadeIn();
 
+}
+
+function submitScore() {
+    $.ajax({
+        type: 'POST',
+        url: url + "/submit",
+        data: {"task": 1, "user": document.getElementById("userName").value, "time": timerLength},
+        dataType: 'json',
+    });
 }
 
 function winGame() {
