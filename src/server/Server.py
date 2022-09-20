@@ -21,7 +21,7 @@ oldProgress = [-1, -1, -1]
 """
 Per game: Display count of number of players so far
 Per game: Display count of number of attempts
-Per game: Leaderboard with High Score (or shortest session time to solve)
+DOING Per game: Leaderboard with High Score (or shortest session time to solve)
 DONE Per game: current session length
 Per game: current time since new player
 """

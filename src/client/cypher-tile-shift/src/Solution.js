@@ -7,7 +7,7 @@ class Solution extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-			winMessages: ["You did it!", "Great!", "Nice job!", "Good work!"],
+            winMessages: ["You did it!", "Great!", "Nice job!", "Good work!"],
             winWinMessages: ["You solved the puzzle, it revealed some interesting information...",
                 "Puzzle solved, time to see what's really going on...", "Nice job! Now to learn the truth...",
                 "Ah ha! So that's what's going on..."],
@@ -25,8 +25,14 @@ class Solution extends React.Component {
         this.setState({currentWinMessage: winMessageIdx});
     }
 
+    itemHasValue(key) {
+        return localStorage.getItem(key) !== "" && localStorage.getItem(key) != null
+    }
+
     updateScore() {
-        fetch('http://127.0.0.1:3000/update', {
+        let url = this.itemHasValue("addr") ? localStorage.getItem("addr") : "127.0.0.1"
+        url = "http://" + url + ":3000"
+        fetch(url + '/update', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

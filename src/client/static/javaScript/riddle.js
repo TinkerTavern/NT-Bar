@@ -9,6 +9,9 @@ function itemHasValue(key) {
     return localStorage.getItem(key) !== "" && localStorage.getItem(key) != null
 }
 
+let url = itemHasValue("addr") ? localStorage.getItem("addr") : "127.0.0.1"
+url = "http://" + url + ":3000"
+
 let multipleChoice = localStorage.getItem("multiChoice");
 let timerLength = itemHasValue("timeToSolve") ? localStorage.getItem("timeToSolve") : 60;
 let riddlesToSolve = itemHasValue("noToSolve") ? localStorage.getItem("noToSolve") : 3;
@@ -31,13 +34,13 @@ const loseLoseMessageStartArray = ["Tricked you, try again!", "I'm not telling y
 // SELECT AND DISPLAY RIDDLE
 $.ajax({
     type: 'POST',
-    url: "http://127.0.0.1:3000/update",
+    url: url + "/update",
     data: {"task": 1, "progress": won, "limit": riddlesToWin},
     dataType: 'json',
 });
 $.ajax({
     type: 'POST',
-    url: "http://127.0.0.1:3000/set-user",
+    url: url + "/set-user",
     data: {"task": 1, "user": ""},
     dataType: 'json',
 });
@@ -48,7 +51,7 @@ function submitUser() {
     localStorage.setItem("userName1", document.getElementById("userName").value);
     $.ajax({
         type: 'POST',
-        url: "http://127.0.0.1:3000/set-user",
+        url: url + "/set-user",
         data: {"task": 1, "user": document.getElementById("userName").value},
         dataType: 'json',
     });
@@ -205,7 +208,7 @@ $('#wrong').on('click tap', (e) => {
 function submitResult() {
     $.ajax({
         type: 'POST',
-        url: "http://127.0.0.1:3000/update",
+        url: url + "/update",
         data: {"task": 1, "progress": won},
         dataType: 'json',
     });

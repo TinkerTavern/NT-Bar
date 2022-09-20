@@ -4,8 +4,14 @@ import './IntroText.css';
 import ladder from './images/background.jpg'
 
 class Intro extends React.Component {
+    itemHasValue(key) {
+        return localStorage.getItem(key) !== "" && localStorage.getItem(key) != null
+    }
+
     network() {
-        fetch('http://127.0.0.1:3000/update', {
+        let url = this.itemHasValue("addr") ? localStorage.getItem("addr") : "127.0.0.1"
+        url = "http://" + url + ":3000"
+        fetch(url + '/update', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -16,7 +22,7 @@ class Intro extends React.Component {
                 limit: this.props.numberToComplete,
             })
         })
-        fetch('http://127.0.0.1:3000/set-user', {
+        fetch(url + '/set-user', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

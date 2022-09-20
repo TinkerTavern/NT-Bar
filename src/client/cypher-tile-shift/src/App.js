@@ -26,8 +26,10 @@ class App extends React.Component {
 
 
     submitUser() {
+        let url = this.itemHasValue("addr") ? localStorage.getItem("addr") : "127.0.0.1"
+        url = "http://" + url + ":3000"
         localStorage.setItem("userName2", document.getElementById("userName").value);
-        fetch('http://127.0.0.1:3000/set-user', {
+        fetch(url + '/set-user', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

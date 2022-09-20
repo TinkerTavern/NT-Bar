@@ -3,5 +3,9 @@ document.addEventListener('DOMContentLoaded', function () {
 }, false);
 
 function setAddr() {
-    localStorage.setItem("addr", document.getElementById("userName").value)
+    localStorage.setItem("addr", document.getElementById("addr").value)
+}
+
+function clearConfigs() {
+    localStorage.clear();
 }

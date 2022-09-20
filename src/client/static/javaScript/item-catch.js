@@ -5,6 +5,8 @@ function itemHasValue(key) {
 }
 
 const debug = localStorage.getItem("debug");
+let url = itemHasValue("addr") ? localStorage.getItem("addr") : "127.0.0.1"
+url = "http://" + url + ":3000"
 
 let stepsLeft = debug === "on" ? 4 : itemHasValue("stepCount") ? parseInt(localStorage.getItem("stepCount")) + 1 : 31;
 let scoreGoal = debug === "on" ? 3 : itemHasValue("winScore") ? localStorage.getItem("winScore") : 15;
@@ -17,13 +19,13 @@ console.log(badStepChance)
 
 $.ajax({
     type: 'POST',
-    url: "http://127.0.0.1:3000/update",
+    url: url + "/update",
     data: {"task": 0, "progress": 0, "limit": scoreGoal},
     dataType: 'json',
 });
 $.ajax({
     type: 'POST',
-    url: "http://127.0.0.1:3000/set-user",
+    url: url + "/set-user",
     data: {"task": 0, "user": ""},
     dataType: 'json',
 });
@@ -62,7 +64,7 @@ function submitUser() {
     localStorage.setItem("userName0", document.getElementById("userName").value);
     $.ajax({
         type: 'POST',
-        url: "http://127.0.0.1:3000/set-user",
+        url: url + "/set-user",
         data: {"task": 0, "user": document.getElementById("userName").value},
         dataType: 'json',
     });
@@ -71,7 +73,7 @@ function submitUser() {
 function updateScore() {
     $.ajax({
         type: 'POST',
-        url: "http://127.0.0.1:3000/update",
+        url: url + "/update",
         data: {"task": 0, "progress": stepsHit},
         dataType: 'json',
     });
