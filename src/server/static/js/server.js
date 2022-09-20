@@ -1,10 +1,55 @@
 progress = [0, 0, 0];
+timers = [0, 0, 0];
+paused = [false, false, false]
+leaderboards = [false, false, false]
 var tid;
+
 document.addEventListener('DOMContentLoaded', function () {
     loadTaskInfo();
     tid = setInterval(loadTaskInfo, 1000);
 }, false);
 loadTaskInfo();
+
+function loadLeaderboard(game) {
+    $.ajax({
+        url: "/static/leaders/" + game + ".leaders",
+        dataType: "text",
+        success: function (data) {
+            document.getElementById(game).innerHTML = "Scores for the " + game.replace("Scores", "") + " game:<br>" +
+                "<table class='leaderboard'><tr><td>Name</td><td>Time</td></tr><tr><td>" +
+                data.replaceAll("\n", "</td></tr><tr><td>").replaceAll(",", "</td><td>") + "</table>"
+        }
+    });
+
+}
+
+
+function danceLeaderboard() {
+    leaderboards[0] = !leaderboards[0];
+    loadLeaderboard("danceScores")
+    if (leaderboards[0])
+        $('#danceScores').fadeIn();
+    else
+        $('#danceScores').fadeOut();
+}
+
+function riddleLeaderboard() {
+    leaderboards[1] = !leaderboards[1];
+    loadLeaderboard("riddleScores")
+    if (leaderboards[1])
+        $('#riddleScores').fadeIn();
+    else
+        $('#riddleScores').fadeOut();
+}
+
+function puzzleLeaderboard() {
+    leaderboards[2] = !leaderboards[2];
+    loadLeaderboard("puzzleScores")
+    if (leaderboards[2])
+        $('#puzzleScores').fadeIn();
+    else
+        $('#puzzleScores').fadeOut();
+}
 
 function resetRoom() {
     $.ajax({
@@ -30,7 +75,6 @@ function checkProgress(scores, limits) {
     }
     if (JSON.stringify(scores) === JSON.stringify(limits)) {
         abortTimer()
-        console.log("woo baby")
         $('#win-lose-messages').css('background', "#4ed97f");
         winMessageStart = "Woo baby"
         $('.win-lose-start').text(winMessageStart);
@@ -56,9 +100,20 @@ function loadTaskInfo() {
             $('#toDoList').empty();
             for (var i = 0; i < count; i++) {
                 var opt = document.createElement('option');
-                opt.value = toDoItems[i.toString()];
-                opt.innerHTML = toDoItems[i.toString()];
-                progress[i] = toDoItems[i.toString()];
+                var item = toDoItems[i.toString()];
+                if (item.includes("is currently playing.")) {
+                    timers[i]++
+                    var secs = timers[i] % 60 === 1 ? " second." : " seconds.";
+                    if (timers[i] >= 60) {
+                        var mins = Math.floor(timers[i] / 60) === 1 ? "minute and " : " minutes and ";
+                        item += " Playing for " + Math.floor(timers[i] / 60) + mins + timers[i] % 60 + secs
+                    } else
+                        item += " Playing for " + timers[i] + secs
+                } else
+                    timers[i] = 0;
+                opt.value = item;
+                opt.innerHTML = item;
+                progress[i] = item;
                 select.appendChild(opt);
             }
             checkProgress(response['scores'], response['limits'])

@@ -11,10 +11,12 @@
     color: white;
     font-size: xx-large;
 }
+
 .filter {
-        background-color: rgba(23, 23, 23, 0.3);
+    background-color: rgba(23, 23, 23, 0.3);
 
 }
+
 .image {
     object-fit: contain;
     width: 23vh;
@@ -24,6 +26,17 @@
 .roomReset {
     margin: 1%;
     font-size: xx-large;
+}
+
+.hidden {
+    display: none;
+    font-size: xx-large;
+    color: white;
+}
+
+.leaderboard {
+    width: 45vw;
+    border: 1px solid black;
 }
 
 body {
@@ -53,6 +66,7 @@ body {
     margin-top: 8px;
     vertical-align: middle;
 }
+
 #view-3 {
     visibility: hidden;
 }

@@ -20,7 +20,7 @@ oldProgress = [-1, -1, -1]
 Per game: Display count of number of players so far
 Per game: Display count of number of attempts
 Per game: Leaderboard with High Score (or shortest session time to solve)
-Per game: current session length
+DONE Per game: current session length
 Per game: current time since new player
 """
 
@@ -59,6 +59,13 @@ def set_user():
             msgAppend[i] = ""
 
     return jsonify(success=True)
+
+@app.route('/pause-timer', methods=["POST"])
+def pauseTimer():
+    taskID = request.form.get("task")
+    if taskID is None:
+        user = request.json.get("user")
+        taskID = request.json.get("task")
 
 
 @app.route('/get-tasks', methods=["GET"])
