@@ -1,7 +1,6 @@
 import React from 'react'
 import {Box} from 'rebass'
 import './IntroText.css';
-import ladder from './images/background.jpg'
 
 class Intro extends React.Component {
     itemHasValue(key) {
@@ -40,9 +39,9 @@ class Intro extends React.Component {
             <Box
                 sx={{
                     display: 'grid',
-                    gridGap: 0
+                    gridGap: 0,
                 }}>
-                <Box><img className="background-image" src={ladder} alt="Echo Games' ladder"/></Box>
+                {/*<Box><img className="background-image" src={ladder} alt="Echo Games' ladder"/></Box>*/}
                 <Box><h1
                     className="game-title center">{this.props.game === 'puzzle_shift' ? 'Tile Shift!' : 'Cypher Cracker!'}</h1>
                 </Box>

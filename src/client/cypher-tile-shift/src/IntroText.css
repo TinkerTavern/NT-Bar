@@ -1,22 +1,22 @@
-@font-face {
-    font-family: 'Quicksand';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    size-adjust: 150%;
-    src: url(ChopinScript.ttf) format('truetype');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  
-@font-face {
-    font-family: 'Quicksand';
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    size-adjust: 200%;
-    src: url(ChopinScript.ttf) format('truetype');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
+/*@font-face {*/
+/*    font-family: 'Quicksand';*/
+/*    font-style: normal;*/
+/*    font-weight: 400;*/
+/*    font-display: swap;*/
+/*    size-adjust: 150%;*/
+/*    src: url(ChopinScript.ttf) format('truetype');*/
+/*    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;*/
+/*}*/
+
+/*@font-face {*/
+/*    font-family: 'Quicksand';*/
+/*    font-style: normal;*/
+/*    font-weight: 600;*/
+/*    font-display: swap;*/
+/*    size-adjust: 200%;*/
+/*    src: url(ChopinScript.ttf) format('truetype');*/
+/*    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;*/
+/*}*/
 
 /* VIEW 1 - GAME INSTRUCTIONS */
 
@@ -25,6 +25,29 @@
     top: 0px;
     left: 0px;
     width: 100vw;
+}
+
+* {
+    background-color: #bc9464;
+}
+
+body {
+    color: #37375d;
+}
+
+.answerBox {
+    width: 15%;
+    background-color: #ebbe93;
+    color: #37375d;
+    font-family: sans-serif;
+    font-size: xx-large;
+    border: none;
+}
+
+.answerLabel {
+    font-size: xx-large;
+
+
 }
 
 .background-image {
@@ -66,10 +89,10 @@
 .play {
     width: 50vh;
     height: 50vh;
-    background: #80b9ff;
+    background: #545c9c;
     border: none;
     border-radius: 50%;
-    font-family: 'Quicksand', sans-serif;
+    font-family: sans-serif, sans-serif;
     color: white;
     font-size: 2rem;
     display: flex;

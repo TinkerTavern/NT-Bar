@@ -44,7 +44,7 @@ button {
     padding: 5px;
     align-content: center;
     margin-left: 10%;
-    font-family: 'Quicksand', sans-serif;
+    font-family: sans-serif;
 }
 
 .non-interact {
@@ -110,7 +110,7 @@ button {
     letter-spacing: 0.5rem;
     text-align: center;
     text-transform: uppercase;
-    font-family: 'Quicksand', sans-serif;
+    font-family: sans-serif;
 }
 
 input:focus {
@@ -119,8 +119,8 @@ input:focus {
 
 .cypher-submit {
     font-size: 1.2rem;
-    font-family: 'Quicksand', sans-serif;
-    background: #80b9ff;
+    font-family: sans-serif;
+    background: #37375d;
     color: white;
     padding-inline: 0.8rem;
     padding-block: 0.4rem;

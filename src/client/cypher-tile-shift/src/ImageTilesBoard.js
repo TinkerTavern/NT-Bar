@@ -275,7 +275,6 @@ class Board extends React.Component {
         if (timer)
             return (
                 <div>
-                    {/*<img draggable={false} className="background-image" src={ladder} alt="Echo Games' ladder"/>*/}
                     <Box
                         sx={{
                             maxWidth: 768,
@@ -291,7 +290,6 @@ class Board extends React.Component {
         else
             return (
                 <div>
-                    {/*<img draggable={false} className="background-image" src={ladder} alt="Echo Games' ladder"/>*/}
                     <Box
                         sx={{
                             maxWidth: 768,
