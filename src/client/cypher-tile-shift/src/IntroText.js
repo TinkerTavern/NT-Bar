@@ -48,9 +48,11 @@ class Intro extends React.Component {
                 <Box><p
                     className="instructions center">{this.props.game === 'puzzle_shift' ? 'Tap tiles to swap them and recreate the picture' : 'Use the cypher to decode the 4-letter word'}</p>
                 </Box>
-                <label className="center answerLabel" htmlFor="userName">Your Name:</label>
-                <input className="center answerBox" type="text" id="userName" name="answer"
-                       defaultValue={localStorage.getItem("userName2")}/>
+                <div className="name">
+                    <label className="answerLabel" htmlFor="userName">Your Name: </label>
+                    <input className="answerBox" type="text" id="userName" name="answer"
+                           defaultValue={localStorage.getItem("userName2")}/>
+                </div>
                 <Box>
                     <button className="play center"
                             onClick={() => {
@@ -66,8 +68,11 @@ class Intro extends React.Component {
                     </div>
                 </Box>
             </Box>
-        );
+    );
     }
-}
+    }
 
-export {Intro}
+    export
+        {
+            Intro
+        }

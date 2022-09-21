@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}"/>
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/style-riddle.css') }}"/>
     <script src="{{ url_for('static',filename='javaScript/jquery.min.js') }}"></script>
     <script src="{{ url_for('static',filename='javaScript/riddle.js') }}" defer></script>
@@ -12,7 +13,7 @@
 <body>
 
 <!--<img class="background-image" src="{{ url_for('static',filename='images/snake-long.png') }}"/>-->
-<img draggable="false" class="background-image" src="{{ url_for('static',filename='images/riddle-bg.png')}}"/>
+<!--<img draggable="false" class="background-image" src="{{ url_for('static',filename='images/riddle-bg.png')}}"/>-->
 <section id="view-2">
     <div class="timer center">
         <p>Time left: <span id="time-left"></span></p>
@@ -22,16 +23,18 @@
 
     <p class="riddle center"></p>
     <div id="textEntry">
-        <label class="center answerLabel" for="answer">Your Answer:</label>
+        <label class="center answerLabel answerLabel2" for="answer">Your Answer:</label>
         <input class="center answerBox" type="text" id="answer" name="answer">
         <input class="center submit" id="submitButton" type="button" value="Submit" onclick="answerWritten();"/>
     </div>
     <div id="multiChoice">
-        <label class="center answerLabel" for="answer">Select the Correct answer:</label><br>
-        <input class="option submit" id="answer1" type="button" value="1111" onclick="answer1();"/>
-        <input class="option submit" id="answer2" type="button" value="2222" onclick="answer2();"/>
-        <input class="option submit" id="answer3" type="button" value="3333" onclick="answer3();"/>
-        <input class="option submit" id="answer4" type="button" value="4444" onclick="answer4();"/>
+        <label class="center answerLabel answerLabel2" for="answer">Select the Correct answer:</label><br>
+        <div class="options">
+            <input class="option submit" id="answer1" type="button" value="1111" onclick="answer1();"/>
+            <input class="option submit" id="answer2" type="button" value="2222" onclick="answer2();"/>
+            <input class="option submit" id="answer3" type="button" value="3333" onclick="answer3();"/>
+            <input class="option submit" id="answer4" type="button" value="4444" onclick="answer4();"/>
+        </div>
     </div>
 </section>
 
@@ -44,8 +47,10 @@
         <soan id="timer-length"></soan>
         seconds to win
     </p>
-    <label class="center answerLabel" for="userName">Your Name:</label>
-    <input class="center answerBox" type="text" id="userName" name="answer">
+    <div class="name">
+        <label class="answerLabel" for="userName">Your Name:  </label>
+        <input class="answerBox" type="text" id="userName" name="answer">
+    </div>
     <div class="play center">Play!</div>
     <div class="win-lose center">
     </div>

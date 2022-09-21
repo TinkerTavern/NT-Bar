@@ -1,133 +1,28 @@
-/*@font-face {*/
-/*    font-family: 'Quicksand';*/
-/*    font-style: normal;*/
-/*    font-weight: 400;*/
-/*    font-display: swap;*/
-/*    size-adjust: 150%;*/
-/*    src: url(ChopinScript.ttf) format('truetype');*/
-/*    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;*/
-/*}*/
-
-/*@font-face {*/
-/*    font-family: 'Quicksand';*/
-/*    font-style: normal;*/
-/*    font-weight: 600;*/
-/*    font-display: swap;*/
-/*    size-adjust: 200%;*/
-/*    src: url(ChopinScript.ttf) format('truetype');*/
-/*    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;*/
-/*}*/
-
-body {
-    background: white;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    font-family: sans-serif;
-}
-
 /* VIEW 1 - GAME INSTRUCTIONS */
-
 #view-1 {
     position: absolute;
     top: 0px;
     left: 0px;
     width: 100vw;
     height: 100vh;
-    background-image: url("../images/item-bg.jpg");
-    background-size:100% 100%;
+    /*background-image: url("../images/item-bg.jpg");*/
+    background-size: 100% 100%;
     /*overflow-y: hidden;*/
 }
 
-.background-image {
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-    /*top: 17vh;*/
-    opacity: 0.4;
-    /*left: 50%;*/
-    /*transform: translate(-50%, 0%);*/
-    /*-webkit-transform: translate(-50%, 0%);*/
-    /*-moz-transform: translate(-50%, 0%);*/
-    /*-o-transform: translate(-50%, 0%);*/
-    /*-ms-transform: translate(-50%, 0%);*/
-}
-.on-dark {
-    opacity: 0.3;
-}
-
-.game-title {
-    padding-top: 5vh;
-    font-size: xxx-large;
-    width: 90vw;
-
-}
-
-.center {
-    margin-left: 50%;
-    transform: translate(-50%, 0);
-    -webkit-transform: translate(-50%, 0);
-    -moz-transform: translate(-50%, 0);
-    -o-transform: translate(-50%, 0);
-    -ms-transform: translate(-50%, 0);
-    text-align: center;
-}
-
-.answerLabel {
-    font-size: xx-large;
-    margin-left: 42.5%;
-    background-color: rgba(25, 0, 0, 0.5);
-
-}
-
-.answerBox {
-    height: 5%;
-    width: 15%;
-    font-size: xx-large;
-}
-
-.submit {
-    width: 12.5%;
-    margin-top: 1%;
-    font-size: x-large;
-}
-
 .option {
-    margin-left: 15%;
-    /*transform: translate(-25%, 0);*/
     text-align: center;
     text-transform: capitalize;
     font-family: sans-serif;
+    background: #adaccd;
 
 }
 
-
-.instructions {
-    font-size: xx-large;
-    margin-block: 8vh;
-    line-height: 150%;
-    color: white;
-    background-color: rgba(25,25,0,0.4);
-}
-
-.play {
-    width: 50vh;
-    height: 50vh;
-    background: #37375d;
-    border-radius: 50%;
-    color: white;
-    font-size: 2rem;
+.options {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
-.win-lose {
-    width: 90vw;
-    margin-block: 10vh;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-}
 
 /* VIEW 2 - GAME */
 
@@ -137,14 +32,10 @@ body {
     left: 0vw;
     width: 100vw;
     height: 100vh;
-    /*background: black;*/
-    color: white;
-    /*overflow-y: hidden;*/
 }
 
 .timer {
     position: relative;
-    background: white;
     color: black;
     padding-inline: 7vw;
     width: 86vw;
@@ -162,7 +53,6 @@ body {
     font-size: 2rem;
     width: 80vw;
     margin-block: 14vh;
-    background-color: rgba(25, 0, 0, 0.5);
     line-height: 150%;
 }
 
@@ -173,6 +63,10 @@ body {
     margin-top: 0;
     padding-top: 0;
     width: 80vw;
+}
+
+.answerLabel2 {
+    margin-left: 45%;
 }
 
 #right, #wrong {
@@ -194,44 +88,4 @@ body {
 
 #view-3, #view-4 {
     display: none;
-}
-
-.non-interact {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 90vh;
-}
-
-.win-lose-messages {
-    margin-top: 50vh;
-    transform: translate(0%, -55%);
-    -webkit-transform: translate(0%, -55%);
-    -moz-transform: translate(0%, -55%);
-    -o-transform: translate(0%, -55%);
-    -ms-transform: translate(0%, -55%);
-    width: 100vw;
-    color: white;
-    padding-block: 7vh;
-    box-shadow: 0px 4px 11px -5px rgba(0, 0, 0, 0.8);
-}
-
-.win-lose-start {
-    font-size: 1.5rem;
-    line-height: 150%;
-    width: 80vw;
-}
-
-.win-lose-result {
-    font-size: 1.5rem;
-    line-height: 150%;
-    width: 90vw;
-    text-transform: uppercase;
-    margin-bottom: 0px;
-}
-
-#win-lose-messages img {
-    width: 20vw;
-    max-width: 70px;
 }

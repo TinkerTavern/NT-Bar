@@ -29,6 +29,7 @@
 
 * {
     background-color: #bc9464;
+    font-family: sans-serif;
 }
 
 body {
@@ -36,18 +37,16 @@ body {
 }
 
 .answerBox {
-    width: 15%;
     background-color: #ebbe93;
     color: #37375d;
     font-family: sans-serif;
     font-size: xx-large;
     border: none;
+    margin-bottom: 5%;
 }
 
 .answerLabel {
     font-size: xx-large;
-
-
 }
 
 .background-image {
@@ -87,12 +86,12 @@ body {
 }
 
 .play {
-    width: 50vh;
-    height: 50vh;
+    width: 30vh;
+    height: 30vh;
     background: #545c9c;
     border: none;
     border-radius: 50%;
-    font-family: sans-serif, sans-serif;
+    font-family: sans-serif;
     color: white;
     font-size: 2rem;
     display: flex;
