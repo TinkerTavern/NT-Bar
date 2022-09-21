@@ -8,13 +8,16 @@
 function itemHasValue(key) {
     return localStorage.getItem(key) !== "" && localStorage.getItem(key) != null
 }
+function countNums(val) {
+    return localStorage.getItem("orderToSolve").split(",").length
+}
 
 let url = itemHasValue("addr") ? localStorage.getItem("addr") : "127.0.0.1"
 url = "http://" + url + ":3000"
 
 let multipleChoice = localStorage.getItem("multiChoice");
 let timerLength = itemHasValue("timeToSolve") ? localStorage.getItem("timeToSolve") : 60;
-let riddlesToSolve = itemHasValue("noToSolve") ? localStorage.getItem("noToSolve") : 3;
+let riddlesToSolve = itemHasValue("orderToSolve") ? countNums("orderToSolve") : 3;
 let riddlesToWin = itemHasValue("noToSolve") ? localStorage.getItem("noToSolve") : 3;
 let multiChoiceAnswerCount = itemHasValue("multipleChoiceChoices") ? localStorage.getItem("multipleChoiceChoices") : 3;
 
@@ -68,27 +71,26 @@ input.addEventListener("keypress", function (event) {
 const setRiddle = () => {
     // Get local storage value for id
     if (typeof (Storage) !== "undefined") {
-        riddleId = localStorage.getItem("tile-shift-id");
+        riddleId = localStorage.getItem("riddle-id");
         if (riddleId === null) {
             riddleId = 1;
         } else {
             riddleId = parseInt(riddleId);
         }
     } else {
-        riddleId = Math.floor(Math.random * 9 + 1);
+        riddleId = Math.floor(Math.random * 8 + 1);
     }
     fetchRiddle(riddleId).then((riddle) => {
         $('.riddle').text(riddle.question);
-        // console.log(riddle.question)
         if (multipleChoice === "on")
             populateAnswers(riddle.answers);
         answer = riddle.answers[0].toLowerCase();
-        if (riddleId === 10) {
+        if (riddleId === 9) {
             riddleId = 1;
         } else {
             riddleId++;
         }
-        localStorage.setItem("tile-shift-id", riddleId);
+        localStorage.setItem("riddle-id", riddleId);
     });
 }
 
@@ -120,15 +122,13 @@ function answerWritten() {
 
 function populateAnswers(answers) {
     let a = ["answer1", "answer2", "answer3", "answer4"];
-    // let a = z.slice(0, multiChoiceAnswerCount)
-    console.log(multiChoiceAnswerCount)
     let zero = false
     let index = -1
     let nums = [-1, -1, -1]
     while (!zero) {
         for (var i = 0; i < a.length; i++) {
             if (i > multiChoiceAnswerCount - 1)
-                document.getElementById(a[i]).style.visibility = "hidden";
+                document.getElementById(a[i]).style.display = "none";
             else {
                 index = Math.floor(Math.random() * answers.length)
                 while (nums.includes(index)) {

@@ -1,52 +1,94 @@
-{ "riddles": [
-    { 
-        "id": 1,
-        "question":"I have a tail and a head, but no body. What am I?", 
-        "answers":["coin", "snake", "lion", "dog"]
+{
+  "riddles": [
+    {
+      "id": 1,
+      "question": "My first doth affliction denote, \nWhich my second is destin’d to feel\nAnd my whole is the best antidote\nThat affliction to soften and heal.",
+      "answers": [
+        "WOE + MAN = WOMAN",
+        "Wrong1",
+        "Wrong2",
+        "Wrong3"
+      ]
     },
-    { 
-        "id": 2,
-        "question":"What has to be broken before you can use it?", 
-        "answers":["egg", "promise", "window", "pot"]
+    {
+      "id": 2,
+      "question": "My first is in harvest rarely known, \nNor would it welcome be.\nMy next in country or in town, \nEach miss delights to see.\nAnd when drear winter’s dress is shown, \nIn joyous play my whole is thrown.",
+      "answers": [
+        "SNOW + BALL = SNOWBALL",
+        "Wrong1",
+        "Wrong2",
+        "Wrong3"
+      ]
     },
-    { 
-        "id": 3,
-        "question":"You cut me, slice me, dice me, and all the while, you cry. What am I?", 
-        "answers":["onion", "carrot", "potato", "chicken"]
+    {
+      "id": 3,
+      "question": "My first dispels the darksome gloom;\nYou love my next wherever you roam.\nMy whole with cheering ray from far,\nGives comfort to the wandering tar.",
+      "answers": [
+        "LIGHT + HOUSE = LIGHTHOUSE",
+        "Wrong1",
+        "Wrong2",
+        "Wrong3"
+      ]
     },
-    { 
-        "id": 4,
-        "question":"The more you take, the more you leave behind. What am I?", 
-        "answers":["Footsteps", "photograph", "rubbish", "coins"]
+    {
+      "id": 4,
+      "question": "My first a blessing sent to earth, \nOf plants and flowers to aid the birth.\nMy second surely was designed\nTo hurl destruction on mankind.\nMy whole a pledge from pardoned Heaven, \nOf wrath appeased and crimes forgiven.",
+      "answers": [
+        "RAIN + BOW = RAINBOW",
+        "Wrong1",
+        "Wrong2",
+        "Wrong3"
+      ]
     },
-    { 
-        "id": 5,
-        "question":"I'm tall when I'm young and I'm short when I'm old. What am I?", 
-        "answers":["candle", "human", "giraffe", "wolf"]
+    {
+      "id": 5,
+      "question": "My first, all sabled over with gloom, \nShuns the effulgent light of day;\nMy second, formed on fashion’s loom, \nGives female dress a neat display;\nAnd in the embraces of my whole I’m blest,\nWhile through my first I seek oblivion’s rest.",
+      "answers": [
+        "NIGHT + CAP = NIGHTCAP",
+        "Wrong1",
+        "Wrong2",
+        "Wrong3"
+      ]
     },
-    { 
-        "id": 6,
-        "question":"Where can you find cities, towns, shops, and streets but no people?", 
-        "answers":["map", "lego set", "toys", "mars"]
+    {
+      "id": 6,
+      "question": "A mischievous urchin may soon do my first, \nIf he meets with a teapot or ewer.\nMy second bring on us both hunger and thirst.\nMy whole thirst and hunger will cure.",
+      "answers": [
+        "BREAK + FAST = BREAKFAST",
+        "Wrong1",
+        "Wrong2",
+        "Wrong3"
+      ]
     },
-    { 
-        "id": 7,
-        "question":"What gets wetter as it dries?", 
-        "answers":["towel", "tree", "elephant", "dress"]
+    {
+      "id": 7,
+      "question": "My first’s a word comedians dread to hear;\nMy next gives charms to the revolving year.\nMy whole’s the joy of many a happy pair,\nYet ofttimes brings them misery and care.",
+      "answers": [
+        "OFF + SPRING = OFFSPRING",
+        "Wrong1",
+        "Wrong2",
+        "Wrong3"
+      ]
     },
-    { 
-        "id": 8,
-        "question":"What has 88 keys, but cannot open a single door?", 
-        "answers":["piano", "locker", "car", "house"]
+    {
+      "id": 8,
+      "question": "My first is an animal’s coat;\nMany trees in my next you may place.\nMy whole, to your grief, will denote\nThat time has made work with your face.",
+      "answers": [
+        "FUR + ROW = FURROW",
+        "Wrong1",
+        "Wrong2",
+        "Wrong3"
+      ]
     },
-    { 
-        "id": 9,
-        "question":"What gets bigger the more you take away?", 
-        "answers":["hole", "wallet", "house", "candle"]
-    },
-    { 
-        "id": 10,
-        "question":"If you don't keep me, I break. What am I?", 
-        "answers":["promise", "vase", "jewellery", "wallet"]
+    {
+      "id": 9,
+      "question": "Hail! Glorious first, whose beams resplendent rise!\nThou, with my next, art welcome to the skies.\nMy hallowed whole calm consolation brings, \nAnd relaxation from all earthly things.",
+      "answers": [
+        "SUN + DAY = SUNDAY",
+        "Wrong1",
+        "Wrong2",
+        "Wrong3"
+      ]
     }
-]}
+  ]
+}
