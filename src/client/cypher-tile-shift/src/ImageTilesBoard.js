@@ -2,12 +2,10 @@ import React from 'react'
 import {Box} from 'rebass'
 import 'animate.css'
 import './App.css'
-import ladder from './images/background.jpg'
-import cave from './images/cave.jpg'
-import space from './images/space.jpg'
-import rocket from './images/rocket.jpg'
-import planet from './images/planet.jpg'
-import office from './images/office.jpg'
+import frame from './images/Frame.png'
+import needlepoint1 from './images/Needlepoint1.png'
+import needlepoint2 from './images/Needlepoint2.png'
+import needlepoint3 from './images/Needlepoint3.png'
 
 /**
  * Handy way of importing all files in a folder together
@@ -27,20 +25,16 @@ function itemHasValue(key) {
 const mode = localStorage.getItem("4xMode") !== "on" ? 4 : 3;
 const timer = itemHasValue("timer") ? localStorage.getItem("timer") !== "-1" : false;
 
-var caveImages, planetImages, rocketImages, spaceImages, officeImages
+var needlepoint1Images, needlepoint2Images, needlepoint3Images
 
 if (mode === 4) {
-    caveImages = importAll(require.context('./images/cave4x4', false, /\.(png|jpe?g|svg)$/));
-    planetImages = importAll(require.context('./images/planet4x4', false, /\.(png|jpe?g|svg)$/));
-    rocketImages = importAll(require.context('./images/rocket4x4', false, /\.(png|jpe?g|svg)$/));
-    spaceImages = importAll(require.context('./images/space4x4', false, /\.(png|jpe?g|svg)$/));
-    officeImages = importAll(require.context('./images/office4x4', false, /\.(png|jpe?g|svg)$/));
+    needlepoint1Images = importAll(require.context('./images/Needlepoint14x4', false, /\.(png|jpe?g|svg)$/));
+    needlepoint2Images = importAll(require.context('./images/Needlepoint24x4', false, /\.(png|jpe?g|svg)$/));
+    needlepoint3Images = importAll(require.context('./images/Needlepoint34x4', false, /\.(png|jpe?g|svg)$/));
 } else {
-    caveImages = importAll(require.context('./images/cave3x3', false, /\.(png|jpe?g|svg)$/));
-    planetImages = importAll(require.context('./images/planet3x3', false, /\.(png|jpe?g|svg)$/));
-    rocketImages = importAll(require.context('./images/rocket3x3', false, /\.(png|jpe?g|svg)$/));
-    spaceImages = importAll(require.context('./images/space3x3', false, /\.(png|jpe?g|svg)$/));
-    officeImages = importAll(require.context('./images/office3x3', false, /\.(png|jpe?g|svg)$/));
+    needlepoint1Images = importAll(require.context('./images/Needlepoint13x3', false, /\.(png|jpe?g|svg)$/));
+    needlepoint2Images = importAll(require.context('./images/Needlepoint23x3', false, /\.(png|jpe?g|svg)$/));
+    needlepoint3Images = importAll(require.context('./images/Needlepoint33x3', false, /\.(png|jpe?g|svg)$/));
 }
 
 /**
@@ -83,29 +77,21 @@ class Board extends React.Component {
     constructor(props) {
         super(props);
 
-        const imageIdx = Math.floor(Math.random() * 5);
+        const imageIdx = Math.floor(Math.random() * 3); //TODO make this not random
         var imageSet;
         var imagePreview;
         switch (imageIdx) {
             case 0:
-                imageSet = caveImages;
-                imagePreview = cave;
+                imageSet = needlepoint1Images;
+                imagePreview = needlepoint1;
                 break;
             case 1:
-                imageSet = planetImages;
-                imagePreview = planet;
-                break;
-            case 2:
-                imageSet = rocketImages;
-                imagePreview = rocket;
-                break;
-            case 3:
-                imageSet = officeImages;
-                imagePreview = office;
+                imageSet = needlepoint2Images;
+                imagePreview = needlepoint2;
                 break;
             default:
-                imageSet = spaceImages;
-                imagePreview = space;
+                imageSet = needlepoint3Images;
+                imagePreview = needlepoint3;
         }
 
 
@@ -240,12 +226,21 @@ class Board extends React.Component {
         )
     }
 
-    render() {
 
+    render() {
+        const styles = {
+            paperContainer: {
+                backgroundImage: 'url('+frame+')',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+                padding: 100,
+                fontFamily: 'sans-serif',
+            }
+        };
         var mainView;
         if (this.state.active) {
             if (mode === 4) {
-                mainView = <Box
+                mainView = <Box style={styles.paperContainer}
                     sx={{
                         display: 'grid',
                         gridGap: 1,
@@ -258,7 +253,7 @@ class Board extends React.Component {
                         key={tileIdx}>{this.renderTile(tileIdx)}</Box>)}
                 </Box>
             } else {
-                mainView = <Box
+                mainView = <Box style={styles.paperContainer}
                     sx={{
                         display: 'grid',
                         gridGap: 1,
@@ -280,7 +275,7 @@ class Board extends React.Component {
         if (timer)
             return (
                 <div>
-                    <img draggable={false} className="background-image" src={ladder} alt="Echo Games' ladder"/>
+                    {/*<img draggable={false} className="background-image" src={ladder} alt="Echo Games' ladder"/>*/}
                     <Box
                         sx={{
                             maxWidth: 768,
@@ -296,7 +291,7 @@ class Board extends React.Component {
         else
             return (
                 <div>
-                    <img draggable={false} className="background-image" src={ladder} alt="Echo Games' ladder"/>
+                    {/*<img draggable={false} className="background-image" src={ladder} alt="Echo Games' ladder"/>*/}
                     <Box
                         sx={{
                             maxWidth: 768,

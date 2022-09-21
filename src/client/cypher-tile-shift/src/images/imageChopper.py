@@ -32,8 +32,11 @@ def split(image_path, rows, cols, should_cleanup):
 
 
 if __name__ == '__main__':
-    createSplits("cave.jpg")
-    createSplits("rocket.jpg")
-    createSplits("planet.jpg")
-    createSplits("office.jpg")
-    createSplits("space.jpg")
+    createSplits("Needlepoint1.png")
+    createSplits("Needlepoint2.png")
+    createSplits("Needlepoint3.png")
+    # createSplits("cave.jpg")
+    # createSplits("rocket.jpg")
+    # createSplits("planet.jpg")
+    # createSplits("office.jpg")
+    # createSplits("space.jpg")
