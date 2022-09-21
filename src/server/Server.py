@@ -17,12 +17,13 @@ tasks = ["Master the dance", "Solve " + str(limits[2]) + " riddles",
 oldProgress = [-1, -1, -1]
 
 # TODO: Think about how to get a room reset button working effectively
+# Send signal to client which sets localStorage flag to true, then in each of the in game timers, check for flag and if true, trigger restart
 # TODO: Find a way to stream/show screenshots of the player's games on server side
 # TODO: See below, need more stats on main screen
 """
 Per game: Display count of number of players so far
 Per game: Display count of number of attempts
-DOING Per game: Leaderboard with High Score (or shortest session time to solve)
+DONE Per game: Leaderboard with High Score (or shortest session time to solve)
 DONE Per game: current session length
 Per game: current time since new player
 """
