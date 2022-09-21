@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static',filename='styles/style-catch.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}"/>
     <script src="{{ url_for('static',filename='javaScript/jquery.min.js') }}"></script>
     <script src="{{ url_for('static',filename='javaScript/tile-config.js') }}" defer></script>
-    <title>Master the dance!</title>
+    <title>Tile Shift Configuration</title>
 </head>
 <body>
+<h1 class="game-title">Tile Shift Configuration</h1>
 <form id="config-form">
     <label class=" configLabel" for="noToSolve">Number to Solve:</label>
     <input class=" configBox" type="text" id="noToSolve" name="noToSolve">
@@ -30,7 +31,7 @@
     <!--<input class=" configBox" type="checkbox" id="slideMode" name="slideMode">-->
     <!--<br>-->
 
-    <input type="submit" class="" value="Save config"/>
+    <input type="submit" class="submit" value="Save config"/>
 </form>
 </body>
 

@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static',filename='styles/style-catch.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}"/>
     <script src="{{ url_for('static',filename='javaScript/jquery.min.js') }}"></script>
     <script src="{{ url_for('static',filename='javaScript/item-catch-config.js') }}" defer></script>
-    <title>Master the dance!</title>
+    <title>Dance Configuration</title>
 </head>
 <body>
+<h1 class="game-title">Dance Configuration</h1>
+
 <form id="config-form" class="config-form">
     <label class=" configLabel" for="badStep">Bad step probability (%): </label>
     <input class=" configBox" type="text" id="badStep" name="badStep">
@@ -29,10 +31,10 @@
     <label class=" configLabel" for="fadeOut">Disable fade out</label>
     <input class=" configBox" type="checkbox" id="fadeOut" name="fadeOut">
     <br>
-<!--    <label class=" configLabel" for="debug">Debug</label>-->
-<!--    <input class=" configBox" type="checkbox" id="debug" name="debug">-->
-<!--    <br>-->
-    <input type="submit" class="" value="Save config"/>
+    <!--    <label class=" configLabel" for="debug">Debug</label>-->
+    <!--    <input class=" configBox" type="checkbox" id="debug" name="debug">-->
+    <!--    <br>-->
+    <input type="submit" class="submit" value="Save config"/>
 </form>
 </body>
 

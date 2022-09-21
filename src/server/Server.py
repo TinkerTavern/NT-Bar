@@ -12,7 +12,7 @@ limits = [20, 3, 3]
 players = ["", "", ""]
 msgAppend = ["", "", ""]
 taskOpts = ["danceScores", "riddleScores", "puzzleScores"]
-tasks = ["Master the dance", "Solve " + str(limits[2]) + " riddles",
+tasks = ["Master the dance", "Solve " + str(limits[2]) + " charades",
          "Solve " + str(limits[1]) + " sliding puzzles"]
 oldProgress = [-1, -1, -1]
 

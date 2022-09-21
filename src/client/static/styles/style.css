@@ -204,6 +204,9 @@ span, #snake-count, #steps-left, #stepper, img {
     text-transform: uppercase;
 }
 
+input {
+    background-color: #adaccd;
+}
 
 .submit {
     width: 12.5%;

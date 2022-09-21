@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static',filename='styles/style-catch.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}"/>
     <script src="{{ url_for('static',filename='javaScript/jquery.min.js') }}"></script>
     <script src="{{ url_for('static',filename='javaScript/riddle-config.js') }}" defer></script>
-    <title>Master the dance!</title>
+    <title>Charades Configuration</title>
 </head>
 <body>
+<h1 class="game-title">Charades Configuration</h1>
 <form id="config-form">
     <label class=" configLabel" for="noToSolve">Riddle order (comma separated numbers, 0-8):</label>
     <input class=" configBox" type="text" id="noToSolve" name="noToSolve">
@@ -38,7 +39,7 @@
     <label class=" configLabel" for="multipleChoiceChoices">Choices Displayed (up to 4):</label>
     <input class=" configBox" type="text" id="multipleChoiceChoices" name="multipleChoiceChoices">
     <br>
-    <input type="submit" class="" value="Save config"/>
+    <input type="submit" class="submit" value="Save config"/>
 </form>
 </body>
 
