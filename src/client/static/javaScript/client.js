@@ -21,6 +21,11 @@ function setAddr() {
             alert("Server address not changed, server not found")
         }
     });
+    $.ajax({
+        type: 'GET',
+        url: url + "/get-ip",
+        dataType: 'json',
+    });
 }
 
 function clearConfigs() {

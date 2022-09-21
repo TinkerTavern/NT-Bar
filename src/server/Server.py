@@ -43,10 +43,19 @@ def get_ip():
     print(IP)
     return IP
 
+@app.route('/ping')
+def ping():
+    return jsonify(ping="pong")
 
 @app.route('/')
 def hello_world():
     return render_template("server.html", ip=get_ip())
+
+
+@app.route("/get-ip", methods=["GET"])
+def get_my_ip():
+    print(request.remote_addr)
+    return jsonify({'ip': request.remote_addr}), 200
 
 
 @app.route("/update", methods=["POST"])
@@ -75,7 +84,7 @@ def submit_score():
         time = request.json.get("time")
     file = join(dirname(realpath(__file__)), "static/leaders/" + taskOpts[int(taskID)] + ".leaders")
     leaderboard = []
-    print(user,time)
+    print(user, time)
     import csv
     with open(file, 'r') as f:
         reader = csv.reader(f)
@@ -90,7 +99,7 @@ def submit_score():
     print(leaderboard)
     with open(file, 'w') as f:
         for entry in leaderboard:
-            f.write(entry[0]+","+str(entry[1])+"\n")
+            f.write(entry[0] + "," + str(entry[1]) + "\n")
     return jsonify(success=True)
 
 
@@ -141,7 +150,6 @@ def reset_tasks():
     for i in range(len(progress)):
         progress[i] = 0
         oldProgress[i] = 0
-    print("kkk")
     return "Success"
 
 

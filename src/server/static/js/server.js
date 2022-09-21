@@ -64,7 +64,6 @@ function resetRoom() {
         dataType: 'json',
     });
     tid = setInterval(loadTaskInfo, 1000);
-
 }
 
 function checkProgress(scores, limits) {
