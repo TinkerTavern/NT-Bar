@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
-import { Board } from './ImageTilesBoard'
-import { Cypher } from './Cypher'
+import {Board} from './ImageTilesBoard'
+import {Cypher} from './Cypher'
 
 class Game extends React.Component {
 
@@ -26,7 +26,7 @@ class Game extends React.Component {
 					onFailure={ () => this.props.onPlayerFailed () }
 					timeToComplete = {30}
 					showImagePreview={false}
-					imagePreviewTime={1}
+					imagePreviewTime={0.5}
 				/> :
 				<Cypher 
 					timeToComplete={30}

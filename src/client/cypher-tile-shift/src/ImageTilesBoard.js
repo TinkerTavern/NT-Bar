@@ -139,6 +139,16 @@ class Board extends React.Component {
         }, this.props.imagePreviewTime * 1000);
     }
 
+    showImagePostview() {
+        // Show the image preview for a set number of seconds
+        this.state.active = false;
+        setTimeout(() => {
+            animateCSS('.image-preview', 'fadeOut').then((message) => {
+                this.props.onSolution()
+            });
+        }, this.props.imagePreviewTime * 1000);
+    }
+
     componentDidMount() {
         // Randomize the tile list
         let tilesArr = this.state.tiles;
@@ -207,7 +217,11 @@ class Board extends React.Component {
     checkSolution() {
         var isAscending = a => a.slice(1).every(this.getCondition(a));
         if (isAscending(this.state.tiles)) {
-            this.props.onSolution()
+            if (localStorage.getItem("postview") !== "on") {
+                this.showImagePostview()
+            } else {
+                this.props.onSolution()
+            }
         }
     }
 
