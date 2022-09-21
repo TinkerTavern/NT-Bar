@@ -1,8 +1,4 @@
-body{
-    background: #3a3838;
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-}
+
 .title{
     text-align: center;
     padding: 2px;
@@ -83,4 +79,220 @@ body{
 .scrollbar-hidden {
   -ms-overflow-style: none;
   scrollbar-width: none; /* Firefox */
+}
+body {
+    background: white;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: sans-serif;
+}
+
+/*@font-face {*/
+/*    font-family: 'Quicksand';*/
+/*    font-style: normal;*/
+/*    font-weight: 400;*/
+/*    font-display: swap;*/
+/*    size-adjust: 150%;*/
+/*    src: url(ChopinScript.ttf) format('truetype');*/
+/*    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;*/
+/*}*/
+
+/*@font-face {*/
+/*    font-family: 'Quicksand';*/
+/*    font-style: normal;*/
+/*    font-weight: 600;*/
+/*    font-display: swap;*/
+/*    size-adjust: 200%;*/
+/*    src: url(ChopinScript.ttf) format('truetype');*/
+/*    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;*/
+/*}*/
+
+.configLabel {
+    font-size: xx-large;
+}
+
+.configBox {
+    font-size: xx-large;
+}
+
+
+button {
+    font-size: xxx-large;
+    border-radius: 5px;
+}
+
+/* VIEW 1 - GAME INSTRUCTIONS */
+
+#view-1 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    /*overflow-y: hidden;*/
+}
+
+.background-image {
+    width: 100vw;
+    height: 100vh;
+}
+
+.game-title {
+    padding-top: 5vh;
+    font-size: xxx-large;
+    width: 90vw;
+}
+
+.center {
+    margin-left: 50%;
+    transform: translate(-50%, 0);
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    text-align: center;
+}
+
+.instructions {
+    font-size: xx-large;
+    margin-block: 10vh;
+    line-height: 150%;
+    color: white;
+    background-color: rgba(25, 25, 0, 0.4);
+}
+
+.play {
+    width: 50vh;
+    height: 50vh;
+    background: #37375d;
+    border-radius: 50%;
+    color: white;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.win-lose {
+    width: 90vw;
+    margin-block: 10vh;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+/* VIEW 2 - GAME */
+
+#view-2 {
+    position: absolute;
+    top: 0px;
+    left: -100vw;
+    width: 100vw;
+    height: 100vh;
+    /*overflow-y: hidden;*/
+}
+
+.submit {
+    width: 12.5%;
+    margin-top: 1%;
+    font-size: x-large;
+}
+
+
+.timer {
+    background: black;
+    color: white;
+    padding-block: 4vh;
+    padding-inline: 7vw;
+    width: 86vw;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.timer p {
+    margin: 0;
+    padding: 0;
+}
+
+.step-container {
+    width: 100vw;
+    height: 80vh;
+}
+
+.step-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10vw;
+    padding: 5vw;
+    transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+}
+
+
+#snake-count {
+    display: flex;
+    align-items: center;
+}
+
+#snake-count img {
+    width: 7vw;
+    max-width: 50px;
+    margin-left: 3vw;
+    transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+}
+
+/* VIEW 3 - RESULT */
+
+#view-3 {
+    display: none;
+}
+
+.non-interact {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+#win-lose-messages {
+    margin-top: 50vh;
+    transform: translate(0%, -55%);
+    -webkit-transform: translate(0%, -55%);
+    -moz-transform: translate(0%, -55%);
+    -o-transform: translate(0%, -55%);
+    -ms-transform: translate(0%, -55%);
+    width: 100vw;
+    color: white;
+    padding-block: 7vh;
+    box-shadow: 0px 4px 11px -5px rgba(0, 0, 0, 0.8);
+}
+
+.win-lose-start {
+    font-size: 1.5rem;
+    line-height: 150%;
+    width: 80vw;
+}
+
+.win-lose-result {
+    font-size: 1.5rem;
+    line-height: 150%;
+    width: 90vw;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+}
+
+#win-lose-messages img {
+    width: 20vw;
+    max-width: 70px;
 }
