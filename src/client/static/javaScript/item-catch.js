@@ -180,13 +180,13 @@ let gameResult = () => {
         $('#win-lose-messages').css('background', winColor);
         winMessageStart = winMessageStartArray[Math.floor(Math.random() * winMessageStartArray.length)];
         $('.win-lose-start').text(winMessageStart);
-        document.getElementById("restartButton").style.visibility = "hidden"
+        document.getElementById("restartButton").style.display = "none"
         submitScore()
     } else {
         $('#win-lose-messages').css('background', loseColor);
         $('.win-lose-start').text(loseMessageStartArray[Math.floor(Math.random() * loseMessageStartArray.length)] +
             " Score: " + stepsHit + "/" + scoreGoal)
-        document.getElementById("winButton").style.visibility = "hidden"
+        document.getElementById("winButton").style.display = "none"
 
     }
     $('#view-3').fadeIn();

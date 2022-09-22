@@ -43,7 +43,7 @@
     <img class="person" src="{{ url_for('static',filename='images/snake-long.png') }}"/>
     <h1 class="game-title">Charades</h1>
     <p></p>
-    <p class="instructions">Solve <soan id="riddleCount"></soan> riddles within <soan id="timer-length"></soan> seconds to win.
+    <p class="instructions">Solve <span id="riddleCount"></span> riddles within <span id="timer-length"></span> seconds to win.
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eleifend luctus nisl, in porttitor mauris.
 Sed id quam mauris. Mauris est enim, ultrices nec dolor a, rhoncus cursus risus.
 
@@ -66,8 +66,7 @@ Ut nulla erat, elementum ac ornare ut, congue a neque. Maecenas pulvinar metus i
     <div class="win-lose-messages" id="win-lose-messages">
         <p class="win-lose-start center"></p>
         <p class="win-lose-result center"></p>
-        <button class="submit center" onclick="cont()">Continue</button>
-        <!--            <img class="center" src="images/riddle.png"/>-->
+        <button class="submit" onclick="cont()">Continue</button>
     </div>
 </section>
 

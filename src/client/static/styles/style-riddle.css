@@ -13,8 +13,9 @@
 .option {
     text-align: center;
     text-transform: capitalize;
-    font-family: sans-serif;
-    background: #adaccd;
+    background: #545c9c;
+    color: white;
+    width: 20%;
 
 }
 
@@ -48,8 +49,7 @@
 }
 
 .riddle {
-    /*font-family: 'Architects Daughter', cursive;*/
-    font-family: sans-serif;
+    background-color: #adaccd;
     font-size: 2rem;
     width: 80vw;
     margin-block: 14vh;
@@ -66,7 +66,7 @@
 }
 
 .answerLabel2 {
-    margin-left: 45%;
+    margin-left: 0%;
 }
 
 #right, #wrong {

@@ -1,3 +1,14 @@
+@font-face {
+    font-family: Kalam;
+    src: url(Kalam.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'PassionsConflict';
+    font-weight: 500;
+    src: url(PassionsConflict.ttf) format('truetype');
+}
+
 body {
     background: white;
     overflow: hidden;
@@ -5,6 +16,11 @@ body {
 
 .App {
     text-align: center;
+}
+
+* {
+    background-color: #bc9464;
+    font-family: Kalam;
 }
 
 .App-header {
@@ -44,7 +60,6 @@ button {
     padding: 5px;
     align-content: center;
     margin-left: 10%;
-    font-family: sans-serif;
 }
 
 .non-interact {
@@ -110,7 +125,6 @@ button {
     letter-spacing: 0.5rem;
     text-align: center;
     text-transform: uppercase;
-    font-family: sans-serif;
 }
 
 input:focus {
@@ -119,7 +133,6 @@ input:focus {
 
 .cypher-submit {
     font-size: 1.2rem;
-    font-family: sans-serif;
     background: #37375d;
     color: white;
     padding-inline: 0.8rem;
@@ -136,7 +149,6 @@ input:focus {
 .boxy {
     font-size: xxx-large;
 }
-
 
 
 #win-message, #lose-message {

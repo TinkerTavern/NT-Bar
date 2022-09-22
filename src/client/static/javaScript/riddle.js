@@ -223,12 +223,12 @@ function finalScreen() {
     if (won == riddlesToWin) {
         $('.win-lose-messages').css('background', winColor);
         $('.win-lose-start').text(winWinMessageStartArray[Math.floor(Math.random() * winWinMessageStartArray.length)]);
-        document.getElementById("restartButton").style.visibility = "hidden"
+        document.getElementById("restartButton").style.display = "none"
         submitScore();
     } else {
         $('.win-lose-messages').css('background', loseColor);
         $('.win-lose-start').text(loseLoseMessageStartArray[Math.floor(Math.random() * loseLoseMessageStartArray.length)] + " Score: " + won + "/" + riddlesToWin)
-        document.getElementById("winButton").style.visibility = "hidden"
+        document.getElementById("winButton").style.display = "none"
 
     }
     submitResult();
