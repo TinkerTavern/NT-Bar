@@ -23,6 +23,7 @@
 
     <p class="riddle center"></p>
     <div id="textEntry">
+        <img class="person" src="{{ url_for('static',filename='images/snake-long.png') }}"/>
         <label class="center answerLabel answerLabel2" for="answer">Your Answer:</label>
         <input class="center answerBox" type="text" id="answer" name="answer">
         <input class="center submit" id="submitButton" type="button" value="Submit" onclick="answerWritten();"/>
@@ -38,21 +39,25 @@
     </div>
 </section>
 
-<section id="view-1">
-    <h1 class="game-title center">Charades</h1>
-    <p class="instructions center">
-        Solve
-        <soan id="riddleCount"></soan>
-        riddles within
-        <soan id="timer-length"></soan>
-        seconds to win
+<section class="intro-grid" id="view-1">
+    <img class="person" src="{{ url_for('static',filename='images/snake-long.png') }}"/>
+    <h1 class="game-title">Charades</h1>
+    <p></p>
+    <p class="instructions">Solve <soan id="riddleCount"></soan> riddles within <soan id="timer-length"></soan> seconds to win.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eleifend luctus nisl, in porttitor mauris.
+Sed id quam mauris. Mauris est enim, ultrices nec dolor a, rhoncus cursus risus.
+
+Suspendisse lacinia diam ac enim imperdiet, nec ullamcorper neque posuere.
+
+Ut nulla erat, elementum ac ornare ut, congue a neque. Maecenas pulvinar metus ipsum, ac vestibulum elit vestibulum non.
     </p>
+    <p></p>
     <div class="name">
-        <label class="answerLabel" for="userName">Your Name:  </label>
+        <label class="answerLabel" for="userName">Your Name: </label>
         <input class="answerBox" type="text" id="userName" name="answer">
     </div>
-    <div class="play center">Play!</div>
-    <div class="win-lose center">
+    <div class="play">Play!</div>
+    <div class="win-lose">
     </div>
 </section>
 

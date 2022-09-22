@@ -63,9 +63,8 @@ body {
 }
 
 .game-title {
-    padding-top: 5vh;
     font-size: xxx-large;
-    width: 90vw;
+    text-align: center;
 }
 
 .center {
@@ -78,11 +77,29 @@ body {
     text-align: center;
 }
 
+
 .instructions {
     font-size: xx-large;
     margin-block: 6vh;
-    width: 80vw;
     line-height: 150%;
+    grid-row: auto / span 3;
+    white-space: pre-wrap;
+    text-align: justify;
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: 25% 45% 25%;
+    /*grid-template-rows: 20% 35% 30%;*/
+    grid-gap: 3em 3em;
+    grid-auto-flow: row dense;
+}
+
+.person {
+    object-fit: contain;
+    grid-row: auto /span 4;
+    width: 25vw;
+    height: 100vh;
 }
 
 .play {
@@ -97,6 +114,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: auto;
 }
 
 .win-lose {

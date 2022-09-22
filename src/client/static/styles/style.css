@@ -15,9 +15,6 @@
     left: 0;
 }
 
-.name {
-    margin-left: 35%;
-}
 
 .console {
     width: 100%;
@@ -94,6 +91,7 @@
 * {
     background-color: #bc9464;
     font-family: sans-serif;
+    text-align: center;
 }
 
 body {
@@ -143,9 +141,8 @@ button {
 }
 
 .game-title {
-    padding-top: 5vh;
     font-size: xxx-large;
-    width: 90vw;
+    text-align: center;
 }
 
 .answerBox {
@@ -176,12 +173,6 @@ span, #snake-count, #steps-left, #stepper, img {
     background-color: rgba(0, 0, 0, 0);
 }
 
-.instructions {
-    font-size: xx-large;
-    margin-block: 6vh;
-    line-height: 150%;
-}
-
 .play {
     width: 30vh;
     height: 30vh;
@@ -194,8 +185,8 @@ span, #snake-count, #steps-left, #stepper, img {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: auto;
 }
-
 
 .win-lose {
     width: 90vw;
@@ -203,6 +194,7 @@ span, #snake-count, #steps-left, #stepper, img {
     font-size: 1.2rem;
     text-transform: uppercase;
 }
+
 
 input {
     background-color: #adaccd;
@@ -213,6 +205,30 @@ input {
     margin-top: 1%;
     font-size: x-large;
     background-color: #adaccd;
+}
+
+.instructions {
+    font-size: xx-large;
+    margin-block: 6vh;
+    line-height: 150%;
+    grid-row: auto / span 3;
+    white-space: pre-wrap;
+    text-align: justify;
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: 25% 45% 25%;
+    /*grid-template-rows: 20% 35% 30%;*/
+    grid-gap: 3em 3em;
+    grid-auto-flow: row dense;
+}
+
+.person {
+    object-fit: contain;
+    grid-row: auto /span 4;
+    width: 25vw;
+    height: 100vh;
 }
 
 .non-interact {
