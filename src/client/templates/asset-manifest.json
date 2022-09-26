@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "./static/css/main.0d35f019.css",
+    "main.css": "./static/css/main.87ec467e.css",
     "main.js": "./static/js/main.cc467f02.js",
     "static/js/787.c745ff56.chunk.js": "./static/js/787.c745ff56.chunk.js",
     "static/media/Needlepoint2.png": "./static/media/Needlepoint2.191d2bd7af15b90e17e4.png",
@@ -59,12 +59,12 @@
     "static/media/Needlepoint2_m.png": "./static/media/Needlepoint2_m.df51fb28e629f017e607.png",
     "static/media/ladder.png": "./static/media/ladder.afa1704555c87647f722.png",
     "index.html": "./index.html",
-    "main.0d35f019.css.map": "./static/css/main.0d35f019.css.map",
+    "main.87ec467e.css.map": "./static/css/main.87ec467e.css.map",
     "main.cc467f02.js.map": "./static/js/main.cc467f02.js.map",
     "787.c745ff56.chunk.js.map": "./static/js/787.c745ff56.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0d35f019.css",
+    "static/css/main.87ec467e.css",
     "static/js/main.cc467f02.js"
   ]
 }
