@@ -18,7 +18,7 @@ url = "http://" + url + ":3000"
 let progress = itemHasValue("charadesProgress") ? parseInt(localStorage.getItem("charadesProgress")) : 0;
 let multipleChoice = localStorage.getItem("multiChoice");
 let timerLength = itemHasValue("timeToSolve") ? localStorage.getItem("timeToSolve") : 60;
-let riddleOrder = itemHasValue("orderToSolve") ? countNums("orderToSolve") : 3;
+let riddleOrder = itemHasValue("orderToSolve") ? countNums("orderToSolve") : [0,7,5,6,8,2,1,4,3];
 let riddlesToWin = itemHasValue("noToSolve") ? localStorage.getItem("noToSolve") : 3;
 let multiChoiceAnswerCount = itemHasValue("multipleChoiceChoices") ? localStorage.getItem("multipleChoiceChoices") : 3;
 
@@ -79,16 +79,17 @@ input.addEventListener("keypress", function (event) {
 
 const setRiddle = () => {
     // Get local storage value for id
-    if (typeof (Storage) !== "undefined") {
-        riddleId = localStorage.getItem("riddle-id");
-        if (riddleId === null) {
-            riddleId = 1;
-        } else {
-            riddleId = parseInt(riddleId);
-        }
-    } else {
-        riddleId = Math.floor(Math.random * 8 + 1);
-    }
+    riddleId = riddleOrder[progress]+1
+    // if (typeof (Storage) !== "undefined") {
+    //     riddleId = localStorage.getItem("riddle-id");
+    //     if (riddleId === null) {
+    //         riddleId = 1;
+    //     } else {
+    //         riddleId = parseInt(riddleId);
+    //     }
+    // } else {
+    //     riddleId = Math.floor(Math.random * 8 + 1);
+    // }
     fetchRiddle(riddleId).then((riddle) => {
         $('.riddle').text(riddle.question);
         if (multipleChoice === "on")

@@ -20,7 +20,8 @@ class Game extends React.Component {
 	render () {
 		return (
 				this.props.game === 'puzzle_shift' ? 
-				<Board 
+				<Board
+					gamesWon={this.props.gamesWon}
 					onSolution={ () => this.props.onPlayerSolved () } 
 					onContinue ={ () => this.props.continue () }
 					onFailure={ () => this.props.onPlayerFailed () }

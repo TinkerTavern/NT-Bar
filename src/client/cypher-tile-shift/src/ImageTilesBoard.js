@@ -79,7 +79,7 @@ class Board extends React.Component {
     constructor(props) {
         super(props);
 
-        const imageIdx = Math.floor(Math.random() * 3); //TODO make this not random
+        const imageIdx = this.props.gamesWon; //TODO make this not random
         var imageSet;
         var imagePreview;
         switch (imageIdx) {

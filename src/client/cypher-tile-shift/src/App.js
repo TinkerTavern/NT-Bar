@@ -112,6 +112,7 @@ class App extends React.Component {
             this.startPuzzleTimer()
             artefact = <Game
                 game={GAME_TO_BUILD}
+                gamesWon={this.state.gamesWon}
                 onPlayerSolved={() => this.playerSolved()}
                 onPlayerFailed={() => this.playerFailed()}
             />
