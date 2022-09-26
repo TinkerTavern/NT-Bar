@@ -190,8 +190,18 @@ input:focus {
 }
 
 .photo {
-    width: 20vw;
+    width: 240vw;
     height: auto;
+}
+
+.threeTile {
+    height: 25vh;
+
+}
+
+.fourTile {
+    height: 20vh;
+
 }
 
 .image-preview {
@@ -201,4 +211,23 @@ input:focus {
 
 .animate__animated.animate__fadeOut {
     --animate-duration: 1.5s;
+}
+
+.tileGrid {
+    background-image: url(images/Frame.png);
+    display: grid;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50vw;
+    height: 50vw;
+}
+
+.three {
+    padding: 135px;
+
+}
+
+.four {
+    padding: 100px;
+
 }

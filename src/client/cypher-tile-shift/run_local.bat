@@ -11,21 +11,6 @@ IF not exist "build" (
   mkdir "build"
 )
 cd "build" || exit
-npm run build
-IF "%~1"="1" (
-  IF "-f" "..\..\templates\tile-shift.html" (
-    DEL  "..\..\templates\tile-shift.html"
-  )
-  mv .\index.html .\cypher.html
-) ELSE (
-  IF "-f" "..\..\templates\cypher.html" (
-    DEL  "..\..\templates\cypher.html"
-  )
-  mv .\index.html .\tile-shift.html
-)
-rm -r ..\..\static\css
-rm -r ..\..\static\js
-rm -r ..\..\static\media
-mv .\static\* ..\..\static\
-rmdir .\static
-mv -Force .\* ..\..\templates\
+call npm run build
+cd ..
+python .\moveFiles.py

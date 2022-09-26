@@ -59,6 +59,8 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
     });
 
 class Tile extends React.Component {
+    tileName = mode === 3 ? "threeTile" : "fourTile";
+
     render() {
         return (
             <button
@@ -67,7 +69,7 @@ class Tile extends React.Component {
                     this.props.onClick()
                 }}
             >
-                <img draggable={false} src={this.props.tileImage} alt={this.props.alt}/>
+                <img className={this.tileName} draggable={false} src={this.props.tileImage} alt={this.props.alt}/>
             </button>
         );
     }
@@ -228,40 +230,33 @@ class Board extends React.Component {
 
 
     render() {
-        const styles = {
-            paperContainer: {
-                backgroundImage: 'url('+frame+')',
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: 'cover',
-                padding: 100,
-                fontFamily: 'sans-serif',
-            }
-        };
         var mainView;
         if (this.state.active) {
             if (mode === 4) {
-                mainView = <Box style={styles.paperContainer}
-                    sx={{
-                        display: 'grid',
-                        gridGap: 1,
-                        gridTemplateColumns: [
-                            'repeat(4, 1fr)',
-                            'repeat(4, 1fr)'
-                        ],
-                    }}>
+                mainView = <Box className={"tileGrid four"}
+                                sx={{
+                                    display: 'grid',
+                                    gridTemplateColumns: [
+                                        'repeat(4, 1fr)',
+                                        'repeat(4, 1fr)'
+                                    ],
+                                    marginLeft: "25%",
+                                    marginTop: "-2%",
+                                }}>
                     {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((tileIdx) => <Box
                         key={tileIdx}>{this.renderTile(tileIdx)}</Box>)}
                 </Box>
             } else {
-                mainView = <Box style={styles.paperContainer}
-                    sx={{
-                        display: 'grid',
-                        gridGap: 1,
-                        gridTemplateColumns: [
-                            'repeat(3, 1fr)',
-                            'repeat(3, 1fr)'
-                        ],
-                    }}>
+                mainView = <Box className={"tileGrid three"}
+                                sx={{
+                                    display: 'grid',
+                                    gridTemplateColumns: [
+                                        'repeat(3, 1fr)',
+                                        'repeat(3, 1fr)'
+                                    ],
+                                    marginLeft: "25%",
+                                    marginTop: "-2%",
+                                }}>
                     {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((tileIdx) => <Box
                         key={tileIdx}>{this.renderTile(tileIdx)}</Box>)}
                 </Box>
