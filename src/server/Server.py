@@ -5,13 +5,14 @@ from flask import Flask, render_template, request, jsonify, flash
 from flask_cors import CORS
 
 app = Flask(__name__)
-cors = CORS(app)
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 app.config['CORS_HEADERS'] = 'Content-Type'
 progress = [0, 0, 0]
 limits = [3, 3, 3]
 players = ["", "", ""]
-lastPlayers = ["", "", ""]
-playerCount = [0, 0, 0]
+lastPlayers = [[""], [""], [""]]
+totalAttempts = [0, 0, 0]
+uniqueAttempts = [0, 0, 0]
 msgAppend = ["", "", ""]
 taskOpts = ["danceScores", "charadesScores", "needlepointScores"]
 tasks = ["Master the dance!", "Solve the charades!",
@@ -65,42 +66,39 @@ def get_my_ip():
 @app.route("/update", methods=["POST"])
 def update_task():
     limit = request.form.get("limit")
-    taskID = request.form.get("task")
+    taskID = int(request.form.get("task"))
     progressVal = request.form.get("progress")
     if taskID is None:
         limit = request.json.get("limit")
-        taskID = request.json.get("task")
+        taskID = int(request.json.get("task"))
         progressVal = request.json.get("progress")
     if limit is not None:
-        limits[int(taskID)] = limit
-    progress[int(taskID)] = progressVal
+        limits[taskID] = limit
+    progress[taskID] = progressVal
     return jsonify(success=True)
 
 
 @app.route("/submit", methods=["POST"])
 def submit_score():
     user = request.form.get("user")
-    taskID = request.form.get("task")
+    taskID = int(request.form.get("task"))
     time = request.form.get("time")
     if taskID is None:
         user = request.json.get("user")
-        taskID = request.json.get("task")
+        taskID = int(request.json.get("task"))
         time = request.json.get("time")
-    file = join(dirname(realpath(__file__)), "static/leaders/" + taskOpts[int(taskID)] + ".leaders")
+    file = join(dirname(realpath(__file__)), "static/leaders/" + taskOpts[taskID] + ".leaders")
     leaderboard = []
-    print(user, time)
     import csv
     with open(file, 'r') as f:
         reader = csv.reader(f)
         for row in reader:
             leaderboard.append(row)
-    print(leaderboard)
     for i, entry in enumerate(leaderboard):
         if (taskID == 2 and int(time) < int(entry[1])) or int(time) > int(entry[1]):
             leaderboard.insert(i, [user, time])
             del leaderboard[-1]
             break
-    print(leaderboard)
     with open(file, 'w') as f:
         for entry in leaderboard:
             f.write(entry[0] + "," + str(entry[1]) + "\n")
@@ -110,19 +108,22 @@ def submit_score():
 @app.route("/set-user", methods=["POST"])
 def set_user():
     user = request.form.get("user")
-    taskID = request.form.get("task")
+    taskID = int(request.form.get("task"))
     if taskID is None:
         user = request.json.get("user")
-        taskID = request.json.get("task")
-    if user == "" and players[int(taskID)] != "":
-        lastPlayers[int(taskID)] = players[int(taskID)]
-    players[int(taskID)] = user
+        taskID = int(request.json.get("task"))
+    lastPlayer = players[taskID]
+    if lastPlayer not in lastPlayers[taskID]:
+        lastPlayers[taskID].insert(0, lastPlayer)
+    if user != lastPlayers[taskID][0] and user != "":
+        uniqueAttempts[taskID] = uniqueAttempts[taskID] + 1
+    players[taskID] = user
     for i, player in enumerate(players):
         if player != "":
             msgAppend[i] = " \n" + player
-            playerCount[i] = playerCount[i] + 1
+            totalAttempts[i] = totalAttempts[i] + 1
         elif lastPlayers[i] != "":
-            msgAppend[i] = "\n" + lastPlayers[i]  # Else show how long since that player played
+            msgAppend[i] = "\n" + lastPlayers[i][0]  # Else show how long since that player played
         else:
             msgAppend[i] = ""
 
@@ -150,7 +151,7 @@ def index():
         todoList = dict()
         for i, task in enumerate(tasksArr):
             todoList[i] = task["task"] + msgAppend[i]
-    return jsonify(list=todoList, scores=progress, limits=limits, playerCount=playerCount)
+    return jsonify(list=todoList, scores=progress, limits=limits, attempts=totalAttempts, playerCount=uniqueAttempts)
 
 
 @app.route('/reset-tasks', methods=["POST"])

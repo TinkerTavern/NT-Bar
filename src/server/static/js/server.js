@@ -1,5 +1,6 @@
 progress = [0, 0, 0];
 timers = [0, 0, 0];
+var attempts = [0,0,0];
 var playerCount = [0,0,0];
 playing = [false, false, false]
 paused = [false, false, false]
@@ -114,13 +115,17 @@ function loadTaskInfo() {
         dataType: 'json',
         success: function (response) {
             var toDoItems = response['list'];
+            attempts = response['attempts'];
             playerCount = response['playerCount'];
             if (toDoItems === "old")
                 return;
             var ids = ["dance", "riddle", "puzzle"]
             var count = Object.keys(toDoItems).length;
             for (var i = 0; i < count; i++) {
-                var playedSoFar = "\n " + playerCount[i] + " people have played so far."
+                var att = attempts[i] !== 1? " attempts have" : " attempt has"
+                var attemptsText = "\n " + attempts[i] + att + " been made so far, by "
+                var ply =  playerCount[i] !== 1? " different players." : " player."
+                var playersPlayed = playerCount[i] + ply
                 var item = toDoItems[i.toString()];
                 timers[i]++
                 if (item.includes("! ")) {
@@ -131,9 +136,9 @@ function loadTaskInfo() {
                     var secs = timers[i] % 60 === 1 ? " second." : " seconds.";
                     if (timers[i] >= 60) {
                         var mins = Math.floor(timers[i] / 60) === 1 ? "minute and " : " minutes and ";
-                        item += " has been playing for " + Math.floor(timers[i] / 60) + mins + timers[i] % 60 + secs + playedSoFar
+                        item += " has been playing for " + Math.floor(timers[i] / 60) + mins + timers[i] % 60 + secs + attemptsText + playersPlayed
                     } else
-                        item += " has been playing for " + timers[i] + secs + playedSoFar
+                        item += " has been playing for " + timers[i] + secs + attemptsText + playersPlayed
                 } else if (item.includes("!\n")) {
                     if (playing[i]) {
                         timers[i] = 0
@@ -141,10 +146,10 @@ function loadTaskInfo() {
                     }
                     var secs = timers[i] % 60 === 1 ? " second ago." : " seconds ago.";
                     if (timers[i] >= 60) {
-                        var mins = Math.floor(timers[i] / 60) === 1 ? "minute and " : " minutes and ";
-                        item += " last played " + Math.floor(timers[i] / 60) + mins + timers[i] % 60 + secs + playedSoFar
+                        var mins = Math.floor(timers[i] / 60) === 1 ? " minute and " : " minutes and ";
+                        item += "Last played " + Math.floor(timers[i] / 60) + mins + timers[i] % 60 + secs + attemptsText + playersPlayed
                     } else
-                        item += " last played " + timers[i] + playedSoFar
+                        item += "Last played " + timers[i] + secs + attemptsText + playersPlayed
                 } else {
                     item += "\nNot played yet"
                 }
