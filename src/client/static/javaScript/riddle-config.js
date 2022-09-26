@@ -8,4 +8,7 @@ function submitForm(e) {
     localStorage.setItem("timeToSolve", formProps["timeToSolve"])
     localStorage.setItem("multipleChoiceChoices", formProps["multipleChoiceChoices"])
     localStorage.setItem("multiChoice", formProps["multiChoice"])
+    e.preventDefault()
+    alert("Changes saved successfully")
+    window.location.href = "/riddle";
 }

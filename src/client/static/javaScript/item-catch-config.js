@@ -11,4 +11,7 @@ function submitForm(e) {
     localStorage.setItem("timeOn", formProps["timeOn"])
     localStorage.setItem("fadeOut", formProps["fadeOut"])
     localStorage.setItem("debug", formProps["debug"])
+    e.preventDefault()
+    alert("Changes saved successfully")
+    window.location.href = "/item-catch";
 }
