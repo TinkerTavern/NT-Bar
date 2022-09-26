@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
     tid = setInterval(loadTaskInfo, 1000);
 }, false);
 loadTaskInfo();
+loadLeaderboard("danceScores")
+loadLeaderboard("charadesScores")
+loadLeaderboard("needlepointScores")
 
 function getVal(val) {
     console.log("Server IP = " + val)
@@ -41,20 +44,20 @@ function danceLeaderboard() {
 
 function riddleLeaderboard() {
     leaderboards[1] = !leaderboards[1];
-    loadLeaderboard("riddleScores")
+    loadLeaderboard("charadesScores")
     if (leaderboards[1])
-        $('#riddleScores').fadeIn();
+        $('#charadesScores').fadeIn();
     else
-        $('#riddleScores').fadeOut();
+        $('#charadesScores').fadeOut();
 }
 
 function puzzleLeaderboard() {
     leaderboards[2] = !leaderboards[2];
-    loadLeaderboard("puzzleScores")
+    loadLeaderboard("needlepointScores")
     if (leaderboards[2])
-        $('#puzzleScores').fadeIn();
+        $('#needlepointScores').fadeIn();
     else
-        $('#puzzleScores').fadeOut();
+        $('#needlepointScores').fadeOut();
 }
 
 function resetRoom() {
@@ -73,7 +76,7 @@ function checkProgress(scores, limits) {
     for (let i = 0; i < scores.length; i++) {
         for (let j = 0; j < limits.length; j++) {
             if (j >= Math.floor(((scores[i] / limits[i]) / 0.333333)))
-                document.getElementById(images[i][j]).style.filter = "opacity(1) grayscale(1) blur(15px)";
+                document.getElementById(images[i][j]).style.filter = "opacity(1) blur(15px) saturate(0) ";
             else
                 document.getElementById(images[i][j]).style.filter = "none";
         }
@@ -99,12 +102,9 @@ function loadTaskInfo() {
             var toDoItems = response['list'];
             if (toDoItems === "old")
                 return;
-            var select = document.getElementById('toDoList');
+            var ids = ["dance", "riddle", "puzzle"]
             var count = Object.keys(toDoItems).length;
-            select.size = count;
-            $('#toDoList').empty();
             for (var i = 0; i < count; i++) {
-                var opt = document.createElement('option');
                 var item = toDoItems[i.toString()];
                 if (item.includes("is currently playing.")) {
                     timers[i]++
@@ -116,10 +116,8 @@ function loadTaskInfo() {
                         item += " Playing for " + timers[i] + secs
                 } else
                     timers[i] = 0;
-                opt.value = item;
-                opt.innerHTML = item;
+                document.getElementById(ids[i]).innerHTML = item;
                 progress[i] = item;
-                select.appendChild(opt);
             }
             checkProgress(response['scores'], response['limits'])
         }

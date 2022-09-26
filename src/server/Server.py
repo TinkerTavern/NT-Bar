@@ -11,9 +11,9 @@ progress = [0, 0, 0]
 limits = [20, 3, 3]
 players = ["", "", ""]
 msgAppend = ["", "", ""]
-taskOpts = ["danceScores", "riddleScores", "puzzleScores"]
+taskOpts = ["danceScores", "charadesScores", "needlepointScores"]
 tasks = ["Master the dance", "Solve " + str(limits[2]) + " charades",
-         "Solve " + str(limits[1]) + " sliding puzzles"]
+         "Solve " + str(limits[1]) + " needlepoint puzzles"]
 oldProgress = [-1, -1, -1]
 
 # TODO: Think about how to get a room reset button working effectively
