@@ -9,9 +9,12 @@ document.addEventListener('DOMContentLoaded', function () {
     tid = setInterval(loadTaskInfo, 1000);
 }, false);
 loadTaskInfo();
-loadLeaderboard("danceScores")
-loadLeaderboard("charadesScores")
-loadLeaderboard("needlepointScores")
+document.addEventListener("keypress", function (event) {
+    if (event.keyCode === 13) {
+        alert("Resetting room...")
+        resetRoom();
+    }
+});
 
 function getVal(val) {
     console.log("Server IP = " + val)
@@ -122,6 +125,9 @@ function loadTaskInfo() {
             checkProgress(response['scores'], response['limits'])
         }
     });
+    loadLeaderboard("danceScores")
+    loadLeaderboard("charadesScores")
+    loadLeaderboard("needlepointScores")
 }
 
 function abortTimer() { // to be called when you want to stop the timer

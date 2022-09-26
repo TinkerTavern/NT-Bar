@@ -8,12 +8,12 @@ app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 progress = [0, 0, 0]
-limits = [20, 3, 3]
+limits = [3, 3, 3]
 players = ["", "", ""]
 msgAppend = ["", "", ""]
 taskOpts = ["danceScores", "charadesScores", "needlepointScores"]
-tasks = ["Master the dance", "Solve " + str(limits[2]) + " charades",
-         "Solve " + str(limits[1]) + " needlepoint puzzles"]
+tasks = ["Master the dance!", "Solve the charades",
+         "Solve the needlepoint puzzles"]
 oldProgress = [-1, -1, -1]
 
 # TODO: Think about how to get a room reset button working effectively
@@ -33,7 +33,7 @@ def get_ip():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.settimeout(0)
     try:
-        # doesn't even have to be reachable
+        # ping random address to get the socket IP
         s.connect(('1.1.1.1', 1))
         IP = s.getsockname()[0]
     except Exception:
@@ -140,8 +140,7 @@ def index():
     else:
         todoList = dict()
         for i, task in enumerate(tasksArr):
-            todoList[i] = task["task"] + ". Progress: " + str(task["progress"]) + "/" + str(
-                task["limit"]) + msgAppend[i]
+            todoList[i] = task["task"] + msgAppend[i]
     return jsonify(list=todoList, scores=progress, limits=limits)
 
 

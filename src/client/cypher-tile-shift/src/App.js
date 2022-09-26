@@ -16,7 +16,7 @@ class App extends React.Component {
         this.state = {
             mode: 'intro',
             numberToComplete: this.itemHasValue("noToSolve") ? parseInt(localStorage.getItem("noToSolve")) : 3,
-            gamesWon: 0,
+            gamesWon: this.itemHasValue("needlepointProgress") ? parseInt(localStorage.getItem("needlepointProgress")) : 0,
             counter: 0,
         }
     }
@@ -30,13 +30,34 @@ class App extends React.Component {
 
     tick() {
         this.state.counter++
-        console.log("aaa")
     }
 
     itemHasValue(key) {
         return localStorage.getItem(key) !== "" && localStorage.getItem(key) != null
     }
 
+    resetScore() {
+        alert("Resetting score...")
+        this.state.gamesWon = 0;
+        localStorage.setItem("needlepointProgress", 0)
+        this.updateScore()
+    }// TODO Make this work automatically upon room reset
+
+    updateScore() {
+        let url = this.itemHasValue("addr") ? localStorage.getItem("addr") : "127.0.0.1"
+        url = "http://" + url + ":3000"
+        fetch(url + '/update', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                task: 2,
+                progress: 0,
+                limit: this.state.numberToComplete
+            })
+        })
+    }
 
     submitUser() {
         let url = this.itemHasValue("addr") ? localStorage.getItem("addr") : "127.0.0.1"
@@ -55,6 +76,10 @@ class App extends React.Component {
     }
 
     handleClick() {
+        if (document.getElementById("userName").value === "0") {
+            this.resetScore()
+            return
+        } // TODO Temp solution
         this.submitUser();
         this.setState({mode: 'game'})
     }
@@ -69,7 +94,8 @@ class App extends React.Component {
         this.setState({mode: 'failed'})
     }
 
-    continue() {
+    continue
+    () {
         this.setState({mode: 'game'})
     }
 
@@ -89,15 +115,10 @@ class App extends React.Component {
                 onPlayerSolved={() => this.playerSolved()}
                 onPlayerFailed={() => this.playerFailed()}
             />
-        }
-        else if (this.state.mode === 'solved') {
-            this.state.numberToComplete--;
+        } else if (this.state.mode === 'solved') {
             this.state.gamesWon++;
-            if (this.state.numberToComplete < 0)
-
-                console.log("left" + this.state.numberToComplete)
+            localStorage.setItem("needlepointProgress", this.state.gamesWon)
             artefact = <Solution
-                onContinue={() => this.continue()}
                 gamesLeft={this.state.numberToComplete}
                 gamesWon={this.state.gamesWon}
                 timeTaken={this.state.counter}

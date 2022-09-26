@@ -8,20 +8,20 @@
 function itemHasValue(key) {
     return localStorage.getItem(key) !== "" && localStorage.getItem(key) != null
 }
+
 function countNums(val) {
     return localStorage.getItem("orderToSolve").split(",").length
 }
 
 let url = itemHasValue("addr") ? localStorage.getItem("addr") : "127.0.0.1"
 url = "http://" + url + ":3000"
-
+let progress = itemHasValue("charadesProgress") ? parseInt(localStorage.getItem("charadesProgress")) : 0;
 let multipleChoice = localStorage.getItem("multiChoice");
 let timerLength = itemHasValue("timeToSolve") ? localStorage.getItem("timeToSolve") : 60;
-let riddlesToSolve = itemHasValue("orderToSolve") ? countNums("orderToSolve") : 3;
+let riddleOrder = itemHasValue("orderToSolve") ? countNums("orderToSolve") : 3;
 let riddlesToWin = itemHasValue("noToSolve") ? localStorage.getItem("noToSolve") : 3;
 let multiChoiceAnswerCount = itemHasValue("multipleChoiceChoices") ? localStorage.getItem("multipleChoiceChoices") : 3;
 
-let won = 0;
 let win, riddle, riddleId, answer, gameTimer;
 const winColor = "#4ed97f";
 const loseColor = "#de5f5f";
@@ -35,18 +35,34 @@ const loseLoseMessageStartArray = ["Tricked you, try again!", "I'm not telling y
     "Better luck next time, try again!", "Riddles can be confusing, try again!"];
 
 // SELECT AND DISPLAY RIDDLE
-$.ajax({
-    type: 'POST',
-    url: url + "/update",
-    data: {"task": 1, "progress": won, "limit": riddlesToWin},
-    dataType: 'json',
-});
+updateScore(progress)
 $.ajax({
     type: 'POST',
     url: url + "/set-user",
     data: {"task": 1, "user": ""},
     dataType: 'json',
 });
+
+document.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") { // delete key
+        alert("Resetting score...")
+        progress = 0;
+        localStorage.setItem("charadesProgress", 0)
+        updateScore(progress)
+    }
+});
+
+// TODO Make this work automatically upon room reset
+
+
+function updateScore(score) {
+    $.ajax({
+        type: 'POST',
+        url: url + "/update",
+        data: {"task": 1, "progress": score, "limit": riddlesToWin},
+        dataType: 'json',
+    });
+}
 
 document.getElementById("userName").value = localStorage.getItem("userName1")
 
@@ -148,7 +164,7 @@ function submitAnswer(ans) {
     if (ans.length < 3)
         return;
     else win = !!ans.includes(answer);
-    gameResult();
+    finalScreen();
 
 }
 
@@ -196,45 +212,45 @@ function startTimer() {
 
 $('#right').on('click tap', (e) => {
     win = true;
-    gameResult();
+    finalScreen();
 });
 
 $('#wrong').on('click tap', (e) => {
     win = false;
-    gameResult();
+    finalScreen();
 });
 
 // VIEW 3 CONTENT
-function submitResult() {
-    $.ajax({
-        type: 'POST',
-        url: url + "/update",
-        data: {"task": 1, "progress": won},
-        dataType: 'json',
-    });
-}
+
 
 function finalScreen() {
     clearInterval(gameTimer);
-    if (win)
-        won++;
+    if (win) {
+        progress++;
+        localStorage.setItem("charadesProgress", progress)
+        submitScore()
+        updateScore(progress)
+    }
     $('#view-2').animate({'opacity': 0.2}, 300);
 
-    if (won == riddlesToWin) {
+    if (progress == riddlesToWin) {
         $('.win-lose-messages').css('background', winColor);
         $('.win-lose-start').text(winWinMessageStartArray[Math.floor(Math.random() * winWinMessageStartArray.length)]);
         document.getElementById("restartButton").style.display = "none"
         submitScore();
-    } else {
-        $('.win-lose-messages').css('background', loseColor);
-        $('.win-lose-start').text(loseLoseMessageStartArray[Math.floor(Math.random() * loseLoseMessageStartArray.length)] + " Score: " + won + "/" + riddlesToWin)
+    } else if (win) {
+        $('#win-lose-messages').css('background', winColor);
+        $('.win-lose-start').text(winMessageStartArray[Math.floor(Math.random() * winMessageStartArray.length)]);
         document.getElementById("winButton").style.display = "none"
 
+    } else {
+        $('#win-lose-messages').css('background', loseColor);
+        $('.win-lose-start').text(loseMessageStartArray[Math.floor(Math.random() * loseMessageStartArray.length)])
+        document.getElementById("winButton").style.display = "none"
     }
-    submitResult();
     $('#view-4').fadeIn();
-
 }
+
 
 function submitScore() {
     $.ajax({
@@ -250,23 +266,7 @@ function winGame() {
 }
 
 let gameResult = () => {
-    riddlesToSolve--;
 
-    if (riddlesToSolve <= 0) {
-        finalScreen();
-        return;
-    }
-    $('#view-2').animate({'opacity': 0.2}, 300);
-    if (win) {
-        won++;
-        $('#win-lose-messages').css('background', winColor);
-        $('.win-lose-start').text(winMessageStartArray[Math.floor(Math.random() * winMessageStartArray.length)]);
-    } else {
-        $('#win-lose-messages').css('background', loseColor);
-        $('.win-lose-start').text(loseMessageStartArray[Math.floor(Math.random() * loseMessageStartArray.length)])
-    }
-    submitResult();
-    $('#view-3').fadeIn();
 
 }
 

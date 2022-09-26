@@ -4,25 +4,28 @@ function itemHasValue(key) {
     return localStorage.getItem(key) !== "" && localStorage.getItem(key) != null
 }
 
-const debug = localStorage.getItem("debug");
+let progress = itemHasValue("danceProgress") ? parseInt(localStorage.getItem("danceProgress")) : 0;
+const debug = "on"//localStorage.getItem("debug");
 let url = itemHasValue("addr") ? localStorage.getItem("addr") : "127.0.0.1"
 url = "http://" + url + ":3000"
 
 let stepsLeft = debug === "on" ? 4 : itemHasValue("stepCount") ? parseInt(localStorage.getItem("stepCount")) + 1 : 31;
-let scoreGoal = debug === "on" ? 3 : itemHasValue("winScore") ? localStorage.getItem("winScore") : 15;
+let scoreGoal = debug === "on" ? 3 : itemHasValue("winScore") ? localStorage.getItem("winScore") : 3;
 let badStepChance = itemHasValue("badStep") ? parseInt(localStorage.getItem("badStep")) / 100.0 : 0.45;
 let snakeHideFreq = itemHasValue("spawnFreq") ? parseInt(localStorage.getItem("spawnFreq")) : 3;
 let snakeShowDur = itemHasValue("timeOn") ? parseInt(localStorage.getItem("timeOn")) : 15;
 
-
-console.log(badStepChance)
-
-$.ajax({
-    type: 'POST',
-    url: url + "/update",
-    data: {"task": 0, "progress": 0, "limit": scoreGoal},
-    dataType: 'json',
+document.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") { // delete key
+        alert("Resetting score...")
+        progress = 0;
+        localStorage.setItem("danceProgress", 0)
+        updateScore(progress)
+    }
 });
+// TODO Make this work automatically upon room reset
+
+updateScore(progress)
 $.ajax({
     type: 'POST',
     url: url + "/set-user",
@@ -33,6 +36,8 @@ $.ajax({
 const winColor = "#4ed97f";
 const loseColor = "#de5f5f";
 
+const winWinMessageStartArray = ["You've mastered all the dances!", "Nice moves from all of you!",
+    "That was fun! No more for now", "Nice! We should do that again some time everyone!"];
 const winMessageStartArray = ["You've mastered the dance, I'll reveal my secret..", "Nice moves! I'll let you in on a secret...",
     "That was fun, let me tell you something you don't know...", "Nice! We should do that again some time. For now..."];
 const loseMessageStartArray = ["Do you have two left feet? Try again!", "I'm not telling you anything with moves like that, try again!",
@@ -70,11 +75,11 @@ function submitUser() {
     });
 }
 
-function updateScore() {
+function updateScore(score) {
     $.ajax({
         type: 'POST',
         url: url + "/update",
-        data: {"task": 0, "progress": stepsHit},
+        data: {"task": 0, "progress": score, "limit": scoreGoal},
         dataType: 'json',
     });
 }
@@ -84,7 +89,6 @@ $('.play').on('click tap', (e) => {
     $('#view-2').animate({"left": "+=100vw"}, 300);
     submitUser();
     hideSnakes();
-    updateScore();
 })
 
 $('#good-step-container img').on('click tap', (e) => {
@@ -93,7 +97,6 @@ $('#good-step-container img').on('click tap', (e) => {
     if (stepsLeft < 0) {
         gameResult();
     }
-    updateScore();
 })
 
 $('#bad-step-container img').on('click tap', (e) => {
@@ -103,7 +106,6 @@ $('#bad-step-container img').on('click tap', (e) => {
     if (stepsLeft < 0) {
         gameResult();
     }
-    updateScore();
 })
 
 let hideSnakes = () => {
@@ -178,9 +180,18 @@ let gameResult = () => {
     $('.background-image').remove();
     if (stepsHit >= scoreGoal) {
         $('#win-lose-messages').css('background', winColor);
-        winMessageStart = winMessageStartArray[Math.floor(Math.random() * winMessageStartArray.length)];
+        progress++;
+        localStorage.setItem("danceProgress", progress)
+        updateScore(progress)
+        if (progress >= scoreGoal) {
+            document.getElementById("restartButton").style.display = "none"
+            winMessageStart = winWinMessageStartArray[Math.floor(Math.random() * winWinMessageStartArray.length)];
+        } else {
+            document.getElementById("winButton").style.display = "none"
+            winMessageStart = winMessageStartArray[Math.floor(Math.random() * winMessageStartArray.length)];
+
+        }
         $('.win-lose-start').text(winMessageStart);
-        document.getElementById("restartButton").style.display = "none"
         submitScore()
     } else {
         $('#win-lose-messages').css('background', loseColor);
@@ -191,6 +202,7 @@ let gameResult = () => {
     }
     $('#view-3').fadeIn();
 }
+
 function submitScore() {
     $.ajax({
         type: 'POST',

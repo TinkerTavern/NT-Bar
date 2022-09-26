@@ -16,10 +16,6 @@ class Solution extends React.Component {
         }
     }
 
-    continue() {
-        this.props.onContinue()
-    }
-
     onComponentDidMount() {
         let winMessageIdx = Math.floor(Math.random() * 4);
         this.setState({currentWinMessage: winMessageIdx});
@@ -46,25 +42,21 @@ class Solution extends React.Component {
 
     render() {
         this.updateScore()
-        // this.state.numberToComplete--;
-        // console.log("complete this " + this.state.numberToComplete)
-        // console.log(this.state.mode)
-        // this.state.mode = 'intro'
         console.log(this.props.gamesLeft);
-        if (this.props.gamesLeft > 0) {
+        console.log(this.props.gamesWon);
+        if (this.props.gamesLeft > this.props.gamesWon ) {
             return (
                 <Box
                     sx={{
                         display: 'grid',
                         gridGap: 0
                     }}>
-                    {/*<Box><div className="non-interact"></div></Box>*/}
                     <Box>
                         <div id="win-message">
                             <p className="win-lose-start center">{this.state.winMessages[this.state.currentWinMessage]}</p>
                             <p className="win-lose-result center"></p>
                             <button className="restart center" onClick={() => {
-                                this.continue()
+                                document.location.reload()
                             }}>Continue
                             </button>
                         </div>
@@ -79,16 +71,14 @@ class Solution extends React.Component {
                         display: 'grid',
                         gridGap: 0
                     }}>
-                    {/*<Box><div className="non-interact"></div></Box>*/}
                     <Box>
                         <div id="win-message">
                             <p className="win-lose-start center">{this.state.winWinMessages[this.state.currentWinMessage]}</p>
                             <p className="win-lose-result center"></p>
                             <button className="center restart" onClick={() => {
-                                document.location.reload()
+                                console.log("done done done")
                             }}>Restart
                             </button>
-                            {/*<img className="dice" src={dice} alt="Echo Games' dice"/>*/}
                         </div>
                     </Box>
                 </Box>

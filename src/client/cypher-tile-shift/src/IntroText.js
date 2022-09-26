@@ -18,7 +18,7 @@ class Intro extends React.Component {
             },
             body: JSON.stringify({
                 task: 2,
-                progress: 0,
+                progress:  this.itemHasValue("needlepointProgress") ? parseInt(localStorage.getItem("needlepointProgress")) : 0,
                 limit: this.props.numberToComplete,
             })
         })
