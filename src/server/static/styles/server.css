@@ -29,6 +29,10 @@ p {
     margin: 10%;
 }
 
+.game-score {
+    white-space: pre-wrap;
+}
+
 
 body {
     color: #37375d;
@@ -46,7 +50,7 @@ tbody, td, tr, th, table {
 .server-grid {
     display: grid;
     grid-template-columns: 32% 32% 32%;
-    grid-gap: 3em 3em;
+    grid-gap: 2em 2em;
     grid-auto-flow: row dense;
     align-content: center;
 }

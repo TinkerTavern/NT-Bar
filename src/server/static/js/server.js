@@ -1,5 +1,7 @@
 progress = [0, 0, 0];
 timers = [0, 0, 0];
+var playerCount = [0,0,0];
+playing = [false, false, false]
 paused = [false, false, false]
 leaderboards = [false, false, false]
 var tid;
@@ -112,22 +114,40 @@ function loadTaskInfo() {
         dataType: 'json',
         success: function (response) {
             var toDoItems = response['list'];
+            playerCount = response['playerCount'];
             if (toDoItems === "old")
                 return;
             var ids = ["dance", "riddle", "puzzle"]
             var count = Object.keys(toDoItems).length;
             for (var i = 0; i < count; i++) {
+                var playedSoFar = "\n " + playerCount[i] + " people have played so far."
                 var item = toDoItems[i.toString()];
-                if (item.includes("is currently playing.")) {
-                    timers[i]++
+                timers[i]++
+                if (item.includes("! ")) {
+                    if (!playing[i]) {
+                        timers[i] = 0
+                        playing[i] = true
+                    }
                     var secs = timers[i] % 60 === 1 ? " second." : " seconds.";
                     if (timers[i] >= 60) {
                         var mins = Math.floor(timers[i] / 60) === 1 ? "minute and " : " minutes and ";
-                        item += " Playing for " + Math.floor(timers[i] / 60) + mins + timers[i] % 60 + secs
+                        item += " has been playing for " + Math.floor(timers[i] / 60) + mins + timers[i] % 60 + secs + playedSoFar
                     } else
-                        item += " Playing for " + timers[i] + secs
-                } else
-                    timers[i] = 0;
+                        item += " has been playing for " + timers[i] + secs + playedSoFar
+                } else if (item.includes("!\n")) {
+                    if (playing[i]) {
+                        timers[i] = 0
+                        playing[i] = false
+                    }
+                    var secs = timers[i] % 60 === 1 ? " second ago." : " seconds ago.";
+                    if (timers[i] >= 60) {
+                        var mins = Math.floor(timers[i] / 60) === 1 ? "minute and " : " minutes and ";
+                        item += " last played " + Math.floor(timers[i] / 60) + mins + timers[i] % 60 + secs + playedSoFar
+                    } else
+                        item += " last played " + timers[i] + playedSoFar
+                } else {
+                    item += "\nNot played yet"
+                }
                 document.getElementById(ids[i]).innerHTML = item;
                 progress[i] = item;
             }

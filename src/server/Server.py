@@ -10,10 +10,12 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 progress = [0, 0, 0]
 limits = [3, 3, 3]
 players = ["", "", ""]
+lastPlayers = ["", "", ""]
+playerCount = [0, 0, 0]
 msgAppend = ["", "", ""]
 taskOpts = ["danceScores", "charadesScores", "needlepointScores"]
-tasks = ["Master the dance!", "Solve the charades",
-         "Solve the needlepoint puzzles"]
+tasks = ["Master the dance!", "Solve the charades!",
+         "Solve the needlepoint puzzles!"]
 oldProgress = [-1, -1, -1]
 
 # TODO: Think about how to get a room reset button working effectively
@@ -43,9 +45,11 @@ def get_ip():
     print(IP)
     return IP
 
+
 @app.route('/ping')
 def ping():
     return jsonify(ping="pong")
+
 
 @app.route('/')
 def hello_world():
@@ -110,10 +114,15 @@ def set_user():
     if taskID is None:
         user = request.json.get("user")
         taskID = request.json.get("task")
+    if user == "" and players[int(taskID)] != "":
+        lastPlayers[int(taskID)] = players[int(taskID)]
     players[int(taskID)] = user
     for i, player in enumerate(players):
         if player != "":
-            msgAppend[i] = " " + player + " is currently playing."
+            msgAppend[i] = " \n" + player
+            playerCount[i] = playerCount[i] + 1
+        elif lastPlayers[i] != "":
+            msgAppend[i] = "\n" + lastPlayers[i]  # Else show how long since that player played
         else:
             msgAppend[i] = ""
 
@@ -141,7 +150,7 @@ def index():
         todoList = dict()
         for i, task in enumerate(tasksArr):
             todoList[i] = task["task"] + msgAppend[i]
-    return jsonify(list=todoList, scores=progress, limits=limits)
+    return jsonify(list=todoList, scores=progress, limits=limits, playerCount=playerCount)
 
 
 @app.route('/reset-tasks', methods=["POST"])
