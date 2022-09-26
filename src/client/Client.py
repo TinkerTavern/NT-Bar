@@ -8,22 +8,22 @@ def hello_world():
     return render_template("client.html")
 
 
-@app.route('/item-catch')
+@app.route('/master-the-dance')
 def item_catch():
     return render_template("item-catch.html")
 
 
-@app.route('/item-catch/config')
+@app.route('/master-the-dance/config')
 def item_catch_config():
     return render_template("item-catch-config.html")
 
 
-@app.route('/tile-shift')
+@app.route('/needlepoint')
 def tile_shift():
     return render_template("tile-shift.html")
 
 
-@app.route('/tile-shift/config')
+@app.route('/needlepoint/config')
 def tile_shift_config():
     return render_template("tile-config.html")
 
@@ -38,12 +38,12 @@ def cypher_config():
     return render_template("cypher-config.html")
 
 
-@app.route('/riddle')
+@app.route('/charades')
 def riddle():
     return render_template("riddle.html")
 
 
-@app.route('/riddle/config')
+@app.route('/charades/config')
 def riddle_config():
     return render_template("riddle-config.html")
 

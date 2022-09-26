@@ -12,5 +12,5 @@ function submitForm(e) {
     localStorage.setItem("4xMode", formProps["4xMode"])
     localStorage.setItem("slideMode", formProps["slideMode"])
     alert("Changes saved successfully")
-    window.location.href = "/tile-shift";
+    window.location.href = "/needlepoint";
 }

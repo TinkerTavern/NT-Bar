@@ -1,3 +1,27 @@
+@font-face {
+    font-family: Kalam;
+    src: url(Kalam.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'PassionsConflict';
+    font-weight: 500;
+    src: url(PassionsConflict.ttf) format('truetype');
+}
+
+* {
+    background-color: #bc9464;
+    font-family: Kalam;
+    text-align: center;
+}
+
+body {
+    color: #37375d;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
 .locked {
     filter: opacity(0.6) grayscale(1) blur(15px);
 }

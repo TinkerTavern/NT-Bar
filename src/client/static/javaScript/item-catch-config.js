@@ -13,5 +13,5 @@ function submitForm(e) {
     localStorage.setItem("debug", formProps["debug"])
     e.preventDefault()
     alert("Changes saved successfully")
-    window.location.href = "/item-catch";
+    window.location.href = "/master-the-dance";
 }

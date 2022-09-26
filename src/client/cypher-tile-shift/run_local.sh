@@ -2,7 +2,7 @@
 if [ $1 -eq 1 ]; then
   printf "PUBLIC_URL=\nREACT_APP_GAME_NAME=Cypher Cracker\nREACT_APP_GAME_TO_BUILD=cypher" >.env
 else
-  printf "PUBLIC_URL=\nREACT_APP_GAME_NAME=Tile Shift\nREACT_APP_GAME_TO_BUILD=puzzle_shift" >.env
+  printf "PUBLIC_URL=\nREACT_APP_GAME_NAME=Needlepoint\nREACT_APP_GAME_TO_BUILD=puzzle_shift" >.env
 fi
 if [ ! -d build ]; then
 mkdir build

@@ -10,5 +10,5 @@ function submitForm(e) {
     localStorage.setItem("multiChoice", formProps["multiChoice"])
     e.preventDefault()
     alert("Changes saved successfully")
-    window.location.href = "/riddle";
+    window.location.href = "/charades";
 }
