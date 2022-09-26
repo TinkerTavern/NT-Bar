@@ -151,29 +151,36 @@ input:focus {
 }
 
 
-#win-message, #lose-message {
-    background: #4ed97f;
-    margin-top: 50vh;
-    transform: translate(0%, -60%);
-    -webkit-transform: translate(0%, -60%);
-    -moz-transform: translate(0%, -60%);
-    -o-transform: translate(0%, -60%);
-    -ms-transform: translate(0%, -60%);
+#win-lose-messages {
+    transform: translate(0%, -0%);
+    -webkit-transform: translate(0%, -0%);
+    -moz-transform: translate(0%, -0%);
+    -o-transform: translate(0%, -0%);
+    -ms-transform: translate(0%, -0%);
     width: 100vw;
-    color: white;
-    padding-block: 7vh;
     box-shadow: 0px 4px 11px -5px rgba(0, 0, 0, 0.8);
+}
+
+.win-lose-start {
+    background-color: #adaccd;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 51px;
+    letter-spacing: 0.01em;
+    text-align: justify;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 1%;
+    white-space: pre-wrap;
 }
 
 #lose-message {
     background: #de5f5f;
 }
-
-.win-lose-start {
-    font-size: 1.5rem;
-    line-height: 150%;
-    width: 80vw;
+#win-message {
+    background: #4ed97f;
 }
+
 
 .win-lose-result {
     font-size: 1.5rem;
@@ -230,4 +237,19 @@ input:focus {
 .four {
     padding: 100px;
 
+}
+
+
+.outro-grid {
+    display: grid;
+    grid-template-columns: 30% 60%;
+    grid-auto-flow: row dense;
+}
+
+.outro-person {
+    object-fit: contain;
+    grid-row: auto /span 2;
+    width: 25vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0);
 }

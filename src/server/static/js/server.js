@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
 loadTaskInfo();
 document.addEventListener("keypress", function (event) {
     if (event.keyCode === 13) {
-        alert("Resetting room...")
         resetRoom();
     }
 });
@@ -64,6 +63,7 @@ function puzzleLeaderboard() {
 }
 
 function resetRoom() {
+    alert("Resetting room...")
     $.ajax({
         type: 'POST',
         url: "http://127.0.0.1:3000/reset-tasks",
@@ -76,7 +76,10 @@ function checkProgress(scores, limits) {
     let images = [["catch 1", "catch 2", "catch 3"],
         ["riddle 1", "riddle 2", "riddle 3"],
         ["tile 1", "tile 2", "tile 3"]]
+    let won = true
     for (let i = 0; i < scores.length; i++) {
+        if (parseInt(limits[i]) > parseInt(scores[i]))
+            won = false
         for (let j = 0; j < limits.length; j++) {
             if (j >= Math.floor(((scores[i] / limits[i]) / 0.333333)))
                 document.getElementById(images[i][j]).style.filter = "opacity(1) blur(15px) saturate(0) ";
@@ -84,13 +87,19 @@ function checkProgress(scores, limits) {
                 document.getElementById(images[i][j]).style.filter = "none";
         }
     }
-    if (JSON.stringify(scores) === JSON.stringify(limits)) {
+    if (won) {
         abortTimer()
+        document.getElementById("server-grid").style.display = "none"
         $('#win-lose-messages').css('background', "#4ed97f");
-        winMessageStart = "Woo baby"
+        winMessageStart = "After an evening of games & dances, you come back to Isobel, hoping that the hints you’ve gathered are enough for you and her to put it all together. You ask her if she’s given a servant, likely a woman, someone particularly close to her, a reason to hold a grudge?\n" +
+            "\n" +
+            "At first, Isobel looks confused, with an early denial. The initial shock passed, she slowly nods her head in understanding: “Marguerite!” she says, “My former maid. I had to terminate her employment this morning at Frederick’s request. She was to leave the premises by tomorrow. Do you really think it could be her?”\n" +
+            "\n" +
+            "With a purposeful stroll, you come together to the servants’ quarters in the outbuildings, determined to question her and put this whole unpleasantness to a rest. Isobel knocks at the door, announcing herself, then you both enter the room resolutely to confront Marguerite, Isobel’s former maid and the Earl’s likely murderer.\n" +
+            "\n" +
+            "Marguerite, who lies dead on the floor, in a pool of crimson red.\n" +
+            "It would seem your investigation has only just started."
         $('.win-lose-start').text(winMessageStart);
-        document.getElementById("restartButton").style.visibility = "hidden"
-        $('.filter').remove();
         $('#view-3').fadeIn();
     }
 }

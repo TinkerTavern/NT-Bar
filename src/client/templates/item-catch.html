@@ -53,13 +53,11 @@ To do so, you’ll need to follow the rhythm and hit the steps as they appear. T
 </section>
 
 <section id="view-3">
-    <!--        <div class="non-interact"></div>-->
-    <div id="win-lose-messages">
-        <p class="win-lose-start center"></p>
-        <p class="win-lose-result center"></p>
-        <button class="submit" id="restartButton" onclick="document.location.reload()">Next Dance..</button>
-        <button class="submit" id="winButton" onclick="winGame()">Discover the Secret...</button>
-        <!--            <img class="center" src="{{ url_for('static',filename='images/riddle.png') }}"/>-->
+    <div id="win-lose-messages" class="outro-grid">
+        <img class="outro-person" src="{{ url_for('static',filename='images/snake-long.png') }}"/>
+        <p class="win-lose-start"></p>
+        <button class="play" id="restartButton" onclick="document.location.reload()">Next Dance...</button>
+        <button class="play" id="winButton" onclick="winGame()">Discover the Secret...</button>
     </div>
 </section>
 

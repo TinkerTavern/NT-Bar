@@ -180,17 +180,10 @@ span, #snake-count, #steps-left, #stepper, img {
     margin: auto;
 }
 
-.win-lose {
-    width: 90vw;
-    margin-block: 10vh;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-}
-
-
 input {
     background-color: #adaccd;
 }
+
 
 .submit {
     width: 12.5%;
@@ -199,7 +192,7 @@ input {
     background-color: #adaccd;
 }
 
-.instructions{
+.instructions {
     background-color: #adaccd;
     margin-top: 0px;
     font-size: 32px;
@@ -236,23 +229,41 @@ input {
     height: 100vh;
 }
 
+.outro-grid {
+    display: grid;
+    grid-template-columns: 30% 60%;
+    grid-auto-flow: row dense;
+}
+
+.outro-person {
+    object-fit: contain;
+    grid-row: auto /span 2;
+    width: 25vw;
+    height: 100vh;
+}
+
+
 #win-lose-messages {
-    margin-top: 50vh;
-    transform: translate(0%, -55%);
-    -webkit-transform: translate(0%, -55%);
-    -moz-transform: translate(0%, -55%);
-    -o-transform: translate(0%, -55%);
-    -ms-transform: translate(0%, -55%);
+    transform: translate(0%, -0%);
+    -webkit-transform: translate(0%, -0%);
+    -moz-transform: translate(0%, -0%);
+    -o-transform: translate(0%, -0%);
+    -ms-transform: translate(0%, -0%);
     width: 100vw;
-    padding-block: 7vh;
     box-shadow: 0px 4px 11px -5px rgba(0, 0, 0, 0.8);
 }
 
 .win-lose-start {
-    font-size: 1.5rem;
-    line-height: 150%;
-    background: rgba(0, 0, 0, 0);
-    width: 80vw;
+    background-color: #adaccd;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 51px;
+    letter-spacing: 0.01em;
+    text-align: justify;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 1%;
+    white-space: pre-wrap;
 }
 
 .win-lose-result {
@@ -263,10 +274,6 @@ input {
     margin-bottom: 0px;
 }
 
-#win-lose-messages img {
-    width: 20vw;
-    max-width: 70px;
-}
 
 button {
     background: #545c9c;

@@ -36,12 +36,6 @@ $.ajax({
 const winColor = "#4ed97f";
 const loseColor = "#de5f5f";
 
-const winWinMessageStartArray = ["You've mastered all the dances!", "Nice moves from all of you!",
-    "That was fun! No more for now", "Nice! We should do that again some time everyone!"];
-const winMessageStartArray = ["You've mastered the dance, I'll reveal my secret..", "Nice moves! I'll let you in on a secret...",
-    "That was fun, let me tell you something you don't know...", "Nice! We should do that again some time. For now..."];
-const loseMessageStartArray = ["Do you have two left feet? Try again!", "I'm not telling you anything with moves like that, try again!",
-    "Better luck next time, try again!", "Dancing can be hard, let's try again!"];
 
 let snakeTop, snakeLeft, snakeScale;
 let winMessageStart;
@@ -52,6 +46,7 @@ let stepHit = false;
 let snakeHitTimer = 1000;
 let snakeHitTimerMax = 1000;
 let snakeHiddenTimer = 1000;
+let scoreIncreased = false;
 
 // VIEW 1 CONTENT
 
@@ -180,23 +175,30 @@ let gameResult = () => {
     $('.background-image').remove();
     if (stepsHit >= scoreGoal) {
         $('#win-lose-messages').css('background', winColor);
-        progress++;
+        if (!scoreIncreased)
+            progress++;
+        scoreIncreased = true
         localStorage.setItem("danceProgress", progress)
         updateScore(progress)
         if (progress >= scoreGoal) {
             document.getElementById("restartButton").style.display = "none"
-            winMessageStart = winWinMessageStartArray[Math.floor(Math.random() * winWinMessageStartArray.length)];
+            winMessageStart = "You spend a good deal of the evening dancing with a young cavalry officer, Lieutenant Thomas Hearst, the second son of the Earl’s deceased sister. He has a bit of a reputation, having recently killed a man in a duel of honor and rumoured to be quite the rake.\n" +
+                "\n" +
+                "Nevertheless, the lieutenant’s debonair allure falls to your wily charms after these inebriating dances. Under your cautious prodding, he reveals that George Hearst, his elder brother, has had quite the falling out. Earlier this evening, Thomas overheard a heated argument involving the two of them over a woman.\n" +
+                "\n" +
+                "Who might that be? Could this discussion have something to do with the murder? The timing of the conflict seems, after all, suspicious. Or might it be the promise of yet another scandal threatening your friend Isobel? Was the late Earl involved in a romantic affair?\n" +
+                "\n" +
+                "Either way, your dancing efforts have left you parched and you make sure to grab a drink before pushing on in your investigation.";
         } else {
             document.getElementById("winButton").style.display = "none"
-            winMessageStart = winMessageStartArray[Math.floor(Math.random() * winMessageStartArray.length)];
+            winMessageStart = "Well done, that was quite the dance! Hope you're not too winded.";
 
         }
         $('.win-lose-start').text(winMessageStart);
         submitScore()
     } else {
         $('#win-lose-messages').css('background', loseColor);
-        $('.win-lose-start').text(loseMessageStartArray[Math.floor(Math.random() * loseMessageStartArray.length)] +
-            " Score: " + stepsHit + "/" + scoreGoal)
+        $('.win-lose-start').text("You've kept up with the music as much as you could, but your dance partner was thoroughly unimpressed by your cotillon. Maybe the scotch reel will be more suited to your pace?")
         document.getElementById("winButton").style.display = "none"
 
     }

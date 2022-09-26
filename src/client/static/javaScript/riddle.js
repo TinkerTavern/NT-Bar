@@ -27,13 +27,6 @@ const winColor = "#4ed97f";
 const loseColor = "#de5f5f";
 
 
-const winMessageStartArray = ["You did it!", "Great!", "Nice job!", "Good work!"];
-const loseMessageStartArray = ["Oh no!", "Not this time!", "Better luck next time!", "Nice try!"];
-const winWinMessageStartArray = ["You've solved my riddle, I'll reveal my secret..", "You're smart! I'll let you in on a secret...",
-    "That was fun, let me tell you something you don't know...", "Nice! We should do that again some time. For now..."];
-const loseLoseMessageStartArray = ["Tricked you, try again!", "I'm not telling you anything unless you solve my riddles, try again!",
-    "Better luck next time, try again!", "Riddles can be confusing, try again!"];
-
 // SELECT AND DISPLAY RIDDLE
 updateScore(progress)
 $.ajax({
@@ -233,19 +226,30 @@ function finalScreen() {
     }
     $('#view-2').animate({'opacity': 0.2}, 300);
 
-    if (progress == riddlesToWin) {
+    if (progress >= riddlesToWin) {
         $('.win-lose-messages').css('background', winColor);
-        $('.win-lose-start').text(winWinMessageStartArray[Math.floor(Math.random() * winWinMessageStartArray.length)]);
+        $('.win-lose-start').text("Miss Fanny Delahoussaye is quite impressed by your skills. With a conspiratorial air, she leans and whispers at your ear:\n" +
+            "\n" +
+            "“My second is not polite of my first,\n" +
+            "Yet it provides a most welcome release:\n" +
+            "My whole often finds my first at their worst,\n" +
+            "And will yearly clear my second of grease.\n" +
+            "The Earl’s misfortune, it seems quite clear,\n" +
+            "Could only be caused by my whole, my dear.”\n" +
+            "\n" +
+            "She winks before you can ask what she means and how on Earth has she heard of the Earl’s demise. After a brief moment of pondering, you realise Fanny is absolutely right (as she often is). Of course! Only a servant could have had the access required to poison the Earl’s drink in his study.\n" +
+            "\n" +
+            "With this new clue and charade added to your collection, you carry onwards in your investigation.");
         document.getElementById("restartButton").style.display = "none"
         submitScore();
     } else if (win) {
         $('#win-lose-messages').css('background', winColor);
-        $('.win-lose-start').text(winMessageStartArray[Math.floor(Math.random() * winMessageStartArray.length)]);
+        $('.win-lose-start').text("You truly kept your wits about you. Excellent wordplay, well done!");
         document.getElementById("winButton").style.display = "none"
 
     } else {
         $('#win-lose-messages').css('background', loseColor);
-        $('.win-lose-start').text(loseMessageStartArray[Math.floor(Math.random() * loseMessageStartArray.length)])
+        $('.win-lose-start').text("Looks like you left your wit at home. No fret, happens to the best of us. Why don't you go fetch it and try again.")
         document.getElementById("winButton").style.display = "none"
     }
     $('#view-4').fadeIn();

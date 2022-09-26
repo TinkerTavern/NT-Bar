@@ -1,17 +1,13 @@
 import React from 'react'
 import {Box} from 'rebass'
 import './App.css'
+import ladder from './images/ladder.png'
 
 class Solution extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            winMessages: ["You did it!", "Great!", "Nice job!", "Good work!"],
-            winWinMessages: ["You solved the puzzle, it revealed some interesting information...",
-                "Puzzle solved, time to see what's really going on...", "Nice job! Now to learn the truth...",
-                "Ah ha! So that's what's going on..."],
-            currentWinMessage: 0,
             numberToComplete: 3,
         }
     }
@@ -44,7 +40,7 @@ class Solution extends React.Component {
         this.updateScore()
         console.log(this.props.gamesLeft);
         console.log(this.props.gamesWon);
-        if (this.props.gamesLeft > this.props.gamesWon ) {
+        if (this.props.gamesLeft > this.props.gamesWon) {
             return (
                 <Box
                     sx={{
@@ -52,12 +48,12 @@ class Solution extends React.Component {
                         gridGap: 0
                     }}>
                     <Box>
-                        <div id="win-message">
-                            <p className="win-lose-start center">{this.state.winMessages[this.state.currentWinMessage]}</p>
-                            <p className="win-lose-result center"></p>
-                            <button className="restart center" onClick={() => {
+                        <div id="win-message" className={"outro-grid"}>
+                            <img className="outro-person" src={ladder}/>
+                            <p className="win-lose-start ">{"That's really pretty, well done! Hope you didn't prick yourself in the process."}</p>
+                            <button className="play " onClick={() => {
                                 document.location.reload()
-                            }}>Continue
+                            }}>Next needlepoint...
                             </button>
                         </div>
                     </Box>
@@ -72,10 +68,16 @@ class Solution extends React.Component {
                         gridGap: 0
                     }}>
                     <Box>
-                        <div id="win-message">
-                            <p className="win-lose-start center">{this.state.winWinMessages[this.state.currentWinMessage]}</p>
-                            <p className="win-lose-result center"></p>
-                            <button className="center restart" onClick={() => {
+                        <div id="win-message" className={"outro-grid"}>
+                            <img className="outro-person" src={ladder}/>
+                            <p className="win-lose-start">{"Eliza de Feuillide, your cousin, is absolutely delighted not only by the precision of the needlework but by the attention it provides her. All the ladies present are praising her newly acquired needlepoints. In your grand generosity, you’ve even allowed to take credit for the best one of them. How delightful!\n" +
+                                "\n" +
+                                "Extremely pleased, she brings you along to the drawing room where the chatter is as intense as it gets. Now in her inner gossiping circle, you are surprised to learn that Isobel has been quite inconsiderate during the months leading to her nuptials. Indeed, it has been said that Isobel was hurtful to many people, including those closest to her.\n" +
+                                "\n" +
+                                "That surprises you of your friend, but you know how the months leading up to a wedding can be taxing at times, and you are sure that Isobel did not mean anything by it. Surely, she cannot have hurt a close one’s feelings to the point where they would murder someone over it… Surely.\n" +
+                                "\n" +
+                                "Full of doubts and worries for your friend, you move on, hoping to find less troubling leads."}</p>
+                            <button className=" play" onClick={() => {
                                 console.log("done done done")
                             }}>Restart
                             </button>

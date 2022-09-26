@@ -7,8 +7,6 @@ class Failure extends React.Component {
 	constructor (props) {
 		super (props);
 		this.state = {
-			loseMessages: ["Oh no!", "Not this time!", "Better luck next time!", "Nice try!"],
-			currentLoseMessage: 0,
 			penalty: 0,
 		}
 	}
@@ -29,7 +27,7 @@ class Failure extends React.Component {
 			<Box><div className="non-interact"></div></Box>
 			<Box>
 				<div id="lose-message">
-					<p className="win-lose-start center">{this.state.loseMessages[this.state.currentLoseMessage]}</p>
+					<p className="win-lose-start center">{"Pretty needlework for sure, but at this pace, the Season will be over and gone before you're done with them. Try to keep up!"}</p>
 					<p className="win-lose-result center"></p>
 					{/*<img className="dice" src={dice} alt="Echo Games' dice"/>*/}
 				</div>
