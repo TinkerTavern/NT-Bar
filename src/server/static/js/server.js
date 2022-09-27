@@ -76,18 +76,18 @@ function resetRoom() {
 }
 
 function checkProgress(scores, limits) {
-    let images = [["catch 1", "catch 2", "catch 3"],
-        ["riddle 1", "riddle 2", "riddle 3"],
-        ["tile 1", "tile 2", "tile 3"]]
+    let images = [["catch1", "catch2", "catch3"],
+        ["riddle1", "riddle2", "riddle3"],
+        ["tile1", "tile2", "tile3"]]
     let won = true
     for (let i = 0; i < scores.length; i++) {
         if (parseInt(limits[i]) > parseInt(scores[i]))
             won = false
         for (let j = 0; j < limits.length; j++) {
             if (j >= Math.floor(((scores[i] / limits[i]) / 0.333333)))
-                document.getElementById(images[i][j]).style.filter = "opacity(1) blur(15px) saturate(0) ";
+                document.getElementById(images[i][j]).style.display = "none";
             else
-                document.getElementById(images[i][j]).style.filter = "none";
+                document.getElementById(images[i][j]).style.display = "inline";
         }
     }
     if (won) {

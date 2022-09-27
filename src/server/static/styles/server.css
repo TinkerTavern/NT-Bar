@@ -78,7 +78,7 @@ tbody, td, tr, th, table {
 }
 
 .locked {
-    filter: opacity(0.6) grayscale(1) blur(15px);
+    /*filter: opacity(0.6) grayscale(1) blur(15px);*/
 }
 
 .task {
@@ -89,6 +89,12 @@ tbody, td, tr, th, table {
 .filter {
     background-color: rgba(23, 23, 23, 0.3);
 
+}
+
+.catch {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .image {
@@ -138,6 +144,7 @@ body {
 #view-3 {
     display: none;
 }
+
 .outro-grid {
     display: grid;
     grid-template-columns: 30% 60%;
@@ -149,7 +156,7 @@ body {
     grid-row: auto /span 2;
     width: 25vw;
     height: 100vh;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
 }
 
 

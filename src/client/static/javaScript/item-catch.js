@@ -129,12 +129,15 @@ let moveSnake = () => {
     snakeLeft = Math.floor(Math.random() * fullWidth);
     // console.log(snakeLeft,snakeTop)
     snakeScale = Math.floor(Math.random() * 10 + 10);
-    $('.step-container img').css({
+    console.log(snakeScale)
+    $('#good-step-container img').css({
         'top': `${snakeTop}px`,
         'left': `${snakeLeft}px`,
         'width': `${snakeScale}vw`,
+        'z-index': '1',
         'opacity': '1'
     })
+
     if (Math.random() > badStepChance) {
         document.getElementById("good-step-container").style.visibility = "visible";
         document.getElementById("bad-step-container").style.visibility = "hidden";
@@ -145,6 +148,7 @@ let moveSnake = () => {
         snakeLeft = Math.floor(Math.random() * fullWidth);
         // console.log(snakeLeft,snakeTop)
         snakeScale = Math.floor(Math.random() * 10 + 10);
+        console.log(snakeScale)
         $('#bad-step-container img').css({
             'top': `${snakeTop}px`,
             'left': `${snakeLeft}px`,
