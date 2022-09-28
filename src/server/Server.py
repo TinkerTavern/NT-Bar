@@ -5,8 +5,8 @@ from flask import Flask, render_template, request, jsonify, flash
 from flask_cors import CORS
 
 app = Flask(__name__)
-cors = CORS(app, resources={r"/*": {"origins": "*"}})
-app.config['CORS_HEADERS'] = 'Content-Type'
+cors = CORS(app)
+# app.config['CORS_HEADERS'] = 'Content-Type'
 progress = [0, 0, 0]
 limits = [3, 3, 3]
 players = ["", "", ""]

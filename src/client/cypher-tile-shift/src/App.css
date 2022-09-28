@@ -19,7 +19,6 @@ body {
 }
 
 * {
-    background-color: #bc9464;
     font-family: Kalam;
 }
 
@@ -85,6 +84,15 @@ button {
     width: 100vw;
     background: #e95353;
     opacity: 0;
+}
+
+#root {
+    background-image: url("images/1129.jpg");
+    background-color: #bc9464;
+    background-blend-mode: multiply;
+    background-size: contain;
+    width: 100vw;
+    height: 100vh;
 }
 
 .blink {
@@ -162,7 +170,7 @@ input:focus {
 }
 
 .win-lose-start {
-    background-color: #adaccd;
+    background-color: #ebbe93;
     font-size: 32px;
     font-weight: 400;
     line-height: 51px;
@@ -172,13 +180,21 @@ input:focus {
     padding-right: 5%;
     padding-top: 1%;
     white-space: pre-wrap;
+    border: 6px ridge #5c4428;
 }
 
 #lose-message {
-    background: #de5f5f;
+    background-image: url("images/1129.jpg");
+    background-color: #bc9464;
+    background-blend-mode: multiply;
+    background-size: contain;
 }
+
 #win-message {
-    background: #4ed97f;
+    background-image: url("images/1129.jpg");
+    background-color: #bc9464;
+    background-blend-mode: multiply;
+    background-size: contain;
 }
 
 
@@ -248,8 +264,8 @@ input:focus {
 
 .outro-person {
     object-fit: contain;
-    grid-row: auto /span 2;
+    grid-row: auto /span 3;
     width: 25vw;
     height: 100vh;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
 }

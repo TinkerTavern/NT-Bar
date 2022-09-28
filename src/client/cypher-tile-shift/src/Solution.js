@@ -30,7 +30,7 @@ class Solution extends React.Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                task: 2,
+                task: 1,
                 progress: this.props.gamesWon,
             })
         })
@@ -97,7 +97,7 @@ class Solution extends React.Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                task: 2,
+                task: 1,
                 user: localStorage.getItem("userName2"),
                 time: this.props.timeTaken
             })

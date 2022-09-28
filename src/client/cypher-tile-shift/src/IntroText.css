@@ -13,11 +13,13 @@ body {
 }
 
 .answerBox {
-    background-color: #ebbe93;
+    background-color: #adaccd;
+    text-align: center;
     color: #37375d;
     font-size: xx-large;
     border: none;
     margin-bottom: 5%;
+    border: 6px ridge #37375d;
 }
 
 .answerLabel {
@@ -57,7 +59,7 @@ body {
 
 
 .instructions, span {
-    background-color: #adaccd;
+    background-color: #ebbe93;
     margin-top: 0px;
     font-size: 32px;
     font-weight: 400;
@@ -69,6 +71,7 @@ body {
     padding-top: 1%;
     grid-row: auto / span 3;
     white-space: pre-wrap;
+    border: 6px ridge #5c4428;
 }
 
 .intro-grid {
@@ -76,6 +79,10 @@ body {
     grid-template-columns: 25% 45% 25%;
     grid-gap: 3em 3em;
     grid-auto-flow: row dense;
+    background-image: url("images/1129.jpg");
+    background-color: #bc9464;
+    background-blend-mode: multiply;
+    background-size: contain;
 }
 
 .person {
@@ -90,14 +97,15 @@ body {
     height: 30vh;
     background: #545c9c;
     border: none;
-    font-weight: 700;
     border-radius: 50%;
+    font-weight: 700;
     color: white;
-    font-size: 2rem;
+    font-size: 3rem;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: auto;
+    border: 6px ridge #37375d;
 }
 
 .win-lose {

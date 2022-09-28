@@ -18,7 +18,8 @@
     <img class="person" src="{{ url_for('static',filename='images/snake-long.png') }}"/>
     <h1 class="game-title">Master the dance!</h1>
     <p></p>
-    <p class="instructions">1802, Bath Assembly Rooms.
+    <p class="instructions">
+1802, Bath Assembly Rooms.
 
 The bridal Ball has taken a dark turn. The Earl is dead and the murderer is likely still here! Desperately afraid to be exposed to the worst sort of scandal, Isobel, now widow, has begged you for help. Who committed this atrocious crime? Would anyone in this very ballroom know more than they let on?
 
@@ -55,6 +56,7 @@ To do so, you’ll need to follow the rhythm and hit the steps as they appear. T
 <section id="view-3">
     <div id="win-lose-messages" class="outro-grid">
         <img class="outro-person" src="{{ url_for('static',filename='images/snake-long.png') }}"/>
+        <h1 id="win-lose" class="win-title">Win/Lose</h1>
         <p class="win-lose-start"></p>
         <button class="play" id="restartButton" onclick="document.location.reload()">Next Dance...</button>
         <button class="play" id="winButton" onclick="winGame()">Discover the Secret...</button>

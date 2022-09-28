@@ -80,6 +80,7 @@ tbody, td, tr, th, table {
 
 .grid-spot {
     background-color: #adaccd;
+    padding: 2%;
 }
 
 .locked {

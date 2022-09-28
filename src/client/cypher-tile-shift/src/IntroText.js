@@ -17,7 +17,7 @@ class Intro extends React.Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                task: 2,
+                task: 1,
                 progress:  this.itemHasValue("needlepointProgress") ? parseInt(localStorage.getItem("needlepointProgress")) : 0,
                 limit: this.props.numberToComplete,
             })
@@ -28,7 +28,7 @@ class Intro extends React.Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                task: 2,
+                task: 1,
                 user: "",
             })
         })
@@ -43,7 +43,7 @@ class Intro extends React.Component {
                     className="game-title">{this.props.game === 'puzzle_shift' ? 'Needlepoint' : 'Cypher Cracker!'}</h1>
                 <p></p>
                 <p
-                    className="instructions">{this.props.game === 'puzzle_shift' ? "1802, Bath Assembly Rooms.\n" +
+                    className="instructions">{this.props.game === 'puzzle_shift' ? "\n1802, Bath Assembly Rooms.\n" +
                     "\n" +
                     "The bridal Ball has taken a dark turn. The Earl is dead and the murderer is likely still here! Desperately afraid to be exposed to the worst sort of scandal, Isobel, now widow, has begged you for help. Would the ladies in attendance by chance know of any gossip that could inform your investigation?\n" +
                     "\n" +

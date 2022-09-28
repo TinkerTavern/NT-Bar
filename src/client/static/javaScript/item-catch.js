@@ -33,8 +33,6 @@ $.ajax({
     dataType: 'json',
 });
 
-const winColor = "#4ed97f";
-const loseColor = "#de5f5f";
 
 
 let snakeTop, snakeLeft, snakeScale;
@@ -178,8 +176,8 @@ let moveSnake = () => {
 let gameResult = () => {
     $('.step-container img').remove();
     $('.background-image').remove();
+    $('#view-2').remove();
     if (stepsHit >= scoreGoal) {
-        $('#win-lose-messages').css('background', winColor);
         if (!scoreIncreased)
             progress++;
         scoreIncreased = true
@@ -199,10 +197,11 @@ let gameResult = () => {
             winMessageStart = "Well done, that was quite the dance! Hope you're not too winded.";
 
         }
+        $('.win-title').text("Win")
         $('.win-lose-start').text(winMessageStart);
         submitScore()
     } else {
-        $('#win-lose-messages').css('background', loseColor);
+        $('.win-title').text("Lose")
         $('.win-lose-start').text("You've kept up with the music as much as you could, but your dance partner was thoroughly unimpressed by your cotillon. Maybe the scotch reel will be more suited to your pace?")
         document.getElementById("winButton").style.display = "none"
 

@@ -10,7 +10,7 @@ function itemHasValue(key) {
 }
 
 function countNums(val) {
-    return localStorage.getItem("orderToSolve").split(",").length
+    return localStorage.getItem(val).split(",")
 }
 
 let url = itemHasValue("addr") ? localStorage.getItem("addr") : "127.0.0.1"
@@ -23,8 +23,6 @@ let riddlesToWin = itemHasValue("noToSolve") ? localStorage.getItem("noToSolve")
 let multiChoiceAnswerCount = itemHasValue("multipleChoiceChoices") ? localStorage.getItem("multipleChoiceChoices") : 3;
 
 let win, riddle, riddleId, answer, gameTimer;
-const winColor = "#4ed97f";
-const loseColor = "#de5f5f";
 
 
 // SELECT AND DISPLAY RIDDLE
@@ -47,7 +45,7 @@ function updateScore(score) {
     $.ajax({
         type: 'POST',
         url: url + "/update",
-        data: {"task": 1, "progress": score, "limit": riddlesToWin},
+        data: {"task": 2, "progress": score, "limit": riddlesToWin},
         dataType: 'json',
     });
 }
@@ -63,7 +61,7 @@ function submitUserName(name) {
     $.ajax({
         type: 'POST',
         url: url + "/set-user",
-        data: {"task": 1, "user": name},
+        data: {"task": 2, "user": name},
         dataType: 'json',
     });
 }
@@ -78,7 +76,9 @@ input.addEventListener("keypress", function (event) {
 
 const setRiddle = () => {
     // Get local storage value for id
-    riddleId = riddleOrder[progress] + 1
+    riddleId = riddleOrder[progress % 9] + 1
+    console.log(riddleOrder)
+    console.log(progress)
     fetchRiddle(riddleId).then((riddle) => {
         $('.riddle').text(riddle.question);
         if (multipleChoice === "on")
@@ -215,10 +215,9 @@ function finalScreen() {
         submitScore()
         updateScore(progress)
     }
-    $('#view-2').animate({'opacity': 0.2}, 300);
+    $('#view-2').animate({'opacity': 0}, 300);
 
     if (progress >= riddlesToWin) {
-        $('.win-lose-messages').css('background', winColor);
         $('.win-lose-start').text("Miss Fanny Delahoussaye is quite impressed by your skills. With a conspiratorial air, she leans and whispers at your ear:\n" +
             "\n" +
             "“My second is not polite of my first,\n" +
@@ -232,14 +231,15 @@ function finalScreen() {
             "\n" +
             "With this new clue and charade added to your collection, you carry onwards in your investigation.");
         document.getElementById("restartButton").style.display = "none"
+        $('.win-title').text("Win")
         submitScore();
     } else if (win) {
-        $('#win-lose-messages').css('background', winColor);
+        $('.win-title').text("Win")
         $('.win-lose-start').text("You truly kept your wits about you. Excellent wordplay, well done!");
         document.getElementById("winButton").style.display = "none"
 
     } else {
-        $('#win-lose-messages').css('background', loseColor);
+        $('.win-title').text("Lose")
         $('.win-lose-start').text("Looks like you left your wit at home. No fret, happens to the best of us. Why don't you go fetch it and try again.")
         document.getElementById("winButton").style.display = "none"
     }

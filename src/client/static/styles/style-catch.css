@@ -6,6 +6,10 @@
     left: 0px;
     width: 100vw;
     height: 100vh;
+    background-image: url("../images/1129.jpg");
+    background-color: #bc9464;
+    background-blend-mode: multiply;
+    background-size: contain;
     /*overflow-y: hidden;*/
 }
 
@@ -17,6 +21,10 @@
     left: -100vw;
     width: 100vw;
     height: 100vh;
+    background-image: url("../images/1129.jpg");
+    background-color: #bc9464;
+    background-blend-mode: multiply;
+    background-size: contain;
     /*overflow-y: hidden;*/
 }
 
@@ -76,4 +84,8 @@
 
 #view-3 {
     display: none;
+    background-image: url("../images/1129.jpg");
+    background-color: #bc9464;
+    background-blend-mode: multiply;
+    background-size: contain;
 }

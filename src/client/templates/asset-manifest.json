@@ -1,8 +1,9 @@
 {
   "files": {
-    "main.css": "./static/css/main.9b0e33f3.css",
-    "main.js": "./static/js/main.ec0ad739.js",
+    "main.css": "./static/css/main.7ddf42cf.css",
+    "main.js": "./static/js/main.bb314251.js",
     "static/js/787.c745ff56.chunk.js": "./static/js/787.c745ff56.chunk.js",
+    "static/media/1129.jpg": "./static/media/1129.21af83566bba892b5073.jpg",
     "static/media/Needlepoint2.png": "./static/media/Needlepoint2.191d2bd7af15b90e17e4.png",
     "static/media/Needlepoint3.png": "./static/media/Needlepoint3.63e692c12ad0c641367e.png",
     "static/media/Needlepoint1.png": "./static/media/Needlepoint1.626ba83027e08f57626b.png",
@@ -59,12 +60,12 @@
     "static/media/Needlepoint2_m.png": "./static/media/Needlepoint2_m.df51fb28e629f017e607.png",
     "static/media/ladder.png": "./static/media/ladder.afa1704555c87647f722.png",
     "index.html": "./index.html",
-    "main.9b0e33f3.css.map": "./static/css/main.9b0e33f3.css.map",
-    "main.ec0ad739.js.map": "./static/js/main.ec0ad739.js.map",
+    "main.7ddf42cf.css.map": "./static/css/main.7ddf42cf.css.map",
+    "main.bb314251.js.map": "./static/js/main.bb314251.js.map",
     "787.c745ff56.chunk.js.map": "./static/js/787.c745ff56.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9b0e33f3.css",
-    "static/js/main.ec0ad739.js"
+    "static/css/main.7ddf42cf.css",
+    "static/js/main.bb314251.js"
   ]
 }

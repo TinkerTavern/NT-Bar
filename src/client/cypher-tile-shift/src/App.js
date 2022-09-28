@@ -52,7 +52,7 @@ class App extends React.Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                task: 2,
+                task: 1,
                 progress: 0,
                 limit: this.state.numberToComplete
             })
@@ -69,7 +69,7 @@ class App extends React.Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                task: 2,
+                task: 1,
                 user: document.getElementById("userName").value,
             })
         })
