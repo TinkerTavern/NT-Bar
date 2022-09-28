@@ -56,12 +56,17 @@ tbody, td, tr, th, table {
 }
 
 .instructions {
+    background-color: #adaccd;
+    color: #37375d;
     grid-column: auto /span 2;
-    margin-top: 0px;
-    font-size: 20px;
-    text-align: justify;
     white-space: pre-wrap;
 
+}
+
+.instructions p {
+    text-align: justify;
+    margin: 2%;
+    font-size: 24px;
 }
 
 .progress {
@@ -91,7 +96,7 @@ tbody, td, tr, th, table {
 
 }
 
-.catch {
+.catch, .tile, .riddle {
     position: absolute;
     top: 0;
     left: 0;
@@ -132,13 +137,14 @@ body {
 
 /* Create two equal columns that sits next to each other */
 .column {
-    height: 40%;
+    height: 30vh;
     padding: 0 4px;
 }
 
 .column img {
     margin-top: 8px;
     vertical-align: middle;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 #view-3 {

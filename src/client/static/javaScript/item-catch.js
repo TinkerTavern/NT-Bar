@@ -144,6 +144,7 @@ let moveSnake = () => {
     } else {
         document.getElementById("good-step-container").style.visibility = "visible";
         document.getElementById("bad-step-container").style.visibility = "visible";
+        document.getElementById("bad-step-container").style.rotate = "180deg";
         snakeTop = Math.floor(Math.random() * fullHeight);
         snakeLeft = Math.floor(Math.random() * fullWidth);
         // console.log(snakeLeft,snakeTop)

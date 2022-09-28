@@ -54,6 +54,7 @@
     width: 80vw;
     margin-block: 14vh;
     line-height: 150%;
+    white-space: pre-wrap;
 }
 
 .answer {

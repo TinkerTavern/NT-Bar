@@ -134,7 +134,7 @@ class Board extends React.Component {
             animateCSS('.image-preview', 'fadeOut').then((message) => {
                 this.props.onSolution()
             });
-        }, this.props.imagePreviewTime * 1000);
+        }, this.props.imagePreviewTime * 3000);
     }
 
     componentDidMount() {

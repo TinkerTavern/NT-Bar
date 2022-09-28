@@ -16,7 +16,7 @@ uniqueAttempts = [0, 0, 0]
 msgAppend = ["", "", ""]
 taskOpts = ["danceScores", "charadesScores", "needlepointScores"]
 tasks = ["Master the dance!", "Solve the charades!",
-         "Solve the needlepoint puzzles!"]
+         "Put the needlepoints back together!"]
 oldProgress = [-1, -1, -1]
 
 # TODO: Think about how to get a room reset button working effectively
@@ -75,6 +75,7 @@ def update_task():
     if limit is not None:
         limits[taskID] = limit
     progress[taskID] = progressVal
+    print(progress)
     return jsonify(success=True)
 
 

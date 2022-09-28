@@ -9,6 +9,7 @@
     src: url(PassionsConflict.ttf) format('truetype');
 }
 
+
 .title {
     text-align: center;
     padding: 2px;
@@ -139,11 +140,11 @@ button {
 }
 
 .answerBox {
-    background-color: #ebbe93;
     color: #37375d;
     font-size: xx-large;
     border: none;
     margin-bottom: 5%;
+    border: 6px ridge #37375d;
 }
 
 .center {
@@ -173,11 +174,12 @@ span, #snake-count, #steps-left, #stepper, img {
     border-radius: 50%;
     font-weight: 700;
     color: white;
-    font-size: 2rem;
+    font-size: 3rem;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: auto;
+    border: 6px ridge #37375d;
 }
 
 input {
@@ -193,7 +195,7 @@ input {
 }
 
 .instructions {
-    background-color: #adaccd;
+    background-color: #ebbe93;
     margin-top: 0px;
     font-size: 32px;
     font-weight: 400;
@@ -205,6 +207,7 @@ input {
     padding-top: 1%;
     grid-row: auto / span 3;
     white-space: pre-wrap;
+    border: 6px ridge #5c4428;
 }
 
 .intro-grid {
