@@ -4,90 +4,90 @@
       "id": 1,
       "question": "My first doth affliction denote, \nWhich my second is destin’d to feel\nAnd my whole is the best antidote\nThat affliction to soften and heal.",
       "answers": [
-        "WOMAN",
-        "Wrong1",
-        "Wrong2",
-        "Wrong3"
+        "Woman",
+        "Sunday",
+        "Lighthouse",
+        "Offspring"
       ]
     },
     {
       "id": 2,
       "question": "My first is in harvest rarely known, \nNor would it welcome be.\nMy next in country or in town, \nEach miss delights to see.\nAnd when drear winter’s dress is shown, \nIn joyous play my whole is thrown.",
       "answers": [
-        "SNOWBALL",
-        "Wrong1",
-        "Wrong2",
-        "Wrong3"
+        "Snowball",
+        "Rainbow",
+        "Furrow",
+        "Rainbow"
       ]
     },
     {
       "id": 3,
       "question": "My first dispels the darksome gloom;\nYou love my next wherever you roam.\nMy whole with cheering ray from far,\nGives comfort to the wandering tar.",
       "answers": [
-        "LIGHTHOUSE",
-        "Wrong1",
-        "Wrong2",
-        "Wrong3"
+        "Lighthouse",
+        "Sunday",
+        "Woman",
+        "Offspring"
       ]
     },
     {
       "id": 4,
       "question": "My first a blessing sent to earth, \nOf plants and flowers to aid the birth.\nMy second surely was designed\nTo hurl destruction on mankind.\nMy whole a pledge from pardoned Heaven, \nOf wrath appeased and crimes forgiven.",
       "answers": [
-        "RAINBOW",
-        "Wrong1",
-        "Wrong2",
-        "Wrong3"
+        "Rainbow",
+        "Sunday",
+        "Breakfast",
+        "Woman"
       ]
     },
     {
       "id": 5,
       "question": "My first, all sabled over with gloom, \nShuns the effulgent light of day;\nMy second, formed on fashion’s loom, \nGives female dress a neat display;\nAnd in the embraces of my whole I’m blest,\nWhile through my first I seek oblivion’s rest.",
       "answers": [
-        "NIGHTCAP",
-        "Wrong1",
-        "Wrong2",
-        "Wrong3"
+        "Nightcap",
+        "Lighthouse",
+        "Snowball",
+        "Rainbow"
       ]
     },
     {
       "id": 6,
       "question": "A mischievous urchin may soon do my first, \nIf he meets with a teapot or ewer.\nMy second bring on us both hunger and thirst.\nMy whole thirst and hunger will cure.",
       "answers": [
-        "BREAKFAST",
-        "Wrong1",
-        "Wrong2",
-        "Wrong3"
+        "Breakfast",
+        "Nightcap",
+        "Woman",
+        "Offspring"
       ]
     },
     {
       "id": 7,
       "question": "My first’s a word comedians dread to hear;\nMy next gives charms to the revolving year.\nMy whole’s the joy of many a happy pair,\nYet ofttimes brings them misery and care.",
       "answers": [
-        "OFFSPRING",
-        "Wrong1",
-        "Wrong2",
-        "Wrong3"
+        "Offspring",
+        "Woman",
+        "Furrow",
+        "Nightcap"
       ]
     },
     {
       "id": 8,
       "question": "My first is an animal’s coat;\nMany trees in my next you may place.\nMy whole, to your grief, will denote\nThat time has made work with your face.",
       "answers": [
-        "FURROW",
-        "Wrong1",
-        "Wrong2",
-        "Wrong3"
+        "Furrow",
+        "Rainbow",
+        "Breakfast",
+        "Snowball"
       ]
     },
     {
       "id": 9,
       "question": "Hail! Glorious first, whose beams resplendent rise!\nThou, with my next, art welcome to the skies.\nMy hallowed whole calm consolation brings, \nAnd relaxation from all earthly things.",
       "answers": [
-        "SUNDAY",
-        "Wrong1",
-        "Wrong2",
-        "Wrong3"
+        "Sunday",
+        "Lighthouse",
+        "Breakfast",
+        "Furrow"
       ]
     }
   ]
