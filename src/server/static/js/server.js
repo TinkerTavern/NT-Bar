@@ -121,7 +121,7 @@ function loadTaskInfo() {
             playerCount = response['playerCount'];
             if (toDoItems === "old")
                 return;
-            var ids = ["dance", "riddle", "puzzle"]
+            var ids = ["dance", "puzzle", "riddle"]
             var count = Object.keys(toDoItems).length;
             for (var i = 0; i < count; i++) {
                 var att = attempts[i] !== 1 ? " attempts have" : " attempt has"

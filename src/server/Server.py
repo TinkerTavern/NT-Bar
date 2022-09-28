@@ -66,12 +66,13 @@ def get_my_ip():
 @app.route("/update", methods=["POST"])
 def update_task():
     limit = request.form.get("limit")
-    taskID = int(request.form.get("task"))
+    taskID = request.form.get("task")
     progressVal = request.form.get("progress")
     if taskID is None:
         limit = request.json.get("limit")
-        taskID = int(request.json.get("task"))
+        taskID = request.json.get("task")
         progressVal = request.json.get("progress")
+    taskID = int(taskID)
     if limit is not None:
         limits[taskID] = limit
     progress[taskID] = progressVal
@@ -82,12 +83,13 @@ def update_task():
 @app.route("/submit", methods=["POST"])
 def submit_score():
     user = request.form.get("user")
-    taskID = int(request.form.get("task"))
+    taskID = request.form.get("task")
     time = request.form.get("time")
     if taskID is None:
         user = request.json.get("user")
-        taskID = int(request.json.get("task"))
+        taskID = request.json.get("task")
         time = request.json.get("time")
+    taskID = int(taskID)
     file = join(dirname(realpath(__file__)), "static/leaders/" + taskOpts[taskID] + ".leaders")
     leaderboard = []
     import csv
@@ -109,10 +111,11 @@ def submit_score():
 @app.route("/set-user", methods=["POST"])
 def set_user():
     user = request.form.get("user")
-    taskID = int(request.form.get("task"))
+    taskID = request.form.get("task")
     if taskID is None:
         user = request.json.get("user")
-        taskID = int(request.json.get("task"))
+        taskID = request.json.get("task")
+    taskID = int(taskID)
     lastPlayer = players[taskID]
     if lastPlayer not in lastPlayers[taskID]:
         lastPlayers[taskID].insert(0, lastPlayer)
