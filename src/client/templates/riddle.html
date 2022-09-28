@@ -15,27 +15,29 @@
 <!--<img class="background-image" src="{{ url_for('static',filename='images/snake-long.png') }}"/>-->
 <!--<img draggable="false" class="background-image" src="{{ url_for('static',filename='images/riddle-bg.png')}}"/>-->
 <section id="view-2">
-    <div class="timer center">
-        <p>Time left: <span id="time-left"></span></p>
-        <div id="right"></div>
-        <div id="wrong"></div>
-    </div>
 
-    <p class="riddle center"></p>
-    <div id="textEntry">
-        <label class="center answerLabel answerLabel2" for="answer">Your Answer:</label>
-        <input class="center answerBox" type="text" id="answer" name="answer">
-        <input class="center submit" id="submitButton" type="button" value="Submit" onclick="answerWritten();"/>
-    </div>
-    <div id="multiChoice">
-        <label class="center answerLabel answerLabel2" for="answer">Select the Correct answer:</label><br>
-        <div class="options">
-            <input class="option submit" id="answer1" type="button" value="1111" onclick="answer1();"/>
-            <input class="option submit" id="answer2" type="button" value="2222" onclick="answer2();"/>
-            <input class="option submit" id="answer3" type="button" value="3333" onclick="answer3();"/>
-            <input class="option submit" id="answer4" type="button" value="4444" onclick="answer4();"/>
+    <div id="riddlestuff" class="outro-grid">
+        <img class="person" src="{{ url_for('static',filename='images/snake-long.png') }}"/>
+        <div class="timer center">
+            <p>Time left: <span id="time-left"></span></p>
+        </div>
+        <p class="riddle"></p>
+        <div id="textEntry">
+            <label class="answerLabel answerLabel2" for="answer">Your Answer:</label><br>
+            <input class="answerBox" type="text" id="answer" name="answer">
+            <input class="play" id="submitButton" type="button" value="Submit" onclick="answerWritten();"/>
+        </div>
+        <div id="multiChoice">
+            <label class="center answerLabel answerLabel2" for="answer">Select the Correct answer:</label><br>
+            <div class="options">
+                <input class="option submit" id="answer1" type="button" value="1111" onclick="answer1();"/>
+                <input class="option submit" id="answer2" type="button" value="2222" onclick="answer2();"/>
+                <input class="option submit" id="answer3" type="button" value="3333" onclick="answer3();"/>
+                <input class="option submit" id="answer4" type="button" value="4444" onclick="answer4();"/>
+            </div>
         </div>
     </div>
+
 </section>
 
 <section class="intro-grid" id="view-1">
@@ -53,7 +55,7 @@ You know of charades, of course, don’t you? You figure out the first syllable,
     </p>
     <p></p>
     <div class="name">
-        <label class="answerLabel" for="userName">Your Name: </label>
+        <label class="answerLabel" for="userName">Your Name: </label><br>
         <input class="answerBox" type="text" id="userName" name="answer">
     </div>
     <div class="play">Play!</div>
@@ -66,7 +68,7 @@ You know of charades, of course, don’t you? You figure out the first syllable,
         <img class="outro-person" src="{{ url_for('static',filename='images/snake-long.png') }}"/>
         <h1 id="win-lose" class="win-title">Win/Lose</h1>
         <p class="win-lose-start"></p>
-        <button class="play" id="restartButton" onclick="document.location.reload()">Next Dance...</button>
+        <button class="play" id="restartButton" onclick="document.location.reload()">Next Charade...</button>
         <button class="play" id="winButton" onclick="winGame()">Discover the Secret...</button>
     </div>
 </section>

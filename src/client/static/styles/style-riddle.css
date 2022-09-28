@@ -15,8 +15,8 @@
 .option {
     text-align: center;
     text-transform: capitalize;
-    background: #545c9c;
-    color: white;
+    background-color: #ebbe93;
+    border: 6px ridge #5c4428;
     width: 20%;
 
 }
@@ -55,10 +55,10 @@
 }
 
 .riddle {
-    background-color: #adaccd;
+    background-color: #ebbe93;
+    border: 6px ridge #5c4428;
     font-size: 2rem;
-    width: 80vw;
-    margin-block: 14vh;
+    margin-block: 7vh;
     line-height: 150%;
     white-space: pre-wrap;
 }
@@ -74,21 +74,6 @@
 
 .answerLabel2 {
     margin-left: 0%;
-}
-
-#right, #wrong {
-    position: absolute;
-    height: 100%;
-    aspect-ratio: 1;
-    top: 0;
-}
-
-#right {
-    left: 0px;
-}
-
-#wrong {
-    right: 0px;
 }
 
 /* VIEW 3 - RESULT */

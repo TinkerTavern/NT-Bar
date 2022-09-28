@@ -95,7 +95,6 @@ function checkProgress(scores, limits) {
     if (won) {
         abortTimer()
         document.getElementById("server-grid").style.display = "none"
-        $('#win-lose-messages').css('background', "#4ed97f");
         winMessageStart = "After an evening of games & dances, you come back to Isobel, hoping that the hints you’ve gathered are enough for you and her to put it all together. You ask her if she’s given a servant, likely a woman, someone particularly close to her, a reason to hold a grudge?\n" +
             "\n" +
             "At first, Isobel looks confused, with an early denial. The initial shock passed, she slowly nods her head in understanding: “Marguerite!” she says, “My former maid. I had to terminate her employment this morning at Frederick’s request. She was to leave the premises by tomorrow. Do you really think it could be her?”\n" +
@@ -105,6 +104,7 @@ function checkProgress(scores, limits) {
             "Marguerite, who lies dead on the floor, in a pool of crimson red.\n" +
             "It would seem your investigation has only just started."
         $('.win-lose-start').text(winMessageStart);
+        $('.win-title').text("Win")
         $('#view-3').fadeIn();
     }
 }

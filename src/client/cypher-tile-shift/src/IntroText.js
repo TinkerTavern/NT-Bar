@@ -53,7 +53,7 @@ class Intro extends React.Component {
                     : 'Use the cypher to decode the 4-letter word'}</p>
                 <p></p>
                 <div className="name">
-                    <label className="answerLabel" htmlFor="userName">Your Name: </label>
+                    <label className="answerLabel" htmlFor="userName">Your Name: </label><br/>
                     <input className="answerBox" type="text" id="userName" name="answer"
                            defaultValue={localStorage.getItem("userName2")}/>
                 </div>
@@ -64,7 +64,7 @@ class Intro extends React.Component {
                 >Play!
                 </button>
                 <Box>
-                    <div className="win-lose center">
+                    <div className="win-lose">
                         <p></p>
                         {/*<p>Lose: Go forward 3 to 8 spaces</p>*/}
                     </div>

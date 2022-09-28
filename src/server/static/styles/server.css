@@ -9,13 +9,8 @@
     src: url(PassionsConflict.ttf) format('truetype');
 }
 
-p {
-    background-color: #adaccd;
-    color: #37375d;
-}
-
 * {
-    background-color: #bc9464;
+    /*background-color: #bc9464;*/
     font-family: Kalam;
     text-align: center;
     font-size: 20px;
@@ -27,6 +22,15 @@ p {
     font-weight: 500;
     text-align: center;
     margin: 10%;
+}
+
+.win-title {
+    font-family: PassionsConflict;
+    font-size: 700%;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 1%;
+    margin-bottom: -2%;
 }
 
 .game-score {
@@ -56,10 +60,20 @@ tbody, td, tr, th, table {
 }
 
 .instructions {
-    background-color: #adaccd;
     color: #37375d;
     grid-column: auto /span 2;
     white-space: pre-wrap;
+    background-color: #ebbe93;
+    margin-top: 0px;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 31px;
+    letter-spacing: 0.01em;
+    text-align: justify;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 1%;
+    border: 6px ridge #5c4428;
 
 }
 
@@ -79,7 +93,8 @@ tbody, td, tr, th, table {
 }
 
 .grid-spot {
-    background-color: #adaccd;
+    background-color: #ebbe93;
+    border: 6px ridge #5c4428;
     padding: 2%;
 }
 
@@ -106,6 +121,7 @@ tbody, td, tr, th, table {
 .image {
     object-fit: contain;
     width: 20vh;
+    padding-left: 25%;
     height: 30vh;
 }
 
@@ -121,11 +137,12 @@ tbody, td, tr, th, table {
 }
 
 body {
-    background-image: url("../images/background.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-color: #232323;
-
+    background-image: url("../images/1129.jpg");
+    background-color: #bc9464;
+    background-blend-mode: multiply;
+    background-size: contain;
+    width: 100vw;
+    height: 100vh;
 }
 
 .row {
@@ -139,13 +156,15 @@ body {
 /* Create two equal columns that sits next to each other */
 .column {
     height: 30vh;
+    width: 20vw;
     padding: 0 4px;
+    background-color: #ebbe93;
+    border: 6px ridge #5c4428;
 }
 
 .column img {
     margin-top: 8px;
     vertical-align: middle;
-    background-color: rgba(0, 0, 0, 0);
 }
 
 #view-3 {
@@ -154,13 +173,13 @@ body {
 
 .outro-grid {
     display: grid;
-    grid-template-columns: 30% 60%;
+    grid-template-columns: 25% 70%;
     grid-auto-flow: row dense;
 }
 
 .outro-person {
     object-fit: contain;
-    grid-row: auto /span 2;
+    grid-row: auto /span 3;
     width: 25vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0);
@@ -178,7 +197,7 @@ body {
 }
 
 .win-lose-start {
-    background-color: #adaccd;
+    background-color: #ebbe93;
     font-size: 32px;
     font-weight: 400;
     line-height: 51px;
@@ -188,6 +207,7 @@ body {
     padding-right: 5%;
     padding-top: 1%;
     white-space: pre-wrap;
+    border: 6px ridge #5c4428;
 }
 
 .play {
@@ -198,9 +218,10 @@ body {
     border-radius: 50%;
     font-weight: 700;
     color: white;
-    font-size: 2rem;
+    font-size: 3rem;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: auto;
+    border: 6px ridge #37375d;
 }

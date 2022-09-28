@@ -71,7 +71,8 @@ button {
 
 .timer {
     font-size: 1.8rem;
-    padding: 4vh;
+    margin-top: -2%;
+    margin-bottom: 2%;
 }
 
 .cypher-input-answer {
@@ -227,13 +228,23 @@ input:focus {
 
 }
 
-.image-preview {
-    width: 50vw;
-    height: auto;
-}
-
 .animate__animated.animate__fadeOut {
     --animate-duration: 1.5s;
+}
+
+.outside-image {
+    width: 50vw;
+    height: 50vw;
+    background-image: url(images/Frame.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: 25%;
+    margin-top: -2%;
+}
+
+.image-preview {
+    width: 40vw;
+    margin-top: 10%;
 }
 
 .tileGrid {
@@ -268,4 +279,13 @@ input:focus {
     width: 25vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0);
+}
+
+.win-title {
+    font-family: PassionsConflict;
+    font-size: 700%;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 1%;
+    margin-bottom: -2%;
 }

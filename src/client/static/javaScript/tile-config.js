@@ -11,6 +11,7 @@ function submitForm(e) {
     localStorage.setItem("postview", formProps["postview"])
     localStorage.setItem("4xMode", formProps["4xMode"])
     localStorage.setItem("slideMode", formProps["slideMode"])
+    localStorage.setItem("previewTimer", formProps["previewTimer"])
     alert("Changes saved successfully")
     window.location.href = "/needlepoint";
 }

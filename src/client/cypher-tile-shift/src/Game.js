@@ -27,7 +27,7 @@ class Game extends React.Component {
 					onFailure={ () => this.props.onPlayerFailed () }
 					timeToComplete = {30}
 					showImagePreview={false}
-					imagePreviewTime={0.5}
+					imagePreviewTime={1}
 				/> :
 				<Cypher 
 					timeToComplete={30}

@@ -124,7 +124,7 @@ class Board extends React.Component {
                 this.setState({active: true})
                 this.startPuzzleTimer()
             });
-        }, this.props.imagePreviewTime * 1000);
+        }, itemHasValue("previewTimer") ? parseInt(localStorage.getItem("previewTimer")) * 1000 : this.props.imagePreviewTime * 1000);
     }
 
     showImagePostview() {
@@ -134,7 +134,7 @@ class Board extends React.Component {
             animateCSS('.image-preview', 'fadeOut').then((message) => {
                 this.props.onSolution()
             });
-        }, this.props.imagePreviewTime * 3000);
+        }, itemHasValue("previewTimer") ? parseInt(localStorage.getItem("previewTimer")) * 1000 : this.props.imagePreviewTime * 1000);
     }
 
     componentDidMount() {
@@ -143,10 +143,10 @@ class Board extends React.Component {
         this.shuffleArray(tilesArr)
         this.setState({tiles: tilesArr})
 
-        if (this.props.timeToComplete < 10) {
-            this.setState({timeString: '0' + this.props.timeToComplete});
+        if (this.state.currentTimeRemaining < 10) {
+            this.setState({timeString: '0' + this.state.currentTimeRemaining});
         } else {
-            this.setState({timeString: '' + this.props.timeToComplete})
+            this.setState({timeString: '' + this.state.currentTimeRemaining})
         }
 
         if (localStorage.getItem("preview") === "on") {
@@ -263,7 +263,9 @@ class Board extends React.Component {
             }
         } else {
             mainView = <Box>
-                <img draggable={false} className="image-preview" src={this.state.preview} alt="alt text"/>
+                <div className={"outside-image"}>
+                    <img draggable={false} className="image-preview" src={this.state.preview} alt="alt text"/>
+                </div>
             </Box>
         }
 
