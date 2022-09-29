@@ -66,7 +66,7 @@ function puzzleLeaderboard() {
 }
 
 function resetRoom() {
-    alert("Resetting room...")
+    // alert("Resetting room...")
     $.ajax({
         type: 'POST',
         url: "http://127.0.0.1:3000/reset-tasks",
@@ -121,7 +121,7 @@ function loadTaskInfo() {
             playerCount = response['playerCount'];
             if (toDoItems === "old")
                 return;
-            var ids = ["dance", "puzzle", "riddle"]
+            var ids = ["dance", "riddle", "puzzle"]
             var count = Object.keys(toDoItems).length;
             for (var i = 0; i < count; i++) {
                 var att = attempts[i] !== 1 ? " attempts have" : " attempt has"

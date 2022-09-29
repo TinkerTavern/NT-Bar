@@ -74,6 +74,12 @@ button {
     margin-top: -2%;
     margin-bottom: 2%;
 }
+.imageBy {
+    font-size: 24px;
+    white-space: pre-wrap;
+    background-color: #ebbe93;
+    border: 6px ridge #5c4428;
+}
 
 .cypher-input-answer {
     position: relative;
@@ -269,7 +275,7 @@ input:focus {
 
 .outro-grid {
     display: grid;
-    grid-template-columns: 30% 60%;
+    grid-template-columns: 30% 65%;
     grid-auto-flow: row dense;
 }
 

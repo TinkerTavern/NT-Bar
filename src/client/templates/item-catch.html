@@ -15,9 +15,13 @@
 <!--<img class="background-image" src="{{ url_for('static',filename='images/item-bg.jpg') }}"/>-->
 
 <section class="intro-grid" id="view-1">
-    <img class="person" src="{{ url_for('static',filename='images/snake-long.png') }}"/>
+        <figure class="person">
+    <img  src="{{ url_for('static',filename='images/Dance_Intro.png') }}"/>
+        <p class="imageBy">Background image by GarryKillian on Freepik
+Portrait of a Man by François-Xavier Fabre</p>
+    </figure>
     <h1 class="game-title">Master the dance!</h1>
-    <p></p>
+    <p style="font-size: 24px"></p>
     <p class="instructions">
 1802, Bath Assembly Rooms.
 
@@ -55,7 +59,11 @@ To do so, you’ll need to follow the rhythm and hit the steps as they appear. T
 
 <section id="view-3">
     <div id="win-lose-messages" class="outro-grid">
-        <img class="outro-person" src="{{ url_for('static',filename='images/snake-long.png') }}"/>
+                <figure class="outro-person">
+            <img src="{{ url_for('static',filename='images/Dance_End.png') }}"/>
+            <figcaption class="imageBy">Background image by GarryKillian on Freepik
+Self Portrait, c.1818 by Claude Marie Dubufe</figcaption>
+        </figure>
         <h1 id="win-lose" class="win-title">Win/Lose</h1>
         <p class="win-lose-start"></p>
         <button class="play" id="restartButton" onclick="document.location.reload()">Next Dance...</button>

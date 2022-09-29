@@ -26,20 +26,20 @@ Desperately afraid that the letter will expose her to the worst sort of scandal,
                  src="{{url_for('static', filename='images/Progress/Dance3.PNG')}}">
         </div>
         <div class="column" style="position: relative; left: 20%; top: 0">
-            <img draggable="false" id="riddle1" class="riddle locked image"
-                 src="{{url_for('static', filename='images/Progress/Charades1.PNG')}}">
-            <img draggable="false" id="riddle2" class="riddle locked image"
-                 src="{{url_for('static', filename='images/Progress/Charades2.PNG')}}">
-            <img draggable="false" id="riddle3" class="riddle locked image"
-                 src="{{url_for('static', filename='images/Progress/Charades3.PNG')}}">
-        </div>
-        <div class="column" style="position: relative; left: 20%; top: 0">
             <img draggable="false" id="tile1" class="tile locked image"
                  src="{{url_for('static', filename='images/Progress/Needlepoint1.PNG')}}">
             <img draggable="false" id="tile2" class="tile locked image"
                  src="{{url_for('static', filename='images/Progress/Needlepoint2.PNG')}}">
             <img draggable="false" id="tile3" class="tile locked image"
                  src="{{url_for('static', filename='images/Progress/Needlepoint3.PNG')}}">
+        </div>
+        <div class="column" style="position: relative; left: 20%; top: 0">
+            <img draggable="false" id="riddle1" class="riddle locked image"
+                 src="{{url_for('static', filename='images/Progress/Charades1.PNG')}}">
+            <img draggable="false" id="riddle2" class="riddle locked image"
+                 src="{{url_for('static', filename='images/Progress/Charades2.PNG')}}">
+            <img draggable="false" id="riddle3" class="riddle locked image"
+                 src="{{url_for('static', filename='images/Progress/Charades3.PNG')}}">
         </div>
         <div class="grid-spot game-score" id="dance">dance</div>
         <div class="grid-spot game-score" id="puzzle">puzzle</div>
@@ -51,7 +51,11 @@ Desperately afraid that the letter will expose her to the worst sort of scandal,
     </div>
     <section id="view-3">
         <div id="win-lose-messages" class="outro-grid">
-            <img class="outro-person" src="{{ url_for('static',filename='images/ladder.png') }}"/>
+            <figure class="outro-person">
+            <img src="{{ url_for('static',filename='images/Server_End.png') }}"/>
+            <figcaption class="imageBy">Background image by GarryKillian on Freepik
+A Country Girl by Charles Sillem Lidderdale</figcaption>
+            </figure>
             <h1 id="win-lose" class="win-title">Win/Lose</h1>
             <p class="win-lose-start center"></p>
             <button class="play" id="winButton" onclick="resetRoom(); document.location.reload()">Until next time...

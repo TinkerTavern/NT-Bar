@@ -173,9 +173,16 @@ body {
 
 .outro-grid {
     display: grid;
-    grid-template-columns: 25% 70%;
+    grid-template-columns: 30% 65%;
     grid-auto-flow: row dense;
 }
+.imageBy {
+    font-size: 24px;
+    white-space: pre-wrap;
+    background-color: #ebbe93;
+    border: 6px ridge #5c4428;
+}
+
 
 .outro-person {
     object-fit: contain;

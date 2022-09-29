@@ -1,7 +1,7 @@
 import React from 'react'
 import {Box} from 'rebass'
 import './IntroText.css';
-import ladder from './images/ladder.png'
+import needleIntro from './images/Needlepoint_Intro.png'
 
 class Intro extends React.Component {
     itemHasValue(key) {
@@ -17,8 +17,8 @@ class Intro extends React.Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                task: 1,
-                progress:  this.itemHasValue("needlepointProgress") ? parseInt(localStorage.getItem("needlepointProgress")) : 0,
+                task: 2,
+                progress: this.itemHasValue("needlepointProgress") ? parseInt(localStorage.getItem("needlepointProgress")) : 0,
                 limit: this.props.numberToComplete,
             })
         })
@@ -28,8 +28,27 @@ class Intro extends React.Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                task: 1,
+                task: 2,
                 user: "",
+            })
+        }).then(r => r.json()).then(response => {
+            console.log(response)
+            if (response["reset"] === true)
+                this.confirmReset()
+        })
+    }
+
+    confirmReset() {
+        this.props.reset();
+        let url = this.itemHasValue("addr") ? localStorage.getItem("addr") : "127.0.0.1"
+        url = "http://" + url + ":3000"
+        fetch(url + '/confirm-reset', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                task: 2,
             })
         })
     }
@@ -38,7 +57,11 @@ class Intro extends React.Component {
         this.network()
         return (
             <div className="intro-grid">
-                <img className="person" src={ladder} alt="Echo Games' ladder"/>
+                <figure className="person">
+                    <img src={needleIntro}/>
+                    <p className={"imageBy"}>{"Background image by GarryKillian on Freepik\n" +
+                        "Portrait of Lady Selina Caroline Meade, later Countess Clam-Martinic (1797–1872) by Sir Thomas Lawrence"}</p>
+                </figure>
                 <h1
                     className="game-title">{this.props.game === 'puzzle_shift' ? 'Needlepoint' : 'Cypher Cracker!'}</h1>
                 <p></p>

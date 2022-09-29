@@ -29,8 +29,8 @@
 }
 
 .timer {
-    background: black;
-    color: white;
+    background: #ebbe93;
+    border: 6px ridge #5c4428;
     padding-block: 4vh;
     padding-inline: 7vw;
     width: 86vw;

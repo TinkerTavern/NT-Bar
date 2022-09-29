@@ -43,10 +43,8 @@
 
 .timer {
     position: relative;
-    color: black;
-    padding-inline: 7vw;
-    width: 86vw;
-    font-size: 1.8rem;
+    padding: -5vw;
+    font-size: 3rem;
 }
 
 .timer p {

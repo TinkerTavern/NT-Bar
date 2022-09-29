@@ -1,13 +1,15 @@
 {
   "files": {
-    "main.css": "./static/css/main.4b4fb241.css",
-    "main.js": "./static/js/main.c1248f0f.js",
+    "main.css": "./static/css/main.a4413ebc.css",
+    "main.js": "./static/js/main.40ab1368.js",
     "static/js/787.c745ff56.chunk.js": "./static/js/787.c745ff56.chunk.js",
     "static/media/1129.jpg": "./static/media/1129.21af83566bba892b5073.jpg",
     "static/media/Needlepoint2.png": "./static/media/Needlepoint2.191d2bd7af15b90e17e4.png",
     "static/media/Needlepoint3.png": "./static/media/Needlepoint3.63e692c12ad0c641367e.png",
     "static/media/Needlepoint1.png": "./static/media/Needlepoint1.626ba83027e08f57626b.png",
+    "static/media/Needlepoint_Intro.png": "./static/media/Needlepoint_Intro.9505e18b4bc6fa80adcc.png",
     "static/media/Frame.png": "./static/media/Frame.8c48183a43f499e9bb77.png",
+    "static/media/Needlepoint_End.png": "./static/media/Needlepoint_End.8862de3a43fab482ed27.png",
     "static/media/Kalam.ttf": "./static/media/Kalam.831aaad03890ba2d7417.ttf",
     "static/media/Needlepoint2_e.png": "./static/media/Needlepoint2_e.12858f0f08d95d36de55.png",
     "static/media/PassionsConflict.ttf": "./static/media/PassionsConflict.8c2881552904c5ac9a5a.ttf",
@@ -60,12 +62,12 @@
     "static/media/Needlepoint2_m.png": "./static/media/Needlepoint2_m.df51fb28e629f017e607.png",
     "static/media/ladder.png": "./static/media/ladder.afa1704555c87647f722.png",
     "index.html": "./index.html",
-    "main.4b4fb241.css.map": "./static/css/main.4b4fb241.css.map",
-    "main.c1248f0f.js.map": "./static/js/main.c1248f0f.js.map",
+    "main.a4413ebc.css.map": "./static/css/main.a4413ebc.css.map",
+    "main.40ab1368.js.map": "./static/js/main.40ab1368.js.map",
     "787.c745ff56.chunk.js.map": "./static/js/787.c745ff56.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4b4fb241.css",
-    "static/js/main.c1248f0f.js"
+    "static/css/main.a4413ebc.css",
+    "static/js/main.40ab1368.js"
   ]
 }

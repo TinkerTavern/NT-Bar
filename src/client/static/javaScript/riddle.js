@@ -29,26 +29,6 @@ let win, riddle, riddleId, answer, gameTimer;
 updateScore(progress)
 submitUserName("")
 
-document.addEventListener("keypress", function (event) {
-    if (event.key === "Enter") { // delete key
-        alert("Resetting score...")
-        progress = 0;
-        localStorage.setItem("charadesProgress", 0)
-        updateScore(progress)
-    }
-});
-
-// TODO Make this work automatically upon room reset
-
-
-function updateScore(score) {
-    $.ajax({
-        type: 'POST',
-        url: url + "/update",
-        data: {"task": 2, "progress": score, "limit": riddlesToWin},
-        dataType: 'json',
-    });
-}
 
 document.getElementById("userName").value = localStorage.getItem("userName1")
 
@@ -57,22 +37,62 @@ function submitUser() {
     submitUserName(document.getElementById("userName").value)
 }
 
+function updateScore(score) {
+    $.ajax({
+        type: 'POST',
+        url: url + "/update",
+        data: {"task": 1, "progress": score, "limit": riddlesToWin},
+        dataType: 'json',
+    });
+}
+
 function submitUserName(name) {
     $.ajax({
         type: 'POST',
         url: url + "/set-user",
-        data: {"task": 2, "user": name},
+        data: {"task": 1, "user": name},
+        dataType: 'json',
+        success: function (data) {
+            if (data["reset"] === true)
+                confirmReset()
+        }
+    });
+}
+
+
+function confirmReset() {
+    // alert("Resetting score...")
+    progress = 0;
+    localStorage.setItem("charadesProgress", 0)
+    updateScore(progress)
+    $.ajax({
+        type: 'POST',
+        url: url + "/confirm-reset",
+        data: {
+            "task": 1,
+            dataType: 'json',
+        }
+    });
+}
+
+function submitScore() {
+    $.ajax({
+        type: 'POST',
+        url: url + "/submit",
+        data: {"task": 1, "user": document.getElementById("userName").value, "time": timerLength},
         dataType: 'json',
     });
 }
 
 var input = document.getElementById("answer");
+
 input.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         event.preventDefault();
         document.getElementById("submitButton").click();
     }
 });
+
 
 const setRiddle = () => {
     // Get local storage value for id
@@ -92,7 +112,6 @@ const setRiddle = () => {
         localStorage.setItem("riddle-id", riddleId);
     });
 }
-
 
 function answer1() {
     let ans = document.getElementById("answer1").value.toLowerCase();
@@ -119,6 +138,7 @@ function answerWritten() {
     submitAnswer(ans)
 }
 
+
 function populateAnswers(answers) {
     let a = ["answer1", "answer2", "answer3", "answer4"];
     let zero = false
@@ -142,7 +162,6 @@ function populateAnswers(answers) {
     }
 }
 
-
 function submitAnswer(ans) {
     if (ans.length < 3)
         return;
@@ -159,17 +178,17 @@ const fetchRiddle = async riddleId => {
 }
 
 setRiddle();
-
 if (multipleChoice === "on") {
     var x = document.getElementById("textEntry");
 } else {
     var x = document.getElementById("multiChoice");
 }
+
 x.style.display = "none";
 
 // VIEW 1 CONTENT
-
 $('#riddleCount').text(riddlesToWin);
+
 // VIEW 2 CONTENT
 
 $('#time-left').text(timerLength);
@@ -202,6 +221,7 @@ $('#wrong').on('click tap', (e) => {
     win = false;
     finalScreen();
 });
+
 
 // VIEW 3 CONTENT
 
@@ -244,16 +264,6 @@ function finalScreen() {
         document.getElementById("winButton").style.display = "none"
     }
     $('#view-4').fadeIn();
-}
-
-
-function submitScore() {
-    $.ajax({
-        type: 'POST',
-        url: url + "/submit",
-        data: {"task": 1, "user": document.getElementById("userName").value, "time": timerLength},
-        dataType: 'json',
-    });
 }
 
 function winGame() {

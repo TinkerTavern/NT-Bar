@@ -37,11 +37,11 @@ class App extends React.Component {
     }
 
     resetScore() {
-        alert("Resetting score...")
+        // alert("Resetting score...")
         this.state.gamesWon = 0;
         localStorage.setItem("needlepointProgress", 0)
         this.updateScore()
-    }// TODO Make this work automatically upon room reset
+    }
 
     updateScore() {
         let url = this.itemHasValue("addr") ? localStorage.getItem("addr") : "127.0.0.1"
@@ -52,7 +52,7 @@ class App extends React.Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                task: 1,
+                task: 2,
                 progress: 0,
                 limit: this.state.numberToComplete
             })
@@ -69,17 +69,13 @@ class App extends React.Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                task: 1,
+                task: 2,
                 user: document.getElementById("userName").value,
             })
         })
     }
 
     handleClick() {
-        if (document.getElementById("userName").value === "0") {
-            this.resetScore()
-            return
-        } // TODO Temp solution
         this.submitUser();
         this.setState({mode: 'game'})
     }
@@ -104,6 +100,7 @@ class App extends React.Component {
 
         if (this.state.mode === 'intro')
             artefact = <Intro
+                reset={() => this.resetScore()}
                 game={GAME_TO_BUILD}
                 onClick={() => this.handleClick()}
                 numberToComplete={this.state.numberToComplete}

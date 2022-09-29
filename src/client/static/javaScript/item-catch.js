@@ -15,26 +15,6 @@ let badStepChance = itemHasValue("badStep") ? parseInt(localStorage.getItem("bad
 let snakeHideFreq = itemHasValue("spawnFreq") ? parseInt(localStorage.getItem("spawnFreq")) : 3;
 let snakeShowDur = itemHasValue("timeOn") ? parseInt(localStorage.getItem("timeOn")) : 15;
 
-document.addEventListener("keypress", function (event) {
-    if (event.key === "Enter") { // delete key
-        alert("Resetting score...")
-        progress = 0;
-        localStorage.setItem("danceProgress", 0)
-        updateScore(progress)
-    }
-});
-// TODO Make this work automatically upon room reset
-
-updateScore(progress)
-$.ajax({
-    type: 'POST',
-    url: url + "/set-user",
-    data: {"task": 0, "user": ""},
-    dataType: 'json',
-});
-
-
-
 let snakeTop, snakeLeft, snakeScale;
 let winMessageStart;
 var fullWidth = window.innerWidth - 500;
@@ -43,30 +23,64 @@ let stepsHit = 0;
 let stepHit = false;
 let snakeHitTimer = 1000;
 let snakeHitTimerMax = 1000;
+
 let snakeHiddenTimer = 1000;
+
 let scoreIncreased = false;
 
-// VIEW 1 CONTENT
+updateScore(progress)
+submitUser(true)
 
-$('#snake-num').text(stepsLeft);
-$('#score-goal').text(scoreGoal);
+function submitScore() {
+    $.ajax({
+        type: 'POST',
+        url: url + "/submit",
+        data: {"task": 0, "user": document.getElementById("userName").value, "time": stepsHit},
+        dataType: 'json',
+    });
+}
 
-// VIEW 2 CONTENT
-
-$('#steps-left').text(stepsLeft);
-$('#snake-goal').text(scoreGoal);
-$('#steps-hit').text(stepsHit);
-document.getElementById("userName").value = localStorage.getItem("userName0")
-
-function submitUser() {
+function submitUser(blankUser) {
     localStorage.setItem("userName0", document.getElementById("userName").value);
     $.ajax({
         type: 'POST',
         url: url + "/set-user",
-        data: {"task": 0, "user": document.getElementById("userName").value},
+        data: {"task": 0, "user": blankUser ? "" : document.getElementById("userName").value},
         dataType: 'json',
+        success: function (data) {
+            if (data["reset"] === true)
+                confirmReset()
+        }
     });
 }
+
+function confirmReset() {
+    // alert("Resetting score...")
+    progress = 0;
+    localStorage.setItem("danceProgress", 0)
+    updateScore(progress)
+    $.ajax({
+        type: 'POST',
+        url: url + "/confirm-reset",
+        data: {
+            "task": 0,
+            dataType: 'json',
+        }
+    });
+}
+
+// VIEW 1 CONTENT
+
+$('#snake-num').text(stepsLeft);
+
+$('#score-goal').text(scoreGoal);
+// VIEW 2 CONTENT
+$('#steps-left').text(stepsLeft);
+$('#snake-goal').text(scoreGoal);
+
+$('#steps-hit').text(stepsHit);
+
+document.getElementById("userName").value = localStorage.getItem("userName0")
 
 function updateScore(score) {
     $.ajax({
@@ -80,7 +94,7 @@ function updateScore(score) {
 $('.play').on('click tap', (e) => {
     $('#view-1').animate({"left": "-=100vw"}, 300);
     $('#view-2').animate({"left": "+=100vw"}, 300);
-    submitUser();
+    submitUser(false);
     hideSnakes();
 })
 
@@ -207,15 +221,6 @@ let gameResult = () => {
 
     }
     $('#view-3').fadeIn();
-}
-
-function submitScore() {
-    $.ajax({
-        type: 'POST',
-        url: url + "/submit",
-        data: {"task": 0, "user": document.getElementById("userName").value, "time": stepsHit},
-        dataType: 'json',
-    });
 }
 
 function winGame() {

@@ -17,7 +17,11 @@
 <section id="view-2">
 
     <div id="riddlestuff" class="outro-grid">
-        <img class="person" src="{{ url_for('static',filename='images/snake-long.png') }}"/>
+        <figure class="person">
+            <img src="{{ url_for('static',filename='images/Charades_Intro.png') }}"/>
+            <p class="imageBy">Background image by GarryKillian on Freepik
+                Portrait of Miss Rosamond Croker by Sir Thomas Lawrence</p>
+        </figure>
         <div class="timer center">
             <p>Time left: <span id="time-left"></span></p>
         </div>
@@ -41,17 +45,26 @@
 </section>
 
 <section class="intro-grid" id="view-1">
-    <img class="person" src="{{ url_for('static',filename='images/snake-long.png') }}"/>
+    <figure class="person">
+        <img src="{{ url_for('static',filename='images/Charades_Intro.png') }}"/>
+        <p class="imageBy">Background image by GarryKillian on Freepik
+            Portrait of Miss Rosamond Croker by Sir Thomas Lawrence</p>
+    </figure>
     <h1 class="game-title">Charades</h1>
     <p></p>
     <p class="instructions">
-1802, Bath Assembly Rooms.
+        1802, Bath Assembly Rooms.
 
-The bridal Ball has taken a dark turn. The Earl is dead and the murderer is likely still here! Desperately afraid to be exposed to the worst sort of scandal, Isobel, now widow, has begged you for help. Who is trying to frame your friend? Who here could have the gall to pull something like this?
+        The bridal Ball has taken a dark turn. The Earl is dead and the murderer is likely still here! Desperately
+        afraid to be exposed to the worst sort of scandal, Isobel, now widow, has begged you for help. Who is trying to
+        frame your friend? Who here could have the gall to pull something like this?
 
-Sharpen your wit - you’ll need to make good use of it to find out the truth, for this society is quite fond of wordplay. If you shine at charades, your companions will surely reveal who’s got the most skin in this horrid affair.
+        Sharpen your wit - you’ll need to make good use of it to find out the truth, for this society is quite fond of
+        wordplay. If you shine at charades, your companions will surely reveal who’s got the most skin in this horrid
+        affair.
 
-You know of charades, of course, don’t you? You figure out the first syllable, then the second, and the whole word becomes quite clear. These can be quite tricky, but so are you. Good luck!
+        You know of charades, of course, don’t you? You figure out the first syllable, then the second, and the whole
+        word becomes quite clear. These can be quite tricky, but so are you. Good luck!
     </p>
     <p></p>
     <div class="name">
@@ -65,7 +78,12 @@ You know of charades, of course, don’t you? You figure out the first syllable,
 
 <section id="view-4">
     <div id="win-lose-messages" class="outro-grid">
-        <img class="outro-person" src="{{ url_for('static',filename='images/snake-long.png') }}"/>
+        <figure class="outro-person">
+            <img src="{{ url_for('static',filename='images/Charades_End.png') }}"/>
+            <figcaption class="imageBy">Background image by GarryKillian on Freepik
+                Portrait of Miss Frances Vinicombe by John Opie
+            </figcaption>
+        </figure>
         <h1 id="win-lose" class="win-title">Win/Lose</h1>
         <p class="win-lose-start"></p>
         <button class="play" id="restartButton" onclick="document.location.reload()">Next Charade...</button>

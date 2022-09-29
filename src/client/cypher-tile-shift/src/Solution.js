@@ -1,7 +1,7 @@
 import React from 'react'
 import {Box} from 'rebass'
 import './App.css'
-import ladder from './images/ladder.png'
+import needleEnd from './images/Needlepoint_End.png'
 
 class Solution extends React.Component {
 
@@ -30,7 +30,7 @@ class Solution extends React.Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                task: 1,
+                task: 2,
                 progress: this.props.gamesWon,
             })
         })
@@ -49,7 +49,11 @@ class Solution extends React.Component {
                     }}>
                     <Box>
                         <div id="win-message" className={"outro-grid"}>
-                            <img className="outro-person" src={ladder}/>
+                            <figure className="outro-person">
+                                <img className="outro-person" src={needleEnd}/>
+                                <figcaption className={"imageBy"}>{"Background image by GarryKillian on Freepik\n" +
+                                    "Mrs James Gregory, née Isobella Macleod (1770–1847) by Henry Raeburn (1756–1823) National Trust for Scotland, Fyvie Castle"} </figcaption>
+                            </figure>
                             <h1 id="win-lose" className="win-title">Win</h1>
                             <p className="win-lose-start ">{"That's really pretty, well done! Hope you didn't prick yourself in the process."}</p>
                             <button className="play " onClick={() => {
@@ -70,7 +74,11 @@ class Solution extends React.Component {
                     }}>
                     <Box>
                         <div id="win-message" className={"outro-grid"}>
-                            <img className="outro-person" src={ladder}/>
+                            <figure className="outro-person">
+                                <img src={needleEnd}/>
+                                <figcaption className={"imageBy"}>{"Background image by GarryKillian on Freepik\n" +
+                                    "Mrs James Gregory, née Isobella Macleod (1770–1847) by Henry Raeburn (1756–1823) National Trust for Scotland, Fyvie Castle"} </figcaption>
+                            </figure>
                             <h1 id="win-lose" className="win-title">Win</h1>
                             <p className="win-lose-start">{"Eliza de Feuillide, your cousin, is absolutely delighted not only by the precision of the needlework but by the attention it provides her. All the ladies present are praising her newly acquired needlepoints. In your grand generosity, you’ve even allowed to take credit for the best one of them. How delightful!\n" +
                                 "\n" +
@@ -99,7 +107,7 @@ class Solution extends React.Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                task: 1,
+                task: 2,
                 user: localStorage.getItem("userName2"),
                 time: this.props.timeTaken
             })

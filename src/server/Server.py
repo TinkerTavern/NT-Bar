@@ -14,22 +14,17 @@ lastPlayers = [[""], [""], [""]]
 totalAttempts = [0, 0, 0]
 uniqueAttempts = [0, 0, 0]
 msgAppend = ["", "", ""]
+oldProgress = [-1, -1, -1]
 taskOpts = ["danceScores", "charadesScores", "needlepointScores"]
 tasks = ["Master the dance!", "Solve the charades!",
          "Put the needlepoints back together!"]
-oldProgress = [-1, -1, -1]
+reset = False
+resetConfirmed = [False, False, False]
+
 
 # TODO: Think about how to get a room reset button working effectively
 # Send signal to client which sets localStorage flag to true, then in each of the in game timers, check for flag and if true, trigger restart
 # TODO: Find a way to stream/show screenshots of the player's games on server side
-# TODO: See below, need more stats on main screen
-"""
-Per game: Display count of number of players so far
-Per game: Display count of number of attempts
-DONE Per game: Leaderboard with High Score (or shortest session time to solve)
-DONE Per game: current session length
-Per game: current time since new player
-"""
 
 
 def get_ip():
@@ -49,7 +44,7 @@ def get_ip():
 
 @app.route('/ping')
 def ping():
-    return jsonify(ping="pong")
+    return jsonify(reset=reset, ping="pong")
 
 
 @app.route('/')
@@ -60,7 +55,7 @@ def hello_world():
 @app.route("/get-ip", methods=["GET"])
 def get_my_ip():
     print(request.remote_addr)
-    return jsonify({'ip': request.remote_addr}), 200
+    return jsonify(reset=reset, ip=request.remote_addr), 200
 
 
 @app.route("/update", methods=["POST"])
@@ -77,7 +72,7 @@ def update_task():
         limits[taskID] = limit
     progress[taskID] = progressVal
     print(progress)
-    return jsonify(success=True)
+    return jsonify(reset=reset, success=True)
 
 
 @app.route("/submit", methods=["POST"])
@@ -105,7 +100,7 @@ def submit_score():
     with open(file, 'w') as f:
         for entry in leaderboard:
             f.write(entry[0] + "," + str(entry[1]) + "\n")
-    return jsonify(success=True)
+    return jsonify(reset=reset, success=True)
 
 
 @app.route("/set-user", methods=["POST"])
@@ -131,15 +126,7 @@ def set_user():
         else:
             msgAppend[i] = ""
 
-    return jsonify(success=True)
-
-
-@app.route('/pause-timer', methods=["POST"])
-def pauseTimer():
-    taskID = request.form.get("task")
-    if taskID is None:
-        user = request.json.get("user")
-        taskID = request.json.get("task")
+    return jsonify(reset=reset, success=True)
 
 
 @app.route('/get-tasks', methods=["GET"])
@@ -155,7 +142,8 @@ def index():
         todoList = dict()
         for i, task in enumerate(tasksArr):
             todoList[i] = task["task"] + msgAppend[i]
-    return jsonify(list=todoList, scores=progress, limits=limits, attempts=totalAttempts, playerCount=uniqueAttempts)
+    return jsonify(reset=reset, list=todoList, scores=progress, limits=limits, attempts=totalAttempts,
+                   playerCount=uniqueAttempts)
 
 
 @app.route('/reset-tasks', methods=["POST"])
@@ -163,7 +151,34 @@ def reset_tasks():
     for i in range(len(progress)):
         progress[i] = 0
         oldProgress[i] = 0
+    global reset
+    reset = True
+    for i in range(len(resetConfirmed)):
+        resetConfirmed[i] = False
     return "Success"
+
+
+@app.route('/confirm-reset', methods=["POST"])
+def confirm_reset():
+    taskID = request.form.get("task")
+    if taskID is None:
+        taskID = request.json.get("task")
+    taskID = int(taskID)
+    resetConfirmed[taskID] = True
+    print(resetConfirmed)
+    if False not in resetConfirmed:  # As all clients have reset
+        print("Reset complete")
+        global reset, progress, limits, players, lastPlayers, totalAttempts, uniqueAttempts, msgAppend, oldProgress
+        reset = False
+        progress = [0, 0, 0]
+        limits = [3, 3, 3]
+        players = ["", "", ""]
+        lastPlayers = [[""], [""], [""]]
+        totalAttempts = [0, 0, 0]
+        uniqueAttempts = [0, 0, 0]
+        msgAppend = ["", "", ""]
+        oldProgress = [-1, -1, -1]
+    return "Woo"
 
 
 if __name__ == '__main__':
