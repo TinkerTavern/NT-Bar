@@ -29,9 +29,13 @@ let snakeHiddenTimer = 1000;
 let scoreIncreased = false;
 
 document.getElementById("view-2").style.visibility = "hidden"
-loadLeaderboard()
-loadImage()
 updateScore(progress)
+if (localStorage.getItem("hideLeaderboard") !== "on")
+    loadLeaderboard()
+if (localStorage.getItem("hideProgress") !== "on")
+    loadImage()
+
+
 submitUser(true)
 
 function submitScore() {
@@ -58,6 +62,7 @@ function submitUser(blankUser) {
 }
 
 function loadLeaderboard() {
+    document.getElementById("danceScores").style.visibility = "visible"
     game = "danceScores"
     $.ajax({
         type: 'POST',
@@ -74,6 +79,7 @@ function loadLeaderboard() {
 }
 
 function loadImage() {
+    document.getElementById("progress").style.visibility = "visible"
     let images = ["catch1", "catch2", "catch3"]
     for (let j = 0; j < images.length; j++) {
         if (j >= Math.floor(((progress / 3) / 0.333333))) {

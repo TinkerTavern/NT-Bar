@@ -41,27 +41,30 @@ class HighScoreTable extends React.Component {
     }
 
     render() {
-        return (
-            <section className="grid-spot progress" id="danceScores">
-                High Scores!
-                <table className={"leaderboard"}>
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Score</th>
-                    </tr>
-                    </thead>
-
-                    <tbody>
-                    {this.state.players.map(player =>
+        if (localStorage.getItem("hideLeaderboard") !== "on")
+            return (
+                <section className="grid-spot progress" id="danceScores">
+                    High Scores!
+                    <table className={"leaderboard"}>
+                        <thead>
                         <tr>
-                            <td>{player.name}</td>
-                            <td>{player.score}</td>
+                            <th>Name</th>
+                            <th>Score</th>
                         </tr>
-                    )}
-                    </tbody>
-                </table>
-            </section>);
+                        </thead>
+
+                        <tbody>
+                        {this.state.players.map(player =>
+                            <tr>
+                                <td>{player.name}</td>
+                                <td>{player.score}</td>
+                            </tr>
+                        )}
+                        </tbody>
+                    </table>
+                </section>);
+        else
+            return <section className="grid-spot progress hide" id="danceScores" />
     }
 }
 
@@ -79,15 +82,18 @@ class ProgressImage extends React.Component {
 
     render() {
         let prog = this.itemHasValue("needlepointProgress") ? parseInt(localStorage.getItem("needlepointProgress")) : 0;
-        return (
-            <div className="column">
-                <img draggable="false" id="needle1" className={prog > 0 ? "tileImg image" : "tileImg image locked"}
-                     src={needle1}/>
-                <img draggable="false" id="needle2" className={prog > 1 ? "tileImg image" : "tileImg image locked"}
-                     src={needle2}/>
-                <img draggable="false" id="needle3" className={prog > 2 ? "tileImg image" : "tileImg image locked"}
-                     src={needle3}/>
-            </div>);
+        if (localStorage.getItem("hideProgress") !== "on")
+            return (
+                <div className="column">
+                    <img draggable="false" id="needle1" className={prog > 0 ? "tileImg image" : "tileImg image locked"}
+                         src={needle1}/>
+                    <img draggable="false" id="needle2" className={prog > 1 ? "tileImg image" : "tileImg image locked"}
+                         src={needle2}/>
+                    <img draggable="false" id="needle3" className={prog > 2 ? "tileImg image" : "tileImg image locked"}
+                         src={needle3}/>
+                </div>);
+        else
+            return <div className="column hide"/>
     }
 }
 

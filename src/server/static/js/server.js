@@ -84,6 +84,7 @@ function resetTimers() {
         url: "http://127.0.0.1:3000/reset-timers",
         dataType: 'json',
     });
+    timers = [0, 0, 0];
 }
 
 function checkProgress(scores, limits) {

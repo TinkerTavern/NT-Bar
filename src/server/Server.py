@@ -14,10 +14,10 @@ totalAttempts = [0, 0, 0]
 uniqueAttempts = [0, 0, 0]
 msgAppend = ["", "", ""]
 oldProgress = [-1, -1, -1]
+reset = False
 taskOpts = ["danceScores", "charadesScores", "needlepointScores"]
 tasks = ["Master the dance!", "Solve the charades!",
          "Put the needlepoints back together!"]
-reset = False
 
 # TODO: Think about how to get a room reset button working effectively
 # Send signal to client which sets localStorage flag to true, then in each of the in game timers, check for flag and if true, trigger restart
@@ -190,6 +190,19 @@ def confirm_reset():
         print("Reset complete")
         resetVals()
     return "Woo"
+
+
+def resetVals():
+    global progress, limits, players, lastPlayers, totalAttempts, uniqueAttempts, msgAppend, oldProgress, reset
+    progress = [0, 0, 0]
+    limits = [3, 3, 3]
+    players = ["", "", ""]
+    lastPlayers = [[""], [""], [""]]
+    totalAttempts = [0, 0, 0]
+    uniqueAttempts = [0, 0, 0]
+    msgAppend = ["", "", ""]
+    oldProgress = [-1, -1, -1]
+    reset = False
 
 
 @app.route('/reset-timers', methods=["POST"])

@@ -82,6 +82,10 @@ button {
     border: 6px ridge #5c4428;
 }
 
+.hide {
+    visibility: hidden;
+}
+
 .locked {
     filter: blur(35px);
 }

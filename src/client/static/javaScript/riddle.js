@@ -27,9 +27,11 @@ let win, riddle, riddleId, answer, gameTimer;
 
 // SELECT AND DISPLAY RIDDLE
 document.getElementById("view-2").style.visibility = "hidden"
-loadLeaderboard()
-loadImage()
 updateScore(progress)
+if (localStorage.getItem("hideLeaderboard") !== "on")
+    loadLeaderboard()
+if (localStorage.getItem("hideProgress") !== "on")
+    loadImage()
 submitUserName("")
 
 
@@ -88,6 +90,7 @@ function submitScore() {
 }
 
 function loadLeaderboard() {
+    document.getElementById("charadesScores").style.visibility = "visible"
     game = "charadesScores"
     $.ajax({
         type: 'POST',
@@ -104,6 +107,7 @@ function loadLeaderboard() {
 }
 
 function loadImage() {
+    document.getElementById("progress").style.visibility = "visible"
     let images = ["riddle1", "riddle2", "riddle3"]
     for (let j = 0; j < images.length; j++) {
         if (j >= Math.floor(((progress / 3) / 0.333333))) {
