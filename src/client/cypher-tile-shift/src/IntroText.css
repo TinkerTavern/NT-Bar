@@ -73,6 +73,44 @@ body {
     white-space: pre-wrap;
     border: 6px ridge #5c4428;
 }
+.leaderboard {
+    width: 20vw;
+    border: 1px solid black;
+    margin-left: 12%;
+}
+tbody, td, tr, th, table {
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.catch, .tileImg, .riddleImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.image {
+    object-fit: contain;
+    width: 20vh;
+    padding-left: 30%;
+    height: 30vh;
+}
+.column {
+    height: 30vh;
+    padding: 0 4px;
+    background-color: #ebbe93;
+    border: 6px ridge #5c4428;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.grid-spot {
+    background-color: #ebbe93;
+    border: 6px ridge #5c4428;
+    padding: 2%;
+}
 
 .intro-grid {
     display: grid;

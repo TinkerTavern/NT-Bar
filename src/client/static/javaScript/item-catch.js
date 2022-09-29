@@ -29,6 +29,8 @@ let snakeHiddenTimer = 1000;
 let scoreIncreased = false;
 
 document.getElementById("view-2").style.visibility = "hidden"
+loadLeaderboard()
+loadImage()
 updateScore(progress)
 submitUser(true)
 
@@ -53,6 +55,33 @@ function submitUser(blankUser) {
                 confirmReset()
         }
     });
+}
+
+function loadLeaderboard() {
+    game = "danceScores"
+    $.ajax({
+        type: 'POST',
+        url: url + "/get-leaderboard",
+        data: {"task": 0},
+        dataType: 'json',
+        success: function (data) {
+            let unit = game.replace("Scores", "") === "dance" ? "Points" : game.replace("Scores", "") === "puzzle" ? "Time taken (s)" : "Time left (s)"
+            document.getElementById(game).innerHTML = "High scores!<br>" +
+                "<table class='leaderboard'><tr><td>Name</td><td>" + unit + "</td></tr><tr><td>" +
+                data["board"].replaceAll("\n", "</td></tr><tr><td>").replaceAll(",", "</td><td>") + "</table>"
+        }
+    });
+}
+
+function loadImage() {
+    let images = ["catch1", "catch2", "catch3"]
+    for (let j = 0; j < images.length; j++) {
+        if (j >= Math.floor(((progress / 3) / 0.333333))) {
+            document.getElementById(images[j]).style.filter = "blur(35px)";
+        } else {
+            document.getElementById(images[j]).style.filter = "none";
+        }
+    }
 }
 
 function confirmReset() {

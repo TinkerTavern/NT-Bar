@@ -6,7 +6,6 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 cors = CORS(app)
-# app.config['CORS_HEADERS'] = 'Content-Type'
 progress = [0, 0, 0]
 limits = [3, 3, 3]
 players = ["", "", ""]
@@ -19,12 +18,13 @@ taskOpts = ["danceScores", "charadesScores", "needlepointScores"]
 tasks = ["Master the dance!", "Solve the charades!",
          "Put the needlepoints back together!"]
 reset = False
-resetConfirmed = [False, False, False]
-
 
 # TODO: Think about how to get a room reset button working effectively
 # Send signal to client which sets localStorage flag to true, then in each of the in game timers, check for flag and if true, trigger restart
 # TODO: Find a way to stream/show screenshots of the player's games on server side
+
+
+resetConfirmed = [False, False, False]
 
 
 def get_ip():
@@ -50,6 +50,26 @@ def ping():
 @app.route('/')
 def hello_world():
     return render_template("server.html", ip=get_ip())
+
+
+@app.route('/get-leaderboard', methods=["POST"])
+def get_leaderboard():
+    taskID = request.form.get("task")
+    if taskID is None:
+        taskID = request.json.get("task")
+    taskID = int(taskID)
+    # open text file in read mode
+    file = join(dirname(realpath(__file__)), "static/leaders/" + taskOpts[taskID] + ".leaders")
+    ret = []
+    import csv
+    with open(file, 'r') as f:
+        data = f.read()
+    with open(file, 'r') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            name, score = row
+            ret.append({"name": name, "score": score})
+    return jsonify(board=data, boardDict=ret)
 
 
 @app.route("/get-ip", methods=["GET"])
@@ -171,23 +191,11 @@ def confirm_reset():
         resetVals()
     return "Woo"
 
+
 @app.route('/reset-timers', methods=["POST"])
 def reset_timers():
     resetVals()
     return "reset"
-
-
-def resetVals():
-    global reset, progress, limits, players, lastPlayers, totalAttempts, uniqueAttempts, msgAppend, oldProgress
-    reset = False
-    progress = [0, 0, 0]
-    limits = [3, 3, 3]
-    players = ["", "", ""]
-    lastPlayers = [[""], [""], [""]]
-    totalAttempts = [0, 0, 0]
-    uniqueAttempts = [0, 0, 0]
-    msgAppend = ["", "", ""]
-    oldProgress = [-1, -1, -1]
 
 
 if __name__ == '__main__':

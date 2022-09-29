@@ -26,6 +26,9 @@ let win, riddle, riddleId, answer, gameTimer;
 
 
 // SELECT AND DISPLAY RIDDLE
+document.getElementById("view-2").style.visibility = "hidden"
+loadLeaderboard()
+loadImage()
 updateScore(progress)
 submitUserName("")
 
@@ -82,6 +85,33 @@ function submitScore() {
         data: {"task": 1, "user": document.getElementById("userName").value, "time": timerLength},
         dataType: 'json',
     });
+}
+
+function loadLeaderboard() {
+    game = "charadesScores"
+    $.ajax({
+        type: 'POST',
+        url: url + "/get-leaderboard",
+        data: {"task": 1},
+        dataType: 'json',
+        success: function (data) {
+            let unit = game.replace("Scores", "") === "dance" ? "Points" : game.replace("Scores", "") === "puzzle" ? "Time taken (s)" : "Time left (s)"
+            document.getElementById(game).innerHTML = "High scores!<br>" +
+                "<table class='leaderboard'><tr><td>Name</td><td>" + unit + "</td></tr><tr><td>" +
+                data["board"].replaceAll("\n", "</td></tr><tr><td>").replaceAll(",", "</td><td>") + "</table>"
+        }
+    });
+}
+
+function loadImage() {
+    let images = ["riddle1", "riddle2", "riddle3"]
+    for (let j = 0; j < images.length; j++) {
+        if (j >= Math.floor(((progress / 3) / 0.333333))) {
+            document.getElementById(images[j]).style.filter = "blur(35px)";
+        } else {
+            document.getElementById(images[j]).style.filter = "none";
+        }
+    }
 }
 
 var input = document.getElementById("answer");
@@ -197,7 +227,8 @@ $('#timer-length').text(timerLength);
 
 $('.play').on('click tap', (e) => {
     $('#view-1').animate({"left": "-=100vw"}, 300);
-    submitUser();
+    document.getElementById("view-2").style.visibility = "visible"
+    $('#view-2').animate({"left": "+=100vw"}, 300);    submitUser();
     if (timerLength !== -1)
         startTimer();
 })

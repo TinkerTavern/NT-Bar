@@ -32,7 +32,7 @@
 #view-2 {
     position: absolute;
     top: 0px;
-    left: 0vw;
+    left: -100vw;
     width: 100vw;
     height: 100vh;
     background-image: url("../images/1129.jpg");

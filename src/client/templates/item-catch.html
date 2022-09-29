@@ -21,7 +21,7 @@
 Portrait of a Man by François-Xavier Fabre</p>
     </figure>
     <h1 class="game-title">Master the dance!</h1>
-    <p style="font-size: 24px"></p>
+    <section class="grid-spot progress" id="danceScores"></section>
     <p class="instructions">
 1802, Bath Assembly Rooms.
 
@@ -31,7 +31,14 @@ You’ll need to deploy your most elaborate charms if you have any hope of comin
 
 To do so, you’ll need to follow the rhythm and hit the steps as they appear. Take care not to delay for too long or your partner might take umbrage at your lack of pace. Oh, and most of all, do not step on their toes! What a humiliation that would be, so unseemly… No chance of that happening though of course, you’re an excellent dancer – are you not? Good luck!
     </p>
-    <p></p>
+    <div class="column" style="position: relative; left: 0; top: 0">
+        <img draggable="false" id="catch1" class="catch locked image"
+             src="{{url_for('static', filename='images/Progress/Dance1.PNG')}}">
+        <img draggable="false" id="catch2" class="catch locked image"
+             src="{{url_for('static', filename='images/Progress/Dance2.PNG')}}">
+        <img draggable="false" id="catch3" class="catch locked image"
+             src="{{url_for('static', filename='images/Progress/Dance3.PNG')}}">
+    </div>
     <div class="name">
         <label class="answerLabel" for="userName">Your Name: </label><br>
         <input class="answerBox" type="text" id="userName" name="answer">

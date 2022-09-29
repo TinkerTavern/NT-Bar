@@ -87,7 +87,6 @@ function resetTimers() {
 }
 
 function checkProgress(scores, limits) {
-    let refImages = ["catchRef", "riddleRef", "tileRef"]
     let images = [["catch1", "catch2", "catch3"],
         ["riddle1", "riddle2", "riddle3"],
         ["tile1", "tile2", "tile3"]]

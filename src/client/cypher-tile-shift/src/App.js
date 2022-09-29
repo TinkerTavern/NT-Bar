@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Game} from './Game'
 import {Intro} from './IntroText'
 import {Solution} from './Solution'
@@ -43,6 +43,26 @@ class App extends React.Component {
         this.updateScore()
     }
 
+    handleClick() {
+        this.submitUser();
+        this.setState({mode: 'game'})
+    }
+
+
+    playerSolved() {
+        this.setState({mode: 'solved'})
+
+    }
+
+    playerFailed() {
+        this.setState({mode: 'failed'})
+    }
+
+    continue
+    () {
+        this.setState({mode: 'game'})
+    }
+
     updateScore() {
         let url = this.itemHasValue("addr") ? localStorage.getItem("addr") : "127.0.0.1"
         url = "http://" + url + ":3000"
@@ -75,37 +95,18 @@ class App extends React.Component {
         })
     }
 
-    handleClick() {
-        this.submitUser();
-        this.setState({mode: 'game'})
-    }
-
-
-    playerSolved() {
-        this.setState({mode: 'solved'})
-
-    }
-
-    playerFailed() {
-        this.setState({mode: 'failed'})
-    }
-
-    continue
-    () {
-        this.setState({mode: 'game'})
-    }
-
     render() {
         let artefact;
 
-        if (this.state.mode === 'intro')
+        if (this.state.mode === 'intro') {
             artefact = <Intro
                 reset={() => this.resetScore()}
                 game={GAME_TO_BUILD}
                 onClick={() => this.handleClick()}
                 numberToComplete={this.state.numberToComplete}
+                progress={this.state.gamesWon}
             />
-        else if (this.state.mode === 'game') {
+        } else if (this.state.mode === 'game') {
             this.startPuzzleTimer()
             artefact = <Game
                 game={GAME_TO_BUILD}

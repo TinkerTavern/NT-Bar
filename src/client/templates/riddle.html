@@ -14,13 +14,47 @@
 
 <!--<img class="background-image" src="{{ url_for('static',filename='images/snake-long.png') }}"/>-->
 <!--<img draggable="false" class="background-image" src="{{ url_for('static',filename='images/riddle-bg.png')}}"/>-->
+<section class="intro-grid" id="view-1">
+    <figure class="person">
+        <img src="{{ url_for('static',filename='images/Charades_Intro.png') }}"/>
+        <p class="imageBy">Background image by GarryKillian on Freepik
+Portrait of Miss Rosamond Croker by Sir Thomas Lawrence</p>
+    </figure>
+    <h1 class="game-title">Charades</h1>
+    <section class="grid-spot progress" id="charadesScores"></section>
+    <p class="instructions">
+1802, Bath Assembly Rooms.
+
+The bridal Ball has taken a dark turn. The Earl is dead and the murderer is likely still here! Desperately afraid to be exposed to the worst sort of scandal, Isobel, now widow, has begged you for help. Who is trying to frame your friend? Who here could have the gall to pull something like this?
+
+Sharpen your wit - you’ll need to make good use of it to find out the truth, for this society is quite fond of wordplay. If you shine at charades, your companions will surely reveal who’s got the most skin in this horrid affair.
+
+You know of charades, of course, don’t you? You figure out the first syllable, then the second, and the whole word becomes quite clear. These can be quite tricky, but so are you. Good luck!
+    </p>
+    <div class="column" style="position: relative; left: 0; top: 0">
+            <img draggable="false" id="riddle1" class="riddleImg locked image"
+                 src="{{url_for('static', filename='images/Progress/Charades1.PNG')}}">
+            <img draggable="false" id="riddle2" class="riddleImg locked image"
+                 src="{{url_for('static', filename='images/Progress/Charades2.PNG')}}">
+            <img draggable="false" id="riddle3" class="riddleImg locked image"
+                 src="{{url_for('static', filename='images/Progress/Charades3.PNG')}}">
+    </div>
+    <div class="name">
+        <label class="answerLabel" for="userName">Your Name: </label><br>
+        <input class="answerBox" type="text" id="userName" name="answer">
+    </div>
+    <div class="play">Play!</div>
+    <div class="win-lose">
+    </div>
+</section>
+
 <section id="view-2">
 
     <div id="riddlestuff" class="outro-grid">
         <figure class="person">
             <img src="{{ url_for('static',filename='images/Charades_Intro.png') }}"/>
             <p class="imageBy">Background image by GarryKillian on Freepik
-                Portrait of Miss Rosamond Croker by Sir Thomas Lawrence</p>
+Portrait of Miss Rosamond Croker by Sir Thomas Lawrence</p>
         </figure>
         <div class="timer center">
             <p>Time left: <span id="time-left"></span></p>
@@ -44,44 +78,14 @@
 
 </section>
 
-<section class="intro-grid" id="view-1">
-    <figure class="person">
-        <img src="{{ url_for('static',filename='images/Charades_Intro.png') }}"/>
-        <p class="imageBy">Background image by GarryKillian on Freepik
-            Portrait of Miss Rosamond Croker by Sir Thomas Lawrence</p>
-    </figure>
-    <h1 class="game-title">Charades</h1>
-    <p></p>
-    <p class="instructions">
-        1802, Bath Assembly Rooms.
 
-        The bridal Ball has taken a dark turn. The Earl is dead and the murderer is likely still here! Desperately
-        afraid to be exposed to the worst sort of scandal, Isobel, now widow, has begged you for help. Who is trying to
-        frame your friend? Who here could have the gall to pull something like this?
-
-        Sharpen your wit - you’ll need to make good use of it to find out the truth, for this society is quite fond of
-        wordplay. If you shine at charades, your companions will surely reveal who’s got the most skin in this horrid
-        affair.
-
-        You know of charades, of course, don’t you? You figure out the first syllable, then the second, and the whole
-        word becomes quite clear. These can be quite tricky, but so are you. Good luck!
-    </p>
-    <p></p>
-    <div class="name">
-        <label class="answerLabel" for="userName">Your Name: </label><br>
-        <input class="answerBox" type="text" id="userName" name="answer">
-    </div>
-    <div class="play">Play!</div>
-    <div class="win-lose">
-    </div>
-</section>
 
 <section id="view-4">
     <div id="win-lose-messages" class="outro-grid">
         <figure class="outro-person">
             <img src="{{ url_for('static',filename='images/Charades_End.png') }}"/>
             <figcaption class="imageBy">Background image by GarryKillian on Freepik
-                Portrait of Miss Frances Vinicombe by John Opie
+Portrait of Miss Frances Vinicombe by John Opie
             </figcaption>
         </figure>
         <h1 id="win-lose" class="win-title">Win/Lose</h1>
