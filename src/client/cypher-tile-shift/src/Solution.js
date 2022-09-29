@@ -82,7 +82,7 @@ class Solution extends React.Component {
                             <h1 id="win-lose" className="win-title">Win</h1>
                             <p className="win-lose-start">{"Eliza de Feuillide, your cousin, is absolutely delighted not only by the precision of the needlework but by the attention it provides her. All the ladies present are praising her newly acquired needlepoints. In your grand generosity, you’ve even allowed to take credit for the best one of them. How delightful!\n" +
                                 "\n" +
-                                "Extremely pleased, she brings you along to the drawing room where the chatter is as intense as it gets. Now in her inner gossiping circle, you are surprised to learn that Isobel has been quite inconsiderate during the months leading to her nuptials. Indeed, it has been said that Isobel was hurtful to many people, including those closest to her.\n" +
+                                "Extremely pleased, she brings you along to the drawing room where the chatter is as intense as it gets. Now in her inner gossiping circle, you are surprised to learn that Isobel has been quite inconsiderate during the months leading to her nuptials. Indeed, it has been said that Isobel was hurtful to many people, including those <b>closest to her</b>.\n" +
                                 "\n" +
                                 "That surprises you of your friend, but you know how the months leading up to a wedding can be taxing at times, and you are sure that Isobel did not mean anything by it. Surely, she cannot have hurt a close one’s feelings to the point where they would murder someone over it… Surely.\n" +
                                 "\n" +

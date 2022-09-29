@@ -100,7 +100,7 @@ function loadLeaderboard() {
         success: function (data) {
             let unit = game.replace("Scores", "") === "dance" ? "Points" : game.replace("Scores", "") === "puzzle" ? "Time taken (s)" : "Time left (s)"
             document.getElementById(game).innerHTML = "High scores!<br>" +
-                "<table class='leaderboard'><tr><td>Name</td><td>" + unit + "</td></tr><tr><td>" +
+                "<table class='leaderboard'><tr><th>Name</th><th>" + unit + "</th></tr><tr><td>" +
                 data["board"].replaceAll("\n", "</td></tr><tr><td>").replaceAll(",", "</td><td>") + "</table>"
         }
     });
@@ -273,7 +273,7 @@ function finalScreen() {
     $('#view-2').animate({'opacity': 0}, 300);
 
     if (progress >= riddlesToWin) {
-        $('.win-lose-start').text("Miss Fanny Delahoussaye is quite impressed by your skills. With a conspiratorial air, she leans and whispers at your ear:\n" +
+        document.getElementById("win-lose-start").innerHTML = "Miss Fanny Delahoussaye is quite impressed by your skills. With a conspiratorial air, she leans and whispers at your ear:\n" +
             "\n" +
             "“My second is not polite of my first,\n" +
             "Yet it provides a most welcome release:\n" +
@@ -282,9 +282,9 @@ function finalScreen() {
             "The Earl’s misfortune, it seems quite clear,\n" +
             "Could only be caused by my whole, my dear.”\n" +
             "\n" +
-            "She winks before you can ask what she means and how on Earth has she heard of the Earl’s demise. After a brief moment of pondering, you realise Fanny is absolutely right (as she often is). Of course! Only a servant could have had the access required to poison the Earl’s drink in his study.\n" +
+            "She winks before you can ask what she means and how on Earth has she heard of the Earl’s demise. After a brief moment of pondering, you realise Fanny is absolutely right (as she often is). Of course! Only <b>a servant</b> could have had the access required to poison the Earl’s drink in his study.\n" +
             "\n" +
-            "With this new clue and charade added to your collection, you carry onwards in your investigation.");
+            "With this new clue and charade added to your collection, you carry onwards in your investigation."
         document.getElementById("restartButton").style.display = "none"
         $('.win-title').text("Win")
         submitScore();

@@ -72,7 +72,7 @@ function loadLeaderboard() {
         success: function (data) {
             let unit = game.replace("Scores", "") === "dance" ? "Points" : game.replace("Scores", "") === "puzzle" ? "Time taken (s)" : "Time left (s)"
             document.getElementById(game).innerHTML = "High scores!<br>" +
-                "<table class='leaderboard'><tr><td>Name</td><td>" + unit + "</td></tr><tr><td>" +
+                "<table class='leaderboard'><tr><th>Name</th><th>" + unit + "</th></tr><tr><td>" +
                 data["board"].replaceAll("\n", "</td></tr><tr><td>").replaceAll(",", "</td><td>") + "</table>"
         }
     });
@@ -236,9 +236,9 @@ let gameResult = () => {
         updateScore(progress)
         if (progress >= scoreGoal) {
             document.getElementById("restartButton").style.display = "none"
-            winMessageStart = "You spend a good deal of the evening dancing with a young cavalry officer, Lieutenant Thomas Hearst, the second son of the Earl’s deceased sister. He has a bit of a reputation, having recently killed a man in a duel of honor and rumoured to be quite the rake.\n" +
+            document.getElementById("win-lose-start").innerHTML = "You spend a good deal of the evening dancing with a young cavalry officer, Lieutenant Thomas Hearst, the second son of the Earl’s deceased sister. He has a bit of a reputation, having recently killed a man in a duel of honor and rumoured to be quite the rake.\n" +
                 "\n" +
-                "Nevertheless, the lieutenant’s debonair allure falls to your wily charms after these inebriating dances. Under your cautious prodding, he reveals that George Hearst, his elder brother, has had quite the falling out. Earlier this evening, Thomas overheard a heated argument involving the two of them over a woman.\n" +
+                "Nevertheless, the lieutenant’s debonair allure falls to your wily charms after these inebriating dances. Under your cautious prodding, he reveals that George Hearst, his elder brother, has had quite the falling out. Earlier this evening, Thomas overheard a heated argument involving the two of them over <b>a woman</b>.\n" +
                 "\n" +
                 "Who might that be? Could this discussion have something to do with the murder? The timing of the conflict seems, after all, suspicious. Or might it be the promise of yet another scandal threatening your friend Isobel? Was the late Earl involved in a romantic affair?\n" +
                 "\n" +
@@ -247,9 +247,9 @@ let gameResult = () => {
             document.getElementById("winButton").style.display = "none"
             winMessageStart = "Well done, that was quite the dance! Hope you're not too winded.";
 
+            $('.win-lose-start').text(winMessageStart);
         }
         $('.win-title').text("Win")
-        $('.win-lose-start').text(winMessageStart);
         submitScore()
     } else {
         $('.win-title').text("Lose")

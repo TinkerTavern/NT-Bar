@@ -33,7 +33,7 @@ function loadLeaderboard(game) {
             let scoreInfo = game.replace("Scores", "") === "puzzle" ? "Lower is better" : "Higher is better"
             let unit = game.replace("Scores", "") === "dance" ? "Points" : game.replace("Scores", "") === "puzzle" ? "Time taken (s)" : "Time left (s)"
             document.getElementById(game).innerHTML = "Scores for the " + game.replace("Scores", "") + " game. " + scoreInfo + ":<br>" +
-                "<table class='leaderboard'><tr><td>Name</td><td>" + unit + "</td></tr><tr><td>" +
+                "<table class='leaderboard'><tr><th>Name</th><th>" + unit + "</th></tr><tr><td>" +
                 data.replaceAll("\n", "</td></tr><tr><td>").replaceAll(",", "</td><td>") + "</table>"
         }
     });
