@@ -12,9 +12,12 @@ document.addEventListener('DOMContentLoaded', function () {
     tid = setInterval(loadTaskInfo, 1000);
 }, false);
 loadTaskInfo();
-document.addEventListener("keypress", function (event) {
-    if (event.keyCode === 13) {
+window.addEventListener("keypress", function (event) {
+    if (event.keyCode === 13 || event.which === 13 ) {
         resetRoom();
+    }
+    if (event.keyCode === 114 || event.which === 114) {
+        resetTimers();
     }
 });
 
@@ -66,13 +69,21 @@ function puzzleLeaderboard() {
 }
 
 function resetRoom() {
-    // alert("Resetting room...")
+    alert("Resetting room...")
     $.ajax({
         type: 'POST',
         url: "http://127.0.0.1:3000/reset-tasks",
         dataType: 'json',
     });
     tid = setInterval(loadTaskInfo, 1000);
+}
+
+function resetTimers() {
+    $.ajax({
+        type: 'POST',
+        url: "http://127.0.0.1:3000/reset-timers",
+        dataType: 'json',
+    });
 }
 
 function checkProgress(scores, limits) {

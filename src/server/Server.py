@@ -168,17 +168,26 @@ def confirm_reset():
     print(resetConfirmed)
     if False not in resetConfirmed:  # As all clients have reset
         print("Reset complete")
-        global reset, progress, limits, players, lastPlayers, totalAttempts, uniqueAttempts, msgAppend, oldProgress
-        reset = False
-        progress = [0, 0, 0]
-        limits = [3, 3, 3]
-        players = ["", "", ""]
-        lastPlayers = [[""], [""], [""]]
-        totalAttempts = [0, 0, 0]
-        uniqueAttempts = [0, 0, 0]
-        msgAppend = ["", "", ""]
-        oldProgress = [-1, -1, -1]
+        resetVals()
     return "Woo"
+
+@app.route('/reset-timers', methods=["POST"])
+def reset_timers():
+    resetVals()
+    return "reset"
+
+
+def resetVals():
+    global reset, progress, limits, players, lastPlayers, totalAttempts, uniqueAttempts, msgAppend, oldProgress
+    reset = False
+    progress = [0, 0, 0]
+    limits = [3, 3, 3]
+    players = ["", "", ""]
+    lastPlayers = [[""], [""], [""]]
+    totalAttempts = [0, 0, 0]
+    uniqueAttempts = [0, 0, 0]
+    msgAppend = ["", "", ""]
+    oldProgress = [-1, -1, -1]
 
 
 if __name__ == '__main__':

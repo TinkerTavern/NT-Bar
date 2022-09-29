@@ -28,6 +28,7 @@ let snakeHiddenTimer = 1000;
 
 let scoreIncreased = false;
 
+document.getElementById("view-2").style.visibility = "hidden"
 updateScore(progress)
 submitUser(true)
 
@@ -93,6 +94,7 @@ function updateScore(score) {
 
 $('.play').on('click tap', (e) => {
     $('#view-1').animate({"left": "-=100vw"}, 300);
+    document.getElementById("view-2").style.visibility = "visible"
     $('#view-2').animate({"left": "+=100vw"}, 300);
     submitUser(false);
     hideSnakes();
