@@ -5,26 +5,20 @@ function itemHasValue(key) {
 }
 
 let progress = itemHasValue("danceProgress") ? parseInt(localStorage.getItem("danceProgress")) : 0;
-const debug = "on"//localStorage.getItem("debug");
+const debug = localStorage.getItem("debug");
 let url = itemHasValue("addr") ? localStorage.getItem("addr") : "127.0.0.1"
 url = "http://" + url + ":3000"
 
 let stepsLeft = debug === "on" ? 4 : itemHasValue("stepCount") ? parseInt(localStorage.getItem("stepCount")) + 1 : 31;
 let scoreGoal = debug === "on" ? 3 : itemHasValue("winScore") ? localStorage.getItem("winScore") : 3;
-let badStepChance = itemHasValue("badStep") ? parseInt(localStorage.getItem("badStep")) / 100.0 : 0.45;
-let snakeHideFreq = itemHasValue("spawnFreq") ? parseInt(localStorage.getItem("spawnFreq")) : 3;
+let snakeHideFreq = itemHasValue("spawnFreq") ? parseInt(localStorage.getItem("spawnFreq")) : 10;
 let snakeShowDur = itemHasValue("timeOn") ? parseInt(localStorage.getItem("timeOn")) : 15;
-
+let timerLength = itemHasValue("danceTimer") ? localStorage.getItem("danceTimer") : 100;
 let snakeTop, snakeLeft, snakeScale;
 let winMessageStart;
-var fullWidth = window.innerWidth - 500;
-var fullHeight = window.innerHeight - 500;
 let stepsHit = 0;
-let stepHit = false;
-let snakeHitTimer = 1000;
-let snakeHitTimerMax = 1000;
-
-let snakeHiddenTimer = 1000;
+let goodStepHit = false;
+let badStepHit = false;
 
 let scoreIncreased = false;
 
@@ -133,10 +127,24 @@ $('.play').on('click tap', (e) => {
     $('#view-2').animate({"left": "+=100vw"}, 300);
     submitUser(false);
     hideSnakes();
+    startTimer()
 })
 
+function startTimer() {
+    gameTimer = setInterval(() => {
+        timerLength--;
+        // $('#time-left').text(timerLength);
+        if (timerLength === 0) {
+            gameResult();
+        }
+    }, 1000);
+}
+
+
 $('#good-step-container img').on('click tap', (e) => {
-    stepHit = true;
+    document.getElementById("good-step-container").style.display = 'none'
+    goodStepHit = true;
+    moveSnake("bad-step-container")
     stepsHit++;
     if (stepsLeft < 0) {
         gameResult();
@@ -144,13 +152,49 @@ $('#good-step-container img').on('click tap', (e) => {
 })
 
 $('#bad-step-container img').on('click tap', (e) => {
-    stepHit = true;
+    document.getElementById("bad-step-container").style.display = 'none'
+    moveSnake("good-step-container")
+    badStepHit = true;
     if (stepsHit !== 0)
         stepsHit--;
     if (stepsLeft < 0) {
         gameResult();
     }
 })
+
+let hideSnake = (id) => {
+    stepsLeft--;
+    $('#steps-left').text(stepsLeft);
+    $('#steps-hit').text(stepsHit);
+    if (stepsLeft <= 0) {
+        gameResult();
+        return;
+    }
+    document.getElementById(id).style.visibility = "hidden";
+    let goodStepHiddenTimer;
+    let badStepHiddenTimer;
+    if (id === "bad-step-container") {
+        badStepHiddenTimer = Math.floor(Math.random() * snakeHideFreq + 2);
+        const badStepHideTimer = setInterval(() => {
+            badStepHiddenTimer--;
+            if (badStepHiddenTimer <= 0) {
+                clearInterval(badStepHideTimer);
+                moveSnake("bad-step-container");
+            }
+        }, 250);
+    } else {
+        goodStepHiddenTimer = Math.floor(Math.random() * snakeHideFreq + 1);
+        const goodStepHideTimer = setInterval(() => {
+            goodStepHiddenTimer--;
+            if (goodStepHiddenTimer <= 0) {
+                clearInterval(goodStepHideTimer);
+                moveSnake("good-step-container");
+            }
+        }, 250);
+    }
+
+
+}
 
 let hideSnakes = () => {
     stepsLeft--;
@@ -160,66 +204,102 @@ let hideSnakes = () => {
         gameResult();
         return;
     }
-    document.getElementById("bad-step-container").style.visibility = "hidden";
-    document.getElementById("good-step-container").style.visibility = "hidden";
-    snakeHiddenTimer = Math.floor(Math.random() * snakeHideFreq + 1);
-    // console.log(snakeHiddenTimer);
-    const snakeHideTimer = setInterval(() => {
-        snakeHiddenTimer--;
-        if (snakeHiddenTimer <= 0) {
-            clearInterval(snakeHideTimer);
-            moveSnake();
-        }
-    }, 250);
+    hideSnake("good-step-container")
+    hideSnake("bad-step-container")
+}
+// 15-80% vertically
+// 0-85% horizontally
+
+function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
 }
 
-let moveSnake = () => {
-    snakeTop = Math.floor(Math.random() * fullHeight);
-    snakeLeft = Math.floor(Math.random() * fullWidth);
-    // console.log(snakeLeft,snakeTop)
-    snakeScale = Math.floor(Math.random() * 10 + 10);
-    console.log(snakeScale)
-    $('#good-step-container img').css({
-        'top': `${snakeTop}px`,
-        'left': `${snakeLeft}px`,
-        'width': `${snakeScale}vw`,
-        'z-index': '1',
-        'opacity': '1'
-    })
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
-    if (Math.random() > badStepChance) {
-        document.getElementById("good-step-container").style.visibility = "visible";
-        document.getElementById("bad-step-container").style.visibility = "hidden";
-    } else {
-        document.getElementById("good-step-container").style.visibility = "visible";
-        document.getElementById("bad-step-container").style.visibility = "visible";
-        document.getElementById("bad-step-container").style.rotate = "180deg";
-        snakeTop = Math.floor(Math.random() * fullHeight);
-        snakeLeft = Math.floor(Math.random() * fullWidth);
-        // console.log(snakeLeft,snakeTop)
-        snakeScale = Math.floor(Math.random() * 10 + 10);
-        console.log(snakeScale)
-        $('#bad-step-container img').css({
-            'top': `${snakeTop}px`,
-            'left': `${snakeLeft}px`,
-            'width': `${snakeScale}vw`,
-            'opacity': '1'
-        })
+function elementsOverlap(el1, el2) {
+    const domRect1 = document.getElementById(el1).getBoundingClientRect();
+    const domRect2 = document.getElementById(el2).getBoundingClientRect();
+    return !(
+        domRect1.top > domRect2.bottom ||
+        domRect1.right < domRect2.left ||
+        domRect1.bottom < domRect2.top ||
+        domRect1.left > domRect2.right
+    );
+}
+
+function randMove(id) {
+    snakeTop = getRandomArbitrary(15, 75)
+    snakeLeft = getRandomArbitrary(0, 86)
+    $('#' + id + ' img').css({
+        'top': `${snakeTop}%`,
+        'left': `${snakeLeft}%`,
+        'width': `350px`,
+        'z-index': '1',
+    })
+}
+
+
+let moveSnake = (id) => {
+    randMove(id)
+    while (elementsOverlap("good-step-image1", "bad-step-image1")) {
+        randMove(id)
     }
-    stepHit = false
-    snakeHitTimerMax = Math.floor(Math.random() * snakeShowDur + 3);
-    snakeHitTimer = snakeHitTimerMax;
-    const snakeTimer = setInterval(() => {
-        snakeHitTimer--;
-        if (stepHit || snakeHitTimer <= 0) {
-            clearInterval(snakeTimer);
-            hideSnakes();
-        } else if (localStorage.getItem("fadeOut") !== "on") {
-            $('.step-container img').css({
-                'opacity': `${(snakeHitTimer / snakeHitTimerMax) + 0.1}`
-            })
-        }
-    }, 250);
+
+    document.getElementById(id).style.visibility = "visible";
+    document.getElementById(id).style.display = "block";
+
+    if (id === "good-step-container")
+        var ids = ["good-step-image1", "good-step-image2", "good-step-image3", "good-step-image4", "good-step-image5"]
+    else
+        var ids = ["bad-step-image1", "bad-step-image2", "bad-step-image3", "bad-step-image4", "bad-step-image5"]
+    var footID = getRandomInt(1, 5)
+    console.log(footID)
+    for (var i = 0; i < 5; i++) {
+        if (i === footID)
+            document.getElementById(ids[i]).style.visibility = "visible";
+        else
+            document.getElementById(ids[i]).style.visibility = "hidden";
+    }
+    let goodSnakeHitTimerMax;
+    let badSnakeHitTimerMax;
+    let badSnakeHitTimer;
+    let goodSnakeHitTimer;
+    if (id === "good-step-container") {
+        console.log("good boi")
+        goodStepHit = false
+        goodSnakeHitTimerMax = Math.floor(Math.random() * snakeShowDur + 4);
+        goodSnakeHitTimer = goodSnakeHitTimerMax;
+        const goodSnakeTimer = setInterval(() => {
+            goodSnakeHitTimer--;
+            if (goodStepHit || goodSnakeHitTimer <= 0) {
+                clearInterval(goodSnakeTimer);
+                hideSnake(id);
+            } else if (localStorage.getItem("fadeOut") !== "on") {
+                document.getElementById(id).style.opacity = ((goodSnakeHitTimer / goodSnakeHitTimerMax)).toString()
+            }
+        }, 250);
+    } else {
+        console.log("bad boi")
+        badStepHit = false
+        badSnakeHitTimerMax = Math.floor(Math.random() * snakeShowDur + 3);
+        badSnakeHitTimer = badSnakeHitTimerMax;
+        const badSnakeTimer = setInterval(() => {
+            badSnakeHitTimer--;
+            if (badStepHit || badSnakeHitTimer <= 0) {
+                clearInterval(badSnakeTimer);
+                hideSnake(id);
+            } else if (localStorage.getItem("fadeOut") !== "on") {
+                $('#' + id + ' img').css({
+                    'opacity': `${(badSnakeHitTimer / badSnakeHitTimerMax) + 0.1}`
+                })
+            }
+        }, 250);
+    }
+
 }
 
 // VIEW 3 CONTENT
