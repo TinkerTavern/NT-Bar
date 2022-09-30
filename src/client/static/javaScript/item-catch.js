@@ -11,14 +11,16 @@ url = "http://" + url + ":3000"
 
 let stepsLeft = debug === "on" ? 4 : itemHasValue("stepCount") ? parseInt(localStorage.getItem("stepCount")) + 1 : 31;
 let scoreGoal = debug === "on" ? 3 : itemHasValue("winScore") ? localStorage.getItem("winScore") : 3;
-let snakeHideFreq = itemHasValue("spawnFreq") ? parseInt(localStorage.getItem("spawnFreq")) : 10;
-let snakeShowDur = itemHasValue("timeOn") ? parseInt(localStorage.getItem("timeOn")) : 15;
+let snakeHideFreq = itemHasValue("spawnFreq") ? parseInt(localStorage.getItem("spawnFreq")) : 4;
+let snakeShowDur = itemHasValue("timeOn") ? parseInt(localStorage.getItem("timeOn")) : 10;
 let timerLength = itemHasValue("danceTimer") ? localStorage.getItem("danceTimer") : 100;
 let snakeTop, snakeLeft, snakeScale;
 let winMessageStart;
 let stepsHit = 0;
 let goodStepHit = false;
 let badStepHit = false;
+let badSnakeHitTimer;
+let goodSnakeHitTimer;
 
 let scoreIncreased = false;
 
@@ -28,6 +30,16 @@ if (localStorage.getItem("hideLeaderboard") !== "on")
     loadLeaderboard()
 if (localStorage.getItem("hideProgress") !== "on")
     loadImage()
+if (localStorage.getItem("showTimer") === "on")
+    document.getElementById("timerr").style.visibility = 'visible'
+if (localStorage.getItem("showTarget") === "on")
+    document.getElementById("stepper").style.visibility = 'visible'
+if (localStorage.getItem("showStepsLeft") === "on")
+    document.getElementById("snake-count").style.visibility = 'visible'
+if (localStorage.getItem("showTutorial") === "on")
+    $('.tutorial').css({
+        'visibility': 'visible',
+    })
 
 
 submitUser(true)
@@ -107,7 +119,7 @@ $('#score-goal').text(scoreGoal);
 // VIEW 2 CONTENT
 $('#steps-left').text(stepsLeft);
 $('#snake-goal').text(scoreGoal);
-
+$('#time-left').text(timerLength);
 $('#steps-hit').text(stepsHit);
 
 document.getElementById("userName").value = localStorage.getItem("userName0")
@@ -133,7 +145,7 @@ $('.play').on('click tap', (e) => {
 function startTimer() {
     gameTimer = setInterval(() => {
         timerLength--;
-        // $('#time-left').text(timerLength);
+        $('#time-left').text(timerLength);
         if (timerLength === 0) {
             gameResult();
         }
@@ -144,7 +156,6 @@ function startTimer() {
 $('#good-step-container img').on('click tap', (e) => {
     document.getElementById("good-step-container").style.display = 'none'
     goodStepHit = true;
-    moveSnake("bad-step-container")
     stepsHit++;
     if (stepsLeft < 0) {
         gameResult();
@@ -153,7 +164,6 @@ $('#good-step-container img').on('click tap', (e) => {
 
 $('#bad-step-container img').on('click tap', (e) => {
     document.getElementById("bad-step-container").style.display = 'none'
-    moveSnake("good-step-container")
     badStepHit = true;
     if (stepsHit !== 0)
         stepsHit--;
@@ -170,7 +180,7 @@ let hideSnake = (id) => {
         gameResult();
         return;
     }
-    document.getElementById(id).style.visibility = "hidden";
+    document.getElementById(id).style.opacity = "0";
     let goodStepHiddenTimer;
     let badStepHiddenTimer;
     if (id === "bad-step-container") {
@@ -245,11 +255,13 @@ function randMove(id) {
 
 let moveSnake = (id) => {
     randMove(id)
-    while (elementsOverlap("good-step-image1", "bad-step-image1")) {
-        randMove(id)
-    }
+    // while (elementsOverlap("good-step-image1", "bad-step-image1")) {
+    //     console.log("ppsh")
+    //     randMove(id)
+    // }
+    // TODO Fix
 
-    document.getElementById(id).style.visibility = "visible";
+    document.getElementById(id).style.opacity = "1";
     document.getElementById(id).style.display = "block";
 
     if (id === "good-step-container")
@@ -257,7 +269,6 @@ let moveSnake = (id) => {
     else
         var ids = ["bad-step-image1", "bad-step-image2", "bad-step-image3", "bad-step-image4", "bad-step-image5"]
     var footID = getRandomInt(1, 5)
-    console.log(footID)
     for (var i = 0; i < 5; i++) {
         if (i === footID)
             document.getElementById(ids[i]).style.visibility = "visible";
@@ -266,12 +277,9 @@ let moveSnake = (id) => {
     }
     let goodSnakeHitTimerMax;
     let badSnakeHitTimerMax;
-    let badSnakeHitTimer;
-    let goodSnakeHitTimer;
     if (id === "good-step-container") {
-        console.log("good boi")
         goodStepHit = false
-        goodSnakeHitTimerMax = Math.floor(Math.random() * snakeShowDur + 4);
+        goodSnakeHitTimerMax = Math.floor(Math.random() * snakeShowDur + 3);
         goodSnakeHitTimer = goodSnakeHitTimerMax;
         const goodSnakeTimer = setInterval(() => {
             goodSnakeHitTimer--;
@@ -283,9 +291,8 @@ let moveSnake = (id) => {
             }
         }, 250);
     } else {
-        console.log("bad boi")
         badStepHit = false
-        badSnakeHitTimerMax = Math.floor(Math.random() * snakeShowDur + 3);
+        badSnakeHitTimerMax = Math.floor(Math.random() * snakeShowDur + 2);
         badSnakeHitTimer = badSnakeHitTimerMax;
         const badSnakeTimer = setInterval(() => {
             badSnakeHitTimer--;

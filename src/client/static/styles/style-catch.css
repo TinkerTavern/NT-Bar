@@ -31,13 +31,10 @@
 .timer {
     background: #ebbe93;
     border: 6px ridge #5c4428;
-    padding-block: 4vh;
-    padding-inline: 7vw;
-    width: 86vw;
     font-size: 1.8rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .timer p {
@@ -45,9 +42,11 @@
     padding: 0;
 }
 
+.tutorial {
+    visibility: hidden;
+}
 
 .step-container img {
-    background-color: pink;
     position: absolute;
     top: 0;
     left: 0;
