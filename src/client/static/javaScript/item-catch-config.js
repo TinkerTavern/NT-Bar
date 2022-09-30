@@ -18,6 +18,9 @@ function submitForm(e) {
     localStorage.setItem("showTimer", formProps["showTimer"])
     localStorage.setItem("showStepsLeft", formProps["showStepsLeft"])
     localStorage.setItem("showTutorial", formProps["showTutorial"])
+    localStorage.setItem("inverseBad", formProps["inverseBad"])
+    localStorage.setItem("randomRotation", formProps["randomRotation"])
+
     e.preventDefault()
     alert("Changes saved successfully")
     window.location.href = "/master-the-dance";

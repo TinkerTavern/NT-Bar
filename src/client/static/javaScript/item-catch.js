@@ -242,6 +242,12 @@ function elementsOverlap(el1, el2) {
 }
 
 function randMove(id) {
+    let angle = "0";
+    if (id === "bad-step-container" && localStorage.getItem("inverseBad") === "on")
+        angle = "180";
+    else if (localStorage.getItem("randomRotation") === "on")
+        angle = getRandomInt(0,360).toString()
+
     snakeTop = getRandomArbitrary(15, 75)
     snakeLeft = getRandomArbitrary(0, 86)
     $('#' + id + ' img').css({
@@ -249,6 +255,7 @@ function randMove(id) {
         'left': `${snakeLeft}%`,
         'width': `350px`,
         'z-index': '1',
+        'rotate': angle+"deg",
     })
 }
 
