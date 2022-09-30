@@ -110,6 +110,7 @@ tbody, td, tr, th, table {
     background-color: #ebbe93;
     border: 6px ridge #5c4428;
     padding: 2%;
+    margin: 2%;
 }
 
 .intro-grid {
@@ -127,7 +128,6 @@ tbody, td, tr, th, table {
     object-fit: contain;
     grid-row: auto /span 4;
     width: 25vw;
-    height: 100vh;
 }
 
 .play {
@@ -144,6 +144,10 @@ tbody, td, tr, th, table {
     justify-content: center;
     margin: auto;
     border: 6px ridge #37375d;
+}
+
+.playOG {
+    margin-top: -10%
 }
 
 .win-lose {

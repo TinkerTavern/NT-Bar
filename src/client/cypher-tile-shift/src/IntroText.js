@@ -187,7 +187,7 @@ class Intro extends React.Component {
                     <input className="answerBox" type="text" id="userName" name="answer"
                            defaultValue={localStorage.getItem("userName2")}/>
                 </div>
-                <button className="play"
+                <button className="play playOG"
                         onClick={() => {
                             this.props.onClick();
                         }}
