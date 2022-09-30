@@ -35,7 +35,8 @@ class HighScoreTable extends React.Component {
                 this.setState({players: players["boardDict"]});
             },
             (error) => {
-                alert(error);
+                alert("Server not available");
+                console.log(error)
             }
         )
     }
