@@ -9,8 +9,8 @@ const debug = localStorage.getItem("debug");
 let url = itemHasValue("addr") ? localStorage.getItem("addr") : "127.0.0.1"
 url = "http://" + url + ":3000"
 
-let stepsLeft = debug === "on" ? 4 : itemHasValue("stepCount") ? parseInt(localStorage.getItem("stepCount")) + 1 : 31;
-let scoreGoal = debug === "on" ? 3 : itemHasValue("winScore") ? localStorage.getItem("winScore") : 3;
+let stepsLeft = debug === "on" ? 4 : itemHasValue("stepCount") ? parseInt(localStorage.getItem("stepCount")) + 1 : 300;
+let scoreGoal = debug === "on" ? 3 : itemHasValue("winScore") ? localStorage.getItem("winScore") : 30;
 let snakeHideFreq = itemHasValue("spawnFreq") ? parseInt(localStorage.getItem("spawnFreq")) : 4;
 let snakeShowDur = itemHasValue("timeOn") ? parseInt(localStorage.getItem("timeOn")) : 10;
 let timerLength = itemHasValue("danceTimer") ? localStorage.getItem("danceTimer") : 100;
