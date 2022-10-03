@@ -1,11 +1,12 @@
 # NT Bar
-
+# Summary
 This repository contains two main components:
 
 - Server (Larger screen with no player interaction). This runs on localhost:3000
 - Client (Smaller screens which players interact with). This runs on localhost:5000
 
-# Server
+
+## Server
 
 The server displays a number of statistics about the room:
 
@@ -19,7 +20,7 @@ The server displays a number of statistics about the room:
 There is also an introduction text to provide context for the games. Once all the games are complete, a server end
 screen is displayed with more text summarising the end of the story and game.
 
-# Client
+## Client
 
 The client contains four different games, three of which are accessible at any given moment. These are:
 
@@ -36,15 +37,6 @@ Each game contains three main sreens, an introduction screen with an image, a te
 background; a game screen with the specific game's content; and a game complete screen. This final screen either shows a
 single game win/lose screen, or a more comprehensive minigame complete screen, providing the user with a **bold** hint
 phrase, hinting towards the answer.
-
-# Building
-
-The majority of the code is built using Python Flask as a back end, and native HTML, JS and CSS for the front end, and
-thus doesn't need rebuilding and can be updated on-the-fly (particularly if the Flask Debug is set
-to True). However, the Tile Shift/Cypher games are built using React, and thus need to be built and copied prior to
-loading. This can be done by making any changes within `src/client/cypher-tile-shift/`, then running
-either `run_local.bat` or `run_local.sh` if running Windows or Linux/macOS respectively. The script should handle
-building the project and moving the respective files to their correct locations
 
 # Running
 
@@ -115,3 +107,28 @@ the browser.
 - Preview: Displays the image before the puzzle starts to make it easier (default off)
 - Disable show image on complete: Disables the image being shown after completion (default image is shown)
 - 3x3 Mode: Changes the grid size from 4x4 to 3x3 (default is 4x4)
+
+# Building
+
+The majority of the code is built using Python Flask as a back end, and native HTML, JS and CSS for the front end, and
+thus doesn't need rebuilding and can be updated on-the-fly (particularly if the Flask Debug is set
+to True). However, the Tile Shift/Cypher games are built using React, and thus need to be built and copied prior to
+loading. This can be done by making any changes within `src/client/cypher-tile-shift/`, then running
+either `run_local.bat` or `run_local.sh` if running Windows or Linux/macOS respectively. The script should handle
+building the project and moving the respective files to their correct locations
+
+# Adding or Changing Content
+
+## Adding Content
+
+## Changing Content
+
+# Changes Compared to Original
+
+## Server
+
+## Master the Dance 
+
+## Charades 
+
+## Needlepoint
