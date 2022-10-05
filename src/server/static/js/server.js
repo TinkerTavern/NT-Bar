@@ -40,34 +40,6 @@ function loadLeaderboard(game) {
 
 }
 
-
-function danceLeaderboard() {
-    leaderboards[0] = !leaderboards[0];
-    loadLeaderboard("danceScores")
-    if (leaderboards[0]) {
-        $('#danceScores').fadeIn();
-    } else
-        $('#danceScores').fadeOut();
-}
-
-function riddleLeaderboard() {
-    leaderboards[1] = !leaderboards[1];
-    loadLeaderboard("charadesScores")
-    if (leaderboards[1])
-        $('#charadesScores').fadeIn();
-    else
-        $('#charadesScores').fadeOut();
-}
-
-function puzzleLeaderboard() {
-    leaderboards[2] = !leaderboards[2];
-    loadLeaderboard("needlepointScores")
-    if (leaderboards[2])
-        $('#needlepointScores').fadeIn();
-    else
-        $('#needlepointScores').fadeOut();
-}
-
 function resetRoom() {
     alert("Resetting room...")
     $.ajax({
@@ -91,10 +63,15 @@ function checkProgress(scores, limits) {
     let images = [["catch1", "catch2", "catch3"],
         ["riddle1", "riddle2", "riddle3"],
         ["tile1", "tile2", "tile3"]]
+    let words = ["catch-word", "tile-word", "riddle-word"]
     let won = true
     for (let i = 0; i < scores.length; i++) {
-        if (parseInt(limits[i]) > parseInt(scores[i]))
+        if (parseInt(limits[i]) > parseInt(scores[i])) {
+            document.getElementById(words[i]).style.display = "none";
             won = false
+        }
+        else
+            document.getElementById(words[i]).style.display = "block";
         for (let j = 0; j < limits.length; j++) {
             if (j >= Math.floor(((scores[i] / limits[i]) / 0.333333))) {
                 document.getElementById(images[i][j]).style.filter = "blur(35px)";
@@ -103,7 +80,7 @@ function checkProgress(scores, limits) {
             }
         }
     }
-    if (won) {
+    if (false) {
         abortTimer()
         document.getElementById("server-grid").style.display = "none"
         winMessageStart = "After an evening of games & dances, you come back to Isobel, hoping that the hints you’ve gathered are enough for you and her to put it all together. You ask her if she’s given a servant, likely a woman, someone particularly close to her, a reason to hold a grudge?\n" +

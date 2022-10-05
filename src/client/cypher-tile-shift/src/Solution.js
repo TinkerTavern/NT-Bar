@@ -55,10 +55,12 @@ class Solution extends React.Component {
                     }}>
                     <Box>
                         <div id="win-message" className={"outro-grid"}>
-                            <figure className="outro-person">
-                                <img className="outro-person" src={needleEnd}/>
-                                <figcaption className={"imageBy"}>{"Background image by GarryKillian on Freepik\n" +
-                                    "Mrs James Gregory, née Isobella Macleod (1770–1847) by Henry Raeburn (1756–1823) National Trust for Scotland, Fyvie Castle"} </figcaption>
+                            <figure className="person outro-person">
+                                <img src={needleEnd} draggable={false}
+                                     alt={"Mrs James Gregory, née Isobella Macleod (1770–1847) by Henry Raeburn (1756–1823) National Trust for Scotland, Fyvie Castle"}
+                                     title={"Mrs James Gregory, née Isobella Macleod (1770–1847) by Henry Raeburn (1756–1823) National Trust for Scotland, Fyvie Castle"}/>
+                                <figcaption
+                                    className={"imageBy"}>{"Background image by GarryKillian on Freepik"} </figcaption>
                             </figure>
                             <h1 id="win-lose" className="win-title">Win</h1>
                             <p className="win-lose-start ">{"That's really pretty, well done! Hope you didn't prick yourself in the process."}</p>
@@ -88,10 +90,12 @@ class Solution extends React.Component {
                     }}>
                     <Box>
                         <div id="win-message" className={"outro-grid"}>
-                            <figure className="outro-person">
-                                <img src={needleEnd}/>
-                                <figcaption className={"imageBy"}>{"Background image by GarryKillian on Freepik\n" +
-                                    "Mrs James Gregory, née Isobella Macleod (1770–1847) by Henry Raeburn (1756–1823) National Trust for Scotland, Fyvie Castle"} </figcaption>
+                            <figure className="person outro-person">
+                                <img src={needleEnd} draggable={false}
+                                     alt={"Mrs James Gregory, née Isobella Macleod (1770–1847) by Henry Raeburn (1756–1823) National Trust for Scotland, Fyvie Castle"}
+                                     title={"Mrs James Gregory, née Isobella Macleod (1770–1847) by Henry Raeburn (1756–1823) National Trust for Scotland, Fyvie Castle"}/>
+                                <figcaption
+                                    className={"imageBy"}>{"Background image by GarryKillian on Freepik"} </figcaption>
                             </figure>
                             <h1 id="win-lose" className="win-title">Win</h1>
                             <p className="win-lose-start" dangerouslySetInnerHTML={{__html: str}}/>

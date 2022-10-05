@@ -37,7 +37,7 @@ class App extends React.Component {
     }
 
     resetScore() {
-        // alert("Resetting score...")
+        alert("Resetting score, make sure to refresh all clients...")
         this.state.gamesWon = 0;
         localStorage.setItem("needlepointProgress", 0)
         this.updateScore()

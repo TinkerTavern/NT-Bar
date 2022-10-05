@@ -10,10 +10,8 @@
 }
 
 * {
-    /*background-color: #bc9464;*/
     font-family: Kalam;
     text-align: center;
-    font-size: 20px;
 }
 
 .game-title {
@@ -54,6 +52,8 @@ tbody, td, tr, th, table {
 .server-grid {
     display: grid;
     grid-template-columns: 32% 32% 32%;
+    grid-template-rows: 35% 32% 10% 18%;
+    height: 100vh;
     grid-gap: 1em 2em;
     grid-auto-flow: row dense;
     align-content: center;
@@ -64,7 +64,7 @@ tbody, td, tr, th, table {
     grid-column: auto /span 2;
     white-space: pre-wrap;
     background-color: #ebbe93;
-    margin-top: 0px;
+    margin-top: 0;
     font-size: 24px;
     font-weight: 400;
     line-height: 31px;
@@ -96,6 +96,7 @@ tbody, td, tr, th, table {
     background-color: #ebbe93;
     border: 6px ridge #5c4428;
     padding: 2%;
+    font-size: 20px;
 }
 
 .locked {
@@ -112,7 +113,20 @@ tbody, td, tr, th, table {
 
 }
 
-.catch, .tile, .riddle {
+.progress-word {
+    position: relative;
+    top: 80%;
+    font-size: 32px;
+    display: none;
+}
+
+.catch {
+    position: absolute;
+    top: -3%;
+    left: 0;
+}
+
+.tile, .riddle {
     position: absolute;
     top: 0;
     left: 0;
@@ -173,23 +187,18 @@ body {
 
 .outro-grid {
     display: grid;
-    grid-template-columns: 30% 65%;
+    grid-template-columns: 27% 71%;
+    grid-template-rows: 10% 57% 30%;
+    grid-gap: 1em 2em;
+    height: 100vh;
     grid-auto-flow: row dense;
 }
+
 .imageBy {
     font-size: 24px;
     white-space: pre-wrap;
     background-color: #ebbe93;
     border: 6px ridge #5c4428;
-}
-
-
-.outro-person {
-    object-fit: contain;
-    grid-row: auto /span 3;
-    width: 25vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0);
 }
 
 
@@ -203,11 +212,19 @@ body {
     box-shadow: 0px 4px 11px -5px rgba(0, 0, 0, 0.8);
 }
 
+.outro-person {
+    object-fit: contain;
+    grid-row: auto /span 3;
+    width: 25vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0);
+}
+
 .win-lose-start {
     background-color: #ebbe93;
     font-size: 32px;
     font-weight: 400;
-    line-height: 51px;
+    line-height: 46px;
     letter-spacing: 0.01em;
     text-align: justify;
     padding-left: 5%;

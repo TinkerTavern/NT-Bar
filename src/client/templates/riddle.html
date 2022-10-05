@@ -80,14 +80,14 @@ You know of charades, of course, don’t you? You figure out the first syllable,
 
 <section id="view-4">
     <div id="win-lose-messages" class="outro-grid">
-        <figure class="person">
+        <figure class="person outro-person">
             <img src="{{ url_for('static',filename='images/Charades_End.png') }}" alt="Portrait of Miss Frances Vinicombe by John Opie" title="Portrait of Miss Frances Vinicombe by John Opie" draggable="false"/>
             <figcaption class="imageBy">Background image by GarryKillian on Freepik</figcaption>
         </figure>
         <h1 id="win-lose" class="win-title">Win/Lose</h1>
         <p id="win-lose-start" class="win-lose-start"></p>
         <button class="play" id="restartButton" onclick="document.location.reload()">Next Charade...</button>
-        <button class="play" id="winButton" onclick="winGame()">Discover the Secret...</button>
+        <button class="play" id="winButton" onclick="document.location.reload()">Challenge me!</button>
     </div>
 </section>
 

@@ -189,7 +189,10 @@ class Intro extends React.Component {
                 </div>
                 <button className="play"
                         onClick={() => {
-                            this.props.onClick();
+                            if (document.getElementById("userName").value !== "")
+                                this.props.onClick();
+                            else
+                                alert("Enter your name please!")
                         }}
                 >Play!
                 </button>

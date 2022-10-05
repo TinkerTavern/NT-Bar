@@ -26,7 +26,7 @@ class Failure extends React.Component {
                 }}>
                 <Box>
                     <div id="win-message" className={"outro-grid"}>
-                        <img className="outro-person" src={ladder}/>
+                        <img className="person" src={ladder}/>
                         <h1 id="win-lose" className="win-title">Lose</h1>
                         <p className="win-lose-start">{"Pretty needlework for sure, but at this pace, the Season will be over and gone before you're done with them. Try to keep up!"}</p>
                         <button className="play " onClick={() => {

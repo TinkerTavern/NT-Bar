@@ -60,7 +60,7 @@ body {
 
 .instructions, span {
     background-color: #ebbe93;
-    margin-top: 0px;
+    margin: 0;
     font-size: 32px;
     font-weight: 400;
     line-height: 51px;

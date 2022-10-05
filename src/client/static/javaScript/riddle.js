@@ -66,7 +66,7 @@ function submitUserName(name) {
 
 
 function confirmReset() {
-    // alert("Resetting score...")
+    alert("Resetting score, make sure to refresh all clients...")
     progress = 0;
     localStorage.setItem("charadesProgress", 0)
     updateScore(progress)
@@ -230,11 +230,16 @@ $('#time-left').text(timerLength);
 $('#timer-length').text(timerLength);
 
 $('.play').on('click tap', (e) => {
-    $('#view-1').animate({"left": "-=100vw"}, 300);
-    document.getElementById("view-2").style.visibility = "visible"
-    $('#view-2').animate({"left": "+=100vw"}, 300);    submitUser();
-    if (timerLength !== -1)
-        startTimer();
+    if (document.getElementById("userName").value !== "") {
+        $('#view-1').animate({"left": "-=100vw"}, 300);
+        document.getElementById("view-2").style.visibility = "visible"
+        $('#view-2').animate({"left": "+=100vw"}, 300);
+        submitUser();
+        if (timerLength !== -1)
+            startTimer();
+    }
+    else
+        alert("Enter your name please!")
 })
 
 function startTimer() {

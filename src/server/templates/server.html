@@ -25,6 +25,7 @@ Desperately afraid that the letter will expose her to the worst sort of scandal,
                  src="{{url_for('static', filename='images/Progress/Dance2.PNG')}}">
             <img draggable="false" id="catch3" class="catch locked image"
                  src="{{url_for('static', filename='images/Progress/Dance3.PNG')}}">
+            <p id="catch-word" class="progress-word"><b>A woman...</b></p>
         </div>
         <div class="column" style="position: relative; left: 20%; top: 0">
             <img draggable="false" id="tile1" class="tile locked image"
@@ -33,6 +34,7 @@ Desperately afraid that the letter will expose her to the worst sort of scandal,
                  src="{{url_for('static', filename='images/Progress/Needlepoint2.PNG')}}">
             <img draggable="false" id="tile3" class="tile locked image"
                  src="{{url_for('static', filename='images/Progress/Needlepoint3.PNG')}}">
+            <p id="tile-word" class="progress-word"><b>Closest to her...</b></p>
         </div>
         <div class="column" style="position: relative; left: 20%; top: 0">
             <img draggable="false" id="riddle1" class="riddle locked image"
@@ -41,6 +43,7 @@ Desperately afraid that the letter will expose her to the worst sort of scandal,
                  src="{{url_for('static', filename='images/Progress/Charades2.PNG')}}">
             <img draggable="false" id="riddle3" class="riddle locked image"
                  src="{{url_for('static', filename='images/Progress/Charades3.PNG')}}">
+            <p id="riddle-word" class="progress-word"><b>Only a slave...</b></p>
         </div>
         <div class="grid-spot game-score" id="dance">dance</div>
         <div class="grid-spot game-score" id="puzzle">puzzle</div>
@@ -53,13 +56,12 @@ Desperately afraid that the letter will expose her to the worst sort of scandal,
     <section id="view-3">
         <div id="win-lose-messages" class="outro-grid">
             <figure class="outro-person">
-            <img src="{{ url_for('static',filename='images/Server_End.png') }}"/>
-            <figcaption class="imageBy">Background image by GarryKillian on Freepik
-A Country Girl by Charles Sillem Lidderdale</figcaption>
+            <img src="{{ url_for('static',filename='images/Server_End.png') }}" draggable="false" alt="A Country Girl by Charles Sillem Lidderdale" title="A Country Girl by Charles Sillem Lidderdale"/>
+            <figcaption class="imageBy">Background image by GarryKillian on Freepik</figcaption>
             </figure>
             <h1 id="win-lose" class="win-title">Win/Lose</h1>
             <p class="win-lose-start center"></p>
-            <button class="play" id="winButton" onclick="resetRoom(); document.location.reload()">Until next time...
+            <button class="play" id="winButton" onclick="resetRoom(); document.location.reload()">Congratulations!
             </button>
         </div>
     </section>

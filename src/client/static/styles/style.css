@@ -100,7 +100,6 @@
 }
 
 * {
-    /*background-color: #bc9464;*/
     font-family: Kalam;
     color: #37375d;
     text-align: center;
@@ -244,7 +243,7 @@ input {
 
 .instructions {
     background-color: #ebbe93;
-    margin-top: 0px;
+    margin: 0;
     font-size: 32px;
     font-weight: 400;
     line-height: 51px;
@@ -274,6 +273,10 @@ input {
     padding-top: 10vh;
 }
 
+.outro-person {
+    padding-top: 0;
+}
+
 .non-interact {
     position: absolute;
     left: 0;
@@ -284,7 +287,10 @@ input {
 
 .outro-grid {
     display: grid;
-    grid-template-columns: 30% 65%;
+    grid-template-columns: 27% 71%;
+    grid-template-rows: 10% 57% 30%;
+    grid-gap: 1em 2em;
+    height: 100vh;
     grid-auto-flow: row dense;
 }
 
@@ -309,12 +315,13 @@ input {
     background-color: #ebbe93;
     font-size: 32px;
     font-weight: 400;
-    line-height: 51px;
+    line-height: 46px;
     letter-spacing: 0.01em;
     text-align: justify;
     padding-left: 5%;
     padding-right: 5%;
     padding-top: 1%;
+    margin: 0;
     white-space: pre-wrap;
     border: 6px ridge #5c4428;
 }
