@@ -15,11 +15,10 @@
 <!--<img class="background-image" src="{{ url_for('static',filename='images/snake-long.png') }}"/>-->
 <!--<img draggable="false" class="background-image" src="{{ url_for('static',filename='images/riddle-bg.png')}}"/>-->
 <section class="intro-grid" id="view-1">
-    <figure class="person">
-        <img src="{{ url_for('static',filename='images/Charades_Intro.png') }}"/>
-        <p class="imageBy">Background image by GarryKillian on Freepik
-Portrait of Miss Rosamond Croker by Sir Thomas Lawrence</p>
-    </figure>
+        <figure class="person">
+            <img src="{{ url_for('static',filename='images/Charades_Intro.png') }}" alt="Portrait of Miss Rosamond Croker by Sir Thomas Lawrence" title="Portrait of Miss Rosamond Croker by Sir Thomas Lawrence" draggable="false"/>
+            <p class="imageBy">Background image by GarryKillian on Freepik</p>
+        </figure>
     <h1 class="game-title">Charades</h1>
     <section class="grid-spot progress" style="visibility: hidden" id="charadesScores"></section>
     <p class="instructions">
@@ -43,7 +42,7 @@ You know of charades, of course, don’t you? You figure out the first syllable,
         <label class="answerLabel" for="userName">Your Name: </label><br>
         <input class="answerBox" type="text" id="userName" name="answer">
     </div>
-    <div class="play">Play!</div>
+    <button class="play">Play!</button>
     <div class="win-lose">
     </div>
 </section>
@@ -52,9 +51,8 @@ You know of charades, of course, don’t you? You figure out the first syllable,
 
     <div id="riddlestuff" class="outro-grid">
         <figure class="person">
-            <img src="{{ url_for('static',filename='images/Charades_Intro.png') }}"/>
-            <p class="imageBy">Background image by GarryKillian on Freepik
-Portrait of Miss Rosamond Croker by Sir Thomas Lawrence</p>
+            <img src="{{ url_for('static',filename='images/Charades_Intro.png') }}" alt="Portrait of Miss Rosamond Croker by Sir Thomas Lawrence" title="Portrait of Miss Rosamond Croker by Sir Thomas Lawrence" draggable="false"/>
+            <p class="imageBy">Background image by GarryKillian on Freepik</p>
         </figure>
         <div class="timer center">
             <p>Time left: <span id="time-left"></span></p>
@@ -82,11 +80,9 @@ Portrait of Miss Rosamond Croker by Sir Thomas Lawrence</p>
 
 <section id="view-4">
     <div id="win-lose-messages" class="outro-grid">
-        <figure class="outro-person">
-            <img src="{{ url_for('static',filename='images/Charades_End.png') }}"/>
-            <figcaption class="imageBy">Background image by GarryKillian on Freepik
-Portrait of Miss Frances Vinicombe by John Opie
-            </figcaption>
+        <figure class="person">
+            <img src="{{ url_for('static',filename='images/Charades_End.png') }}" alt="Portrait of Miss Frances Vinicombe by John Opie" title="Portrait of Miss Frances Vinicombe by John Opie" draggable="false"/>
+            <figcaption class="imageBy">Background image by GarryKillian on Freepik</figcaption>
         </figure>
         <h1 id="win-lose" class="win-title">Win/Lose</h1>
         <p id="win-lose-start" class="win-lose-start"></p>

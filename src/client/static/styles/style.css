@@ -105,11 +105,13 @@
     color: #37375d;
     text-align: center;
 }
+
 .leaderboard {
     width: 20vw;
     border: 1px solid black;
-    margin-left: 12%;
+    margin-left: 6%;
 }
+
 tbody, td, tr, th, table {
     background-color: rgba(0, 0, 0, 0);
     border: 1px solid black;
@@ -128,6 +130,7 @@ tbody, td, tr, th, table {
     padding-left: 30%;
     height: 30vh;
 }
+
 .column {
     height: 30vh;
     padding: 0 4px;
@@ -184,6 +187,7 @@ button {
     margin-top: 1%;
     margin-bottom: -2%;
 }
+
 .answerBox {
     color: #37375d;
     font-size: xxx-large;
@@ -214,8 +218,8 @@ span, #snake-count, #steps-left, #stepper, img {
 .play {
     width: 30vh;
     height: 30vh;
+    border: 6px ridge #37375d;
     background: #545c9c;
-    border: none;
     border-radius: 50%;
     font-weight: 700;
     color: white;
@@ -224,7 +228,6 @@ span, #snake-count, #steps-left, #stepper, img {
     align-items: center;
     justify-content: center;
     margin: auto;
-    border: 6px ridge #37375d;
 }
 
 input {
@@ -258,6 +261,7 @@ input {
 .intro-grid {
     display: grid;
     grid-template-columns: 27% 45% 25%;
+    grid-template-rows: 15% 35% 15% 30%;
     grid-gap: 1em 2em;
     grid-auto-flow: row dense;
     height: 100vh;
@@ -267,6 +271,7 @@ input {
     object-fit: contain;
     grid-row: auto /span 4;
     width: 25vw;
+    padding-top: 10vh;
 }
 
 .non-interact {
@@ -281,13 +286,6 @@ input {
     display: grid;
     grid-template-columns: 30% 65%;
     grid-auto-flow: row dense;
-}
-
-.outro-person {
-    object-fit: contain;
-    grid-row: auto /span 3;
-    width: 25vw;
-    height: 100vh;
 }
 
 #win-lose-messages {

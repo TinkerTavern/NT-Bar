@@ -16,9 +16,8 @@
 
 <section class="intro-grid" id="view-1">
         <figure class="person">
-    <img  src="{{ url_for('static',filename='images/Dance_Intro.png') }}"/>
-        <p class="imageBy">Background image by GarryKillian on Freepik
-Portrait of a Man by François-Xavier Fabre</p>
+    <img draggable="false" src="{{ url_for('static',filename='images/Dance_Intro.png') }}" alt="Portrait of a Man by François-Xavier Fabre" title="Portrait of a Man by François-Xavier Fabre"/>
+        <p class="imageBy">Background image by GarryKillian on Freepik</p>
     </figure>
     <h1 class="game-title">Master the dance!</h1>
     <section class="grid-spot progress" style="visibility: hidden" id="danceScores"></section>
@@ -43,7 +42,7 @@ To do so, you’ll need to follow the rhythm and hit the steps as they appear. T
         <label class="answerLabel" for="userName">Your Name: </label><br>
         <input class="answerBox" type="text" id="userName" name="answer">
     </div>
-    <div class="play ">Play!</div>
+    <button class="play ">Play!</button>
     <div class="win-lose">
     </div>
 </section>
@@ -78,10 +77,9 @@ To do so, you’ll need to follow the rhythm and hit the steps as they appear. T
 
 <section id="view-3">
     <div id="win-lose-messages" class="outro-grid">
-                <figure class="outro-person">
-            <img src="{{ url_for('static',filename='images/Dance_End.png') }}"/>
-            <figcaption class="imageBy">Background image by GarryKillian on Freepik
-Self Portrait, c.1818 by Claude Marie Dubufe</figcaption>
+                <figure class="person">
+            <img src="{{ url_for('static',filename='images/Dance_End.png') }}"  alt="Self Portrait, c.1818 by Claude Marie Dubufe" title="Self Portrait, c.1818 by Claude Marie Dubufe" draggable="false"/>
+            <figcaption class="imageBy">Background image by GarryKillian on Freepik</figcaption>
         </figure>
         <h1 id="win-lose" class="win-title">Win/Lose</h1>
         <p id="win-lose-start" class="win-lose-start"></p>

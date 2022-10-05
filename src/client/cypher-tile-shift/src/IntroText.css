@@ -73,11 +73,13 @@ body {
     white-space: pre-wrap;
     border: 6px ridge #5c4428;
 }
+
 .leaderboard {
     width: 20vw;
     border: 1px solid black;
-    margin-left: 12%;
+    margin-left: 6%;
 }
+
 tbody, td, tr, th, table {
     background-color: rgba(0, 0, 0, 0);
     border: 1px solid black;
@@ -96,6 +98,7 @@ tbody, td, tr, th, table {
     padding-left: 30%;
     height: 30vh;
 }
+
 .column {
     height: 30vh;
     padding: 0 4px;
@@ -115,26 +118,29 @@ tbody, td, tr, th, table {
 
 .intro-grid {
     display: grid;
-    grid-template-columns: 25% 45% 25%;
-    grid-gap: 3em 3em;
+    grid-template-columns: 27% 45% 25%;
+    grid-template-rows: 15% 35% 15% 30%;
+    grid-gap: 1em 2em;
     grid-auto-flow: row dense;
     background-image: url("images/1129.jpg");
     background-color: #bc9464;
     background-blend-mode: multiply;
     background-size: contain;
+    height: 100vh;
 }
 
 .person {
     object-fit: contain;
     grid-row: auto /span 4;
     width: 25vw;
+    padding-top: 10vh;
 }
 
 .play {
     width: 30vh;
     height: 30vh;
+    border: 6px ridge #37375d;
     background: #545c9c;
-    border: none;
     border-radius: 50%;
     font-weight: 700;
     color: white;
@@ -143,7 +149,6 @@ tbody, td, tr, th, table {
     align-items: center;
     justify-content: center;
     margin: auto;
-    border: 6px ridge #37375d;
 }
 
 .playOG {

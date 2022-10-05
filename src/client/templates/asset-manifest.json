@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.25ddf84a.css",
-    "main.js": "./static/js/main.13fadf75.js",
+    "main.css": "./static/css/main.bbe5cd23.css",
+    "main.js": "./static/js/main.c10a3209.js",
     "static/js/787.c745ff56.chunk.js": "./static/js/787.c745ff56.chunk.js",
     "static/media/1129.jpg": "./static/media/1129.21af83566bba892b5073.jpg",
     "static/media/Needlepoint2.png": "./static/media/Needlepoint2.191d2bd7af15b90e17e4.png",
@@ -65,12 +65,12 @@
     "static/media/Needlepoint2.PNG": "./static/media/Needlepoint2.951c069209b74fba2cad.PNG",
     "static/media/ladder.png": "./static/media/ladder.afa1704555c87647f722.png",
     "index.html": "./index.html",
-    "main.25ddf84a.css.map": "./static/css/main.25ddf84a.css.map",
-    "main.13fadf75.js.map": "./static/js/main.13fadf75.js.map",
+    "main.bbe5cd23.css.map": "./static/css/main.bbe5cd23.css.map",
+    "main.c10a3209.js.map": "./static/js/main.c10a3209.js.map",
     "787.c745ff56.chunk.js.map": "./static/js/787.c745ff56.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.25ddf84a.css",
-    "static/js/main.13fadf75.js"
+    "static/css/main.bbe5cd23.css",
+    "static/js/main.c10a3209.js"
   ]
 }

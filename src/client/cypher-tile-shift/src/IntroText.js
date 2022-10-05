@@ -166,9 +166,8 @@ class Intro extends React.Component {
         return (
             <div className="intro-grid">
                 <figure className="person">
-                    <img src={needleIntro}/>
-                    <p className={"imageBy"}>{"Background image by GarryKillian on Freepik\n" +
-                        "Portrait of Lady Selina Caroline Meade, later Countess Clam-Martinic (1797–1872) by Sir Thomas Lawrence"}</p>
+                    <img draggable={false} src={needleIntro} title={"Portrait of Lady Selina Caroline Meade, later Countess Clam-Martinic (1797–1872) by Sir Thomas Lawrence"} alt={"Portrait of Lady Selina Caroline Meade, later Countess Clam-Martinic (1797–1872) by Sir Thomas Lawrence"}/>
+                    <p className={"imageBy"}>{"Background image by GarryKillian on Freepik"}</p>
                 </figure>
                 <h1
                     className="game-title">{this.props.game === 'puzzle_shift' ? 'Needlepoint' : 'Cypher Cracker!'}</h1>
@@ -188,7 +187,7 @@ class Intro extends React.Component {
                     <input className="answerBox" type="text" id="userName" name="answer"
                            defaultValue={localStorage.getItem("userName2")}/>
                 </div>
-                <button className="play playOG"
+                <button className="play"
                         onClick={() => {
                             this.props.onClick();
                         }}
