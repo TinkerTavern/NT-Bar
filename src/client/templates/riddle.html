@@ -49,7 +49,7 @@ You know of charades, of course, don’t you? You figure out the first syllable,
 
 <section id="view-2">
 
-    <div id="riddlestuff" class="outro-grid">
+    <div id="riddlestuff" class="outro-grid riddle-grid">
         <figure class="person">
             <img src="{{ url_for('static',filename='images/Charades_Intro.png') }}" alt="Portrait of Miss Rosamond Croker by Sir Thomas Lawrence" title="Portrait of Miss Rosamond Croker by Sir Thomas Lawrence" draggable="false"/>
             <p class="imageBy">Background image by GarryKillian on Freepik</p>
@@ -60,7 +60,7 @@ You know of charades, of course, don’t you? You figure out the first syllable,
         <p class="riddle"></p>
         <div id="textEntry">
             <label class="answerLabel answerLabel2" for="answer">Your Answer:</label><br>
-            <input class="answerBox" type="text" id="answer" name="answer">
+            <input class="answerBox riddle-box" type="text" id="answer" name="answer">
             <input class="play" id="submitButton" type="button" value="Submit" onclick="answerWritten();"/>
         </div>
         <div id="multiChoice">

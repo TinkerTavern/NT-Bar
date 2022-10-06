@@ -27,6 +27,17 @@ tasks = ["Master the dance!", "Solve the charades!",
 resetConfirmed = [False, False, False]
 
 
+def get_val(val):
+    ret_val = request.form.get(val)
+    if ret_val is None:
+        ret_val = request.json.get(val)
+    if val == "task":
+        ret_val = int(ret_val)
+    elif val == "user":
+        ret_val = ret_val.replace(",", "")  # Remove commas to prevent dumb issues
+    return ret_val
+
+
 def get_ip():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.settimeout(0)
@@ -54,10 +65,7 @@ def hello_world():
 
 @app.route('/get-leaderboard', methods=["POST"])
 def get_leaderboard():
-    taskID = request.form.get("task")
-    if taskID is None:
-        taskID = request.json.get("task")
-    taskID = int(taskID)
+    taskID = get_val("task")
     # open text file in read mode
     file = join(dirname(realpath(__file__)), "static/leaders/" + taskOpts[taskID] + ".leaders")
     ret = []
@@ -80,14 +88,9 @@ def get_my_ip():
 
 @app.route("/update", methods=["POST"])
 def update_task():
-    limit = request.form.get("limit")
-    taskID = request.form.get("task")
-    progressVal = request.form.get("progress")
-    if taskID is None:
-        limit = request.json.get("limit")
-        taskID = request.json.get("task")
-        progressVal = request.json.get("progress")
-    taskID = int(taskID)
+    limit = get_val("limit")
+    taskID = get_val("task")
+    progressVal = get_val("progress")
     if limit is not None:
         limits[taskID] = limit
     progress[taskID] = progressVal
@@ -97,14 +100,9 @@ def update_task():
 
 @app.route("/submit", methods=["POST"])
 def submit_score():
-    user = request.form.get("user")
-    taskID = request.form.get("task")
-    time = request.form.get("time")
-    if taskID is None:
-        user = request.json.get("user")
-        taskID = request.json.get("task")
-        time = request.json.get("time")
-    taskID = int(taskID)
+    user = get_val("user")
+    taskID = get_val("task")
+    time = get_val("time")
     file = join(dirname(realpath(__file__)), "static/leaders/" + taskOpts[taskID] + ".leaders")
     leaderboard = []
     import csv
@@ -113,7 +111,7 @@ def submit_score():
         for row in reader:
             leaderboard.append(row)
     for i, entry in enumerate(leaderboard):
-        if (taskID == 2 and int(time) < int(entry[1])) or int(time) > int(entry[1]):
+        if (taskID == 0 and int(time) > int(entry[1])) or int(time) < int(entry[1]):
             leaderboard.insert(i, [user, time])
             del leaderboard[-1]
             break
@@ -125,12 +123,8 @@ def submit_score():
 
 @app.route("/set-user", methods=["POST"])
 def set_user():
-    user = request.form.get("user")
-    taskID = request.form.get("task")
-    if taskID is None:
-        user = request.json.get("user")
-        taskID = request.json.get("task")
-    taskID = int(taskID)
+    user = get_val("user")
+    taskID = get_val("task")
     lastPlayer = players[taskID]
     if lastPlayer not in lastPlayers[taskID]:
         lastPlayers[taskID].insert(0, lastPlayer)
@@ -180,10 +174,7 @@ def reset_tasks():
 
 @app.route('/confirm-reset', methods=["POST"])
 def confirm_reset():
-    taskID = request.form.get("task")
-    if taskID is None:
-        taskID = request.json.get("task")
-    taskID = int(taskID)
+    taskID = get_val("task")
     resetConfirmed[taskID] = True
     print(resetConfirmed)
     if False not in resetConfirmed:  # As all clients have reset
@@ -209,6 +200,19 @@ def resetVals():
 def reset_timers():
     resetVals()
     return "reset"
+
+
+@app.route('/reset-leaderboards', methods=["POST"])
+def reset_leaderboards():
+    emptyLeaderboard = [["AAA", 999], ["AAA", 999], ["AAA", 999]]
+    for task in taskOpts:
+        file = join(dirname(realpath(__file__)), "static/leaders/" + task + ".leaders")
+        with open(file, 'w') as f:
+            for entry in emptyLeaderboard:
+                if task == "danceScores":
+                    f.write(entry[0] + ",0\n")
+                else:
+                    f.write(entry[0] + "," + str(entry[1]) + "\n")
 
 
 if __name__ == '__main__':

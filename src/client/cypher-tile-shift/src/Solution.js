@@ -46,6 +46,7 @@ class Solution extends React.Component {
         this.updateScore()
         console.log(this.props.gamesLeft);
         console.log(this.props.gamesWon);
+        this.submitScore();
         if (this.props.gamesLeft > this.props.gamesWon) {
             return (
                 <Box
@@ -73,7 +74,6 @@ class Solution extends React.Component {
                 </Box>
             );
         } else {
-            this.submitScore();
             var str = "Eliza de Feuillide, your cousin, is absolutely delighted not only by the precision of the needlework but by the attention it provides her. All the ladies present are praising her newly acquired needlepoints. In your grand generosity, you’ve even allowed to take credit for the best one of them. How delightful!\n" +
                 "\n" +
                 "Extremely pleased, she brings you along to the drawing room where the chatter is as intense as it gets. Now in her inner gossiping circle, you are surprised to learn that Isobel has been quite inconsiderate during the months leading to her nuptials. Indeed, it has been said that Isobel was hurtful to many people, including those closest to her.\n" +

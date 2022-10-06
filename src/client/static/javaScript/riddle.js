@@ -21,7 +21,7 @@ let timerLength = itemHasValue("timeToSolve") ? localStorage.getItem("timeToSolv
 let riddleOrder = itemHasValue("orderToSolve") ? countNums("orderToSolve") : [0, 7, 5, 6, 8, 2, 1, 4, 3];
 let riddlesToWin = itemHasValue("noToSolve") ? localStorage.getItem("noToSolve") : 3;
 let multiChoiceAnswerCount = itemHasValue("multipleChoiceChoices") ? localStorage.getItem("multipleChoiceChoices") : 3;
-
+let timeTaken = 0;
 let win, riddle, riddleId, answer, gameTimer;
 
 
@@ -85,7 +85,7 @@ function submitScore() {
     $.ajax({
         type: 'POST',
         url: url + "/submit",
-        data: {"task": 1, "user": document.getElementById("userName").value, "time": timerLength},
+        data: {"task": 1, "user": document.getElementById("userName").value, "time": timeTaken},
         dataType: 'json',
     });
 }
@@ -246,6 +246,7 @@ $('.play').on('click tap', (e) => {
 function startTimer() {
     gameTimer = setInterval(() => {
         timerLength--;
+        timeTaken++;
         $('#time-left').text(timerLength);
         if (timerLength === 0 && !win) {
             finalScreen();
@@ -293,7 +294,6 @@ function finalScreen() {
             "With this new clue and charade added to your collection, you carry onwards in your investigation."
         document.getElementById("restartButton").style.display = "none"
         $('.win-title').text("Win")
-        submitScore();
     } else if (win) {
         $('.win-title').text("Win")
         $('.win-lose-start').text("You truly kept your wits about you. Excellent wordplay, well done!");

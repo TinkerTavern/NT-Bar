@@ -21,6 +21,13 @@
 
 }
 
+.riddle-grid {
+    grid-template-rows: 10% 40% 50%;
+}
+.riddle-box {
+        margin-bottom: 2%;
+}
+
 .options {
     display: flex;
     justify-content: space-evenly;
@@ -56,6 +63,7 @@
     background-color: #ebbe93;
     border: 6px ridge #5c4428;
     font-size: 2rem;
+    padding-top: 1%;
     margin-block: 7vh;
     line-height: 150%;
     white-space: pre-wrap;

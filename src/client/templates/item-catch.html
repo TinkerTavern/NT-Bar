@@ -49,13 +49,13 @@ To do so, you’ll need to follow the rhythm and hit the steps as they appear. T
 
 <section id="view-2">
     <div class="timer">
-        <p style="visibility: hidden" id="stepper">Steps left: <span id="steps-left"></span></p>
-        <p style="visibility: hidden" id="timerr">Time left: <span id="time-left"></span></p>
+        <p style="display: none" id="stepper">Steps left: <span id="steps-left"></span></p>
+        <p style="display: none" id="timerr">Time left: <span id="time-left"></span></p>
         <p class="tutorial">Click these:</p>
         <img  class="tutorial" id="good-sample" draggable="false" src="{{ url_for('static',filename='images/Footsteps/CorrectSteps/Correct1.png') }}"/>
         <p class="tutorial">And not these:</p>
         <img  class="tutorial" id="bad-sample" draggable="false" src="{{ url_for('static',filename='images/Footsteps/WrongSteps/Wrong1.png') }}"/>
-        <div style="visibility: hidden" id="snake-count">
+        <div style="display: none" id="snake-count">
             Score: <span id="steps-hit">X</span>/<span id="snake-goal">Y</span>
         </div>
     </div>

@@ -35,6 +35,7 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    height: 15vh;
 }
 
 .timer p {
@@ -43,7 +44,7 @@
 }
 
 .tutorial {
-    visibility: hidden;
+    display: none;
 }
 
 .step-container img {

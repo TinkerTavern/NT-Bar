@@ -13,12 +13,12 @@ document.addEventListener('DOMContentLoaded', function () {
 }, false);
 loadTaskInfo();
 window.addEventListener("keypress", function (event) {
-    if (event.keyCode === 13 || event.which === 13 ) {
+    if (event.keyCode === 13 || event.which === 13)
         resetRoom();
-    }
-    if (event.keyCode === 114 || event.which === 114) {
+    if (event.keyCode === 114 || event.which === 114)
         resetTimers();
-    }
+    if (event.keyCode === 108 || event.which === 108)
+        resetLeaderboard();
 });
 
 function getVal(val) {
@@ -30,14 +30,23 @@ function loadLeaderboard(game) {
         url: "/static/leaders/" + game + ".leaders",
         dataType: "text",
         success: function (data) {
-            let scoreInfo = game.replace("Scores", "") === "puzzle" ? "Lower is better" : "Higher is better"
-            let unit = game.replace("Scores", "") === "dance" ? "Points" : game.replace("Scores", "") === "puzzle" ? "Time taken (s)" : "Time left (s)"
+            let scoreInfo = game.replace("Scores", "") === "dance" ?  "Higher is better" : "Lower is better"
+            let unit = game.replace("Scores", "") === "dance" ? "Points" : "Time taken (s)"
             document.getElementById(game).innerHTML = "Scores for the " + game.replace("Scores", "") + " game. " + scoreInfo + ":<br>" +
                 "<table class='leaderboard'><tr><th>Name</th><th>" + unit + "</th></tr><tr><td>" +
                 data.replaceAll("\n", "</td></tr><tr><td>").replaceAll(",", "</td><td>") + "</table>"
         }
     });
 
+}
+
+function resetLeaderboard() {
+    alert("Resetting leaderboards...")
+    $.ajax({
+        type: 'POST',
+        url: "http://127.0.0.1:3000/reset-leaderboards",
+        dataType: 'json',
+    });
 }
 
 function resetRoom() {
@@ -69,8 +78,7 @@ function checkProgress(scores, limits) {
         if (parseInt(limits[i]) > parseInt(scores[i])) {
             document.getElementById(words[i]).style.display = "none";
             won = false
-        }
-        else
+        } else
             document.getElementById(words[i]).style.display = "block";
         for (let j = 0; j < limits.length; j++) {
             if (j >= Math.floor(((scores[i] / limits[i]) / 0.333333))) {

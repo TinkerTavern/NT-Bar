@@ -13,7 +13,7 @@ let stepsLeft = debug === "on" ? 4 : itemHasValue("stepCount") ? parseInt(localS
 let scoreGoal = debug === "on" ? 3 : itemHasValue("winScore") ? localStorage.getItem("winScore") : 30;
 let snakeHideFreq = itemHasValue("spawnFreq") ? parseInt(localStorage.getItem("spawnFreq")) : 4;
 let snakeShowDur = itemHasValue("timeOn") ? parseInt(localStorage.getItem("timeOn")) : 10;
-let timerLength = itemHasValue("danceTimer") ? localStorage.getItem("danceTimer") : 100;
+let timerLength = itemHasValue("danceTimer") ? localStorage.getItem("danceTimer") : 60;
 let gamesToWin = itemHasValue("gamesToWin") ? localStorage.getItem("gamesToWin") : 3;
 let snakeTop, snakeLeft, snakeScale;
 let winMessageStart;
@@ -32,14 +32,14 @@ if (localStorage.getItem("hideLeaderboard") !== "on")
 if (localStorage.getItem("hideProgress") !== "on")
     loadImage()
 if (localStorage.getItem("showTimer") === "on")
-    document.getElementById("timerr").style.visibility = 'visible'
+    document.getElementById("timerr").style.display = 'block'
 if (localStorage.getItem("showTarget") === "on")
-    document.getElementById("stepper").style.visibility = 'visible'
+    document.getElementById("stepper").style.display = 'block'
 if (localStorage.getItem("showStepsLeft") === "on")
-    document.getElementById("snake-count").style.visibility = 'visible'
+    document.getElementById("snake-count").style.display = 'block'
 if (localStorage.getItem("showTutorial") === "on")
     $('.tutorial').css({
-        'visibility': 'visible',
+        'display': 'block',
     })
 
 
