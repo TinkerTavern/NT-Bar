@@ -100,8 +100,9 @@ class Solution extends React.Component {
                             <h1 id="win-lose" className="win-title">Win</h1>
                             <p className="win-lose-start" dangerouslySetInnerHTML={{__html: str}}/>
                             <button className=" play" onClick={() => {
-                                console.log("done done done")
-                            }}>Restart
+                                localStorage.setItem("4xMode", "off")
+                                document.location.reload()
+                            }}>Challenge me!
                             </button>
                         </div>
                     </Box>

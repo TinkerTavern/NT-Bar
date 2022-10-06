@@ -82,7 +82,7 @@ class Board extends React.Component {
         const imageIdx = this.props.gamesWon; //TODO make this not random
         var imageSet;
         var imagePreview;
-        switch (imageIdx) {
+        switch (imageIdx % 3) {
             case 0:
                 imageSet = needlepoint1Images;
                 imagePreview = needlepoint1;

@@ -63,7 +63,7 @@ function checkProgress(scores, limits) {
     let images = [["catch1", "catch2", "catch3"],
         ["riddle1", "riddle2", "riddle3"],
         ["tile1", "tile2", "tile3"]]
-    let words = ["catch-word", "tile-word", "riddle-word"]
+    let words = ["catch-word", "riddle-word", "tile-word"]
     let won = true
     for (let i = 0; i < scores.length; i++) {
         if (parseInt(limits[i]) > parseInt(scores[i])) {
@@ -80,7 +80,7 @@ function checkProgress(scores, limits) {
             }
         }
     }
-    if (false) {
+    if (won) {
         abortTimer()
         document.getElementById("server-grid").style.display = "none"
         winMessageStart = "After an evening of games & dances, you come back to Isobel, hoping that the hints you’ve gathered are enough for you and her to put it all together. You ask her if she’s given a servant, likely a woman, someone particularly close to her, a reason to hold a grudge?\n" +

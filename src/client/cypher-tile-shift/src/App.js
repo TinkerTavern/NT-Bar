@@ -41,6 +41,7 @@ class App extends React.Component {
         this.state.gamesWon = 0;
         localStorage.setItem("needlepointProgress", 0)
         this.updateScore()
+        document.location.reload()
     }
 
     handleClick() {

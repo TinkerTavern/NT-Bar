@@ -110,6 +110,7 @@ function confirmReset() {
             dataType: 'json',
         }
     });
+    document.location.reload()
 }
 
 // VIEW 1 CONTENT

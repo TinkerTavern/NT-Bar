@@ -78,6 +78,7 @@ function confirmReset() {
             dataType: 'json',
         }
     });
+    document.location.reload()
 }
 
 function submitScore() {
