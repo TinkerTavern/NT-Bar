@@ -214,7 +214,6 @@ class Board extends React.Component {
     }
 
     getCondition(a) {
-        console.log(a)
         return (e, i) => e > a[i];
     }
 

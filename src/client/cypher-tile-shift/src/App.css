@@ -174,6 +174,7 @@ input:focus {
 .boxy {
     font-size: xxx-large;
 }
+
 .outro-person {
     padding-top: 0;
 }
@@ -186,6 +187,22 @@ input:focus {
     -ms-transform: translate(0%, -0%);
     width: 100vw;
     box-shadow: 0px 4px 11px -5px rgba(0, 0, 0, 0.8);
+}
+
+.spann {
+    grid-column: auto / span 2;
+}
+
+.hidden {
+    display: none;
+}
+
+.score-info {
+    margin: 9%;
+    padding-top: 2%;
+    font-size: 32px;
+    background-color: #ebbe93;
+    border: 6px ridge #5c4428;
 }
 
 .win-lose-start {
@@ -201,6 +218,7 @@ input:focus {
     white-space: pre-wrap;
     margin: 0;
     border: 6px ridge #5c4428;
+    grid-column: auto / span 2;
 }
 
 #lose-message {
@@ -288,13 +306,15 @@ input:focus {
 
 .outro-grid {
     display: grid;
-    grid-template-columns: 27% 71%;
+    grid-template-columns: 27% 35% 35%;
     grid-template-rows: 10% 57% 30%;
     grid-gap: 1em 2em;
     grid-auto-flow: row dense;
+    height: 100vh;
 }
 
 .win-title {
+    grid-column: auto / span 2;
     font-family: PassionsConflict;
     font-size: 700%;
     font-weight: 500;

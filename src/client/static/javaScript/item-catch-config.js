@@ -13,6 +13,7 @@ function submitForm(e) {
     localStorage.setItem("debug", formProps["debug"])
     localStorage.setItem("hideLeaderboard", formProps["hideLeaderboard"])
     localStorage.setItem("hideProgress", formProps["hideProgress"])
+    localStorage.setItem("hideScoreInfo", formProps["hideScoreInfo"])
     localStorage.setItem("danceTimer", formProps["danceTimer"])
     localStorage.setItem("showTarget", formProps["showTarget"])
     localStorage.setItem("showTimer", formProps["showTimer"])

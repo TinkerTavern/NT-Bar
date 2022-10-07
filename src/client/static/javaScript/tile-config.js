@@ -14,6 +14,7 @@ function submitForm(e) {
     localStorage.setItem("previewTimer", formProps["previewTimer"])
     localStorage.setItem("hideLeaderboard", formProps["hideLeaderboard"])
     localStorage.setItem("hideProgress", formProps["hideProgress"])
+    localStorage.setItem("hideScoreInfo", formProps["hideScoreInfo"])
     alert("Changes saved successfully")
     window.location.href = "/needlepoint";
 }

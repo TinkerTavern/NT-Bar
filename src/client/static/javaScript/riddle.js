@@ -81,12 +81,50 @@ function confirmReset() {
     document.location.reload()
 }
 
+function loadScoreInfo(data) {
+    let add = timeTaken === 1 ? " second." : " seconds."
+    document.getElementById("score-info").innerText = "You took " + timeTaken + add
+    let pos = data["position"]
+    let extra;
+    let str = "\nGood job!\n"
+    add = data["scoreToBeat"] === 1 ? " second " : " seconds "
+    if (pos === -1)
+        str += "You were " + data["scoreToBeat"] + add + " away from getting on the leaderboard!"
+    else {
+        extra = ""
+        switch (pos) {
+            case 1:
+                extra = "st "
+                break;
+            case 2:
+                extra = "nd "
+                break;
+            case 3:
+                extra = "rd "
+                break;
+            default:
+                extra = "th "
+                break;
+        }
+        str += "You're " + pos + extra + "on the leaderboard!"
+    }
+    document.getElementById("score-info").innerText += str
+}
+
 function submitScore() {
     $.ajax({
         type: 'POST',
         url: url + "/submit",
         data: {"task": 1, "user": document.getElementById("userName").value, "time": timeTaken},
         dataType: 'json',
+        success: function (data) {
+            if (localStorage.getItem("hideScoreInfo") !== "on")
+                loadScoreInfo(data)
+            else {
+                document.getElementById("score-info").style.display = 'none';
+                document.getElementById("restartButton").style.gridColumn = "auto / span 2";
+            }
+        }
     });
 }
 
@@ -132,8 +170,6 @@ input.addEventListener("keypress", function (event) {
 const setRiddle = () => {
     // Get local storage value for id
     riddleId = riddleOrder[progress % 9] + 1
-    console.log(riddleOrder)
-    console.log(progress)
     fetchRiddle(riddleId).then((riddle) => {
         $('.riddle').text(riddle.question);
         if (multipleChoice === "on")
@@ -238,8 +274,7 @@ $('.play').on('click tap', (e) => {
         submitUser();
         if (timerLength !== -1)
             startTimer();
-    }
-    else
+    } else
         alert("Enter your name please!")
 })
 
@@ -279,41 +314,33 @@ function finalScreen() {
     }
     $('#view-2').animate({'opacity': 0}, 300);
 
-    if (progress >= riddlesToWin) {
-        document.getElementById("win-lose-start").innerHTML = "Miss Fanny Delahoussaye is quite impressed by your skills. With a conspiratorial air, she leans and whispers at your ear:\n" +
-            "\n" +
-            "“My second is not polite of my first,\n" +
-            "Yet it provides a most welcome release:\n" +
-            "My whole often finds my first at their worst,\n" +
-            "And will yearly clear my second of grease.\n" +
-            "The Earl’s misfortune, it seems quite clear,\n" +
-            "Could only be caused by my whole, my dear.”\n" +
-            "\n" +
-            "She winks before you can ask what she means and how on Earth has she heard of the Earl’s demise. After a brief moment of pondering, you realise Fanny is absolutely right (as she often is). Of course! Only <b>a servant</b> could have had the access required to poison the Earl’s drink in his study.\n" +
-            "\n" +
-            "With this new clue and charade added to your collection, you carry onwards in your investigation."
-        document.getElementById("restartButton").style.display = "none"
-        $('.win-title').text("Win")
-    } else if (win) {
+    if (win) {
         $('.win-title').text("Win")
         $('.win-lose-start').text("You truly kept your wits about you. Excellent wordplay, well done!");
         document.getElementById("winButton").style.display = "none"
+        if (progress >= riddlesToWin)
+            document.getElementById("win-lose-start").innerHTML = "Miss Fanny Delahoussaye is quite impressed by your skills. With a conspiratorial air, she leans and whispers at your ear:\n" +
+                "\n" +
+                "“My second is not polite of my first,\n" +
+                "Yet it provides a most welcome release:\n" +
+                "My whole often finds my first at their worst,\n" +
+                "And will yearly clear my second of grease.\n" +
+                "The Earl’s misfortune, it seems quite clear,\n" +
+                "Could only be caused by my whole, my dear.”\n" +
+                "\n" +
+                "She winks before you can ask what she means and how on Earth has she heard of the Earl’s demise. After a brief moment of pondering, you realise Fanny is absolutely right (as she often is). Of course! Only <b>a servant</b> could have had the access required to poison the Earl’s drink in his study.\n" +
+                "\n" +
+                "With this new clue and charade added to your collection, you carry onwards in your investigation."
+
 
     } else {
+        document.getElementById("score-info").style.display = 'none';
+        document.getElementById("restartButton").style.gridColumn = "auto / span 2"
         $('.win-title').text("Lose")
         $('.win-lose-start').text("Looks like you left your wit at home. No fret, happens to the best of us. Why don't you go fetch it and try again.")
         document.getElementById("winButton").style.display = "none"
     }
     $('#view-4').fadeIn();
-}
-
-function winGame() {
-    console.log("wooo")
-}
-
-let gameResult = () => {
-
-
 }
 
 function cont() {

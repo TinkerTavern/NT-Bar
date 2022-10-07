@@ -118,7 +118,6 @@ class App extends React.Component {
         } else if (this.state.mode === 'solved') {
             this.state.gamesWon++;
             localStorage.setItem("needlepointProgress", this.state.gamesWon)
-            console.log("won", this.state.gamesWon)
             artefact = <Solution
                 gamesLeft={this.state.numberToComplete}
                 gamesWon={this.state.gamesWon}

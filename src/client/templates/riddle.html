@@ -58,12 +58,12 @@ You know of charades, of course, don’t you? You figure out the first syllable,
             <p>Time left: <span id="time-left"></span></p>
         </div>
         <p class="riddle"></p>
-        <div id="textEntry">
+        <div class="riddle-stuff" id="textEntry">
             <label class="answerLabel answerLabel2" for="answer">Your Answer:</label><br>
             <input class="answerBox riddle-box" type="text" id="answer" name="answer">
             <input class="play" id="submitButton" type="button" value="Submit" onclick="answerWritten();"/>
         </div>
-        <div id="multiChoice">
+        <div class="riddle-stuff" id="multiChoice">
             <label class="center answerLabel answerLabel2" for="answer">Select the Correct answer:</label><br>
             <div class="options">
                 <input class="option submit" id="answer1" type="button" value="1111" onclick="answer1();"/>
@@ -86,6 +86,7 @@ You know of charades, of course, don’t you? You figure out the first syllable,
         </figure>
         <h1 id="win-lose" class="win-title">Win/Lose</h1>
         <p id="win-lose-start" class="win-lose-start"></p>
+        <div id="score-info" class="score-info"></div>
         <button class="play" id="restartButton" onclick="document.location.reload()">Next Charade...</button>
         <button class="play" id="winButton" onclick="document.location.reload()">Challenge me!</button>
     </div>

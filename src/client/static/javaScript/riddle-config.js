@@ -10,6 +10,7 @@ function submitForm(e) {
     localStorage.setItem("multiChoice", formProps["multiChoice"])
     localStorage.setItem("hideLeaderboard", formProps["hideLeaderboard"])
     localStorage.setItem("hideProgress", formProps["hideProgress"])
+    localStorage.setItem("hideScoreInfo", formProps["hideScoreInfo"])
     e.preventDefault()
     alert("Changes saved successfully")
     window.location.href = "/charades";

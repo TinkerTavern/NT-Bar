@@ -128,7 +128,6 @@ class Intro extends React.Component {
                 user: "",
             })
         }).then(r => r.json()).then(response => {
-            console.log(response)
             if (response["reset"] === true)
                 this.confirmReset()
         })

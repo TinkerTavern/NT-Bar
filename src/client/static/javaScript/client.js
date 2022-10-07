@@ -9,7 +9,6 @@ function setAddr() {
         url: url + "/ping",
         dataType: "json",
         success: function (data) {
-            console.log(data['ping'])
             if (data['ping'] === "pong") {
                 localStorage.setItem("addr", document.getElementById("addr").value)
                 alert("Server address changed successfully")

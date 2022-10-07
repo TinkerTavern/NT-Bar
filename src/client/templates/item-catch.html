@@ -77,12 +77,13 @@ To do so, you’ll need to follow the rhythm and hit the steps as they appear. T
 
 <section id="view-3">
     <div id="win-lose-messages" class="outro-grid">
-                <figure class="person outro-person">
+        <figure class="person outro-person">
             <img src="{{ url_for('static',filename='images/Dance_End.png') }}"  alt="Self Portrait, c.1818 by Claude Marie Dubufe" title="Self Portrait, c.1818 by Claude Marie Dubufe" draggable="false"/>
             <figcaption class="imageBy">Background image by GarryKillian on Freepik</figcaption>
         </figure>
         <h1 id="win-lose" class="win-title">Win/Lose</h1>
         <p id="win-lose-start" class="win-lose-start"></p>
+        <div id="score-info" class="score-info"></div>
         <button class="play" id="restartButton" onclick="document.location.reload()">Next Dance...</button>
         <button class="play" id="winButton" onclick="document.location.reload()">Challenge me!</button>
     </div>

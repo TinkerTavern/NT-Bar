@@ -122,7 +122,6 @@ class CypherPuzzle extends React.Component {
 		let wordLetters = word.split ('');
 		let newCypher = wordLetters.map ((letter) => cypherLetters.indexOf (letter))
 		this.setState ({cypher: newCypher, answer: word})
-		// console.log ('Chose', word, 'and this maps to', newCypher)
 	}
 
 	render () {

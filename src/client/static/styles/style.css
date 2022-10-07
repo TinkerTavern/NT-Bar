@@ -189,6 +189,7 @@ button {
     margin-bottom: 0;
     background-color: #ebbe93;
     border: 6px ridge #5c4428;
+    grid-column: auto / span 2;
 }
 
 .answerBox {
@@ -291,7 +292,7 @@ input {
 
 .outro-grid {
     display: grid;
-    grid-template-columns: 27% 71%;
+    grid-template-columns: 27% 35% 35%;
     grid-template-rows: 10% 57% 30%;
     grid-gap: 1em 2em;
     height: 100vh;
@@ -315,6 +316,14 @@ input {
     border: 6px ridge #5c4428;
 }
 
+.score-info {
+    margin: 9%;
+    padding-top: 2%;
+    font-size: 32px;
+    background-color: #ebbe93;
+    border: 6px ridge #5c4428;
+}
+
 .win-lose-start {
     background-color: #ebbe93;
     font-size: 32px;
@@ -328,6 +337,7 @@ input {
     margin: 0;
     white-space: pre-wrap;
     border: 6px ridge #5c4428;
+    grid-column: auto / span 2;
 }
 
 .win-lose-result {

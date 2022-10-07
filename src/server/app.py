@@ -19,8 +19,6 @@ taskOpts = ["danceScores", "charadesScores", "needlepointScores"]
 tasks = ["Master the dance!", "Solve the charades!",
          "Put the needlepoints back together!"]
 
-# TODO: Think about how to get a room reset button working effectively
-# Send signal to client which sets localStorage flag to true, then in each of the in game timers, check for flag and if true, trigger restart
 # TODO: Find a way to stream/show screenshots of the player's games on server side
 
 
@@ -94,7 +92,6 @@ def update_task():
     if limit is not None:
         limits[taskID] = limit
     progress[taskID] = progressVal
-    print(progress)
     return jsonify(reset=reset, success=True)
 
 
@@ -105,20 +102,29 @@ def submit_score():
     time = get_val("time")
     file = join(dirname(realpath(__file__)), "static/leaders/" + taskOpts[taskID] + ".leaders")
     leaderboard = []
+    time = int(time)
+    position = -1
+    scoreToBeat = 0
     import csv
     with open(file, 'r') as f:
         reader = csv.reader(f)
         for row in reader:
             leaderboard.append(row)
     for i, entry in enumerate(leaderboard):
-        if (taskID == 0 and int(time) > int(entry[1])) or int(time) < int(entry[1]):
+        if (taskID == 0 and time > int(entry[1])) or (taskID != 0 and time < int(entry[1])):
+            position = i+1
             leaderboard.insert(i, [user, time])
             del leaderboard[-1]
             break
+    if position == -1:
+        if taskID == 0:
+            scoreToBeat = int(leaderboard[-1][1]) - time + 1
+        else:
+            scoreToBeat = time - int(leaderboard[-1][1]) + 1
     with open(file, 'w') as f:
         for entry in leaderboard:
             f.write(entry[0] + "," + str(entry[1]) + "\n")
-    return jsonify(reset=reset, success=True)
+    return jsonify(position=position, scoreToBeat=scoreToBeat, reset=reset, success=True)
 
 
 @app.route("/set-user", methods=["POST"])
@@ -176,7 +182,6 @@ def reset_tasks():
 def confirm_reset():
     taskID = get_val("task")
     resetConfirmed[taskID] = True
-    print(resetConfirmed)
     if False not in resetConfirmed:  # As all clients have reset
         print("Reset complete")
         resetVals()

@@ -42,6 +42,36 @@ if (localStorage.getItem("showTutorial") === "on")
         'display': 'block',
     })
 
+function loadScoreInfo(data) {
+    let add = stepsHit === 1 ? " point." : " points."
+    document.getElementById("score-info").innerText = "You scored " + stepsHit + add
+    let pos = data["position"]
+    let extra;
+    let str = "\nGood job!\n"
+    add = data["scoreToBeat"] === 1 ? " more point " : " more points "
+    if (pos === -1)
+        str += "You need " + data["scoreToBeat"] + add + "to get on the leaderboard!"
+    else {
+        extra = ""
+        switch (pos) {
+            case 1:
+                extra = "st "
+                break;
+            case 2:
+                extra = "nd "
+                break;
+            case 3:
+                extra = "rd "
+                break;
+            default:
+                extra = "th "
+                break;
+        }
+        str += "You're " + pos + extra + "on the leaderboard!"
+    }
+    document.getElementById("score-info").innerText += str
+}
+
 
 submitUser(true)
 
@@ -51,6 +81,14 @@ function submitScore() {
         url: url + "/submit",
         data: {"task": 0, "user": document.getElementById("userName").value, "time": stepsHit},
         dataType: 'json',
+        success: function (data) {
+            if (localStorage.getItem("hideScoreInfo") !== "on")
+                loadScoreInfo(data)
+            else {
+                document.getElementById("score-info").style.display = 'none';
+                document.getElementById("restartButton").style.gridColumn = "auto / span 2";
+            }
+        }
     });
 }
 
@@ -143,8 +181,7 @@ $('.play').on('click tap', (e) => {
         submitUser(false);
         hideSnakes();
         startTimer()
-    }
-    else
+    } else
         alert("Enter your name please!")
 })
 
@@ -252,7 +289,7 @@ function randMove(id) {
     if (id === "bad-step-container" && localStorage.getItem("inverseBad") === "on")
         angle = "180";
     else if (localStorage.getItem("randomRotation") === "on")
-        angle = getRandomInt(0,360).toString()
+        angle = getRandomInt(0, 360).toString()
 
     snakeTop = getRandomArbitrary(15, 75)
     snakeLeft = getRandomArbitrary(0, 86)
@@ -261,7 +298,7 @@ function randMove(id) {
         'left': `${snakeLeft}%`,
         'width': `350px`,
         'z-index': '1',
-        'rotate': angle+"deg",
+        'rotate': angle + "deg",
     })
 }
 
@@ -269,7 +306,6 @@ function randMove(id) {
 let moveSnake = (id) => {
     randMove(id)
     // while (elementsOverlap("good-step-image1", "bad-step-image1")) {
-    //     console.log("ppsh")
     //     randMove(id)
     // }
     // TODO Fix
@@ -352,14 +388,12 @@ let gameResult = () => {
         $('.win-title').text("Win")
         submitScore()
     } else {
+        document.getElementById("score-info").style.display = 'none';
+        document.getElementById("restartButton").style.gridColumn = "auto / span 2"
         $('.win-title').text("Lose")
         $('.win-lose-start').text("You've kept up with the music as much as you could, but your dance partner was thoroughly unimpressed by your cotillon. Maybe the scotch reel will be more suited to your pace?")
         document.getElementById("winButton").style.display = "none"
 
     }
     $('#view-3').fadeIn();
-}
-
-function winGame() {
-    console.log("wooo")
 }
