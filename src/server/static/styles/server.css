@@ -61,6 +61,7 @@ tbody, td, tr, th, table {
     grid-gap: 1em 2em;
     grid-auto-flow: row dense;
     align-content: center;
+    margin-left: 1%;
 }
 
 .instructions {

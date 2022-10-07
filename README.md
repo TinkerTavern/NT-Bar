@@ -5,6 +5,7 @@ This repository contains two main components:
 - Server (Larger screen with no player interaction). This runs on localhost:3000
 - Client (Smaller screens which players interact with). This runs on localhost:5000
 
+150% at 4k should be good for both
 
 ## Server
 
