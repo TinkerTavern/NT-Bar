@@ -51,6 +51,7 @@ For the sake of experimentation, the built exe files will be used. In this case,
 - From there, it should be possible to open Google Chrome and navigate to `localhost:3000` for the server, or `localhost:5000` for the clients
 - On each of the client's, type the server IP address into the text box, then click submit. The website should confirm if the connection was successful or not
 - The system should then be ready to use. To change configuration, see the [configuration](#Configuration) section.
+Note: If running using 32" 4k screens, keep windows scaling to 1x and set the browser zoom to 75%. If using the 65" 4k screen, set windows scaling to 150% and keep the browser zoom at 0%.
 
 ## Technical
 
