@@ -5,7 +5,6 @@ This repository contains two main components:
 - Server (Larger screen with no player interaction). This runs on localhost:3000
 - Client (Smaller screens which players interact with). This runs on localhost:5000
 
-150% at 4k should be good for both
 
 ## Server
 
@@ -32,7 +31,7 @@ The client contains four different games, three of which are accessible at any g
 - Tile Shift (Needlepoint): An image is split into a 3x3 or 4x4 grid and scrambled, where the tiles need to be swapped
   around to create the original image
 - OR Cypher: A cypher is created with a series of symbols and the key is provided, the user is then expected to decode
-  the message and type the answer
+  the message and type the answer. Note that this game hasn't been modified from the original design and isn't intended to be used for experimentation
 
 Each game contains three main sreens, an introduction screen with an image, a text description defining context and
 background; a game screen with the specific game's content; and a game complete screen. This final screen either shows a
@@ -40,6 +39,20 @@ single game win/lose screen, or a more comprehensive minigame complete screen, p
 phrase, hinting towards the answer.
 
 # Running
+
+## Non-Technical
+
+For the sake of experimentation, the built exe files will be used. In this case, the following steps can be used:
+- Download/locate the `Server.exe` and `Client.exe` files.
+- Put the `Server.exe` file on the computer to be running the server, and three `Client.exe` 's on each of the client computers
+- Run the respective files on the computers. Make sure to accept any firewall prompts if they come up. You should then be presented with something like the following. 
+![imgg.png](img.png)
+- Here you can take note of the server IP address for a future step, e.g. 192.168.1.83:
+- From there, it should be possible to open Google Chrome and navigate to `localhost:3000` for the server, or `localhost:5000` for the clients
+- On each of the client's, type the server IP address into the text box, then click submit. The website should confirm if the connection was successful or not
+- The system should then be ready to use. To change configuration, see the [configuration](#Configuration) section.
+
+## Technical
 
 There are three built in ways to run this system:
 
