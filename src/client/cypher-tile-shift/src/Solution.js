@@ -13,6 +13,7 @@ class Solution extends React.Component {
         this.state = {
             numberToComplete: 3,
             retString: "",
+            firstLoad: true,
         }
     }
 
@@ -47,8 +48,12 @@ class Solution extends React.Component {
 
 
     render() {
-        this.updateScore()
-        this.submitScore();
+        // TODO ONLY RUN ONCE
+        if (this.state.firstLoad) {
+
+            this.updateScore()
+            this.submitScore();
+        }
         if (this.props.gamesLeft > this.props.gamesWon) {
             return (
                 <Box
@@ -149,12 +154,14 @@ class Solution extends React.Component {
         }
         this.setState((state) => {
             // Important: read `state` instead of `this.state` when updating.
+            state.firstLoad = false;
             return {retString: retStr + str}
         });
     }
 
 
     submitScore() {
+        console.log("oki")
         let url = this.itemHasValue("addr") ? localStorage.getItem("addr") : "127.0.0.1"
         url = "http://" + url + ":3000"
         fetch(url + '/submit', {

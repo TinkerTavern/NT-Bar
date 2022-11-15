@@ -104,6 +104,7 @@ def submit_score():
     leaderboard = []
     time = int(time)
     position = -1
+    print(taskID)
     scoreToBeat = 0
     import csv
     with open(file, 'r') as f:
