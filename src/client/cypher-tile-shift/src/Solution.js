@@ -48,9 +48,7 @@ class Solution extends React.Component {
 
 
     render() {
-        // TODO ONLY RUN ONCE
         if (this.state.firstLoad) {
-
             this.updateScore()
             this.submitScore();
         }

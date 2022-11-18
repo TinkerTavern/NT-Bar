@@ -13,11 +13,13 @@ document.addEventListener('DOMContentLoaded', function () {
 }, false);
 loadTaskInfo();
 window.addEventListener("keypress", function (event) {
-    if (event.keyCode === 13 || event.which === 13)
+    if (event.keyCode === 119 || event.which === 119)
+        winGame();
+    else if (event.keyCode === 13 || event.which === 13)
         resetRoom();
-    if (event.keyCode === 114 || event.which === 114)
+    else if (event.keyCode === 114 || event.which === 114)
         resetTimers();
-    if (event.keyCode === 108 || event.which === 108)
+    else if (event.keyCode === 108 || event.which === 108)
         resetLeaderboard();
 });
 
@@ -57,6 +59,7 @@ function resetRoom() {
         dataType: 'json',
     });
     tid = setInterval(loadTaskInfo, 1000);
+    resetTimers()
 }
 
 function resetTimers() {
@@ -66,6 +69,22 @@ function resetTimers() {
         dataType: 'json',
     });
     timers = [0, 0, 0];
+}
+
+function winGame() {
+    abortTimer()
+    document.getElementById("server-grid").style.display = "none"
+    winMessageStart = "After an evening of games & dances, you come back to Isobel, hoping that the hints you’ve gathered are enough for you and her to put it all together. You ask her if she’s given a servant, likely a woman, someone particularly close to her, a reason to hold a grudge?\n" +
+        "\n" +
+        "At first, Isobel looks confused, with an early denial. The initial shock passed, she slowly nods her head in understanding: “Marguerite!” she says, “My former maid. I had to terminate her employment this morning at Frederick’s request. She was to leave the premises by tomorrow. Do you really think it could be her?”\n" +
+        "\n" +
+        "With a purposeful stroll, you come together to the servants’ quarters in the outbuildings, determined to question her and put this whole unpleasantness to a rest. Isobel knocks at the door, announcing herself, then you both enter the room resolutely to confront Marguerite, Isobel’s former maid and the Earl’s likely murderer.\n" +
+        "\n" +
+        "Marguerite, who lies dead on the floor, in a pool of crimson red.\n" +
+        "It would seem your investigation has only just started."
+    $('.win-lose-start').text(winMessageStart);
+    $('.win-title').text("Win")
+    $('#view-3').fadeIn();
 }
 
 function checkProgress(scores, limits) {
@@ -89,19 +108,7 @@ function checkProgress(scores, limits) {
         }
     }
     if (won) {
-        abortTimer()
-        document.getElementById("server-grid").style.display = "none"
-        winMessageStart = "After an evening of games & dances, you come back to Isobel, hoping that the hints you’ve gathered are enough for you and her to put it all together. You ask her if she’s given a servant, likely a woman, someone particularly close to her, a reason to hold a grudge?\n" +
-            "\n" +
-            "At first, Isobel looks confused, with an early denial. The initial shock passed, she slowly nods her head in understanding: “Marguerite!” she says, “My former maid. I had to terminate her employment this morning at Frederick’s request. She was to leave the premises by tomorrow. Do you really think it could be her?”\n" +
-            "\n" +
-            "With a purposeful stroll, you come together to the servants’ quarters in the outbuildings, determined to question her and put this whole unpleasantness to a rest. Isobel knocks at the door, announcing herself, then you both enter the room resolutely to confront Marguerite, Isobel’s former maid and the Earl’s likely murderer.\n" +
-            "\n" +
-            "Marguerite, who lies dead on the floor, in a pool of crimson red.\n" +
-            "It would seem your investigation has only just started."
-        $('.win-lose-start').text(winMessageStart);
-        $('.win-title').text("Win")
-        $('#view-3').fadeIn();
+        winGame();
     }
 }
 

@@ -42,6 +42,8 @@ phrase, hinting towards the answer.
 
 ## Non-Technical
 
+Note: Client refers to the "small" computers that run the games, and Server refers to the "big" computer that shows the tasks
+
 For the sake of experimentation, the built exe files will be used. In this case, the following steps can be used:
 - Download/locate the `Server.exe` and `Client.exe` files.
 - Put the `Server.exe` file on the computer to be running the server, and three `Client.exe` 's on each of the client computers
@@ -52,6 +54,19 @@ For the sake of experimentation, the built exe files will be used. In this case,
 - On each of the client's, type the server IP address into the text box, then click submit. The website should confirm if the connection was successful or not
 - The system should then be ready to use. To change configuration, see the [configuration](#Configuration) section.
 Note: If running using 32" 4k screens, keep windows scaling to 1x and set the browser zoom to 75%. If using the 65" 4k screen, set windows scaling to 150% and keep the browser zoom at 0%.
+
+### Character Sheet
+Below is a list of all the characters described in the application, along with their job and relationship to the main character. This can be used to make the experience seem more like a real whodunnit game.
+
+- Isobel Payne: This is your friend who you are trying to help, accused of adultery (with Frederick) and murder 
+- Frederick Payne: The Earl of Scargrave, this is the man who has been murdered, accused of adultery and murder
+- Viscount Payne: The younger brother and heir to the Earl
+- James Beridze: The Earl's best friends
+- Davit Tsiklauri: The Earl's eldest coisin
+- Eliza de Feuillide: Your cousin
+- Lieutenant Thomas Hearst: The second son of the Earl's deceased sister
+- George Hearst: The first son of the Earl's deceased sister/ Thomas' elder brother
+- Miss Fanny Delahoussaye: Mutual friend and riddle enthusiast 
 
 ## Technical
 
@@ -67,8 +82,15 @@ There are three built in ways to run this system:
 Once running, the server home page can be accessed via localhost:3000. Pressing F12 should reveal the local IP address,
 which is required if the clients are connecting from another machine on the network.
 
-Pressing the r key will reset all the timers on the screen, and pressing enter resets the room progress entirely (
-clients need to be refreshed to confirm reset)
+Keycode:
+
+r - Resets timers (2nd row from bottom)
+
+l - Resets leaderboards
+
+enter - Resets the room (all rows except for leaderboards), small computers need refreshing
+
+w - Triggers the win game screen, in case people guess it on thier own behalf
 
 ## Client
 
@@ -94,8 +116,7 @@ the browser.
 
 ## Master the Dance Configuration
 
-- Step Count: The number of steps that can appear in a session. Typically, shouldn't occur given default timer (default
-    300)
+- Step Count: The number of steps that can appear in a session. Typically, shouldn't occur given default the timer constraints (default 300)
 - Win score: The score required for the player to win (default 30)
 - Time on screen: The time the steps appear on screen. This is random, between 1 and n*250ms (default n = 10)
 - Time between spawns: The time the steps are hidden for between steps, This time is random, between 1 and n*250ms (
